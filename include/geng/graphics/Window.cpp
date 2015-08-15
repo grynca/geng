@@ -6,12 +6,13 @@
 #include "Vertices.h"
 #include "Shaders.h"
 #include "Renderer2D.h"
+#include "Events.h"
 
 namespace grynca {
 
     Window::Window()
      : sdl_window_(NULL), gl_context_(NULL),
-       textures_(NULL), shaders_(NULL), vertices_(NULL), renderer_(NULL)
+       events_(NULL), textures_(NULL), shaders_(NULL), vertices_(NULL), renderer_(NULL)
     {}
 
     void Window::init(const std::string& name, uint32_t width, uint32_t height) {
@@ -56,6 +57,7 @@ namespace grynca {
 
         viewport_.setBaseSize({(float)width, (float)height});
 
+        events_ = new Events(*this);
         textures_ = new Textures2DManager();
         shaders_ = new Shaders(*this);
         vertices_ = new Vertices(*this);
@@ -67,6 +69,8 @@ namespace grynca {
             SDL_GL_DeleteContext((SDL_Window*)gl_context_);
         if (sdl_window_)
             SDL_DestroyWindow((SDL_Window*)sdl_window_);
+        if (events_)
+            delete events_;
         if (textures_)
             delete textures_;
         if (shaders_)
@@ -87,6 +91,10 @@ namespace grynca {
 
     void Window::toggleFullscreen() {
         setFullscreen(!isFullscreen());
+    }
+
+    Events& Window::getEvents() {
+        return *events_;
     }
 
     Textures2DManager& Window::getTextures() {

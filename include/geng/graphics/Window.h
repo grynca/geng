@@ -11,6 +11,7 @@ namespace grynca {
     class Shaders;
     class Vertices;
     class Renderer2D;
+    class Events;
 
 
     class Window {
@@ -23,6 +24,7 @@ namespace grynca {
         void setFullscreen(bool fs);
         void toggleFullscreen();
 
+        Events& getEvents();
         Textures2DManager& getTextures();
         Shaders& getShaders();
         Vertices& getVertices();
@@ -44,6 +46,7 @@ namespace grynca {
         void* sdl_window_;
         void* gl_context_;
 
+        Events* events_;
         Textures2DManager* textures_;
         Shaders* shaders_;
         Vertices* vertices_;

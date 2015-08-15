@@ -18,6 +18,8 @@ namespace grynca {
         uint32_t getUPS()const;
 
         virtual ~Game();
+
+        void quit();
     protected:
         Game(const std::string& name = "Grynca Game", uint32_t width = 1024, uint32_t height = 768);
         Game(const Game&) {}
@@ -35,6 +37,7 @@ namespace grynca {
         fast_vector<CommonPtr> modules_;
         uint32_t fps_;
         uint32_t ups_;
+        bool quit_;
     };
 
 }

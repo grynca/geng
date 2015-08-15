@@ -16,6 +16,7 @@
 #include "Texture2D.h"
 #include "Frame.h"
 #include "Textures2DManager.h"
+#include "Events.h"
 #include "Renderables/CircleRenderable.h"
 #include "Renderables/RectRenderable.h"
 #include "Renderables/SpriteRenderable.h"

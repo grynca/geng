@@ -22,6 +22,13 @@ private:
 
     virtual void update() override {
         me->get<MyEntity>().update();
+
+        Events& events = getModule<Window>().getEvents();
+        bool alt_down = events.isKeyDown(SDL_SCANCODE_LALT)|events.isKeyDown(SDL_SCANCODE_RALT);
+        if (events.wasKeyPressed(SDL_SCANCODE_F4) && alt_down)
+            quit();
+        else if (events.wasKeyPressed(SDL_SCANCODE_RETURN) && alt_down)
+            getModule<Window>().toggleFullscreen();
     }
 
     virtual void tick() override {
@@ -32,6 +39,5 @@ private:
 
 int main(int argc, char* argv[]) {
     MyGame::create().start();
-    KEY_TO_CONTINUE();
     return 0;
 }

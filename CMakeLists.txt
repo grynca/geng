@@ -78,6 +78,8 @@ set(SOURCE_FILES
     include/geng/graphics/Frame.h
     include/geng/graphics/ViewPort.h
     include/geng/graphics/ViewPort.cpp
+    include/geng/graphics/Events.h
+    include/geng/graphics/Events.cpp
 
     include/geng/physics/Speed.h
     include/geng/physics/physics_includes.h

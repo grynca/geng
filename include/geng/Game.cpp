@@ -20,10 +20,14 @@ namespace grynca {
     }
 
     Game::Game(const std::string& name, uint32_t width, uint32_t height)
-     : fps_(0), ups_(0)
+     : fps_(0), ups_(0), quit_(false)
     {
         Graphics::setIds();
         getModule<Window>().init(name, width, height);
+        getModule<Window>().getEvents().addHandler(SDL_QUIT, [this](SDL_Event& e) {
+            quit();
+            return false;
+        });
         getModule<SystemManager>().getSystem<RenderSystem>().init(getModule<Window>());
     }
 
@@ -32,6 +36,10 @@ namespace grynca {
             if (!modules_[i].isNull())
                 modules_[i].destroy();
         }
+    }
+
+    void Game::quit() {
+        quit_ = true;
     }
 
     void Game::gameLoop_() {
@@ -43,22 +51,18 @@ namespace grynca {
         uint32_t frames = 0;
         uint32_t updates = 0;
 
-        while (true) {
-            // process input
-            SDL_Event event;
-            // internal handlers first
-            while (SDL_PollEvent(&event)) {}
-
-            getModule<Window>().clear();
+        Window& window = getModule<Window>();
+        while (!quit_) {
+            window.clear();
             float dt = timer_.getElapsed() - update_timer;
             if (dt > tick_len) {
-                //m_Window->UpdateInput();
+                window.getEvents().update();
                 getModule<SystemManager>().updateAllSystems(getModule<EntityManager>(), tick_len);
                 update();
                 updates++;
                 update_timer += tick_len;
             }
-            getModule<Window>().render();
+            window.render();
             frames++;
             if (timer_.getElapsed() - seconds_timer > 1.0f) {
                 seconds_timer += 1.0f;
