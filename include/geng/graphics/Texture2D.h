@@ -12,8 +12,11 @@ namespace grynca {
 
     class Texture2D : public ManagedItem<Textures2DManager> {
     public:
-        Texture2D(Image::Ref image, const std::string name);
-        Texture2D(uint32_t w, uint32_t h, uint32_t depth, GLenum format, const void* data, const std::string& name);
+        Texture2D(const std::string& name = "");        // unbound uninitialized texture
+        ~Texture2D();
+
+        void set(Image::Ref image);
+        void set(uint32_t w, uint32_t h, uint32_t depth, GLenum format, const void* data);
 
         void setFilters(GLenum min, GLenum mag);
         void setWrap(GLenum s_wrap, GLenum t_wrap);

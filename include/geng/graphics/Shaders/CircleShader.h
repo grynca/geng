@@ -22,9 +22,11 @@ namespace grynca {
     private:
         static const std::string vsSrc() {
             return  R"(
-            #version 330
+            #version 100
+            precision mediump float;
+
             // inputs
-            layout (location = 0) in vec2 v_pos;
+            attribute vec2 v_pos;
 
             // uniforms
             uniform mat3 transform;
@@ -32,10 +34,10 @@ namespace grynca {
             uniform vec2 r_range;
 
             // outputs
-            out vec2 f_pos;
+            varying vec2 f_pos;
 
             void main() {
-                vec2 pos = v_pos*r_range.y*2;
+                vec2 pos = v_pos*r_range.y*2.0;
                 f_pos = pos;
                 vec3 trans_pos = transform*vec3(pos, 1.0);
                 gl_Position =  vec4(trans_pos.xy, z_coord, trans_pos.z);
@@ -45,20 +47,20 @@ namespace grynca {
 
         static const std::string fsSrc() {
             return R"(
-            #version 330
-            // inputs
-            in vec2 f_pos;
+            #version 100
+            #extension GL_OES_standard_derivatives : enable     // needed for webgl to enable fwidth
+            precision mediump float;
 
-            // uniforms5
+            // inputs
+            varying vec2 f_pos;
+
+            // uniforms
             uniform vec4 color;
             uniform vec2 r_range;
 
-            // output to color buffer
-            layout (location = 0) out vec4 f_color;
-
             void main() {
                 float dist = length(f_pos);
-                float delta = 2*fwidth(f_pos.x);
+                float delta = 2.0*fwidth(f_pos.x);
 
                 float r_from = r_range.x;
                 float r_to = r_range.y;
@@ -66,12 +68,11 @@ namespace grynca {
                 float alpha1 = smoothstep(r_to-delta, r_to, dist);
                 float alpha = abs(alpha1-alpha2);
 
-                f_color = vec4(color.xyz, mix(0, color.w, alpha));
+                gl_FragColor = vec4(color.xyz, mix(0.0, color.w, alpha));
             }
             )";
         }
     };
-
 }
 
 #endif //SHAPESSHADER_H

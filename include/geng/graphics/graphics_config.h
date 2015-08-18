@@ -6,9 +6,6 @@
 namespace grynca {
     namespace config {
         static constexpr bool START_FULLSCREEN = false;
-        static constexpr uint32_t GLVER_MAJOR = 3;
-        static constexpr uint32_t GLVER_MINOR = 3;
-
         static constexpr uint32_t MAX_LAYERS = 256;
     }
 }

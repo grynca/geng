@@ -3,16 +3,29 @@
 
 namespace grynca {
 
-    Texture2D::Texture2D(Image::Ref image, const std::string name)
-     : Texture2D(image.get().getWidth(), image.get().getHeight(), image.get().getDepth(), image.get().getGLFormat(),
-                 image.get().getDataPtr(), name)
-    {}
-
-    Texture2D::Texture2D(uint32_t w, uint32_t h, uint32_t depth, GLenum format, const void* data, const std::string& name)
-     : w_(w), h_(h), d_(depth), gl_format_(format), name_(name), bound_to_(UNBOUND_ID)
+    Texture2D::Texture2D(const std::string& name)
+     : w_(0), h_(0), d_(0), gl_format_(0), name_(name),  bound_to_(UNBOUND_ID)
     {
         GLCall(glGenTextures(1, &gl_handle_));
-        GLCall(glBindTexture(GL_TEXTURE_2D, gl_handle_));        // bind texture
+    }
+
+    Texture2D::~Texture2D() {
+        GLCall(glDeleteTextures(1, &gl_handle_));
+    }
+
+    void Texture2D::set(Image::Ref image)
+    {
+        ASSERT(bound_to_ != UNBOUND_ID, "Texture must be bound.");
+        set(image.get().getWidth(), image.get().getHeight(), image.get().getDepth(), image.get().getGLFormat(),
+            image.get().getDataPtr());
+    }
+
+    void Texture2D::set(uint32_t w, uint32_t h, uint32_t depth, GLenum format, const void* data) {
+        ASSERT(bound_to_ != UNBOUND_ID, "Texture must be bound.");
+        w_ = w;
+        h_ = h;
+        d_ = depth;
+        gl_format_ = format;
 
         // set data
         GLCall(glTexImage2D(GL_TEXTURE_2D, 0, format, w_, h_,
@@ -25,6 +38,7 @@ namespace grynca {
     }
 
     void Texture2D::setFilters(GLenum min, GLenum mag) {
+        ASSERT(bound_to_ != UNBOUND_ID, "Texture must be bound.");
         GLCall(glBindTexture(GL_TEXTURE_2D, gl_handle_));
         // set filters
         GLCall(glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, min));
@@ -33,6 +47,7 @@ namespace grynca {
     }
 
     void Texture2D::setWrap(GLenum s_wrap, GLenum t_wrap) {
+        ASSERT(bound_to_ != UNBOUND_ID, "Texture must be bound.");
         GLCall(glBindTexture(GL_TEXTURE_2D, gl_handle_));
         // set wraps
         GLCall(glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, s_wrap ));

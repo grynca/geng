@@ -6,8 +6,9 @@ MyEntity::MyEntity() {
 }
 
 void MyEntity::initResources(Game& game) {
-    Texture2D& t = game.getModule<Window>().getTextures().addItem(RefPtr<Image>(new Image("yoda.jpg")), "yoda");
+    Texture2D& t = game.getModule<Window>().getTextures().addItem("yoda");
     t.bind(0);
+    t.set(RefPtr<Image>(new Image("data/yoda.jpg")));
 }
 
 Entity& MyEntity::create(Game& game) {
@@ -33,7 +34,7 @@ Entity& MyEntity::create(Game& game) {
         float b = (float)rand()/RAND_MAX;
         cc.setColor(r, g, b, 1);
 
-        cc.getLocalTransform().setPosition({x, y});
+        cc.getLocalTransform().setPosition({(float)x, (float)y});
     }
 
     SpriteRenderable & sr = me.renderables.add<SpriteRenderable>(game.getModule<Window>(), 2, 0, Vec2{100, 100});

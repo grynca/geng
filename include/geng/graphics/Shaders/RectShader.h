@@ -18,20 +18,18 @@ namespace grynca {
         GLint u_color;
         GLint u_transform;
     private:
+
         static const std::string vsSrc() {
             return  R"(
-            #version 330
+            #version 100
+            precision mediump float;
+
             // inputs
-            layout (location = 0) in vec2 v_pos;
+            attribute vec2 v_pos;
 
             // uniforms
             uniform mat3 transform;
             uniform float z_coord;
-            //uniform vec2 size;
-            //uniform vec2 offset;
-
-            // outputs
-            out vec4 f_pos;
 
             void main() {
                 vec3 trans_pos = transform*vec3(v_pos, 1.0);
@@ -42,23 +40,18 @@ namespace grynca {
 
         static const std::string fsSrc() {
             return R"(
-            #version 330
-            // inputs
-            in vec4 f_pos;
+            #version 100
+            precision mediump float;
 
             // uniforms
             uniform vec4 color;
 
-            // output to color buffer
-            layout (location = 0) out vec4 f_color;
-
             void main() {
-                f_color = color;
+                gl_FragColor = color;
             }
             )";
         }
     };
-
 }
 
 #endif //RECTSHADER_H

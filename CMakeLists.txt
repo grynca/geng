@@ -87,9 +87,9 @@ set(SOURCE_FILES
     include/geng/physics/Physics.cpp
     include/geng/physics/systems/MovementSystem.h
 
-    src/basic.cpp
+    src/main.cpp
     src/entities/MyEntity.h
     src/entities/MyEntity.cpp
     )
-add_executable(basic ${SOURCE_FILES})
+add_executable(basic ${SOURCE_FILES} src/entities/Shuttle.h src/entities/Shuttle.cpp)
 target_link_libraries(basic ${LIBS})

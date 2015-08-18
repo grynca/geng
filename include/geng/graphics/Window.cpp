@@ -20,8 +20,8 @@ namespace grynca {
             if (SDL_InitSubSystem(SDL_INIT_VIDEO)==-1)
                 throw SDL_Exception();
         }
-        SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, config::GLVER_MAJOR);
-        SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, config::GLVER_MINOR);
+//        SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, config::GLVER_MAJOR);
+//        SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, config::GLVER_MINOR);
         SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
 
         // create window
@@ -29,6 +29,7 @@ namespace grynca {
         if (config::START_FULLSCREEN) {
             flags |= SDL_WINDOW_FULLSCREEN;
         }
+
         sdl_window_ = SDL_CreateWindow(name.c_str(),
                                        SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
                                        width, height, flags);
@@ -40,20 +41,22 @@ namespace grynca {
             throw SDL_Exception();
 
         // init glew
-        if (config::GLVER_MAJOR > 2)
-            glewExperimental = GL_TRUE;
+//        if (config::GLVER_MAJOR > 2)
+//            glewExperimental = GL_TRUE;
         GLuint err = glewInit();
         if (err!=GLEW_OK)
             throw GLEW_Exception(err);
 
         /// GL flags
-        glEnable( GL_POINT_SMOOTH);
-        glEnable(GL_LINE_SMOOTH);
-        glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
-        glEnable(GL_BLEND);
-        glDisable(GL_DEPTH_TEST);
-        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-        glEnable( GL_TEXTURE_2D );
+#ifndef WEB
+        GLCall(glEnable( GL_POINT_SMOOTH));
+        GLCall(glEnable(GL_LINE_SMOOTH));
+        GLCall(glHint(GL_LINE_SMOOTH_HINT, GL_NICEST));
+        GLCall(glEnable( GL_TEXTURE_2D ));
+#endif
+        GLCall(glEnable(GL_BLEND));
+        GLCall(glDisable(GL_DEPTH_TEST));
+        GLCall(glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA));
 
         viewport_.setBaseSize({(float)width, (float)height});
 
@@ -124,7 +127,7 @@ namespace grynca {
     }
 
     void Window::clear() {
-        glClear(GL_COLOR_BUFFER_BIT);
+        GLCall(glClear(GL_COLOR_BUFFER_BIT));
     }
 
     void Window::setClearingColor(uint8_t r, uint8_t g, uint8_t b, uint8_t a) {
