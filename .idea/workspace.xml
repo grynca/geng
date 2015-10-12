@@ -3,6 +3,8 @@
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" assignedExecutableTargets="true" buildAllGenerated="true">
     <generated>
       <config projectName="geng" targetName="basic" />
+      <config projectName="geng" targetName="genglib" />
+      <config projectName="geng" targetName="GENG" />
       <config projectName="geng" targetName="geng" />
     </generated>
   </component>
@@ -12,23 +14,97 @@
     </ADDITIONAL_GENERATION_ENVIRONMENT>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ac104073-5944-4184-a930-f55a50ab31cf" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/entities/Shuttle.cpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/entities/Shuttle.h" />
-      <change type="MOVED" beforePath="C:\DEV\gamedev\geng\src\basic.cpp" afterPath="$PROJECT_DIR$/src/main.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+    <list default="true" id="ac104073-5944-4184-a930-f55a50ab31cf" name="Default" comment="emscripten build script for linux&#10;changes for updated templated SysEnt,&#10;now two system managers (1 for update, 1 for render)&#10;text rendering&#10;">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/fonts/arial.ttf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/sprites/eye1.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/sprites/eye2.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/sprites/eye3.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/sprites/eye4.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/sprites/eye5.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/sprites/origin_cross.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/sprites/shuttle.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/sprites/yoda.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/include/geng/graphics/Renderables/CircleRenderable.inl" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/include/geng/graphics/CoordFrame.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/include/geng/ES/EMovable.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/include/geng/ES/ENonMovable.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/include/geng/ES/ERenderables.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/include/geng/ES/ES.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/include/geng/ES/ES_includes.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/include/geng/ES/GameSystem.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/include/geng/ES/GengEntityRoles.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/include/geng/ES/GengEntityTypes.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/include/geng/ES/GengSystemTypes.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/include/geng/graphics/GraphicsDomain.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/entities/HUD.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/entities/HUD.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/include/geng/graphics/Renderables/ImageRenderable.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/include/geng/graphics/Renderables/ImageRenderable.inl" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/include/geng/ES/MovementSystem.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/MyAssets.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/MyGame.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/MyGame.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/include/geng/graphics/Renderables/RectRenderable.inl" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/include/geng/ES/RenderSystem.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/include/geng/ES/RenderSystem.inl" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/include/geng/graphics/Renderables/SpriteRenderable.inl" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/include/geng/graphics/Renderables/TextRenderable.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/include/geng/graphics/Renderables/TextRenderable.inl" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/include/geng/graphics/Shaders/TextShader.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/emscripten_build.sh" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/incl.h" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Emscripten/main.html.mem" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/origin_cross.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/shuttle.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/yoda.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/include/geng/Game.cpp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/include/geng/graphics/Frame.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/include/geng/graphics/Graphics.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/include/geng/graphics/ftinclude.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/include/geng/graphics/systems/RenderSystem.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/include/geng/graphics/systems/RenderSystem.inl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/include/geng/physics/systems/MovementSystem.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/include/geng/setup/geng_entities.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/include/geng/setup/geng_entity_props.def" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/include/geng/setup/geng_entity_roles.def" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/include/geng/setup/geng_systems.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/sysent_setup/entities.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/sysent_setup/entity_props.def" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/sysent_setup/entity_roles.def" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/sysent_setup/systems.h" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/include/geng/graphics/Graphics.cpp" afterPath="$PROJECT_DIR$/include/geng/graphics/GraphicsDomain.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/Emscripten/geng.bc" afterPath="$PROJECT_DIR$/build/Emscripten/geng.bc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/Emscripten/main.data" afterPath="$PROJECT_DIR$/build/Emscripten/main.data" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/Emscripten/test.bc" afterPath="$PROJECT_DIR$/build/Emscripten/test.bc" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CMakeLists.txt" afterPath="$PROJECT_DIR$/CMakeLists.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/geng/graphics/Shaders/CircleShader.h" afterPath="$PROJECT_DIR$/include/geng/graphics/Shaders/CircleShader.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/geng/Game.cpp" afterPath="$PROJECT_DIR$/include/geng/Game.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/geng/graphics/Renderables/CircleRenderable.h" afterPath="$PROJECT_DIR$/include/geng/graphics/Renderables/CircleRenderable.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/geng/graphics/Events.h" afterPath="$PROJECT_DIR$/include/geng/graphics/Events.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/geng/Game.h" afterPath="$PROJECT_DIR$/include/geng/Game.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/geng/Game.inl" afterPath="$PROJECT_DIR$/include/geng/Game.inl" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/entities/MyEntity.cpp" afterPath="$PROJECT_DIR$/src/entities/MyEntity.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/geng/graphics/Shaders/RectShader.h" afterPath="$PROJECT_DIR$/include/geng/graphics/Shaders/RectShader.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/geng/graphics/Shaders/SpriteShader.h" afterPath="$PROJECT_DIR$/include/geng/graphics/Shaders/SpriteShader.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/geng/graphics/Texture2D.cpp" afterPath="$PROJECT_DIR$/include/geng/graphics/Texture2D.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/entities/MyEntity.h" afterPath="$PROJECT_DIR$/src/entities/MyEntity.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/geng/graphics/Renderables/RectRenderable.h" afterPath="$PROJECT_DIR$/include/geng/graphics/Renderables/RectRenderable.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/geng/graphics/Renderable.h" afterPath="$PROJECT_DIR$/include/geng/graphics/Renderable.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/geng/graphics/Renderable.inl" afterPath="$PROJECT_DIR$/include/geng/graphics/Renderable.inl" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/entities/Shuttle.cpp" afterPath="$PROJECT_DIR$/src/entities/Shuttle.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/entities/Shuttle.h" afterPath="$PROJECT_DIR$/src/entities/Shuttle.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/geng/graphics/Renderables/SpriteRenderable.h" afterPath="$PROJECT_DIR$/include/geng/graphics/Renderables/SpriteRenderable.h" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/geng/graphics/Texture2D.h" afterPath="$PROJECT_DIR$/include/geng/graphics/Texture2D.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/geng/graphics/Textures2DManager.cpp" afterPath="$PROJECT_DIR$/include/geng/graphics/Textures2DManager.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/geng/graphics/Textures2DManager.h" afterPath="$PROJECT_DIR$/include/geng/graphics/Textures2DManager.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/geng/graphics/VertexData.inl" afterPath="$PROJECT_DIR$/include/geng/graphics/VertexData.inl" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/geng/graphics/ViewPort.cpp" afterPath="$PROJECT_DIR$/include/geng/graphics/ViewPort.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/geng/graphics/ViewPort.h" afterPath="$PROJECT_DIR$/include/geng/graphics/ViewPort.h" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/geng/graphics/Window.cpp" afterPath="$PROJECT_DIR$/include/geng/graphics/Window.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sysent_setup/entities.h" afterPath="$PROJECT_DIR$/src/sysent_setup/entities.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/geng/graphics/glinclude.h" afterPath="$PROJECT_DIR$/include/geng/graphics/glinclude.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/geng/graphics/graphics_config.h" afterPath="$PROJECT_DIR$/include/geng/graphics/graphics_config.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/geng.h" afterPath="$PROJECT_DIR$/include/geng.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/geng.iml" afterPath="$PROJECT_DIR$/.idea/geng.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/geng/graphics/geom_utils.h" afterPath="$PROJECT_DIR$/include/geng/graphics/geom_utils.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/geng/graphics/graphics_includes.h" afterPath="$PROJECT_DIR$/include/geng/graphics/graphics_includes.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main.cpp" afterPath="$PROJECT_DIR$/src/main.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/Emscripten/main.html" afterPath="$PROJECT_DIR$/build/Emscripten/main.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/Emscripten/main.js" afterPath="$PROJECT_DIR$/build/Emscripten/main.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/geng/sdlinclude.h" afterPath="$PROJECT_DIR$/include/geng/sdlinclude.h" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="geng.iws" />
@@ -50,21 +126,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Texture2D.cpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/include/geng/graphics/Texture2D.cpp">
+      <file leaf-file-name="MyGame.cpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/MyGame.cpp">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="38" column="0" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MyEntity.cpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/entities/MyEntity.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="28" column="34" selection-start-line="28" selection-start-column="34" selection-end-line="28" selection-end-column="34" />
+              <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
@@ -72,87 +138,95 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MyEntity.h" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/entities/MyEntity.h">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="13" column="12" selection-start-line="13" selection-start-column="12" selection-end-line="13" selection-end-column="12" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="main.cpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="43" column="8" selection-start-line="43" selection-start-column="8" selection-end-line="46" selection-end-column="9" />
-              <folding>
-                <element signature="e#0#19#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ViewPort.cpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/include/geng/graphics/ViewPort.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="37" column="19" selection-start-line="37" selection-start-column="19" selection-end-line="37" selection-end-column="19" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Shuttle.cpp" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Shuttle.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/entities/Shuttle.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.17580144">
-              <caret line="10" column="14" selection-start-line="10" selection-start-column="14" selection-end-line="10" selection-end-column="14" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding>
-                <element signature="e#0#19#0" expanded="true" />
+                <element signature="e#0#17#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Vec2.inl" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../maths/src/maths/Vec2.inl">
+      <file leaf-file-name="Game.inl" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/include/geng/Game.inl">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="42" column="40" selection-start-line="42" selection-start-column="40" selection-end-line="42" selection-end-column="40" />
+              <caret line="2" column="19" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Textures2DManager.cpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/include/geng/graphics/Textures2DManager.cpp">
+      <file leaf-file-name="incl.h" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/incl.h">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="19" column="5" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
+              <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CMakeLists.txt" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.6961538">
+              <caret line="55" column="58" selection-start-line="55" selection-start-column="58" selection-end-line="55" selection-end-column="58" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GraphicsDomain.h" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/include/geng/graphics/GraphicsDomain.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GraphicsDomain.cpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/include/geng/graphics/GraphicsDomain.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="9" column="31" selection-start-line="9" selection-start-column="31" selection-end-line="9" selection-end-column="31" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SpriteRenderable.inl" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/include/geng/graphics/Renderables/SpriteRenderable.inl">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="117" column="15" selection-start-line="117" selection-start-column="15" selection-end-line="117" selection-end-column="15" />
               <folding>
-                <element signature="e#0#30#0" expanded="true" />
+                <element signature="e#0#29#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Angle.h" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../maths/src/maths/Angle.h">
+      <file leaf-file-name="MyAssets.h" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/MyAssets.h">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="4" column="10" selection-start-line="4" selection-start-column="10" selection-end-line="4" selection-end-column="10" />
+              <caret line="24" column="40" selection-start-line="24" selection-start-column="40" selection-end-line="24" selection-end-column="40" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Texture2D.h" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/include/geng/graphics/Texture2D.h">
+      <file leaf-file-name="SpriteRenderable.h" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/include/geng/graphics/Renderables/SpriteRenderable.h">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+              <caret line="40" column="12" selection-start-line="40" selection-start-column="8" selection-end-line="40" selection-end-column="12" />
               <folding />
             </state>
           </provider>
@@ -166,57 +240,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/include/geng/graphics/systems/RenderSystem.cpp" />
-        <option value="$PROJECT_DIR$/../sysent/src/sysent/types/System.h" />
-        <option value="$PROJECT_DIR$/../sysent/src/sysent/defs.h" />
-        <option value="$PROJECT_DIR$/../sysent/src/sysent/types/Entity.h" />
-        <option value="$PROJECT_DIR$/include/geng/graphics/systems/RenderSystem.h" />
         <option value="$PROJECT_DIR$/include/geng/graphics/systems/RenderSystem.inl" />
         <option value="$PROJECT_DIR$/include/geng/physics/systems/MovementSystem.h" />
-        <option value="$PROJECT_DIR$/include/geng/graphics/Renderable.h" />
-        <option value="$PROJECT_DIR$/include/geng/graphics/Renderable.inl" />
-        <option value="$PROJECT_DIR$/include/geng/graphics/Renderables/CircleRenderable.h" />
-        <option value="$PROJECT_DIR$/include/geng/graphics/Renderer2D.inl" />
-        <option value="$PROJECT_DIR$/../base/src/types/Manager.h" />
-        <option value="$PROJECT_DIR$/include/geng/graphics/Geom.h" />
-        <option value="$PROJECT_DIR$/include/geng/graphics/Geom.inl" />
-        <option value="$PROJECT_DIR$/include/geng/graphics/RectGeom.h" />
-        <option value="$PROJECT_DIR$/include/geng/graphics/Renderables/RectRenderableBase.h" />
-        <option value="$PROJECT_DIR$/include/geng/graphics/Textures2DManager.h" />
-        <option value="$PROJECT_DIR$/include/geng/graphics/Textures2DManager.cpp" />
-        <option value="$PROJECT_DIR$/include/geng/graphics/Renderables/renderables_utils.h" />
-        <option value="$PROJECT_DIR$/include/geng/graphics/Renderables/renderable_utils.h" />
-        <option value="$PROJECT_DIR$/include/geng/graphics/Renderables/geom_utils.h" />
-        <option value="$PROJECT_DIR$/include/geng/graphics/Renderables/RectRenderable.h" />
-        <option value="$PROJECT_DIR$/include/geng/graphics/geom_utils.h" />
-        <option value="$PROJECT_DIR$/include/geng/graphics/Renderables/SpriteRenderable.h" />
-        <option value="$PROJECT_DIR$/../assets/include/assets/Image.inl" />
-        <option value="$PROJECT_DIR$/src/entities/MyEntity.h" />
-        <option value="$PROJECT_DIR$/include/geng/graphics/VertexData/VertexDataP.h" />
-        <option value="$PROJECT_DIR$/include/geng/physics/Physics.cpp" />
-        <option value="$PROJECT_DIR$/CMakeLists.txt" />
+        <option value="$PROJECT_DIR$/include/geng/graphics/systems/RenderSystem.h" />
+        <option value="$PROJECT_DIR$/include/geng/ES/EntityRoles.h" />
+        <option value="$PROJECT_DIR$/include/geng/ES/EMovable.h" />
+        <option value="$PROJECT_DIR$/include/geng/ES/ERenderables.h" />
+        <option value="$PROJECT_DIR$/include/geng/ES/GengEntityTypes.h" />
+        <option value="$PROJECT_DIR$/include/geng/ES.h" />
         <option value="$PROJECT_DIR$/include/geng/graphics/graphics_includes.h" />
-        <option value="$PROJECT_DIR$/include/geng/graphics/Graphics.cpp" />
+        <option value="$PROJECT_DIR$/include/geng/ES/GengSystemTypes.h" />
+        <option value="$PROJECT_DIR$/include/geng/ES/MovementSystem.h" />
+        <option value="$PROJECT_DIR$/include/geng/ES/RenderSystem.h" />
+        <option value="$PROJECT_DIR$/../sysent/include/sysent/SystemManager_internal.h" />
+        <option value="$PROJECT_DIR$/include/geng/ES/ESManager.h" />
+        <option value="$PROJECT_DIR$/include/geng/ES_includes.h" />
+        <option value="$PROJECT_DIR$/include/geng.h" />
+        <option value="$PROJECT_DIR$/include/geng/ES/ES_includes.h" />
+        <option value="$PROJECT_DIR$/../sysent/include/sysent/SystemManager.h" />
+        <option value="$PROJECT_DIR$/include/geng/ES/ES.h" />
+        <option value="$PROJECT_DIR$/include/geng/ES/GameSystem.h" />
+        <option value="$PROJECT_DIR$/src/MyGame.h" />
         <option value="$PROJECT_DIR$/include/geng/Game.h" />
-        <option value="$PROJECT_DIR$/src/basic.cpp" />
-        <option value="$PROJECT_DIR$/include/geng/graphics/Window.h" />
-        <option value="$PROJECT_DIR$/include/geng/graphics/Events.h" />
-        <option value="$PROJECT_DIR$/include/geng/graphics/Events.cpp" />
-        <option value="$PROJECT_DIR$/include/geng/graphics/graphics_config.h" />
-        <option value="$PROJECT_DIR$/include/geng/graphics/glinclude.h" />
-        <option value="$PROJECT_DIR$/include/geng/graphics/Window.cpp" />
-        <option value="$PROJECT_DIR$/include/geng/Game.cpp" />
-        <option value="$PROJECT_DIR$/src/entities/Shuttle.h" />
-        <option value="$PROJECT_DIR$/src/sysent_setup/entities.h" />
-        <option value="$PROJECT_DIR$/include/geng/graphics/Shaders/CircleShader.h" />
-        <option value="$PROJECT_DIR$/include/geng/graphics/Shaders/RectShader.h" />
-        <option value="$PROJECT_DIR$/include/geng/graphics/Shaders/SpriteShader.h" />
-        <option value="$PROJECT_DIR$/include/geng/graphics/Texture2D.h" />
+        <option value="$PROJECT_DIR$/src/entities/MyEntity.h" />
+        <option value="$PROJECT_DIR$/include/geng/ES/GengEntityRoles.h" />
         <option value="$PROJECT_DIR$/src/entities/MyEntity.cpp" />
-        <option value="$PROJECT_DIR$/include/geng/graphics/Texture2D.cpp" />
-        <option value="$PROJECT_DIR$/../maths/src/maths/Vec2.inl" />
-        <option value="$PROJECT_DIR$/src/main.cpp" />
+        <option value="$PROJECT_DIR$/src/MyAssets.h" />
+        <option value="$PROJECT_DIR$/src/ents.h" />
+        <option value="$PROJECT_DIR$/src/entities/Shuttle.h" />
         <option value="$PROJECT_DIR$/src/entities/Shuttle.cpp" />
+        <option value="$PROJECT_DIR$/include/geng/graphics/geom_utils.h" />
+        <option value="$PROJECT_DIR$/include/geng/graphics/Renderables/TextRenderable.h" />
+        <option value="$PROJECT_DIR$/include/geng/graphics/Renderables/TextRenderable.inl" />
+        <option value="$PROJECT_DIR$/include/geng/graphics/Window.cpp" />
+        <option value="$PROJECT_DIR$/../sysent/include/sysent/SystemManager.inl" />
+        <option value="$PROJECT_DIR$/include/geng/graphics/Renderer2D.inl" />
+        <option value="$PROJECT_DIR$/include/geng/graphics/Vertices.inl" />
+        <option value="$PROJECT_DIR$/../sysent/include/sysent/Entity.h" />
+        <option value="$PROJECT_DIR$/../base/src/types/variant_helper.h" />
+        <option value="$PROJECT_DIR$/src/entities/HUD.h" />
+        <option value="$PROJECT_DIR$/../base/src/types/Variant.inl" />
+        <option value="$PROJECT_DIR$/../base/src/types/Variant.h" />
+        <option value="$PROJECT_DIR$/include/geng/ES/ENonMovable.h" />
+        <option value="$PROJECT_DIR$/src/main.cpp" />
+        <option value="$PROJECT_DIR$/include/geng/ES/RenderSystem.inl" />
+        <option value="$PROJECT_DIR$/src/entities/HUD.cpp" />
+        <option value="$PROJECT_DIR$/src/MyGame.cpp" />
+        <option value="$PROJECT_DIR$/CMakeLists.txt" />
+        <option value="$PROJECT_DIR$/include/geng/graphics/Renderables/SpriteRenderable.h" />
+        <option value="$PROJECT_DIR$/include/geng/graphics/Renderables/SpriteRenderable.inl" />
+        <option value="$PROJECT_DIR$/include/geng/graphics/GraphicsDomain.h" />
+        <option value="$PROJECT_DIR$/include/geng/Game.inl" />
       </list>
     </option>
   </component>
@@ -229,10 +303,9 @@
   </component>
   <component name="OCFindUsagesOptions" text="true" ivars="false" properties="true" derivedClasses="false" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="-4" />
-    <option name="y" value="-4" />
-    <option name="width" value="1866" />
-    <option name="height" value="1088" />
+    <option name="x" value="1920" />
+    <option name="width" value="1818" />
+    <option name="height" value="1055" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -262,27 +335,29 @@
           <PATH>
             <PATH_ELEMENT>
               <option name="myItemId" value="geng" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$1$1" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Header Search Paths" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
               <option name="myItemId" value="geng" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$1$1" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="geng" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="geng" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$1$1" />
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="geng" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+              <option name="myItemId" value="Header Search Paths" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="src" />
@@ -292,43 +367,35 @@
           <PATH>
             <PATH_ELEMENT>
               <option name="myItemId" value="geng" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$1$1" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="geng" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+              <option name="myItemId" value="Header Search Paths" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="sysent_setup" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="geng" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$1$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="geng" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="entities" />
+              <option name="myItemId" value="include" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
               <option name="myItemId" value="geng" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$1$1" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="geng" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="geng" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="geng" />
@@ -342,7 +409,7 @@
           <PATH>
             <PATH_ELEMENT>
               <option name="myItemId" value="geng" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$1$1" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="geng" />
@@ -360,7 +427,7 @@
           <PATH>
             <PATH_ELEMENT>
               <option name="myItemId" value="geng" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$1$1" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="geng" />
@@ -375,29 +442,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="setup" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="geng" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$1$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="geng" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="include" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="geng" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="physics" />
+              <option name="myItemId" value="graphics" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -406,24 +451,24 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="settings.editor.selected.configurable" value="configurable.group.tools" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="recentsLimit" value="5" />
     <property name="restartRequiresConfirmation" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../base" />
     <property name="FullScreen" value="false" />
-    <property name="SearchEverywhereHistoryKey" value="geng_en&#9;FILE&#9;file://C:/DEV/gamedev/geng/src/geng_setup/geng_entities.h" />
+    <property name="SearchEverywhereHistoryKey" value="entity.h&#9;FILE&#9;file:///home/grynca/DEV/gamedev/sysent/src/sysent/types/Entity.h&#10;asset&#9;FILE&#9;file:///home/grynca/DEV/gamedev/assets/include/assets/AssetsManager.inl&#10;geng_en&#9;FILE&#9;file://C:/DEV/gamedev/geng/src/geng_setup/geng_entities.h" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/include/geng/ES" />
+      <recent name="C:\DEV\gamedev\geng\src" />
       <recent name="C:\DEV\gamedev\geng\include\geng\graphics" />
       <recent name="C:\DEV\gamedev\geng\include\geng\physics" />
       <recent name="C:\DEV\gamedev\geng\include\geng\setup" />
-      <recent name="C:\DEV\gamedev\geng\include\geng" />
-      <recent name="C:\DEV\gamedev\geng\include\geng\graphics\Shaders" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Debug">
+  <component name="RunManager" selected="Application.Release">
     <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS="FALSE" PROJECT_NAME="geng" TARGET_NAME="geng" CONFIG_NAME="Debug">
       <envs />
       <method />
@@ -449,10 +494,20 @@
       <envs />
       <method />
     </configuration>
-    <list size="3">
+    <configuration default="false" name="genglib_dbg" type="CMakeRunConfiguration" factoryName="Application" WORKING_DIR="" PASS_PARENT_ENVS="FALSE" PROJECT_NAME="geng" TARGET_NAME="geng" CONFIG_NAME="Debug">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="genglib_rls" type="CMakeRunConfiguration" factoryName="Application" WORKING_DIR="" PASS_PARENT_ENVS="FALSE" PROJECT_NAME="geng" TARGET_NAME="geng" CONFIG_NAME="Release">
+      <envs />
+      <method />
+    </configuration>
+    <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Application.Build All" />
       <item index="1" class="java.lang.String" itemvalue="Application.Release" />
       <item index="2" class="java.lang.String" itemvalue="Application.Debug" />
+      <item index="3" class="java.lang.String" itemvalue="Application.genglib_dbg" />
+      <item index="4" class="java.lang.String" itemvalue="Application.genglib_rls" />
     </list>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
@@ -478,7 +533,13 @@
       <option name="project" value="LOCAL" />
       <updated>1439627873785</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="textures creation changed - created dummy with default constructor, then bind and set&#10;added emscripten build">
+      <created>1439930423590</created>
+      <option name="number" value="00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1439930423591</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -491,27 +552,27 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-4" y="-4" width="1866" height="1088" extended-state="0" />
+    <frame x="1920" y="0" width="1818" height="1055" extended-state="4" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25188375" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24284141" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33333334" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32930514" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.27870563" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32633787" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.4269311" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3121853" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32930514" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32672232" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3796576" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -528,11 +589,24 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="basic structure&#10;graphics : Window, ViewPort, renderables (Circle, Rectangle, Sprite), Renderable System &#10;physics: MovementSystem" />
     <MESSAGE value="keyboard &amp; mouse events handling" />
-    <option name="LAST_COMMIT_MESSAGE" value="keyboard &amp; mouse events handling" />
+    <MESSAGE value="textures creation changed - created dummy with default constructor, then bind and set&#10;added emscripten build" />
+    <option name="LAST_COMMIT_MESSAGE" value="textures creation changed - created dummy with default constructor, then bind and set&#10;added emscripten build" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="77" />
+      <breakpoints>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/../base/src/types/variant_helper.h</url>
+          <line>11</line>
+          <option name="timeStamp" value="185" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/include/geng/ES/RenderSystem.inl</url>
+          <line>20</line>
+          <option name="timeStamp" value="186" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="187" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="CMakeRunConfiguration">
@@ -553,192 +627,285 @@
     </PATH>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/include/geng/graphics/Shader.cpp">
+    <entry file="file://$PROJECT_DIR$/../sysent/include/sysent/SystemManager.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="13" column="10" selection-start-line="13" selection-start-column="10" selection-end-line="13" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../sysent/include/sysent/SystemManager.inl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/geng/graphics/VertexData.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="24" column="30" selection-start-line="24" selection-start-column="30" selection-end-line="24" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/geng/graphics/VertexData.inl">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../../env/msys64/mingw64/include/c++/4.9.2/bits/stl_algobase.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="2.6395664">
-          <caret line="387" column="45" selection-start-line="387" selection-start-column="45" selection-end-line="387" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../libs/mingw/SDL2-2.0.3/include/SDL_mouse.h">
+    <entry file="file://$PROJECT_DIR$/include/geng/graphics/Vertices.h">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="203" column="8" selection-start-line="203" selection-start-column="8" selection-end-line="203" selection-end-column="8" />
+          <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../base/src/types/Exception.h">
+    <entry file="file://$PROJECT_DIR$/include/geng/graphics/Renderable.inl">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="11" column="8" selection-start-line="11" selection-start-column="8" selection-end-line="11" selection-end-column="8" />
+          <caret line="24" column="28" selection-start-line="24" selection-start-column="28" selection-end-line="24" selection-end-column="28" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../../libs/mingw/SDL2-2.0.3/include/SDL_main.h">
+    <entry file="file://$PROJECT_DIR$/include/geng/ES/ERenderables.h">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <caret line="10" column="15" selection-start-line="10" selection-start-column="15" selection-end-line="10" selection-end-column="15" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/include/geng/Game.inl">
+    <entry file="file://$PROJECT_DIR$/../base/src/types/containers/VVector.h">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <caret line="28" column="34" selection-start-line="28" selection-start-column="34" selection-end-line="28" selection-end-column="34" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/include/geng/graphics/Events.h">
+    <entry file="file://$PROJECT_DIR$/../base/src/types/containers/VVector.inl">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+          <caret line="91" column="37" selection-start-line="91" selection-start-column="37" selection-end-line="91" selection-end-column="37" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/include/geng/graphics/Events.cpp">
+    <entry file="file://$PROJECT_DIR$/include/geng/graphics/Renderable.h">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="69" column="0" selection-start-line="69" selection-start-column="0" selection-end-line="69" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../libs/mingw/SDL2-2.0.3/include/SDL_events.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="148" column="15" selection-start-line="148" selection-start-column="2" selection-end-line="148" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-18.148148">
-          <caret line="87" column="49" selection-start-line="87" selection-start-column="49" selection-end-line="87" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/geng/graphics/graphics_config.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="55" selection-start-line="7" selection-start-column="55" selection-end-line="7" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../env/msys64/mingw64/x86_64-w64-mingw32/include/GL/glu.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.40243903">
-          <caret line="23" column="24" selection-start-line="23" selection-start-column="24" selection-end-line="23" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/geng/graphics/Window.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="18" column="9" selection-start-line="18" selection-start-column="9" selection-end-line="18" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/geng/Game.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="25" column="21" selection-start-line="25" selection-start-column="21" selection-end-line="25" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/geng/graphics/Window.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="143" column="17" selection-start-line="143" selection-start-column="17" selection-end-line="143" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/geng/graphics/geom_utils.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="48" column="29" selection-start-line="48" selection-start-column="20" selection-end-line="48" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/geng/graphics/VertexData/VertexDataPT.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/geng/Game.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="61" column="45" selection-start-line="61" selection-start-column="45" selection-end-line="61" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/geng/setup/geng_entity_props.def">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/geng/setup/geng_entity_roles.def">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/geng/setup/geng_systems.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/geng/setup/geng_entities.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sysent_setup/entities.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="5" column="33" selection-start-line="5" selection-start-column="33" selection-end-line="5" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sysent_setup/entity_props.def">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sysent_setup/entity_roles.def">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sysent_setup/systems.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <caret line="18" column="10" selection-start-line="18" selection-start-column="10" selection-end-line="18" selection-end-column="10" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/entities/Shuttle.h">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="21" column="14" selection-start-line="21" selection-start-column="14" selection-end-line="21" selection-end-column="14" />
+          <caret line="8" column="44" selection-start-line="8" selection-start-column="44" selection-end-line="8" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/include/c++/4.8/functional">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="2070" column="0" selection-start-line="2070" selection-start-column="0" selection-end-line="2070" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../sysent/include/sysent/SystemManager_internal.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../base/src/types/containers/UnsortedVersionedVector.inl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="74" column="42" selection-start-line="74" selection-start-column="42" selection-end-line="74" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../sysent/include/sysent/EntityManager.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="10" column="23" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/geng/ES/ES.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="26" column="13" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
+          <folding>
+            <element signature="e#81#187#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/geng/Game.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/entities/MyEntity.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../base/src/types/Manager.inl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="90" column="32" selection-start-line="90" selection-start-column="32" selection-end-line="90" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../base/src/types/variant_helper.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="14" column="54" selection-start-line="14" selection-start-column="54" selection-end-line="14" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../base/src/types/Manager.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="52" column="20" selection-start-line="52" selection-start-column="20" selection-end-line="52" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../base/src/types/VersionedIndex.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="6" column="11" selection-start-line="6" selection-start-column="11" selection-end-line="6" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/entities/MyEntity.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="16" column="32" selection-start-line="16" selection-start-column="32" selection-end-line="16" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../sysent/include/sysent/Entity.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="13" column="32" selection-start-line="13" selection-start-column="32" selection-end-line="13" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../base/src/types/Variant.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+          <folding>
+            <element signature="e#745#757#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../base/src/types/Variant.inl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="79" column="19" selection-start-line="79" selection-start-column="19" selection-end-line="79" selection-end-column="19" />
+          <folding>
+            <element signature="e#497#514#0" expanded="false" />
+            <element signature="e#1132#1144#0" expanded="false" />
+            <element signature="e#1784#1801#0" expanded="false" />
+            <element signature="e#2020#2037#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../base/src/types/VariantCaller.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="32" column="10" selection-start-line="32" selection-start-column="10" selection-end-line="32" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../maths/src/maths/Transform.inl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="19" column="34" selection-start-line="19" selection-start-column="34" selection-end-line="19" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../maths/src/maths/Transform.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="17" column="27" selection-start-line="17" selection-start-column="27" selection-end-line="17" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/geng/ES/ENonMovable.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="10" column="19" selection-start-line="10" selection-start-column="19" selection-end-line="10" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/geng/graphics/Renderables/TextRenderable.inl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="78" column="22" selection-start-line="78" selection-start-column="22" selection-end-line="78" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/geng/ES/RenderSystem.inl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="32" column="51" selection-start-line="32" selection-start-column="51" selection-end-line="32" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/geng/ES/RenderSystem.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="13" column="1" selection-start-line="13" selection-start-column="1" selection-end-line="13" selection-end-column="1" />
+          <folding>
+            <element signature="e#0#19#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/geng/graphics/Vertices.inl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="12" column="26" selection-start-line="12" selection-start-column="26" selection-end-line="12" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/geng/graphics/Window.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/geng/graphics/Window.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="139" column="23" selection-start-line="139" selection-start-column="23" selection-end-line="139" selection-end-column="23" />
           <folding />
         </state>
       </provider>
@@ -746,173 +913,40 @@
     <entry file="file://$PROJECT_DIR$/include/geng/graphics/Renderer2D.inl">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="18" column="25" selection-start-line="18" selection-start-column="25" selection-end-line="18" selection-end-column="25" />
+          <caret line="15" column="28" selection-start-line="15" selection-start-column="28" selection-end-line="15" selection-end-column="28" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/include/geng/graphics/Shaders/RectShader.h">
+    <entry file="file://$PROJECT_DIR$/src/entities/HUD.h">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+          <caret line="4" column="27" selection-start-line="4" selection-start-column="27" selection-end-line="4" selection-end-column="27" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/include/geng/graphics/Geom.inl">
+    <entry file="file://$PROJECT_DIR$/src/entities/HUD.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/geng/graphics/Geom.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/geng/graphics/Renderable.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="13" column="15" selection-start-line="13" selection-start-column="15" selection-end-line="13" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/geng/graphics/Renderable.inl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/geng/graphics/Shaders/SpriteShader.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="12" column="21" selection-start-line="12" selection-start-column="12" selection-end-line="12" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/geng/graphics/Shaders/CircleShader.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="65" column="25" selection-start-line="65" selection-start-column="25" selection-end-line="65" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/geng/graphics/Renderables/CircleRenderable.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="38" column="9" selection-start-line="38" selection-start-column="9" selection-end-line="38" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/geng/graphics/Renderables/RectRenderable.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="20" column="27" selection-start-line="20" selection-start-column="27" selection-end-line="20" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/geng/graphics/Renderables/SpriteRenderable.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="22" column="89" selection-start-line="22" selection-start-column="89" selection-end-line="22" selection-end-column="89" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/geng/graphics/Textures2DManager.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/geng/graphics/glinclude.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../libs/mingw/glew-1.12.0/include/GL/glew.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="274" column="21" selection-start-line="274" selection-start-column="21" selection-end-line="274" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/geng/graphics/Textures2DManager.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="19" column="5" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
+          <caret line="21" column="55" selection-start-line="21" selection-start-column="55" selection-end-line="21" selection-end-column="55" />
           <folding>
-            <element signature="e#0#30#0" expanded="true" />
+            <element signature="e#0#20#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/entities/MyEntity.h">
+    <entry file="file://$PROJECT_DIR$/src/MyGame.h">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="13" column="12" selection-start-line="13" selection-start-column="12" selection-end-line="13" selection-end-column="12" />
+          <caret line="5" column="41" selection-start-line="5" selection-start-column="41" selection-end-line="5" selection-end-column="41" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/include/geng/graphics/Texture2D.h">
+    <entry file="file://$PROJECT_DIR$/src/MyGame.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/geng/graphics/Texture2D.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="38" column="0" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/entities/MyEntity.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="28" column="34" selection-start-line="28" selection-start-column="34" selection-end-line="28" selection-end-column="34" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../maths/src/maths/Angle.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="4" column="10" selection-start-line="4" selection-start-column="10" selection-end-line="4" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../maths/src/maths/Vec2.inl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="42" column="40" selection-start-line="42" selection-start-column="40" selection-end-line="42" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/geng/graphics/ViewPort.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="37" column="19" selection-start-line="37" selection-start-column="19" selection-end-line="37" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="43" column="8" selection-start-line="43" selection-start-column="8" selection-end-line="46" selection-end-column="9" />
+          <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
           </folding>
@@ -921,11 +955,77 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/entities/Shuttle.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.17580144">
-          <caret line="10" column="14" selection-start-line="10" selection-start-column="14" selection-end-line="10" selection-end-column="14" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#0#19#0" expanded="true" />
+            <element signature="e#0#17#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/geng/graphics/Renderables/SpriteRenderable.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="40" column="12" selection-start-line="40" selection-start-column="8" selection-end-line="40" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/geng/graphics/Renderables/SpriteRenderable.inl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="117" column="15" selection-start-line="117" selection-start-column="15" selection-end-line="117" selection-end-column="15" />
+          <folding>
+            <element signature="e#0#29#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MyAssets.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="24" column="40" selection-start-line="24" selection-start-column="40" selection-end-line="24" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/incl.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/geng/graphics/GraphicsDomain.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/geng/graphics/GraphicsDomain.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="9" column="31" selection-start-line="9" selection-start-column="31" selection-end-line="9" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/geng/Game.inl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="2" column="19" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6961538">
+          <caret line="55" column="58" selection-start-line="55" selection-start-column="58" selection-end-line="55" selection-end-column="58" />
+          <folding />
         </state>
       </provider>
     </entry>

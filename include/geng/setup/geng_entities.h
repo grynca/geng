@@ -1,7 +1,0 @@
-#ifndef GENG_ENTITIES_H
-#define GENG_ENTITIES_H
-
-#define INTERNAL_ENTITY_TYPES()
-
-
-#endif //GENG_ENTITIES_H

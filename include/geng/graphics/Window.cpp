@@ -137,7 +137,6 @@ namespace grynca {
     void Window::render() {
         vertices_->syncWithGPU();
         renderer_->render();
-        renderer_->clear();
         SDL_GL_SwapWindow((SDL_Window*)sdl_window_);        // swap buffers
     }
 

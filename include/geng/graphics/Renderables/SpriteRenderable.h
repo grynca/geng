@@ -2,41 +2,68 @@
 #define SPRITERENDERABLE_H
 
 #include "../Renderable.h"
-#include "../Shaders/SpriteShader.h"
-#include "../VertexData/VertexDataPT.h"
+#include <bitset>
 
 namespace grynca {
 
-    class SpriteRenderable : public Renderable {
+    // fw
+    class Animation;
+    class AssetsManager;
+
+    class SpriteRenderable : public Renderable
+    {
     public:
-        SpriteRenderable(Window& window, uint32_t layer_id, uint32_t texture_unit, const Vec2& size)
-        : SpriteRenderable(window, layer_id, texture_unit, size, size/-2)      // default offset to center
-        {}
+        SpriteRenderable();
 
-        SpriteRenderable(Window& window, uint32_t layer_id, uint32_t texture_unit, const Vec2& size, const Vec2& offset)
-         : Renderable(window), texture_unit_(texture_unit)
-        {
-            Geom& geom = window.getVertices().get<VertexDataPT>().addItem(GL_TRIANGLE_FAN);
-            geom_utils::addRect<VertexDataPT::Vertex>(geom);
-            geom_utils::setRectSize<VertexDataPT::Vertex>(geom, 0, size);
-            geom_utils::setRectOffset<VertexDataPT::Vertex>(geom, 0, offset);
-            geom_utils::setRectTC<VertexDataPT::Vertex>(geom, 0, Vec2(0, 0), Vec2(1, 1));
-            init<SpriteShader, VertexDataPT>(geom, layer_id);
-        }
+        template <typename GameType>
+        SpriteRenderable& init(GameType& game, uint32_t layer_id, uint32_t texture_unit, uint32_t animation_id);
+        template <typename GameType>
+        SpriteRenderable& init(GameType& game, uint32_t layer_id, uint32_t texture_unit, uint32_t animation_id, const Vec2& size);
+        template <typename GameType>
+        SpriteRenderable& init(GameType& game, uint32_t layer_id, uint32_t texture_unit, uint32_t animation_id, const Vec2& size, const Vec2& offset);
 
-        virtual void preRender() override {
-            SpriteShader& ss = (SpriteShader&)getShader();
+        void setAnimationId(uint32_t animation_id);
+        int32_t getFrameId()const;
+        bool isFirstFrame()const;
+        bool isLastFrame()const;
+        void setToFirstFrame();
+        void setToLastFrame() ;
+        Animation& getAnimation();
+        float getToNextFrame()const;
+        void setFrameId(uint32_t f_id);
+        void setToNextFrame(float tnf);
+        void changeDirection();
+        bool isGoingBackward()const;
+        bool isGoingForward()const;
+        bool getWrapAround()const;
+        void setWrapAround(bool val);
+        bool isPaused()const;
+        void setPaused(bool val);
+        bool getAutoChangeDir()const;
+        void setAutoChangeDir(bool val);
+        bool getFrameChanged()const;
+        AssetsManager& getAssets();
+        void advanceAnimation(float dt);
 
-            ss.setUniformMat3(ss.u_transform, mvp_);
-            ss.setUniform1f(ss.u_z_coord, layer_z_);
-            ss.setUniform1i(ss.u_texture, texture_unit_);
-        }
+        uint32_t getTextureUnit()const;
+        void setTextureUnit(uint32_t tid);
+        Vec2 getSize();
+        Vec2 getOffset();
+        void setSize(const Vec2& size);
+        void setOffset(const Vec2& offset);
 
-        void setTextureUnit(int tid) { texture_unit_ = tid; }
+        virtual void preRender() override;
+
     private:
-        int texture_unit_;
+        AssetsManager* assets_;
+        uint32_t texture_unit_;
+        uint32_t animation_id_;
+        int32_t curr_frame_;
+        float to_next_frame_;
+        std::bitset<5> flags_;
     };
 
 }
 
+#include "SpriteRenderable.inl"
 #endif //SPRITERENDERABLE_H

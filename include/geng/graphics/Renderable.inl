@@ -10,6 +10,8 @@
 namespace grynca {
 
     inline void Renderable::render() {
+        if (!visible_)
+            return;
         getShader().bind();
         getVertexData().bind();
         preRender();
@@ -28,11 +30,20 @@ namespace grynca {
         return mvp_;
     }
 
-    inline Frame Renderable::getFrame() {
-        return frame_;
+    inline bool Renderable::getVisible()const {
+        return visible_;
     }
-    inline void Renderable::setFrame(Frame f) {
-        frame_ = f;
+
+    inline void Renderable::setVisible(bool value) {
+        visible_ = value;
+    }
+
+    inline CoordFrame Renderable::getCoordFrame() {
+        return coord_frame_;
+    }
+
+    inline void Renderable::setCoordFrame(CoordFrame f) {
+        coord_frame_ = f;
     }
 
     inline Window& Renderable::getWindow() {
@@ -56,11 +67,13 @@ namespace grynca {
         return (r1->sorting_key_.key < r2->sorting_key_.key);
     }
 
-    inline Renderable::Renderable(Window& window)
-     : window_(&window) {}
+    inline Renderable::Renderable()
+     : window_(NULL), visible_(true), coord_frame_(cfWorld)
+    {}
 
     template <typename ShaderType, typename VertexDataType>
     inline void Renderable::init(Geom& geom, uint32_t layer_id) {
+        window_ = &geom.getManager().getManager().getWindow();
         ASSERT(geom.getManager().getId() == window_->getVertices().get<VertexDataType>().getId(),
                "Geom not compatible with needed vertex data.");
         geom_id_ = geom.getId();
@@ -68,7 +81,6 @@ namespace grynca {
         sorting_key_.shader_id = window_->getShaders().get<ShaderType>().getId();
         sorting_key_.vertex_layout_id = window_->getVertices().get<VertexDataType>().getId();
         layer_z_ = calcLayerZ_(layer_id);
-        frame_ = fWorld;
     };
 
     inline float Renderable::calcLayerZ_(uint32_t layer_id) {

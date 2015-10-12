@@ -4,8 +4,8 @@
 #include "types/containers/VVector.h"
 #include "maths/Transform.h"
 #include "DrawSortingKey.h"
-#include "Frame.h"
-#include "Graphics.h"
+#include "CoordFrame.h"
+#include "GraphicsDomain.h"
 
 namespace grynca {
 
@@ -25,9 +25,11 @@ namespace grynca {
         void setMVP(const Mat3& mvp);
         const Mat3& getMVP();
 
+        bool getVisible()const;
+        void setVisible(bool value);
 
-        Frame getFrame();
-        void setFrame(Frame f);
+        CoordFrame getCoordFrame();
+        void setCoordFrame(CoordFrame f);
 
         Window& getWindow();
         Shader& getShader();
@@ -36,24 +38,25 @@ namespace grynca {
 
         static bool compare(Renderable* r1, Renderable* r2);
     protected:
-        Renderable(Window& window);
+        Renderable();
 
         template <typename ShaderType, typename VertexDataType>
         void init(Geom& geom, uint32_t layer_id);
         virtual void preRender() = 0;
 
         Window* window_;
+        bool visible_;
         Transform local_transform_;
         Mat3 mvp_;
         DrawSortingKey sorting_key_;
         uint32_t geom_id_;
         float layer_z_;
-        Frame frame_;
+        CoordFrame coord_frame_;
     private:
         float calcLayerZ_(uint32_t layer_id);
     };
 
-    typedef VVector<Graphics> Renderables;
+    typedef VVector<GraphicsDomain> Renderables;
 }
 
 #include "Renderable.inl"

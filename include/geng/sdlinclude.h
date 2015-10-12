@@ -2,7 +2,7 @@
 #define SDLINCLUDE_H
 
 #include "types/Exception.h"
-#include <SDL.h>
+#include <SDL2/SDL.h>
 
 namespace grynca {
     struct SDL_Exception : public Exception

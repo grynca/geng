@@ -56,10 +56,10 @@ namespace grynca {
     }
 
     inline void VertexData::syncWithGPU() {
-        GLCall(glBindVertexArray(vao_));
-
         if (dirty_vertices_.empty())
             return;
+
+        bind();
 
         uint32_t needed_space = (uint32_t)vertices_data_.size();
 //        if (needed_space > vbo_allocation_) {

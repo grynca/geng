@@ -88,4 +88,10 @@ namespace grynca {
                *v_normalized;
     }
 
+    Vec2 ViewPort::worldToView(const Vec2& v) {
+        Vec2 clip_coords =projection_*view_transform_*v;
+        Vec2 clip_coords_norm(0.5f*clip_coords.getX()+0.5f, -0.5f*clip_coords.getY()+0.5f);       // from -1..1 to 0..1
+        return clip_coords_norm*size_;
+    }
+
 }

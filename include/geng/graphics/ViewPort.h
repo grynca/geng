@@ -32,6 +32,7 @@ namespace grynca {
         //Circle& getBoundingCircle();      //TODO:
 
         Vec2 viewToWorld(const Vec2& v);
+        Vec2 worldToView(const Vec2& v);
 
     private:
         Transform t_;

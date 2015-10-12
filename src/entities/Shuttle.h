@@ -1,22 +1,16 @@
 #ifndef SHUTTLE_H
 #define SHUTTLE_H
 
-#include "geng.h"
-using namespace grynca;
-
-class Shuttle {
+class Shuttle : public EMovable, public ERenderables {
 public:
     Shuttle();
 
-    static void initResources(Game& game);
-    static Entity& create(Game& game);
+    static void initResources(MyGame& game);
+    static GameEntity& create(MyGame& game);
 
-    void update(Game& game);
-
-    Transform transform;
-    Renderables renderables;
-    Speed speed;
+    void update(MyGame& game);
 private:
+    static TextureRegion sprite_region;
 };
 
 #endif //SHUTTLE_H

@@ -1,8 +1,203 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module type="CPP_MODULE" version="4">
   <component name="NewModuleRootManager">
-    <content url="file://$MODULE_DIR$" />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/CMakeLists.txt" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/geng.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/geng/ES/EMovable.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/geng/ES/ENonMovable.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/geng/ES/ERenderables.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/geng/ES/ES.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/geng/ES/ES_includes.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/geng/ES/GameSystem.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/geng/ES/GengEntityRoles.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/geng/ES/GengEntityTypes.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/geng/ES/GengSystemTypes.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/geng/ES/MovementSystem.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/geng/ES/RenderSystem.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/geng/ES/RenderSystem.inl" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/geng/Game.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/geng/Game.inl" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/geng/graphics/CoordFrame.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/geng/graphics/DrawSortingKey.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/geng/graphics/Events.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/geng/graphics/Events.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/geng/graphics/Geom.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/geng/graphics/Geom.inl" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/geng/graphics/GraphicsDomain.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/geng/graphics/GraphicsDomain.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/geng/graphics/Renderable.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/geng/graphics/Renderable.inl" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/geng/graphics/Renderables/CircleRenderable.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/geng/graphics/Renderables/CircleRenderable.inl" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/geng/graphics/Renderables/ImageRenderable.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/geng/graphics/Renderables/ImageRenderable.inl" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/geng/graphics/Renderables/RectRenderable.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/geng/graphics/Renderables/RectRenderable.inl" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/geng/graphics/Renderables/SpriteRenderable.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/geng/graphics/Renderables/SpriteRenderable.inl" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/geng/graphics/Renderables/TextRenderable.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/geng/graphics/Renderables/TextRenderable.inl" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/geng/graphics/Renderer2D.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/geng/graphics/Renderer2D.inl" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/geng/graphics/Shader.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/geng/graphics/Shader.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/geng/graphics/Shaders.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/geng/graphics/Shaders.inl" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/geng/graphics/Shaders/CircleShader.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/geng/graphics/Shaders/RectShader.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/geng/graphics/Shaders/SpriteShader.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/geng/graphics/Shaders/TextShader.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/geng/graphics/Texture2D.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/geng/graphics/Texture2D.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/geng/graphics/Textures2DManager.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/geng/graphics/Textures2DManager.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/geng/graphics/VertexData.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/geng/graphics/VertexData.inl" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/geng/graphics/VertexData/VertexDataP.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/geng/graphics/VertexData/VertexDataPT.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/geng/graphics/Vertices.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/geng/graphics/Vertices.inl" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/geng/graphics/ViewPort.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/geng/graphics/ViewPort.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/geng/graphics/Window.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/geng/graphics/Window.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/geng/graphics/geom_utils.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/geng/graphics/glinclude.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/geng/graphics/graphics_config.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/geng/graphics/graphics_includes.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/geng/physics/Physics.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/geng/physics/Physics.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/geng/physics/Speed.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/geng/physics/physics_includes.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/geng/sdlinclude.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/geng/setup/geng_entities.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/geng/setup/geng_systems.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/MyAssets.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/MyGame.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/MyGame.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/entities/HUD.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/entities/HUD.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/entities/MyEntity.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/entities/MyEntity.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/entities/Shuttle.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/entities/Shuttle.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/incl.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/main.cpp" isTestSource="false" />
+      <excludeFolder url="file://$MODULE_DIR$/build" />
+    </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module-library">
+      <library name="Header Search Paths">
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/../assets/include" />
+          <root url="file://$MODULE_DIR$/../base/src" />
+          <root url="file://$MODULE_DIR$/include" />
+          <root url="file://$MODULE_DIR$/src" />
+          <root url="file://$MODULE_DIR$/../maths/src" />
+          <root url="file://$MODULE_DIR$/../sysent/include" />
+          <root url="file:///usr/include" />
+          <root url="file:///usr/lib/gcc/x86_64-linux-gnu/4.8/include" />
+          <root url="file:///usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed" />
+          <root url="file:///usr/local/include" />
+        </CLASSES>
+        <SOURCES>
+          <root url="file://$MODULE_DIR$/../assets/include" />
+          <root url="file://$MODULE_DIR$/../base/src" />
+          <root url="file://$MODULE_DIR$/include" />
+          <root url="file://$MODULE_DIR$/src" />
+          <root url="file://$MODULE_DIR$/../maths/src" />
+          <root url="file://$MODULE_DIR$/../sysent/include" />
+          <root url="file:///usr/include" />
+          <root url="file:///usr/lib/gcc/x86_64-linux-gnu/4.8/include" />
+          <root url="file:///usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed" />
+          <root url="file:///usr/local/include" />
+        </SOURCES>
+        <excluded>
+          <root url="file://$MODULE_DIR$/include/geng/graphics/graphics_config.h" />
+          <root url="file://$MODULE_DIR$/include/geng/graphics/glinclude.h" />
+          <root url="file://$MODULE_DIR$/include/geng/graphics/geom_utils.h" />
+          <root url="file://$MODULE_DIR$/include/geng/graphics/Window.h" />
+          <root url="file://$MODULE_DIR$/include/geng/graphics/Vertices.inl" />
+          <root url="file://$MODULE_DIR$/include/geng/graphics/Vertices.h" />
+          <root url="file://$MODULE_DIR$/include/geng/graphics/VertexData/VertexDataPT.h" />
+          <root url="file://$MODULE_DIR$/include/geng/graphics/VertexData/VertexDataP.h" />
+          <root url="file://$MODULE_DIR$/include/geng/graphics/VertexData.h" />
+          <root url="file://$MODULE_DIR$/include/geng/graphics/Textures2DManager.h" />
+          <root url="file://$MODULE_DIR$/include/geng/graphics/Textures2DManager.cpp" />
+          <root url="file://$MODULE_DIR$/include/geng/graphics/Texture2D.cpp" />
+          <root url="file://$MODULE_DIR$/include/geng/graphics/Shaders/SpriteShader.h" />
+          <root url="file://$MODULE_DIR$/include/geng/graphics/Shaders/RectShader.h" />
+          <root url="file://$MODULE_DIR$/include/geng/graphics/Shaders/CircleShader.h" />
+          <root url="file://$MODULE_DIR$/include/geng/graphics/Shaders.inl" />
+          <root url="file://$MODULE_DIR$/include/geng/graphics/Shaders.h" />
+          <root url="file://$MODULE_DIR$/include/geng/graphics/Shader.h" />
+          <root url="file://$MODULE_DIR$/include/geng/graphics/Shader.cpp" />
+          <root url="file://$MODULE_DIR$/include/geng/graphics/Renderer2D.inl" />
+          <root url="file://$MODULE_DIR$/include/geng/graphics/Renderer2D.h" />
+          <root url="file://$MODULE_DIR$/include/geng/graphics/Renderables/RectRenderable.h" />
+          <root url="file://$MODULE_DIR$/include/geng/graphics/Renderables/CircleRenderable.h" />
+          <root url="file://$MODULE_DIR$/include/geng/graphics/GraphicsDomain.h" />
+          <root url="file://$MODULE_DIR$/include/geng/graphics/Geom.inl" />
+          <root url="file://$MODULE_DIR$/include/geng/graphics/Geom.h" />
+          <root url="file://$MODULE_DIR$/include/geng/graphics/CoordFrame.h" />
+          <root url="file://$MODULE_DIR$/include/geng/graphics/Events.h" />
+          <root url="file://$MODULE_DIR$/include/geng/graphics/Events.cpp" />
+          <root url="file://$MODULE_DIR$/include/geng/graphics/DrawSortingKey.h" />
+          <root url="file://$MODULE_DIR$/include/geng/Game.h" />
+          <root url="file://$MODULE_DIR$/include/geng/graphics/graphics_includes.h" />
+          <root url="file://$MODULE_DIR$/include/geng.h" />
+          <root url="file://$MODULE_DIR$/include/geng/graphics/Window.cpp" />
+          <root url="file://$MODULE_DIR$/include/geng/graphics/ViewPort.h" />
+          <root url="file://$MODULE_DIR$/include/geng/graphics/ViewPort.cpp" />
+          <root url="file://$MODULE_DIR$/include/geng/graphics/VertexData.inl" />
+          <root url="file://$MODULE_DIR$/include/geng/graphics/Texture2D.h" />
+          <root url="file://$MODULE_DIR$/include/geng/graphics/Renderables/SpriteRenderable.h" />
+          <root url="file://$MODULE_DIR$/include/geng/graphics/Renderable.inl" />
+          <root url="file://$MODULE_DIR$/include/geng/graphics/Renderable.h" />
+          <root url="file://$MODULE_DIR$/include/geng/ES/RenderSystem.inl" />
+          <root url="file://$MODULE_DIR$/include/geng/ES/RenderSystem.h" />
+          <root url="file://$MODULE_DIR$/include/geng/graphics/GraphicsDomain.cpp" />
+          <root url="file://$MODULE_DIR$/include/geng/Game.inl" />
+          <root url="file://$MODULE_DIR$/include/geng/graphics/Renderables/ImageRenderable.h" />
+          <root url="file://$MODULE_DIR$/include/geng/ES/GengEntityRoles.h" />
+          <root url="file://$MODULE_DIR$/include/geng/ES/ES_includes.h" />
+          <root url="file://$MODULE_DIR$/include/geng/ES/GengEntityTypes.h" />
+          <root url="file://$MODULE_DIR$/include/geng/ES/GameSystem.h" />
+          <root url="file://$MODULE_DIR$/include/geng/ES/ES.h" />
+          <root url="file://$MODULE_DIR$/include/geng/ES/ENonMovable.h" />
+          <root url="file://$MODULE_DIR$/include/geng/ES/ERenderables.h" />
+          <root url="file://$MODULE_DIR$/include/geng/ES/EMovable.h" />
+          <root url="file://$MODULE_DIR$/include/geng/ES/GengSystemTypes.h" />
+          <root url="file://$MODULE_DIR$/include/geng/graphics/Shaders/TextShader.h" />
+          <root url="file://$MODULE_DIR$/include/geng/graphics/Renderables/TextRenderable.h" />
+          <root url="file://$MODULE_DIR$/include/geng/setup/geng_entities.h" />
+          <root url="file://$MODULE_DIR$/include/geng/setup/geng_systems.h" />
+          <root url="file://$MODULE_DIR$/include/geng/graphics/Renderables/SpriteRenderable.inl" />
+          <root url="file://$MODULE_DIR$/include/geng/graphics/Renderables/TextRenderable.inl" />
+          <root url="file://$MODULE_DIR$/include/geng/graphics/Renderables/RectRenderable.inl" />
+          <root url="file://$MODULE_DIR$/include/geng/graphics/Renderables/ImageRenderable.inl" />
+          <root url="file://$MODULE_DIR$/include/geng/graphics/Renderables/CircleRenderable.inl" />
+          <root url="file://$MODULE_DIR$/include/geng/sdlinclude.h" />
+          <root url="file://$MODULE_DIR$/include/geng/ES/MovementSystem.h" />
+          <root url="file://$MODULE_DIR$/include/geng/physics/physics_includes.h" />
+          <root url="file://$MODULE_DIR$/include/geng/physics/Speed.h" />
+          <root url="file://$MODULE_DIR$/include/geng/physics/Physics.h" />
+          <root url="file://$MODULE_DIR$/include/geng/physics/Physics.cpp" />
+          <root url="file://$MODULE_DIR$/src/main.cpp" />
+          <root url="file://$MODULE_DIR$/src/entities/Shuttle.h" />
+          <root url="file://$MODULE_DIR$/src/entities/Shuttle.cpp" />
+          <root url="file://$MODULE_DIR$/src/entities/MyEntity.h" />
+          <root url="file://$MODULE_DIR$/src/MyGame.cpp" />
+          <root url="file://$MODULE_DIR$/src/MyAssets.h" />
+          <root url="file://$MODULE_DIR$/src/entities/MyEntity.cpp" />
+          <root url="file://$MODULE_DIR$/src/incl.h" />
+          <root url="file://$MODULE_DIR$/src/MyGame.h" />
+          <root url="file://$MODULE_DIR$/src/entities/HUD.cpp" />
+          <root url="file://$MODULE_DIR$/src/entities/HUD.h" />
+        </excluded>
+      </library>
+    </orderEntry>
   </component>
 </module>

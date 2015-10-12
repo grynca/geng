@@ -1,3 +1,0 @@
-DECLARE_PROP(transform);
-DECLARE_PROP(speed);
-DECLARE_PROP(renderables);

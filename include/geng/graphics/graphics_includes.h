@@ -2,7 +2,7 @@
 #define GRAPHICS_INCLUDES_H
 
 #include "graphics_config.h"
-#include "Graphics.h"
+#include "GraphicsDomain.h"
 #include "Vertices.h"
 #include "VertexData.h"
 #include "Geom.h"
@@ -14,15 +14,18 @@
 #include "Renderable.h"
 #include "Renderer2D.h"
 #include "Texture2D.h"
-#include "Frame.h"
+#include "CoordFrame.h"
 #include "Textures2DManager.h"
 #include "Events.h"
 #include "Renderables/CircleRenderable.h"
 #include "Renderables/RectRenderable.h"
+#include "Renderables/ImageRenderable.h"
 #include "Renderables/SpriteRenderable.h"
+#include "Renderables/TextRenderable.h"
 #include "Shaders/CircleShader.h"
 #include "Shaders/RectShader.h"
 #include "Shaders/SpriteShader.h"
+#include "Shaders/TextShader.h"
 #include "VertexData/VertexDataPT.h"
 #include "VertexData/VertexDataP.h"
 

@@ -1,30 +1,29 @@
-#include "sysent.h"
+#include "incl.h"
 #include "Shuttle.h"
+#include "../MyAssets.h"
+
+TextureRegion Shuttle::sprite_region;
 
 Shuttle::Shuttle() {
 
 }
 
-void Shuttle::initResources(Game& game) {
-// static
-    Texture2D& t = game.getModule<Window>().getTextures().addItem("shuttle");
-    t.bind(1);
-    t.set(RefPtr<Image>(new Image("data/shuttle.png")));
+void Shuttle::initResources(MyGame& game) {
+    sprite_region = *game.getModule<AssetsManager>().getImageRegion("data/sprites/shuttle.png");
 }
 
-Entity& Shuttle::create(Game& game) {
+GameEntity& Shuttle::create(MyGame& game) {
 //static
-    Entity& ent = game.getModule<EntityManager>().addItem();
-    ent.setRoles({erRenderable, erMovable});
+    GameEntity& ent = game.getSysEnt().getEntityManager().addItem();
+    ent.setRoles({EntityRoles::erRenderable, EntityRoles::erMovable});
     Shuttle& me = ent.set<Shuttle>();
 
-    SpriteRenderable & sr = me.renderables.add<SpriteRenderable>(game.getModule<Window>(), 3, 1, Vec2{100, 100});
-
+    ImageRenderable & sr = me.getRenderables().add<ImageRenderable>().init(game, 3, 0, sprite_region.getTextureRect(), Vec2{100, 100});
     return ent;
 }
 
 
-void Shuttle::update(Game& game) {
+void Shuttle::update(MyGame& game) {
     static int shuttle_speed = 100;
 
     Events& events = game.getModule<Window>().getEvents();
@@ -39,9 +38,9 @@ void Shuttle::update(Game& game) {
         shuttle_motion *= norm;
     }
 
-    transform.setRotation(shuttle_motion.getAngle());
+    getTransform().setRotation(shuttle_motion.getAngle());
 
     shuttle_motion *= shuttle_speed;
 
-    speed.setLinearSpeed(shuttle_motion);
+    getSpeed().setLinearSpeed(shuttle_motion);
 }

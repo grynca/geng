@@ -2,7 +2,7 @@
 #define EVENTS_H
 
 #include "maths/Vec2.h"
-#include <SDL.h>
+#include <SDL2/SDL.h>
 #include <stdint.h>
 #include <functional>
 

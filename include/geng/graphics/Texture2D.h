@@ -5,6 +5,7 @@
 #include "types/Manager.h"
 #include "maths/Vec2.h"
 #include "assets/Image.h"
+#include <unordered_map>
 
 namespace grynca {
     //fw

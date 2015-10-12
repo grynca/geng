@@ -1,10 +1,10 @@
-#include "types/Type.h"
 #include "graphics_includes.h"
 
-#define SET_TYPE_ID(Type, Id) TypeInfoManager<Graphics>::setTypeId<Type>(Id);
+#define SET_TYPE_ID(Type, Id) grynca::TypeInfoManager<GraphicsDomain>::setTypeId<Type>(Id);
 
 namespace grynca {
-    void Graphics::setIds() {
+
+    void GraphicsDomain::setIds() {
     //static
         SET_TYPE_ID(Window, 0);
         SET_TYPE_ID(Events, 1);
@@ -22,11 +22,14 @@ namespace grynca {
         SET_TYPE_ID(VertexDataP, 13);
         SET_TYPE_ID(VertexDataPT, 14);
         SET_TYPE_ID(CircleShader, 15);
-        SET_TYPE_ID(CircleRenderable, 16);
-        SET_TYPE_ID(RectShader, 17);
-        SET_TYPE_ID(RectRenderable, 18);
-        SET_TYPE_ID(SpriteShader, 19);
-        SET_TYPE_ID(SpriteRenderable, 20);
+        SET_TYPE_ID(RectShader, 16);
+        SET_TYPE_ID(SpriteShader, 17);
+        SET_TYPE_ID(TextShader, 18);
+        SET_TYPE_ID(CircleRenderable , 19);
+        SET_TYPE_ID(RectRenderable, 20);
+        SET_TYPE_ID(ImageRenderable, 21);
+        SET_TYPE_ID(SpriteRenderable, 22);
+        SET_TYPE_ID(TextRenderable, 23);
     }
 }
 
