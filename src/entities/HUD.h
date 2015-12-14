@@ -2,7 +2,7 @@
 #define HUD_H
 
 
-class HUD : public ENonMovable,
+class HUD : public ETransform,
             public ERenderables {
 public:
     static GameEntity& create(MyGame& game);

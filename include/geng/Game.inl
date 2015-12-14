@@ -16,9 +16,9 @@
 
 namespace grynca {
 
-    template <typename ETs, typename USTs, typename RSTs, typename ERs>
+    template <typename EntSys, typename D>
     template <typename T>
-    inline T& Game<ETs, USTs, RSTs, ERs>::getModule() {
+    inline T& Game<EntSys, D>::getModule() {
         // lazy get
         uint32_t tid = Type<T, Game>::getInternalTypeId();
         if (tid >= modules_.size())
@@ -30,9 +30,9 @@ namespace grynca {
         return *(ptr.getAs<T>());
     }
 
-    template <typename ETs, typename USTs, typename RSTs, typename ERs>
+    template <typename EntSys, typename D>
     template <typename T>
-    inline bool Game<ETs, USTs, RSTs, ERs>::containsModule_() {
+    inline bool Game<EntSys, D>::containsModule_() {
         uint32_t tid = Type<T, Game>::getInternalTypeId();
         if (tid >= modules_.size())
             return false;
@@ -40,24 +40,32 @@ namespace grynca {
         return ptr.getAs<T>() != NULL;
     }
 
-    template <typename ETs, typename USTs, typename RSTs, typename ERs>
-    inline void Game<ETs, USTs, RSTs, ERs>::start() {
+    template <typename EntSys, typename D>
+    inline D& Game<EntSys, D>::getAsDerived_() {
+        return *(D*)this;
+    }
+
+
+    template <typename EntSys, typename D>
+    inline void Game<EntSys, D>::start() {
+        se_.getUpdateSystemsManager().init();
+        se_.getRenderSystemsManager().init();
         init();
         gameLoop_();
     }
 
-    template <typename ETs, typename USTs, typename RSTs, typename ERs>
-    inline uint32_t Game<ETs, USTs, RSTs, ERs>::getFPS()const {
+    template <typename EntSys, typename D>
+    inline uint32_t Game<EntSys, D>::getFPS()const {
         return fps_;
     }
 
-    template <typename ETs, typename USTs, typename RSTs, typename ERs>
-    inline uint32_t Game<ETs, USTs, RSTs, ERs>::getUPS()const {
+    template <typename EntSys, typename D>
+    inline uint32_t Game<EntSys, D>::getUPS()const {
         return ups_;
     }
 
-    template <typename ETs, typename USTs, typename RSTs, typename ERs>
-    inline Game<ETs, USTs, RSTs, ERs>::Game(const std::string& name, uint32_t width, uint32_t height)
+    template <typename EntSys, typename D>
+    inline Game<EntSys, D>::Game(const std::string& name, uint32_t width, uint32_t height)
             : fps_(0), ups_(0), quit_(false)
     {
         GraphicsDomain::setIds();
@@ -66,25 +74,23 @@ namespace grynca {
             quit();
             return false;
         });
-        se_.getUpdateSystemsManager().init(*this);
-        se_.getRenderSystemsManager().init(*this);
     }
 
-    template <typename ETs, typename USTs, typename RSTs, typename ERs>
-    inline Game<ETs, USTs, RSTs, ERs>::~Game() {
+    template <typename EntSys, typename D>
+    inline Game<EntSys, D>::~Game() {
         for (size_t i=0; i<modules_.size(); ++i) {
             if (!modules_[i].isNull())
                 modules_[i].destroy();
         }
     }
 
-    template <typename ETs, typename USTs, typename RSTs, typename ERs>
-    inline void Game<ETs, USTs, RSTs, ERs>::quit() {
+    template <typename EntSys, typename D>
+    inline void Game<EntSys, D>::quit() {
         quit_ = true;
     }
 
-    template <typename ETs, typename USTs, typename RSTs, typename ERs>
-    inline void Game<ETs, USTs, RSTs, ERs>::gameLoop_() {
+    template <typename EntSys, typename D>
+    inline void Game<EntSys, D>::gameLoop_() {
         float tick_len = 1.0f / 60.0f;
         float seconds_timer = 0.0f;
         float update_timer = 0.0f;

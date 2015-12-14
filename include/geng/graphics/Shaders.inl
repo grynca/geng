@@ -3,15 +3,16 @@
 #include "Window.h"
 #include "glinclude.h"
 #include "types/Type.h"
+#include "types/Index.h"
 
 namespace grynca {
 
     inline Shaders::Shaders(Window& w)
-     : window_(&w), bound_id_(uint32_t(-1))
+     : window_(&w), bound_id_(Index::Invalid())
     {}
 
     inline Shader* Shaders::getBoundShader() {
-        if (bound_id_ == uint32_t(-1))
+        if (bound_id_ == Index::Invalid())
             return NULL;
         return getById(bound_id_);
     }

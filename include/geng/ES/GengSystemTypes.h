@@ -5,14 +5,7 @@
 #include "GameSystem.h"
 #include "RenderSystem.h"
 #include "MovementSystem.h"
-
-namespace grynca {
-
-    typedef TypesPack<
-            RenderSystem,
-            MovementSystem
-            > GengSystemTypes;
-
-}
+#include "CollisionSystem.h"
+#include "StartTickSystem.h"
 
 #endif //GENGSYSTEMTYPES_H

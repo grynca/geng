@@ -3,15 +3,14 @@
 
 namespace grynca {
 
-    class MovementSystem : public GameSystem {
+    template <typename GameType>
+    class MovementSystem : public GameSystem<GameType> {
     public:
-        template <typename ES>
-        void update(Entity<ES> &e, float dt) {
+        void update(typename GameType::GameEntity&e, float dt) {
             EMovable& m = e.template getBase<EMovable>();
-            Transform& t = m.getTransform();
             Speed& s = m.getSpeed();
-            t.setPosition(t.getPosition()+s.getLinearSpeed()*dt);
-            t.setRotation(t.getRotation()+s.getAngularSpeed()*dt);
+            m.move(s.getLinearSpeed()*dt);
+            m.rotate(s.getAngularSpeed()*dt);
         }
 
         virtual RolesMask getNeededRoles() {

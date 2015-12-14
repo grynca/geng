@@ -17,15 +17,22 @@ void MyGame::init() {
     MyEntity::initResources(*this);
     Shuttle::initResources(*this);
 
-    test_ent = &MyEntity::create(*this);
-    shuttle = &Shuttle::create(*this);
-    hud = &HUD::create(*this);
+    test_ent_id = MyEntity::create(*this).getId();
+    shuttle_id = Shuttle::create(*this).getId();
+    hud_id = HUD::create(*this).getId();
 }
 
 void MyGame::update() {
-    test_ent->get<MyEntity>().update();
-    shuttle->get<Shuttle>().update(*this);
-    hud->get<HUD>().update(*this);
+    static int i=0;
+
+    // TODO: tohle nejak vylepsit
+    EntityManager<EntityTypes>& em = getSysEnt().getEntityManager();
+    if (em.isValidIndex(shuttle_id))
+        getSysEnt().getEntityManager().getItem(shuttle_id).get<Shuttle>().update(*this);
+    if (em.isValidIndex(test_ent_id))
+        getSysEnt().getEntityManager().getItem(test_ent_id).get<MyEntity>().update();
+    if (em.isValidIndex(hud_id))
+        getSysEnt().getEntityManager().getItem(hud_id).get<HUD>().update(*this);
 
     Events& events = getModule<Window>().getEvents();
     bool alt_down = events.isKeyDown(SDL_SCANCODE_LALT)|events.isKeyDown(SDL_SCANCODE_RALT);

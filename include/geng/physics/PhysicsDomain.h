@@ -3,7 +3,7 @@
 
 namespace grynca {
 
-    class Physics {
+    class PhysicsDomain {
     public:
         static void setIds();
     };

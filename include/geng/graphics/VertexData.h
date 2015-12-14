@@ -1,11 +1,12 @@
 #ifndef VERTEXDATA_H
 #define VERTEXDATA_H
 
-#include "types/Manager.h"
 #include "glinclude.h"
+#include "types/Manager.h"
 #include <stdint.h>
 
 namespace grynca {
+
     // fw
     class Geom;
     class Vertices;
@@ -35,9 +36,13 @@ namespace grynca {
         GLuint getVboHandle();
 
         void syncWithGPU();
+
+        template <typename T>
+        T addWithFactory();
     protected:
         template <typename Vertex>
         Vertex& getVertex_(uint32_t id);
+        uint8_t* getVertexRaw_(uint32_t id);
 
         fast_vector<uint8_t> vertices_data_;    // RAM copy of all vertices
         fast_vector<uint32_t> vertices_owner_;  // for each vertex id of owning geom

@@ -1,22 +1,19 @@
 #ifndef RENDERSYSTEM_H
 #define RENDERSYSTEM_H
-
-#include "sysent.h"
+#include "GameSystem.h"
 
 namespace grynca {
 
     // fw
     class Window;
 
-    class RenderSystem : public GameSystem {
+    template <typename GameType>
+    class RenderSystem : public GameSystem<GameType> {
     public:
-        template <typename GameType>
-        void init(GameType& game);
-
+        void init();
         void preUpdate();
 
-        template <typename ES>
-        void update(Entity<ES>& e, float dt);
+        void update(typename GameType::GameEntity& e, float dt);
 
         virtual RolesMask getNeededRoles() {
             return {GengEntityRoles::erRenderable};

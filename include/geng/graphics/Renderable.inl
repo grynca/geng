@@ -9,6 +9,10 @@
 
 namespace grynca {
 
+    inline Renderable::~Renderable() {
+
+    }
+
     inline void Renderable::render() {
         if (!visible_)
             return;
@@ -26,7 +30,7 @@ namespace grynca {
         mvp_ = mvp;
     }
 
-    inline const Mat3& Renderable::getMVP() {
+    inline const Mat3& Renderable::getMVP()const {
         return mvp_;
     }
 
@@ -38,7 +42,7 @@ namespace grynca {
         visible_ = value;
     }
 
-    inline CoordFrame Renderable::getCoordFrame() {
+    inline CoordFrame Renderable::getCoordFrame()const {
         return coord_frame_;
     }
 
@@ -46,20 +50,20 @@ namespace grynca {
         coord_frame_ = f;
     }
 
-    inline Window& Renderable::getWindow() {
+    inline Window& Renderable::getWindow()const {
         return *window_;
     }
 
-    inline Shader& Renderable::getShader() {
+    inline Shader& Renderable::getShader()const {
         return *window_->getShaders().getById(sorting_key_.shader_id);
     }
 
-    inline VertexData& Renderable::getVertexData() {
+    inline VertexData& Renderable::getVertexData()const {
         return *window_->getVertices().getById(sorting_key_.vertex_layout_id);
     }
 
-    inline Geom& Renderable::getGeom() {
-        return getVertexData().getItem(geom_id_);
+    inline Geom& Renderable::getGeom()const {
+        return geom_ref_.get();
     }
 
     inline bool Renderable::compare(Renderable* r1, Renderable* r2) {
@@ -69,19 +73,29 @@ namespace grynca {
 
     inline Renderable::Renderable()
      : window_(NULL), visible_(true), coord_frame_(cfWorld)
-    {}
+    {
+        sorting_key_.layer_id = 0;
+        layer_z_ = 0.99f;
+    }
 
     template <typename ShaderType, typename VertexDataType>
-    inline void Renderable::init(Geom& geom, uint32_t layer_id) {
+    inline void Renderable::init(Geom& geom) {
         window_ = &geom.getManager().getManager().getWindow();
         ASSERT(geom.getManager().getId() == window_->getVertices().get<VertexDataType>().getId(),
                "Geom not compatible with needed vertex data.");
-        geom_id_ = geom.getId();
-        sorting_key_.layer_id = layer_id;
+        geom_ref_ = geom;
         sorting_key_.shader_id = window_->getShaders().get<ShaderType>().getId();
         sorting_key_.vertex_layout_id = window_->getVertices().get<VertexDataType>().getId();
-        layer_z_ = calcLayerZ_(layer_id);
     };
+
+    inline uint16_t Renderable::getLayerId()const {
+        return sorting_key_.layer_id;
+    }
+
+    inline void Renderable::setLayerId(uint16_t layer_id) {
+        sorting_key_.layer_id = layer_id;
+        layer_z_ = calcLayerZ_(layer_id);
+    }
 
     inline float Renderable::calcLayerZ_(uint32_t layer_id) {
         // in opengl NDC camera is looking to -z from -1(far) to 0

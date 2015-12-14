@@ -1,31 +1,32 @@
 #include "RenderSystem.h"
 #include "ERenderables.h"
-#include "ENonMovable.h"
+#include "ETransform.h"
 #include "../graphics/Renderables/SpriteRenderable.h"
 #include "../graphics/Window.h"
 
 namespace grynca {
 
     template <typename GameType>
-    inline void RenderSystem::init(GameType& game) {
-        window_ = &game.template getModule<Window>();
+    inline void RenderSystem<GameType>::init() {
+        window_ = &this->getGame().template getModule<Window>();
     }
 
-    inline void RenderSystem::preUpdate() {
+    template <typename GameType>
+    inline void RenderSystem<GameType>::preUpdate() {
         window_->getRenderer().clear();
     }
 
-    template <typename ES>
-    inline void RenderSystem::update(Entity<ES>& e, float dt) {
+    template <typename GameType>
+    inline void RenderSystem<GameType>::update(typename GameType::GameEntity& e, float dt) {
         Renderables& rs = e.template getBase<ERenderables>().getRenderables();
-        Transform& t = e.template getBase<ENonMovable>().getTransform();
+        const Transform& t = e.template getBase<ETransform>().getTransform();
         ViewPort& vp = window_->getViewPort();
         for (uint32_t i=0; i<rs.getSize(); ++i) {
             Renderable* r = (Renderable*)rs.get(i);
 
             if (rs.getTypeId(i) == GraphicsDomain::getTypeId<SpriteRenderable>()) {
                 SpriteRenderable* sr = (SpriteRenderable*)r;
-                if (sr && !sr->isPaused())
+                if (sr && sr->isAnimation() && !sr->isPaused())
                     sr->advanceAnimation(dt);
             }
 
@@ -41,8 +42,8 @@ namespace grynca {
                     mvp *= vp.getViewTransform();
                     break;
             }
-            mvp *= t.getTransform()
-                   *r->getLocalTransform().getTransform();
+            mvp *= t.getMatrix()
+                   *r->getLocalTransform().getMatrix();
 
             r->setMVP(mvp);
             window_->getRenderer().addRenderable(r);

@@ -4,6 +4,7 @@
 #include "types/containers/fast_vector.h"
 #include "types/CommonPtr.h"
 #include "types/Timer.h"
+#include "types/Singleton.h"
 #include "sysent.h"
 
 
@@ -11,19 +12,18 @@
 
 namespace grynca {
 
-    template <typename EntityTypes,
-              typename UpdateSystemTypes,
-              typename RenderSystemTypes,
-              typename EntityRoles>
-    class Game
+    template <typename EntSys, typename Derived>
+    class Game : public grynca::Singleton<Derived>
     {
     public:
-        using SysEnt = ES<EntityTypes, UpdateSystemTypes, RenderSystemTypes>;
-
+        using EntSysType = ES<typename EntSys::EntityTypes, typename EntSys::UpdateSystemTypes, typename EntSys::RenderSystemTypes, typename EntSys::EntityRoles>;
+        using BaseType = Game<EntSys, Derived>;
+        using DerivedType = Derived;
+        using GameEntity = Entity<typename EntSys::EntityTypes>;
 
         void start();
 
-        SysEnt& getSysEnt() { return se_; }
+        EntSysType& getSysEnt() { return se_; }
         template <typename T>
         T& getModule();
 
@@ -47,10 +47,10 @@ namespace grynca {
         void gameLoop_();
         template <typename T>
         bool containsModule_();
-
+        Derived& getAsDerived_();
 
         Timer timer_;
-        SysEnt se_;
+        EntSysType se_;
 
         fast_vector<CommonPtr> modules_;
         uint32_t fps_;

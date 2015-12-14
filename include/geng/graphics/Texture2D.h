@@ -8,7 +8,8 @@
 #include <unordered_map>
 
 namespace grynca {
-    //fw
+
+    // fw
     class Textures2DManager;
 
     class Texture2D : public ManagedItem<Textures2DManager> {
@@ -34,8 +35,6 @@ namespace grynca {
 
         // TODO: some functions for simpler reading&writing (e.g mapping/unmapping, PBOs ... )
     private:
-        static constexpr uint32_t UNBOUND_ID = uint32_t(-1);
-
         uint32_t w_, h_, d_;
         GLenum gl_format_;
         GLuint gl_handle_;

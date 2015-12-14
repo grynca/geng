@@ -22,14 +22,15 @@ namespace grynca {
             geom.addVertex(VertexDataP::Vertex{{  0.5, -0.5}});
             geom.addVertex(VertexDataP::Vertex{{  0.5,  0.5}});
             geom.addVertex(VertexDataP::Vertex{{ -0.5,  0.5}});
-            unit_quad_geom_id_ = geom.getId();
+            unit_quad_geom_ref_ = geom;
         }
 
         Geom& getUnitQuadGeom() {
-            return getItem(unit_quad_geom_id_);
+            return unit_quad_geom_ref_.get();
         }
+
     private:
-        uint32_t unit_quad_geom_id_;
+        VertexData::ItemRef unit_quad_geom_ref_;
     };
 }
 

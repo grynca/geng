@@ -1,7 +1,7 @@
 #ifndef SHUTTLE_H
 #define SHUTTLE_H
 
-class Shuttle : public EMovable, public ERenderables {
+class Shuttle : public EMovable, public ERenderables, public ECollidables {
 public:
     Shuttle();
 

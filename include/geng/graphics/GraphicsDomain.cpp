@@ -27,9 +27,8 @@ namespace grynca {
         SET_TYPE_ID(TextShader, 18);
         SET_TYPE_ID(CircleRenderable , 19);
         SET_TYPE_ID(RectRenderable, 20);
-        SET_TYPE_ID(ImageRenderable, 21);
-        SET_TYPE_ID(SpriteRenderable, 22);
-        SET_TYPE_ID(TextRenderable, 23);
+        SET_TYPE_ID(SpriteRenderable, 21);
+        SET_TYPE_ID(TextRenderable, 22);
     }
 }
 

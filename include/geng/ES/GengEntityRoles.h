@@ -5,9 +5,9 @@
 
 namespace grynca {
     DEFINE_ENUM(GengEntityRoles,
-
             erRenderable,
             erCollidable,
+            erTransform,
             erMovable
     );
 }

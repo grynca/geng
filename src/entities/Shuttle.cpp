@@ -15,10 +15,13 @@ void Shuttle::initResources(MyGame& game) {
 GameEntity& Shuttle::create(MyGame& game) {
 //static
     GameEntity& ent = game.getSysEnt().getEntityManager().addItem();
-    ent.setRoles({EntityRoles::erRenderable, EntityRoles::erMovable});
     Shuttle& me = ent.set<Shuttle>();
 
-    ImageRenderable & sr = me.getRenderables().add<ImageRenderable>().init(game, 3, 0, sprite_region.getTextureRect(), Vec2{100, 100});
+    SpriteRenderable & sr = me.getRenderables().add<SpriteRenderable>(game);
+    sr.setLayerId(3);
+    sr.setTextureUnit(0);
+    sr.setImageRegion(sprite_region);
+    sr.getLocalTransform().setScale(Vec2{0.5, 0.5});
     return ent;
 }
 
@@ -38,9 +41,12 @@ void Shuttle::update(MyGame& game) {
         shuttle_motion *= norm;
     }
 
-    getTransform().setRotation(shuttle_motion.getAngle());
+    if (getTransform().getRotation() != shuttle_motion.getAngle())
+        setRotation(shuttle_motion.getAngle());
 
     shuttle_motion *= shuttle_speed;
 
     getSpeed().setLinearSpeed(shuttle_motion);
+
+    //std::cout << "shuttle flags: " << getFlags() << std::endl;
 }

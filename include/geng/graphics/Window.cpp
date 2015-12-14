@@ -84,7 +84,7 @@ namespace grynca {
             delete renderer_;
     }
 
-    bool Window::isFullscreen() {
+    bool Window::isFullscreen()const {
         return bool(SDL_GetWindowFlags((SDL_Window*)sdl_window_)&SDL_WINDOW_FULLSCREEN);
     }
 
@@ -96,27 +96,27 @@ namespace grynca {
         setFullscreen(!isFullscreen());
     }
 
-    Events& Window::getEvents() {
+    Events& Window::getEvents()const {
         return *events_;
     }
 
-    Textures2DManager& Window::getTextures() {
+    Textures2DManager& Window::getTextures()const {
         return *textures_;
     }
 
-    Shaders& Window::getShaders() {
+    Shaders& Window::getShaders()const {
         return *shaders_;
     }
 
-    Vertices& Window::getVertices() {
+    Vertices& Window::getVertices()const {
         return *vertices_;
     }
 
-    Renderer2D& Window::getRenderer() {
+    Renderer2D& Window::getRenderer()const {
         return *renderer_;
     }
 
-    Vec2 Window::getResolution() {
+    Vec2 Window::getResolution()const {
         int w, h;
         SDL_GetWindowSize((SDL_Window*)sdl_window_, &w, &h);
         return {(float)w, (float)h};
@@ -144,7 +144,7 @@ namespace grynca {
         SDL_GL_SetSwapInterval(value?1:0);
     }
 
-    bool Window::getVSync() {
+    bool Window::getVSync()const {
         return SDL_GL_GetSwapInterval()==1;
     }
 

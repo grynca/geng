@@ -4,7 +4,6 @@
 #include "types/Manager.h"
 #include "glinclude.h"
 
-
 namespace grynca {
     // fw
     class VertexData;
@@ -24,9 +23,7 @@ namespace grynca {
         const Vertex& getVertex(uint32_t id)const;
         template <typename Vertex>
         Vertex& accVertex(uint32_t id);     // also sets dirty flag (will be updated to gpu on next sync)
-        template <typename Vertex>
         void removeVertex(uint32_t id);
-        template <typename Vertex>
         void removeAllVertices();
 
         void render();
@@ -35,8 +32,10 @@ namespace grynca {
         GLenum getPrimitiveType();
 
         void syncWithGPU();
+
+        template <typename T>
+        T getFactory();
     protected:
-        template <typename Vertex>
         void removeVertexInner_(uint32_t id);
 
         GLuint ibo_;

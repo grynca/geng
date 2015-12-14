@@ -2,9 +2,10 @@
 #define TEXTURES2DMANAGER_H
 
 #include "types/Manager.h"
-#include "Texture2D.h"
 
 namespace grynca {
+
+    class Texture2D;
 
     class Textures2DManager : public Manager<Texture2D> {
     public:
@@ -17,7 +18,7 @@ namespace grynca {
 
         fast_vector<uint32_t> texture_units_;
     };
-
 }
 
+#include "Textures2DManager.inl"
 #endif //TEXTURES2DMANAGER_H

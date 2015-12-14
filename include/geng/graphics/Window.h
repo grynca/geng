@@ -20,17 +20,17 @@ namespace grynca {
         void init(const std::string& name, uint32_t width, uint32_t height);
         ~Window();
 
-        bool isFullscreen();
+        bool isFullscreen()const;
         void setFullscreen(bool fs);
         void toggleFullscreen();
 
-        Events& getEvents();
-        Textures2DManager& getTextures();
-        Shaders& getShaders();
-        Vertices& getVertices();
-        Renderer2D& getRenderer();
+        Events& getEvents()const;
+        Textures2DManager& getTextures()const;
+        Shaders& getShaders()const;
+        Vertices& getVertices()const;
+        Renderer2D& getRenderer()const;
 
-        Vec2 getResolution();
+        Vec2 getResolution()const;
         void setResolution(const Vec2& resolution);
 
         void setClearingColor(uint8_t r, uint8_t g, uint8_t b, uint8_t a);
@@ -39,7 +39,7 @@ namespace grynca {
         void render();
 
         void setVSync(bool value);
-        bool getVSync();
+        bool getVSync()const;
 
         ViewPort& getViewPort();
     private:

@@ -5,9 +5,11 @@
 
 namespace grynca {
 
-    class ERenderables {
+    class ERenderables : public virtual GengEntity {
     public:
-
+        ERenderables() {
+            addRoles({GengEntityRoles::erRenderable});
+        }
         Renderables& getRenderables() { return renderables_; }
 
     private:

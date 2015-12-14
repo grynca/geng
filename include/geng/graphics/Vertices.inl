@@ -2,11 +2,12 @@
 #include "VertexData.h"
 #include "Window.h"
 #include "types/Type.h"
+#include "types/Index.h"
 
 namespace grynca {
 
     inline Vertices::Vertices(Window& w)
-     : window_(&w), bound_id_(uint32_t(-1))
+     : window_(&w), bound_id_(Index::Invalid())
     {}
 
 
@@ -19,7 +20,7 @@ namespace grynca {
     }
 
     inline VertexData* Vertices::getBoundVertexData() {
-        if (bound_id_ == uint32_t(-1))
+        if (bound_id_ == Index::Invalid())
             return NULL;
         return getById(bound_id_);
     }

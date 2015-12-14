@@ -11,28 +11,43 @@ namespace grynca {
 
     class TextRenderable : public Renderable {
     public:
+        class Setter {
+        public:
+            ~Setter();
+            Setter& setFont(uint32_t font_pack_id);
+            Setter& setFontSize(uint32_t font_size);
+            Setter& setText(const std::string& t);
+
+        private:
+            friend class TextRenderable;
+            Setter(TextRenderable& tr);
+
+            TextRenderable* tr_;
+        };
+
+    public:
         TextRenderable();
 
         template <typename GameType>
-        TextRenderable& init(GameType& game, uint32_t layer_id, uint32_t texture_unit, uint32_t font_pack_id, uint32_t font_size, const std::string& text);
+        TextRenderable& init(GameType& game);
+        template <typename GameType>
+        TextRenderable& init(GameType& game, Geom& geom);       // shared geom
 
-        AssetsManager& getAssets();
+        AssetsManager& getAssets()const;
+        const std::string& getText()const;
+        uint32_t getFontSize()const;
+        uint32_t getFontPackId()const;
+        void getColor(float* c)const;
+        uint32_t getTextureUnit()const;
+
+        TextRenderable& setColor(float r, float g, float b, float a = 1.0f);
+        TextRenderable& setTextureUnit(uint32_t tid);
+        Setter getTextSetter();     // changes geom data
 
         virtual void preRender() override;
-
-        void setFont(uint32_t font_pack_id);
-        void setFont(uint32_t font_pack_id, uint32_t font_size);
-        void setFontSize(uint32_t font_size);
-        void setText(const std::string& t);
-        const std::string& getText()const;
-        const uint32_t getFontSize()const;
-        const uint32_t getFontPackId()const;
-
-
-        void setColor(float r, float g, float b, float a = 1.0f);
-        Vec2 getSize();
     private:
-        void updateTextGeom_();
+        friend class Setter;
+        TextRenderable& updateTextGeom_();
 
         AssetsManager* assets_;
         uint32_t texture_unit_;

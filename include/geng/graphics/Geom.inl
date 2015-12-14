@@ -11,6 +11,7 @@ namespace grynca {
     }
 
     inline Geom::~Geom() {
+        removeAllVertices();
         GLCall(glDeleteBuffers(1, &ibo_));
     }
 
@@ -48,17 +49,15 @@ namespace grynca {
         return getManager().getVertex_<Vertex>(vert_id);
     }
 
-    template <typename Vertex>
     inline void Geom::removeVertex(uint32_t id) {
-        removeVertexInner_<Vertex>(id);
+        removeVertexInner_(id);
         indices_.erase(indices_.begin()+id);
         dirty_indices_ = true;
     }
 
-    template <typename Vertex>
     inline void Geom::removeAllVertices() {
         for (int i=(int)indices_.size()-1; i>=0; --i) {
-            removeVertexInner_<Vertex>(i);
+            removeVertexInner_(i);
         }
         indices_.clear();
         dirty_indices_ = true;
@@ -87,14 +86,18 @@ namespace grynca {
         dirty_indices_ = false;
     }
 
-    template <typename Vertex>
+    template <typename T>
+    inline T Geom::getFactory() {
+        return T(getManager(), getId());
+    }
+
     inline void Geom::removeVertexInner_(uint32_t id) {
         uint32_t vert_id = indices_[id];
         VertexData& vd = getManager();
         uint32_t last_vert_id = vd.getVerticesCount()-1;
         if (last_vert_id != vert_id) {
             // replace removed vertex with last vertex
-            vd.getVertex_<Vertex>(vert_id) = vd.getVertex_<Vertex>(last_vert_id);
+            memcpy(vd.getVertexRaw_(vert_id), vd.getVertexRaw_(last_vert_id), vd.getVertexSize());
             uint32_t last_vert_owner = vd.vertices_owner_[last_vert_id];
             vd.vertices_owner_[vert_id] = last_vert_owner;
             vd.dirty_vertices_.push_back(vert_id);
@@ -112,9 +115,7 @@ namespace grynca {
             geom.dirty_indices_ = true;
         }
 
-        for (uint32_t i=0; i<sizeof(Vertex); ++i) {
-            vd.vertices_data_.pop_back();
-        }
+        vd.vertices_data_.resize(vd.vertices_data_.size()-vd.getVertexSize());
         vd.vertices_owner_.pop_back();
     }
 

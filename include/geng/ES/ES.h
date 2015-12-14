@@ -5,12 +5,18 @@
 
 namespace grynca {
 
-    template <typename EntityTypes,
-              typename UpdateSystemTypes,
-              typename RenderSystemTypes>
+    template <typename ETs, typename USTs, typename RSTs, typename ERs>
     class ES
     {
     public:
+        using EntityTypes = ETs;
+        using UpdateSystemTypes = USTs;
+        using RenderSystemTypes = RSTs;
+        using EntityRoles = ERs;
+        using EntityManagerType = EntityManager<EntityTypes>;
+        using UpdateSystemManagerType = SystemManager<EntityTypes, UpdateSystemTypes>;
+        using RenderSystemManagerType = SystemManager<EntityTypes, RenderSystemTypes>;
+
         ES(uint32_t ents_initial_reserve)
          : entity_manager_(ents_initial_reserve), update_systems_(entity_manager_), render_systems_(entity_manager_)
         {}
@@ -19,14 +25,14 @@ namespace grynca {
          : update_systems_(entity_manager_), render_systems_(entity_manager_)
         {}
 
-        EntityManager<EntityTypes>& getEntityManager() { return entity_manager_; }
-        SystemManager<EntityTypes, UpdateSystemTypes>& getUpdateSystemsManager() { return update_systems_; }
-        SystemManager<EntityTypes, RenderSystemTypes>& getRenderSystemsManager() { return render_systems_; }
+        EntityManagerType& getEntityManager() { return entity_manager_; }
+        UpdateSystemManagerType& getUpdateSystemsManager() { return update_systems_; }
+        RenderSystemManagerType& getRenderSystemsManager() { return render_systems_; }
 
     private:
-        EntityManager<EntityTypes> entity_manager_;
-        SystemManager<EntityTypes, UpdateSystemTypes> update_systems_;
-        SystemManager<EntityTypes, RenderSystemTypes> render_systems_;
+        EntityManagerType entity_manager_;
+        UpdateSystemManagerType update_systems_;
+        RenderSystemManagerType render_systems_;
     };
 
 

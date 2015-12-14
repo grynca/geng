@@ -87,8 +87,9 @@ namespace grynca {
 //            verts_gpu[vert_id] = vertices_[vert_id];
 //        }
 //        glUnmapBuffer(GL_ARRAY_BUFFER);
+        void *data = needed_space?&vertices_data_[0]:NULL;
         GLCall(glBindBuffer(GL_ARRAY_BUFFER, vbo_));
-        GLCall(glBufferData(GL_ARRAY_BUFFER, needed_space, &vertices_data_[0], GL_STATIC_DRAW));
+        GLCall(glBufferData(GL_ARRAY_BUFFER, needed_space, data, GL_STATIC_DRAW));
         dirty_vertices_.clear();
 
 
@@ -97,10 +98,19 @@ namespace grynca {
         }
     }
 
+    template <typename T>
+    inline T VertexData::addWithFactory() {
+        return T(*this);
+    }
+
     template <typename Vertex>
     inline Vertex& VertexData::getVertex_(uint32_t id) {
         ASSERT(vertex_size_!=0, "Invalid vertex size.");
         ASSERT(vertex_size_==sizeof(Vertex), "Template vertex is of different size than expected.");
         return *(Vertex*)&vertices_data_[id*vertex_size_];
+    }
+
+    inline uint8_t* VertexData::getVertexRaw_(uint32_t id) {
+        return &vertices_data_[id*vertex_size_];
     }
 }

@@ -3,14 +3,13 @@
 
 #include "incl.h"
 
-class MyGame : public grynca::Game<EntityTypes, UpdateSystemTypes, RenderystemTypes, EntityRoles>,
-               public grynca::Singleton<MyGame> {
+class MyGame : public grynca::Game<MyEntSys, MyGame> {
 public:
 
 private:
-    GameEntity* test_ent;
-    GameEntity* shuttle;
-    GameEntity* hud;
+    GameEntity::IndexType test_ent_id;
+    GameEntity::IndexType shuttle_id;
+    GameEntity::IndexType hud_id;
 
     virtual void init() override;
     virtual void update() override;

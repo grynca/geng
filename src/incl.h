@@ -11,14 +11,22 @@ class Shuttle;
 class HUD;
 
 typedef grynca::TypesPack<MyEntity, Shuttle, HUD> EntityTypes;
-typedef grynca::TypesPack<grynca::MovementSystem> UpdateSystemTypes;
-typedef grynca::TypesPack<grynca::RenderSystem> RenderystemTypes;
+typedef grynca::TypesPack<
+        grynca::StartTickSystem<MyGame>,
+        grynca::MovementSystem<MyGame>,
+        grynca::CollisionSystem<MyGame>
+> UpdateSystemTypes;
+typedef grynca::TypesPack<
+        grynca::RenderSystem<MyGame>
+> RenderystemTypes;
 
 DEFINE_ENUM_E(EntityRoles, GengEntityRoles,
             erDummy, erDummy2
 );
 
 typedef grynca::Entity<EntityTypes> GameEntity;
+
+typedef grynca::ES<EntityTypes, UpdateSystemTypes, RenderystemTypes, EntityRoles> MyEntSys;
 
 #include "entities/MyEntity.h"
 #include "entities/Shuttle.h"

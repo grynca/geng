@@ -26,11 +26,13 @@ void MyEntity::initResources(MyGame& game) {
 
 GameEntity& MyEntity::create(MyGame& game) {
     GameEntity& ent = game.getSysEnt().getEntityManager().addItem();
-    ent.setRoles({EntityRoles::erRenderable, EntityRoles::erMovable});
     MyEntity& me = ent.set<MyEntity>();
     me.getSpeed().setAngularSpeed(Angle::Pi/4);
-
-    RectRenderable & rr = me.getRenderables().add<RectRenderable>().init(game, 0, Vec2{1000, 200});
+    
+    RectRenderable& rr = me.getRenderables().add<RectRenderable>(game);
+    rr.setSize(Vec2{1000, 200});
+    rr.setOffset(-Vec2{0.5, 0.5});
+    rr.setLayerId(0);
     float r = (float)rand()/RAND_MAX;
     float g = (float)rand()/RAND_MAX;
     float b = (float)rand()/RAND_MAX;
@@ -41,7 +43,8 @@ GameEntity& MyEntity::create(MyGame& game) {
         int r_from = rand()%(r_to-10);
         int x = rand()%1024 - 512;
         int y = rand()%768 - 384;
-        CircleRenderable & cc = me.getRenderables().add<CircleRenderable>().init(game, 1, r_to, r_from);
+        CircleRenderable& cc = me.getRenderables().add<CircleRenderable>(game, r_to, r_from);
+        cc.setLayerId(1);
         float r = (float)rand()/RAND_MAX;
         float g = (float)rand()/RAND_MAX;
         float b = (float)rand()/RAND_MAX;
@@ -50,13 +53,22 @@ GameEntity& MyEntity::create(MyGame& game) {
         cc.getLocalTransform().setPosition({(float)x, (float)y});
     }
 
-    ImageRenderable& ir = me.getRenderables().add<ImageRenderable>().init(game, 2, 0, sprite_region.getTextureRect(), Vec2{100, 100});
+    SpriteRenderable& s1 = me.getRenderables().add<SpriteRenderable>(game);
+    s1.setImageRegion(sprite_region);
+    s1.getLocalTransform().setScale(Vec2{0.5, 0.5});
+    s1.setTextureUnit(0);
+    s1.setLayerId(2);
 
-    SpriteRenderable& sr = me.getRenderables().add<SpriteRenderable>().init(game, 2, 0, animation_id);
-    sr.setAutoChangeDir(true);
-    sr.getLocalTransform().setPosition({-100, 0});
+    SpriteRenderable& s2 = me.getRenderables().add<SpriteRenderable>(game);
+    s2.setTextureUnit(0);
+    s2.setAnimation(animation_id);
+    s2.setLayerId(2);
+    s2.setEndAction(SpriteRenderable::eaChangeDir);
+    s2.getLocalTransform().setPosition({-100, 0});
 
-    TextRenderable& tr = me.getRenderables().add<TextRenderable>().init(game, 5, 1, 0, 45, "This is SPARTA!");
+    TextRenderable& tr = me.getRenderables().add<TextRenderable>().init(game);
+    tr.setTextureUnit(1);
+    tr.getTextSetter().setFont(0).setFontSize(45).setText("This is SPARTA!");
     tr.getLocalTransform().setPosition({100, 0});
 
     return ent;
@@ -66,6 +78,5 @@ void MyEntity::update() {
     float delta_angle = Angle::Pi*1./360;
     RectRenderable& rr = *((RectRenderable*)getRenderables().get(0));
     rr.setSize(rr.getSize()-Vec2(1, 0));
-    rr.setOffset(rr.getOffset()+Vec2(0.5, 0));
-    getTransform().setRotation(getTransform().getRotation()+delta_angle);
+    setRotation(getTransform().getRotation()+delta_angle);
 }

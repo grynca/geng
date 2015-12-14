@@ -2,16 +2,13 @@
 #define SHADER_H
 
 #include "types/containers/fast_vector.h"
-#include "types/Manager.h"
+#include "Shaders.h"
 #include "maths/Vec2.h"
 #include "maths/Mat3.h"
 #include "glinclude.h"
 #include <string>
 
 namespace grynca {
-
-    // fw
-    class Shaders;
 
     class Shader : public ManagedItem<Shaders> {
     public:

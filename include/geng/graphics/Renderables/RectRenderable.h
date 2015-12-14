@@ -7,21 +7,19 @@ namespace grynca {
 
     class RectRenderable : public Renderable {
     public:
-        RectRenderable();
+        template <typename GameType>
+        RectRenderable(GameType& game);
 
-        template <typename GameType>
-        RectRenderable& init(GameType& game, uint32_t layer_id, const Vec2& size);
-        template <typename GameType>
-        RectRenderable& init(GameType& game, uint32_t layer_id, const Vec2& size, const Vec2& offset);
+        Vec2 getSize()const;
+        Vec2 getOffset()const;
+        void getColor(float* c)const;
+
+        RectRenderable& setColor(float r, float g, float b, float a = 1.0f);
+        RectRenderable& setSize(const Vec2& size);
+        RectRenderable& setOffset(const Vec2& offset);
 
 
         virtual void preRender() override ;
-
-        void setColor(float r, float g, float b, float a = 1.0f);
-        Vec2 getSize();
-        Vec2 getOffset();
-        void setSize(const Vec2& size);
-        void setOffset(const Vec2& offset);
     private:
         float color_[4];
     };

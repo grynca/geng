@@ -62,7 +62,7 @@ namespace grynca {
 
     const Mat3& ViewPort::getCameraTransform() {
         if (dirty_camera_t_) {
-            camera_transform_ = t_.getTransform();
+            camera_transform_ = t_.getMatrix();
             dirty_camera_t_ = false;
         }
         return camera_transform_;

@@ -8,6 +8,7 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DGLM_FORCE_RADIANS -std=c++11 -std=gnu+
 include_directories(/home/grynca/DEV/gamedev/base/src)
 include_directories(/home/grynca/DEV/gamedev/sysent/include/)
 include_directories(/home/grynca/DEV/gamedev/maths/src/)
+include_directories(/home/grynca/DEV/gamedev/SAP/include/)
 include_directories(/home/grynca/DEV/gamedev/assets/include/)
 include_directories(include/)
 include_directories(src/)
@@ -28,7 +29,7 @@ set(GENG_SOURCES
         include/geng/graphics/VertexData.inl
         include/geng/graphics/Geom.h
         include/geng/graphics/Geom.inl
-        include/geng/graphics/geom_utils.h
+        include/geng/graphics/geom_factories.h
         include/geng/graphics/Vertices.h
         include/geng/graphics/Vertices.inl
         include/geng/graphics/Renderer2D.h
@@ -36,7 +37,7 @@ set(GENG_SOURCES
         include/geng/graphics/Texture2D.h
         include/geng/graphics/Texture2D.cpp
         include/geng/graphics/Textures2DManager.h
-        include/geng/graphics/Textures2DManager.cpp
+        include/geng/graphics/Textures2DManager.inl
         include/geng/graphics/Shaders.h
         include/geng/graphics/Shaders.inl
         include/geng/graphics/Shaders/CircleShader.h
@@ -49,8 +50,6 @@ set(GENG_SOURCES
         include/geng/graphics/Renderable.inl
         include/geng/graphics/Renderables/CircleRenderable.h
         include/geng/graphics/Renderables/CircleRenderable.inl
-        include/geng/graphics/Renderables/ImageRenderable.h
-        include/geng/graphics/Renderables/ImageRenderable.inl
         include/geng/graphics/Renderables/SpriteRenderable.h
         include/geng/graphics/Renderables/SpriteRenderable.inl
         include/geng/graphics/Renderables/RectRenderable.h
@@ -69,21 +68,27 @@ set(GENG_SOURCES
         include/geng/graphics/Events.h
         include/geng/graphics/Events.cpp
 
-        include/geng/ES/ENonMovable.h
+        include/geng/ES/ETransform.h
         include/geng/ES/EMovable.h
         include/geng/ES/ERenderables.h
+        include/geng/ES/ECollidables.h
+        include/geng/ES/GengEntity.h
         include/geng/ES/GengEntityRoles.h
         include/geng/ES/GengSystemTypes.h
         include/geng/ES/GengEntityTypes.h
         include/geng/ES/GameSystem.h
+        include/geng/ES/StartTickSystem.h
         include/geng/ES/MovementSystem.h
+        include/geng/ES/CollisionSystem.h
+        include/geng/ES/CollisionSystem.inl
         include/geng/ES/ES_includes.h
         include/geng/ES/ES.h
 
         include/geng/physics/Speed.h
         include/geng/physics/physics_includes.h
-        include/geng/physics/Physics.h
-        include/geng/physics/Physics.cpp
+        include/geng/physics/PhysicsDomain.h
+        include/geng/physics/PhysicsDomain.cpp
+        include/geng/physics/Collidable.h
 
         include/geng/sdlinclude.h
         include/geng/Game.h
