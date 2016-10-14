@@ -2,10 +2,14 @@
 #define GENGSYSTEMTYPES_H
 
 #include "types/Type.h"
-#include "GameSystem.h"
-#include "RenderSystem.h"
+#include "GengSystem.h"
+#include "TransformSystem.h"
 #include "MovementSystem.h"
 #include "CollisionSystem.h"
-#include "StartTickSystem.h"
+#include "ServerNetworkSystem.h"
+#include "ClientNetworkSystem.h"
+
+#include "RenderSystem.h"
+#include "CollisionsDebugSystem.h"
 
 #endif //GENGSYSTEMTYPES_H

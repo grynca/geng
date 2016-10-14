@@ -1,6 +1,6 @@
 #ifndef RENDERSYSTEM_H
 #define RENDERSYSTEM_H
-#include "GameSystem.h"
+#include "GengSystem.h"
 
 namespace grynca {
 
@@ -8,19 +8,25 @@ namespace grynca {
     class Window;
 
     template <typename GameType>
-    class RenderSystem : public GameSystem<GameType> {
+    class RenderSystem : public GengSystem<GameType> {
     public:
         void init();
-        void preUpdate();
 
-        void update(typename GameType::GameEntity& e, float dt);
+        virtual FlagsMask getTrackedFlags() override {
+            return {};
+        }
 
-        virtual RolesMask getNeededRoles() {
+        virtual RolesMask getNeededRoles()  override {
             return {GengEntityRoles::erRenderable};
         }
 
+        virtual void preUpdate() override;
+        virtual void updateEntity(Entity& e, float dt) override;
     private:
+        void renderEntity_(CRenderables& cr, CTransform& ct, float dt);
+
         Window* window_;
+        float pred_time_;
     };
 }
 

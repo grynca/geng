@@ -34,7 +34,7 @@ namespace grynca {
         dirty_indices_ = true;
         manager.vertices_data_.insert(manager.vertices_data_.end(), (uint8_t*)&v, (uint8_t*)(&v+1));
         manager.vertices_owner_.push_back(id_);
-        manager.dirty_vertices_.push_back(vert_id);
+        manager.dirty_vertices_.insert(vert_id);
     }
 
     template <typename Vertex>
@@ -45,7 +45,7 @@ namespace grynca {
     template <typename Vertex>
     inline Vertex& Geom::accVertex(uint32_t id) {
         uint32_t vert_id = indices_[id];
-        getManager().dirty_vertices_.push_back(vert_id);
+        getManager().dirty_vertices_.insert(vert_id);
         return getManager().getVertex_<Vertex>(vert_id);
     }
 
@@ -61,6 +61,14 @@ namespace grynca {
         }
         indices_.clear();
         dirty_indices_ = true;
+    }
+
+    template <typename Vertex>
+    inline void Geom::collectVertices(fast_vector<Vertex>& vertices_out) {
+        vertices_out.reserve(getVerticesCount());
+        for (uint32_t i=0; i<getVerticesCount(); ++i) {
+            vertices_out.push_back(getVertex<Vertex>(i));
+        }
     }
 
     inline void Geom::render() {
@@ -98,9 +106,9 @@ namespace grynca {
         if (last_vert_id != vert_id) {
             // replace removed vertex with last vertex
             memcpy(vd.getVertexRaw_(vert_id), vd.getVertexRaw_(last_vert_id), vd.getVertexSize());
-            uint32_t last_vert_owner = vd.vertices_owner_[last_vert_id];
+            Index last_vert_owner = vd.vertices_owner_[last_vert_id];
             vd.vertices_owner_[vert_id] = last_vert_owner;
-            vd.dirty_vertices_.push_back(vert_id);
+            vd.dirty_vertices_.insert(vert_id);
             // correct Geom's index for moved vertex
             Geom& geom = vd.getItem(last_vert_owner);
             size_t i;
@@ -110,7 +118,7 @@ namespace grynca {
                     break;
                 }
             }
-            ASSERT(i!=geom.indices_.size(),
+            ASSERT_M(i!=geom.indices_.size(),
                    "Removed vertex index not found in its owner geom.");
             geom.dirty_indices_ = true;
         }

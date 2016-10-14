@@ -10,7 +10,7 @@
 
 namespace grynca {
 
-    class Shader : public ManagedItem<Shaders> {
+    class Shader : public ManagedItemSingleton<Shaders> {
     public:
         virtual ~Shader();
 

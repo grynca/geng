@@ -3,17 +3,30 @@
 
 #include "incl.h"
 
-class MyGame : public grynca::Game<MyEntSys, MyGame> {
+class MyGame : public grynca::Game<MyGame> {
 public:
+    enum TextureIds {
+        tidSprites = 0,
+        tidFonts = 1
+    };
+
+    struct Assets {
+        Index fonts_pack_id;
+        Index images_pack_id;
+    } assets;
+
 
 private:
-    GameEntity::IndexType test_ent_id;
-    GameEntity::IndexType shuttle_id;
-    GameEntity::IndexType hud_id;
+    EntityIndex test_ent_id;
+    EntityIndex shuttle_id;
+    EntityIndex shuttle2_id;
+    EntityIndex hud_id;
 
     virtual void init() override;
     virtual void update() override;
     virtual void tick() override;
+
+    void initAssets();
 };
 
 

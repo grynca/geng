@@ -1,14 +1,12 @@
 #ifndef SHUTTLE_H
 #define SHUTTLE_H
 
-class Shuttle : public EMovable, public ERenderables, public ECollidables {
+class Shuttle : public GengEntityDef<CMovable, CTransform, CRenderables, CBody> {
 public:
-    Shuttle();
-
     static void initResources(MyGame& game);
-    static GameEntity& create(MyGame& game);
+    static Entity create(MyGame& game);
 
-    void update(MyGame& game);
+    static void update(Entity& e, MyGame& game);
 private:
     static TextureRegion sprite_region;
 };

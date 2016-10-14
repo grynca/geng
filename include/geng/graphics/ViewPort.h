@@ -25,6 +25,7 @@ namespace grynca {
         const Vec2& getBaseSize();
         void setBaseSize(const Vec2& size);
 
+        void updateTransforms();
         const Mat3& getCameraTransform();
         const Mat3& getViewTransform();
         const Mat3& getProjectionTransform();
@@ -43,8 +44,6 @@ namespace grynca {
 
         Mat3 camera_transform_;
         Mat3 view_transform_;
-        bool dirty_camera_t_;
-        bool dirty_view_t_;
     };
 
 }

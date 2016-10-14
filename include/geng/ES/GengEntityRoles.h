@@ -8,7 +8,9 @@ namespace grynca {
             erRenderable,
             erCollidable,
             erTransform,
-            erMovable
+            erMovable,
+            erNetworkedSv,
+            erNetworkedCl
     );
 }
 

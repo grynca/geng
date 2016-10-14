@@ -8,11 +8,11 @@
 namespace grynca {
 
     inline Shaders::Shaders(Window& w)
-     : window_(&w), bound_id_(Index::Invalid())
+     : window_(&w), bound_id_(InvalidId())
     {}
 
     inline Shader* Shaders::getBoundShader() {
-        if (bound_id_ == Index::Invalid())
+        if (bound_id_ == InvalidId())
             return NULL;
         return getById(bound_id_);
     }

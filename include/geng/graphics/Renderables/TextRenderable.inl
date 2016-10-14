@@ -12,7 +12,7 @@ namespace grynca {
         tr_->updateTextGeom_();
     }
 
-    inline TextRenderable::Setter& TextRenderable::Setter::setFont(uint32_t font_pack_id) {
+    inline TextRenderable::Setter& TextRenderable::Setter::setFont(Index font_pack_id) {
         tr_->font_pack_id_ = font_pack_id;
         return *this;
     }
@@ -48,7 +48,7 @@ namespace grynca {
     template <typename GameType>
     inline TextRenderable& TextRenderable::init(GameType& game, Geom& geom) {
         assets_ = &game.template getModule<AssetsManager>();
-        Renderable::init<TextShader, VertexDataPT>(geom);
+        RenderableBase::init<TextShader, VertexDataPT>(geom);
         return *this;
     }
 
@@ -64,7 +64,7 @@ namespace grynca {
         return font_size_;
     }
 
-    inline uint32_t TextRenderable::getFontPackId()const {
+    inline Index TextRenderable::getFontPackId()const {
         return font_pack_id_;
     }
 
@@ -100,6 +100,7 @@ namespace grynca {
             fact.setTC(start_vert, tex_r.getTextureRect().getLeftTop(), tex_r.getTextureRect().getRightBot());
             xpos += g.getAdvanceX();
         }
+        return *this;
     }
 
     inline TextRenderable& TextRenderable::setTextureUnit(uint32_t tid) {
@@ -111,10 +112,20 @@ namespace grynca {
         return Setter(*this);
     }
 
-    inline void TextRenderable::preRender() {
-        TextShader& ts = (TextShader&)getShader();
+    inline Vec2 TextRenderable::getBoundSize() {
+        Geom& g = getGeom();
 
-        ts.setUniformMat3(ts.u_transform, mvp_);
+        uint32_t vertices_cnt = text_.size()*6;
+
+        Vec2 left_top = g.getVertex<VertexDataPT::Vertex>(1).pos;
+        Vec2 right_bot = g.getVertex<VertexDataPT::Vertex>(vertices_cnt-3).pos;
+        return (right_bot - left_top)*local_transform_.getScale();
+    }
+
+    inline void TextRenderable::setUniforms(const Mat3& mvp, Shader& s) {
+        TextShader& ts = (TextShader&)s;
+
+        ts.setUniformMat3(ts.u_transform, mvp);
         ts.setUniform1f(ts.u_z_coord, layer_z_);
         ts.setUniform1i(ts.u_texture, texture_unit_);
         ts.setUniform4fv(ts.u_color, color_, 1);

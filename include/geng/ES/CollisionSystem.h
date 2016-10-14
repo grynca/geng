@@ -2,24 +2,32 @@
 #define COLLISIONSYSTEM_H
 
 #include "SAP.h"
-#include "GameSystem.h"
+#include "GengSystem.h"
+#include "GengEntityRoles.h"
+#include "GengEntityFlags.h"
 
 namespace grynca {
 
     template <typename GameType>
-    class CollisionSystem : public GameSystem<GameType> {
+    class CollisionSystem : public GengSystem<GameType> {
     public:
-        using GameEntity = typename GameType::GameEntity;
+        virtual FlagsMask getTrackedFlags() override {
+            return {GengEntityFlags::fMoved, GengEntityFlags::fRotated, GengEntityFlags::fScaled};
+        };
 
-        void update(GameEntity &e, float dt);
-
-        void postUpdate();
-
-        virtual RolesMask getNeededRoles() {
+        virtual RolesMask getNeededRoles() override {
             return {GengEntityRoles::erCollidable, GengEntityRoles::erTransform };
         }
+
+        virtual void afterAddedEntity(Entity& e) override;
+        virtual void beforeRemovedEntity(Entity& e) override;
+
+        virtual void postUpdate() override;
+        virtual void updateEntity(Entity& e, float dt) override;
+
+        SAPManager<EntityIndex, 2>& getSAP() { return sap_; };
     private:
-        SAPManager<VersionedIndex, 2> sap_;
+        SAPManager<EntityIndex, 2> sap_;
     };
 }
 #include "CollisionSystem.inl"

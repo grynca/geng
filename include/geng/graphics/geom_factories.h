@@ -62,10 +62,15 @@ namespace grynca {
         void setOffset(uint32_t start, const Vec2& offset) {
             Geom& g = getGeom();
             Vec2 offset_diff = offset - getOffset(start);
-            g.template accVertex<VertexType>(start).pos += offset_diff;
-            g.template accVertex<VertexType>(start+1).pos += offset_diff;
-            g.template accVertex<VertexType>(start+2).pos += offset_diff;
-            g.template accVertex<VertexType>(start+3).pos += offset_diff;
+
+            VertexType& lt = g.template accVertex<VertexType>(start);
+            VertexType& rt = g.template accVertex<VertexType>(start+1);
+            VertexType& rb = g.template accVertex<VertexType>(start+2);
+            VertexType& lb = g.template accVertex<VertexType>(start+3);
+            lt.pos += offset_diff;
+            rt.pos += offset_diff;
+            rb.pos += offset_diff;
+            lb.pos += offset_diff;
         }
 
         void setTC(uint32_t start, const Vec2& left_top, const Vec2& right_bot) {
@@ -84,7 +89,7 @@ namespace grynca {
         friend class Geom;
         friend class VertexData;
 
-        FactoryRectTF(VertexData& vertex_data, uint32_t geom_id)
+        FactoryRectTF(VertexData& vertex_data, Index geom_id)
          : vertex_data_(&vertex_data), geom_id_(geom_id)
         {}
 
@@ -93,7 +98,7 @@ namespace grynca {
         {}
 
         VertexData* vertex_data_;
-        uint32_t geom_id_;
+        Index geom_id_;
     };
 
     // GL_TRIANGLES rectangles
@@ -180,7 +185,7 @@ namespace grynca {
         friend class Geom;
         friend class VertexData;
 
-        FactoryRectT(VertexData& vertex_data, uint32_t geom_id)
+        FactoryRectT(VertexData& vertex_data, Index geom_id)
          : vertex_data_(&vertex_data), geom_id_(geom_id)
         {}
 
@@ -189,7 +194,7 @@ namespace grynca {
         {}
 
         VertexData* vertex_data_;
-        uint32_t geom_id_;
+        Index geom_id_;
     };
 }
 

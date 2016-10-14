@@ -1,7 +1,7 @@
 #ifndef SPRITERENDERABLE_H
 #define SPRITERENDERABLE_H
 
-#include "../Renderable.h"
+#include "RenderableBase.h"
 #include <bitset>
 
 namespace grynca {
@@ -12,16 +12,9 @@ namespace grynca {
     class AnimationFrame;
     class TextureRegion;
 
-    class SpriteRenderable : public Renderable
+    class SpriteRenderable : public RenderableBase
     {
     public:
-        static Vec2 offsetCenter() { return Vec2{-0.5f, -0.5f}; };
-        static Vec2 offsetLeftTop() { return Vec2{0,0}; }
-        static Vec2 offsetRightTop() { return Vec2{-1, 0}; }
-        static Vec2 offsetRightBot() { return Vec2{-1, -1}; }
-        static Vec2 offsetLeftBot() { return Vec2{0, -1}; }
-
-
         enum Direction {
             dForward,
             dBackward
@@ -33,15 +26,17 @@ namespace grynca {
             eaChangeDir
         };
 
+        SpriteRenderable();
+
         template <typename GameType>
-        SpriteRenderable(GameType& game);
+        SpriteRenderable& init(GameType& game);
         template <typename GameType>
-        SpriteRenderable(GameType& game, Geom& geom);       //shared geom
+        SpriteRenderable& init(GameType& game, Geom& geom);       //reuses existing geom
 
 
-        SpriteRenderable& setImageRegion(const TextureRegion& tr, const Vec2& offset = offsetCenter());
-        SpriteRenderable& setImageRegion(const ARect& texture_coords, const Vec2& base_size, const Vec2& offset = offsetCenter());
-        SpriteRenderable& setAnimation(uint32_t animation_id);
+        SpriteRenderable& setImageRegion(const TextureRegion& tr);
+        SpriteRenderable& setImageRegion(const ARect& texture_coords, const Vec2& base_size);
+        SpriteRenderable& setAnimation(Index animation_id);
         SpriteRenderable& setFrameId(uint32_t f_id);
         SpriteRenderable& setToFirstFrame();
         SpriteRenderable& setToLastFrame();
@@ -51,8 +46,8 @@ namespace grynca {
         SpriteRenderable& flipDirection();
         SpriteRenderable& setEndAction(EndAction a);
         SpriteRenderable& setTextureUnit(uint32_t tid);
-        SpriteRenderable& setSize(const Vec2& size);
-        SpriteRenderable& setOffset(const Vec2& offset);
+        SpriteRenderable& setSize(const Vec2& size);        // sets local transform's scale
+        SpriteRenderable& setNormOffset(const Vec2& offset);
 
 
         bool isImage()const;
@@ -70,13 +65,13 @@ namespace grynca {
         bool getFrameChanged()const;    // whether frame changed last frame
         uint32_t getTextureUnit()const;
         Vec2 getSize()const;
-        Vec2 getBaseSize()const;
-        Vec2 getOffset()const;
-        Vec2 getBaseOffset()const;
+        Vec2 getGeomSize()const;
+        Vec2 getNormOffset()const;
+        Vec2 getGeomOffset()const;      // in pixels in base image size scale
 
         void advanceAnimation(float dt);    // called by system
 
-        virtual void preRender() override;
+        virtual void setUniforms(const Mat3& mvp, Shader& s) override;
     private:
         void setFrameInternal_(const AnimationFrame& frame);
 
@@ -95,7 +90,7 @@ namespace grynca {
             AnimationState()
              : animation_id(Index::Invalid()), curr_frame(0), to_next_frame(0.0f) {}
 
-            uint32_t animation_id;
+            Index animation_id;
             int32_t curr_frame;
             float to_next_frame;
             std::bitset<flagsCount> flags;

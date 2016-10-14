@@ -1,26 +1,31 @@
 #ifndef RENDERER_H
 #define RENDERER_H
 
-#include "graphics_config.h"
-#include "types/containers/fast_vector.h"
-#include <stdint.h>
+#include "Renderables.h"
 
 namespace grynca {
     // fw
     class Window;
-    class Renderable;
+    class RenderableBase;
 
     class Renderer2D {
     public:
+        struct RenderTask {
+            Renderable* renderable;
+            Mat3 mvp;
+
+            static bool compare(RenderTask& r1, RenderTask& r2);
+        };
+
         Renderer2D(Window& w);
 
-        void addRenderable(Renderable* r);
+        RenderTask& addRenderTask(Renderable& rv);
         void render();
         void clear();
     private:
-        Window* window_;
 
-        fast_vector<Renderable*> renderables_;
+        Window* window_;
+        fast_vector<RenderTask> render_tasks_;
     };
 
 }

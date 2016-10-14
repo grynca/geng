@@ -2,12 +2,11 @@
 #define HUD_H
 
 
-class HUD : public ETransform,
-            public ERenderables {
+class HUD  : public GengEntityDef<CTransform, CRenderables> {
 public:
-    static GameEntity& create(MyGame& game);
+    static Entity create(MyGame& game);
 
-    void update(MyGame& game);
+    static void update(Entity& e, MyGame& game);
 private:
 };
 

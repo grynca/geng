@@ -2,10 +2,12 @@
 #define GENGENTITYTYPES_H
 
 #include "GengEntity.h"
-#include "ETransform.h"
-#include "EMovable.h"
-#include "ERenderables.h"
-#include "ECollidables.h"
+#include "GengEntityFlags.h"
+#include "CTransform.h"
+#include "CMovable.h"
+#include "CRenderables.h"
+#include "CBody.h"
+#include "CNetworked.h"
 
 struct DummyEnt {
 

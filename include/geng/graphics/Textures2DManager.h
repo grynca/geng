@@ -16,7 +16,7 @@ namespace grynca {
     private:
         friend class Texture2D;
 
-        fast_vector<uint32_t> texture_units_;
+        fast_vector<Index> texture_units_;
     };
 }
 

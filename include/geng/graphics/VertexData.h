@@ -4,6 +4,7 @@
 #include "glinclude.h"
 #include "types/Manager.h"
 #include <stdint.h>
+#include <unordered_set>
 
 namespace grynca {
 
@@ -18,7 +19,7 @@ namespace grynca {
         uint32_t struct_offset;
     };
 
-    class VertexData : public ManagedItem<Vertices>,
+    class VertexData : public ManagedItemSingleton<Vertices>,
                        public Manager<Geom> {
         friend class Geom;
     public:
@@ -39,14 +40,17 @@ namespace grynca {
 
         template <typename T>
         T addWithFactory();
+
+        template <typename Vertex>
+        void collectVertices(fast_vector<Vertex>& vertices_out);        // for debug mostly
     protected:
         template <typename Vertex>
         Vertex& getVertex_(uint32_t id);
         uint8_t* getVertexRaw_(uint32_t id);
 
         fast_vector<uint8_t> vertices_data_;    // RAM copy of all vertices
-        fast_vector<uint32_t> vertices_owner_;  // for each vertex id of owning geom
-        fast_vector<uint32_t> dirty_vertices_;  // indices of vertices in need of syncing to GPU
+        fast_vector<Index> vertices_owner_;  // for each vertex id of owning geom
+        std::unordered_set<uint32_t> dirty_vertices_;  // indices of vertices in need of syncing to GPU
 
         uint32_t vertex_size_;
         GLuint vao_;

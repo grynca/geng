@@ -6,39 +6,46 @@
 
 namespace grynca {
 
-    template <typename GameType>
-    inline SpriteRenderable::SpriteRenderable(GameType& game)
-        : assets_(&game.template getModule<AssetsManager>()), texture_unit_(0)
+    inline SpriteRenderable::SpriteRenderable()
+     : assets_(NULL), texture_unit_(0)
     {
+
+    }
+
+    template <typename GameType>
+    inline SpriteRenderable& SpriteRenderable::init(GameType& game) {
+        assets_ = &game.template getModule<AssetsManager>();
         Window& window = game.template getModule<Window>();
         FactoryRectTF<VertexDataPT::Vertex> fact = window.getVertices().get<VertexDataPT>().addWithFactory<FactoryRectTF<VertexDataPT::Vertex> >();
         fact.add(Vec2(1, 1), Vec2(-0.5f, -0.5f));
-        Renderable::init<SpriteShader, VertexDataPT>(fact.getGeom());
-    }
-
-    template <typename GameType>
-    inline SpriteRenderable::SpriteRenderable(GameType& game, Geom& geom)
-     : assets_(&game.template getModule<AssetsManager>()), texture_unit_(0)
-    {
-        Renderable::init<SpriteShader, VertexDataPT>(geom);
-    }
-
-    inline SpriteRenderable& SpriteRenderable::setImageRegion(const TextureRegion& tr, const Vec2& offset) {
-        setImageRegion(tr.getTextureRect(), tr.getRect().getSize(), offset);
+        RenderableBase::init<SpriteShader, VertexDataPT>(fact.getGeom());
         return *this;
     }
 
-    inline SpriteRenderable& SpriteRenderable::setImageRegion(const ARect& texture_coords, const Vec2& base_size, const Vec2& offset) {
+    template <typename GameType>
+    inline SpriteRenderable& SpriteRenderable::init(GameType& game, Geom& geom) {
+        assets_ = &game.template getModule<AssetsManager>();
+        RenderableBase::init<SpriteShader, VertexDataPT>(geom);
+    }
+
+    inline SpriteRenderable& SpriteRenderable::setImageRegion(const TextureRegion& tr) {
+        setImageRegion(tr.getTextureRect(), tr.getRect().getSize());
+        return *this;
+    }
+
+    inline SpriteRenderable& SpriteRenderable::setImageRegion(const ARect& texture_coords, const Vec2& base_size) {
         animation_state_.animation_id = Index::Invalid();
         FactoryRectTF<VertexDataPT::Vertex> fact = getGeom().getFactory<FactoryRectTF<VertexDataPT::Vertex> >();
         fact.setTC(0, texture_coords.getLeftTop(), texture_coords.getRightBot());
+        Vec2 offset = getGeomOffset();
         fact.setSize(0, base_size);
         fact.setOffset(0, base_size*offset);
         return *this;
     }
 
-    inline SpriteRenderable& SpriteRenderable::setAnimation(uint32_t animation_id) {
+    inline SpriteRenderable& SpriteRenderable::setAnimation(Index animation_id) {
         animation_state_.animation_id = animation_id;
+        animation_state_.flags[AnimationState::fPaused] = false;
         setFrameId(0);
         return *this;
     }
@@ -106,14 +113,14 @@ namespace grynca {
     }
 
     inline SpriteRenderable& SpriteRenderable::setSize(const Vec2& size) {
-        Vec2 base_size = getBaseSize();
-        Vec2 scale = size/base_size;
-        getLocalTransform().setScale(scale);
+        Vec2 geom_size = getGeomSize();
+        Vec2 scale = size/geom_size;
+        accLocalTransform().setScale(scale);
         return *this;
     }
 
-    inline SpriteRenderable& SpriteRenderable::setOffset(const Vec2& offset) {
-        getGeom().getFactory<FactoryRectTF<VertexDataPT::Vertex> > ().setOffset(0, getBaseSize()*offset);
+    inline SpriteRenderable& SpriteRenderable::setNormOffset(const Vec2& offset) {
+        getGeom().getFactory<FactoryRectTF<VertexDataPT::Vertex> > ().setOffset(0, getGeomSize()*offset);
         return *this;
     }
 
@@ -180,18 +187,19 @@ namespace grynca {
     }
 
     inline Vec2 SpriteRenderable::getSize()const {
-        return getBaseSize()*local_transform_.getScale();
+        return getGeomSize()*local_transform_.getScale();
     }
 
-    inline Vec2 SpriteRenderable::getBaseSize()const {
+
+    inline Vec2 SpriteRenderable::getGeomSize()const {
         return getGeom().getFactory<FactoryRectTF<VertexDataPT::Vertex> > ().getSize(0);
     }
 
-    inline Vec2 SpriteRenderable::getOffset()const {
-        return getBaseOffset()/getSize();
+    inline Vec2 SpriteRenderable::getNormOffset()const {
+        return getGeomOffset()/getGeomSize();
     }
 
-    inline Vec2 SpriteRenderable::getBaseOffset()const {
+    inline Vec2 SpriteRenderable::getGeomOffset()const {
         return getGeom().getFactory<FactoryRectTF<VertexDataPT::Vertex> > ().getOffset(0);
     }
 
@@ -247,10 +255,10 @@ namespace grynca {
         }
     }
 
-    inline void SpriteRenderable::preRender() {
-        SpriteShader& ss = (SpriteShader&)getShader();
+    inline void SpriteRenderable::setUniforms(const Mat3& mvp, Shader& s) {
+        SpriteShader& ss = (SpriteShader&)s;
 
-        ss.setUniformMat3(ss.u_transform, mvp_);
+        ss.setUniformMat3(ss.u_transform, mvp);
         ss.setUniform1f(ss.u_z_coord, layer_z_);
         ss.setUniform1i(ss.u_texture, texture_unit_);
     }

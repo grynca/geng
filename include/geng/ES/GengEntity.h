@@ -1,27 +1,15 @@
-#ifndef GENG_ENTITY_H
-#define GENG_ENTITY_H
+#ifndef GAMEENTITY_H
+#define GAMEENTITY_H
 
-#include "GengEntityRoles.h"
 #include <bitset>
-
+#include "sysent/Entity.h"
 namespace grynca {
 
-    class GengEntity : public EntityBase {
-    public:
-        enum FlagIds {
-            fMoved,
-            fRotated,
-            fScaled,
-        // ==========
-            flagsCount
-        };
 
-        std::bitset<flagsCount>& getFlags() { return flags_; }
-
-    private:
-        std::bitset<flagsCount> flags_;
+    template <typename...CompTypes>
+    class GengEntityDef : public EntityDef<CompTypes...> {
     };
 
 }
 
-#endif //GENG_ENTITY_H
+#endif //GAMEENTITY_H

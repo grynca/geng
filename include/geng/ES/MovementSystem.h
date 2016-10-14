@@ -4,20 +4,22 @@
 namespace grynca {
 
     template <typename GameType>
-    class MovementSystem : public GameSystem<GameType> {
+    class MovementSystem : public GengSystem<GameType> {
     public:
-        void update(typename GameType::GameEntity&e, float dt) {
-            EMovable& m = e.template getBase<EMovable>();
-            Speed& s = m.getSpeed();
-            m.move(s.getLinearSpeed()*dt);
-            m.rotate(s.getAngularSpeed()*dt);
+        virtual FlagsMask getTrackedFlags() override {
+            return {};
         }
 
-        virtual RolesMask getNeededRoles() {
+        virtual RolesMask getNeededRoles() override {
             return {GengEntityRoles::erMovable};
         }
 
-
+        virtual void updateEntity(Entity& e, float dt) override {
+            CMovable& m = e.getComponent<CMovable>();
+            CTransform& t = e.getComponent<CTransform>();
+            t.move(m.getSpeed().getLinearSpeed()*dt, e);
+            t.rotate(m.getSpeed().getAngularSpeed()*dt, e);
+        }
     };
 }
 

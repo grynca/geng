@@ -39,7 +39,7 @@ namespace grynca {
     }
 
     inline uint32_t VertexData::getVerticesCount() {
-        ASSERT(vertex_size_!=0, "Invalid vertex size.");
+        ASSERT_M(vertex_size_!=0, "Invalid vertex size.");
         return uint32_t(vertices_data_.size())/vertex_size_;
     }
 
@@ -94,7 +94,9 @@ namespace grynca {
 
 
         for (uint32_t i=0; i<getItemsCount(); ++i) {
-            getItemAtPos(i).syncWithGPU();
+            Geom* g = getItemAtPos(i);
+            if (g)
+                g->syncWithGPU();
         }
     }
 
@@ -104,9 +106,17 @@ namespace grynca {
     }
 
     template <typename Vertex>
+    inline void VertexData::collectVertices(fast_vector<Vertex>& vertices_out) {
+        vertices_out.reserve(getVerticesCount());
+        for (uint32_t i=0; i<getVerticesCount(); ++i) {
+            vertices_out.push_back(getVertex_<Vertex>(i));
+        }
+    }
+
+    template <typename Vertex>
     inline Vertex& VertexData::getVertex_(uint32_t id) {
-        ASSERT(vertex_size_!=0, "Invalid vertex size.");
-        ASSERT(vertex_size_==sizeof(Vertex), "Template vertex is of different size than expected.");
+        ASSERT_M(vertex_size_!=0, "Invalid vertex size.");
+        ASSERT_M(vertex_size_==sizeof(Vertex), "Template vertex is of different size than expected.");
         return *(Vertex*)&vertices_data_[id*vertex_size_];
     }
 

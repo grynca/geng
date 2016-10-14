@@ -55,8 +55,11 @@ namespace grynca {
         void removeHandler(SDL_EventType type, uint32_t id);
     private:
         Window* window_;
-        fast_vector<uint8_t> keys_prev_;
-        const uint8_t* keys_;
+
+        fast_vector<uint8_t> keys_[2];
+        const uint8_t* sdl_keys_;
+        uint32_t keys_current_;
+
         uint32_t mouse_prev_;
         uint32_t mouse_;
         Vec2 mouse_pos_;

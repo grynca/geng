@@ -26,6 +26,9 @@ namespace grynca {
         void removeVertex(uint32_t id);
         void removeAllVertices();
 
+        template <typename Vertex>
+        void collectVertices(fast_vector<Vertex>& vertices_out);
+
         void render();
 
         GLuint getIboGlHandle();

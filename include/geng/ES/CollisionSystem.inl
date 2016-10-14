@@ -1,66 +1,63 @@
 #include "CollisionSystem.h"
-#include "ECollidables.h"
-#include "ES.h"
+#include "CBody.h"
+#include "CTransform.h"
 
 namespace grynca {
 
     template <typename GameType>
-    void CollisionSystem<GameType>::update(GameEntity &e, float dt) {
+    inline void CollisionSystem<GameType>::afterAddedEntity(Entity& e)  {
+        CBody& cb = e.getComponent<CBody>();
+        cb.recalcBound();
+        CTransform& ct = e.getComponent<CTransform>();
+        ARect bound = cb.transformBound(ct.accMatrix());
+        cb.sap_id_ = sap_.addBox(bound.getDataPtr(), e.getIndex());
+    }
 
-        ECollidables & c = e.template getBase<ECollidables>();
+    template <typename GameType>
+    inline void CollisionSystem<GameType>::beforeRemovedEntity(Entity& e)  {
+        CBody & c = e.getComponent<CBody>();
+        sap_.removeBox(c.sap_id_);
+    }
 
-        if (c.sap_id_ == Index::Invalid()) {
-            c.recalcBound();
-            Vec2 lt = c.getBound().getLeftTop();
-            Vec2 rb = c.getBound().getRightBot();
-            Extent extent[2] = {
-                    {lt.getX(), rb.getX()},
-                    {lt.getY(), rb.getY()}
-            };
-
-            // add box
-            c.sap_ = &sap_;
-            c.sap_id_ = sap_.addBox(extent, c.getCollisionGroup(), e.getId());
+    template <typename GameType>
+    inline void CollisionSystem<GameType>::updateEntity(Entity& e, float dt) {
+        // TODO: fScaled
+        if (e.getFlag(this, GengEntityFlags::fRotated)) {
+            CBody& cb = e.getComponent<CBody>();
+            CTransform& ct = e.getComponent<CTransform>();
+            ARect bound = cb.transformBound(ct.accMatrix());
+            sap_.updateBox(cb.sap_id_, bound.getDataPtr());
         }
-        else if (c.getFlags()[GengEntity::fRotated]) {
-            c.recalcBound();
-            Vec2 lt = c.getBound().getLeftTop();
-            Vec2 rb = c.getBound().getRightBot();
-            Extent extent[2] = {
-                    {lt.getX(), rb.getX()},
-                    {lt.getY(), rb.getY()}
-            };
-            sap_.updateBox(c.sap_id_, extent);
-        }
-        else if (c.getFlags()[GengEntity::fMoved]) {
-            ETransform& t = e.template getBase<ETransform>();
-            Vec2 lt = t.getTransform().getPosition() + c.getBound().getLeftTop();
-            Vec2 rb = lt + c.getBound().getSize();
-            Extent extent[2] = {
-                    {lt.getX(), rb.getX()},
-                    {lt.getY(), rb.getY()}
-            };
-            sap_.updateBox(c.sap_id_, extent);
+        else if (e.getFlag(this, GengEntityFlags::fMoved)) {
+            CBody& cb = e.getComponent<CBody>();
+            CTransform& ct = e.getComponent<CTransform>();
+
+            ARect prev_rect;
+            sap_.getBox(cb.sap_id_, prev_rect.getDataPtr());
+            Vec2 curr_center(ct.accMatrix() * cb.getBound().getCenter());
+            Vec2 move_vec = curr_center - prev_rect.getCenter();
+            sap_.moveBox(cb.sap_id_, move_vec.getDataPtr());
         }
     }
 
     template <typename GameType>
     inline void CollisionSystem<GameType>::postUpdate() {
-        for (uint32_t i=0; i<sap_.getBoxesCount(); ++i) {
-            uint32_t b1_id;
-            const fast_vector<uint32_t>& overlaps = sap_.getOverlapsAtPos(i, b1_id);
-            // todo: simple or precise feedback
-            VersionedIndex eid1 = sap_.getClientData(b1_id);
-            GameEntity& e1 = this->getGameBase().getSysEnt().getEntityManager().getItem(eid1);
-            ECollidables& c1 = e1.template getBase<ECollidables>();
-            for (uint32_t oid=0; oid<overlaps.size(); ++oid) {
-                VersionedIndex eid2 = sap_.getClientData(overlaps[oid]);
-                GameEntity& e2 = this->getGameBase().getSysEnt().getEntityManager().getItem(eid2);
-                ECollidables& c2 = e2.template getBase<ECollidables>();
 
-
-            }
-        }
+        //std::cout << "overlaps:" << sap_.getOverlapsCount() << std::endl;
+//        for (uint32_t i=0; i<sap_.getBoxesCount(); ++i) {
+//            uint32_t b1_id;
+//            const fast_vector<uint32_t>& overlaps = sap_.getOverlapsAtPos(i, b1_id);
+//            // todo: simple or precise feedback
+//            EntityIndex eid1 = sap_.getClientData(b1_id);
+//            Entity e1 = this->getGameBase().getEntity(eid1);
+//            CBody& c1 = e1.getComponent<CBody>();
+//            for (uint32_t oid=0; oid<overlaps.size(); ++oid) {
+//                EntityIndex eid2 = sap_.getClientData(overlaps[oid]);
+//                Entity e2 = this->getGameBase().getEntity(eid2);
+//                CBody& c2 = e2.getComponent<CBody>();
+//                // TODO:
+//            }
+//        }
     }
 
 }

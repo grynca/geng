@@ -15,11 +15,13 @@ namespace grynca {
     }
 
     Events::Events(Window& window)
-     : mouse_prev_(0), mouse_(0)
+     : mouse_prev_(0), mouse_(0), keys_current_(0)
     {
         int keys_count;
-        keys_ = SDL_GetKeyboardState(&keys_count);
-        keys_prev_.resize(size_t(keys_count), 0);
+        sdl_keys_ = SDL_GetKeyboardState(&keys_count);
+        keys_[0].resize(size_t(keys_count), 0);
+        keys_[1].resize(size_t(keys_count), 0);
+        memcpy(&keys_[keys_current_][0], sdl_keys_, size_t(keys_count));
     }
 
     Window& Events::getWindow()const {
@@ -27,8 +29,7 @@ namespace grynca {
     }
 
     void Events::update() {
-
-        std::copy(keys_, keys_+keys_prev_.size(), keys_prev_.begin());
+        keys_current_ = 1-keys_current_;
         mouse_prev_ = mouse_;
 
         SDL_Event event;
@@ -40,6 +41,8 @@ namespace grynca {
             }
         }
 
+        memcpy(&keys_[keys_current_][0], sdl_keys_, keys_[keys_current_].size());
+
         int dx = (int)mouse_pos_.getX();
         int dy = (int)mouse_pos_.getY();
         mouse_ = SDL_GetRelativeMouseState(&dx, &dy);
@@ -49,15 +52,15 @@ namespace grynca {
     }
 
     bool Events::isKeyDown(SDL_Scancode sc)const {
-        return keys_[sc];
+        return keys_[keys_current_][sc];
     }
 
     bool Events::wasKeyPressed(SDL_Scancode sc)const {
-        return keys_[sc] && !keys_prev_[sc];
+        return keys_[keys_current_][sc] && !keys_[1-keys_current_][sc];
     }
 
     bool Events::wasKeyReleased(SDL_Scancode sc)const {
-        return !keys_[sc] && keys_prev_[sc];
+        return !keys_[keys_current_][sc] && keys_[1-keys_current_][sc];
     }
 
     bool Events::isButtonDown(MouseButton btn)const {

@@ -1,32 +1,31 @@
-#include "incl.h"
+#include "../incl.h"
 #include "Shuttle.h"
-#include "../MyAssets.h"
 
 TextureRegion Shuttle::sprite_region;
-
-Shuttle::Shuttle() {
-
-}
 
 void Shuttle::initResources(MyGame& game) {
     sprite_region = *game.getModule<AssetsManager>().getImageRegion("data/sprites/shuttle.png");
 }
 
-GameEntity& Shuttle::create(MyGame& game) {
+Entity Shuttle::create(MyGame& game) {
 //static
-    GameEntity& ent = game.getSysEnt().getEntityManager().addItem();
-    Shuttle& me = ent.set<Shuttle>();
+    Entity ent = game.createEntity(GET_ETYPE_ID(Shuttle));
 
-    SpriteRenderable & sr = me.getRenderables().add<SpriteRenderable>(game);
+    CRenderables& rs = ent.getComponent<CRenderables>();
+    SpriteRenderable& sr = rs.addRenderable<SpriteRenderable>().init(game);
     sr.setLayerId(3);
     sr.setTextureUnit(0);
     sr.setImageRegion(sprite_region);
-    sr.getLocalTransform().setScale(Vec2{0.5, 0.5});
+    sr.accLocalTransform().setScale(Vec2{0.5, 0.5});
+
+    CBody& cb = ent.getComponent<CBody>();
+    Collidable& coll = cb.addCollidable();
+    coll.boundSprite(sr);
+
     return ent;
 }
 
-
-void Shuttle::update(MyGame& game) {
+void Shuttle::update(Entity& e, MyGame& game) {
     static int shuttle_speed = 100;
 
     Events& events = game.getModule<Window>().getEvents();
@@ -41,12 +40,14 @@ void Shuttle::update(MyGame& game) {
         shuttle_motion *= norm;
     }
 
-    if (getTransform().getRotation() != shuttle_motion.getAngle())
-        setRotation(shuttle_motion.getAngle());
+    CTransform& t = e.getComponent<CTransform>();
+    if (t.get().getRotation() != shuttle_motion.getAngle())
+        t.setRotation(shuttle_motion.getAngle(), e);
 
     shuttle_motion *= shuttle_speed;
 
-    getSpeed().setLinearSpeed(shuttle_motion);
+    CMovable& m = e.getComponent<CMovable>();
+    m.getSpeed().setLinearSpeed(shuttle_motion);
 
     //std::cout << "shuttle flags: " << getFlags() << std::endl;
 }

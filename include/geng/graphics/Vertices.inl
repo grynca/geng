@@ -1,3 +1,4 @@
+#include <geng/graphics/VertexData/VertexDataPT.h>
 #include "Vertices.h"
 #include "VertexData.h"
 #include "Window.h"
@@ -7,7 +8,7 @@
 namespace grynca {
 
     inline Vertices::Vertices(Window& w)
-     : window_(&w), bound_id_(Index::Invalid())
+     : window_(&w), bound_id_(InvalidId())
     {}
 
 
@@ -20,7 +21,7 @@ namespace grynca {
     }
 
     inline VertexData* Vertices::getBoundVertexData() {
-        if (bound_id_ == Index::Invalid())
+        if (bound_id_ == InvalidId())
             return NULL;
         return getById(bound_id_);
     }

@@ -7,7 +7,6 @@ namespace grynca {
     {}
 
     ViewPort::ViewPort(const Vec2& size)
-     : dirty_camera_t_(true), dirty_view_t_(true)
     {
         setZoom(Vec2{1,1});
     }
@@ -32,18 +31,15 @@ namespace grynca {
 
     void ViewPort::rotate(Angle a) {
         t_.rotate(a);
-        dirty_view_t_ = dirty_camera_t_ = true;
     }
 
     void ViewPort::moveRelative(const Vec2& m) {
         t_.moveRelative(m);
-        dirty_view_t_ = dirty_camera_t_ = true;
         //bound_.setCenter(pos_.getPosition());
     }
 
     void ViewPort::setPosition(const Vec2& p) {
         t_.setPosition(p);
-        dirty_view_t_ = dirty_camera_t_ = true;
         //bound_.setCenter(pos_.getPosition());
     }
 
@@ -60,19 +56,16 @@ namespace grynca {
         setZoom(zoom_);
     }
 
+    void ViewPort::updateTransforms() {
+        camera_transform_ = t_.calcMatrix();
+        view_transform_ = Mat3::invert(getCameraTransform());
+    }
+
     const Mat3& ViewPort::getCameraTransform() {
-        if (dirty_camera_t_) {
-            camera_transform_ = t_.getMatrix();
-            dirty_camera_t_ = false;
-        }
         return camera_transform_;
     }
 
     const Mat3& ViewPort::getViewTransform() {
-        if (dirty_view_t_) {
-            view_transform_ = Mat3::invert(getCameraTransform());
-            dirty_view_t_ = false;
-        }
         return view_transform_;
     }
 

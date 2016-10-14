@@ -15,7 +15,7 @@ namespace grynca {
     }
 
     inline Texture2D* Textures2DManager::getBoundTexture(uint32_t texture_unit_id) {
-        ASSERT(texture_unit_id < texture_units_.size(), "Texture slot not available.");
+        ASSERT_M(texture_unit_id < texture_units_.size(), "Texture slot not available.");
         if (texture_units_[texture_unit_id] == Index::Invalid())
             return NULL;
         return &getItem(texture_units_[texture_unit_id]);
