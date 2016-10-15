@@ -25,7 +25,9 @@
 #include "VertexData/VertexDataP.h"
 
 #include "Components/CRenderables.h"
-#include "Systems/CollisionsDebugSystem.h"
+#if GENG_PHYSICS == 1
+# include "Systems/CollisionsDebugSystem.h"
+#endif
 #include "Systems/RenderSystem.h"
 
 #endif //GRAPHICS_INCLUDES_H

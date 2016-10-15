@@ -17,11 +17,11 @@
       <sourceFolder url="file://$MODULE_DIR$/include/geng/graphics/Window.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/include/geng/graphics/Shaders.inl" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/include/geng/graphics/ViewPort.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/include/geng/graphics/Shader.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/include/geng/graphics/CoordFrame.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/include/geng/graphics/glinclude.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/include/geng/graphics/ViewPort.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/include/geng/graphics/Shaders.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/geng/graphics/Textures2DManager.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/include/geng/graphics/Components/CRenderables.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/include/geng/graphics/Vertices.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/include/geng/graphics/VertexData/VertexDataPT.h" isTestSource="false" />
@@ -49,10 +49,15 @@
       <sourceFolder url="file://$MODULE_DIR$/include/geng/graphics/Shaders/CircleShader.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/include/geng/graphics/Shaders/RectBorderShader.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/include/geng/graphics/Shaders/TextShader.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/geng/graphics/Geom.inl" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/geng/graphics/Texture2D.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/geng/graphics/Shader.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/geng/graphics/Textures2DManager.inl" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/geng/graphics/VertexData.inl" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/include/geng/graphics/Renderables/RectBorderRenderable.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/include/geng/graphics/Renderables/SpriteRenderable.inl" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/include/geng/graphics/Renderables/RectRenderable.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/include/geng/graphics/Renderables/PgonTexturedRenderable.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/geng/graphics/Renderables/TextRenderable.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/include/geng/graphics/Renderables/PgonRenderable.inl" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/include/geng/graphics/Renderables/RenderableBase.inl" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/include/geng/graphics/Renderables/PgonTexturedRenderable.inl" isTestSource="false" />
@@ -62,14 +67,9 @@
       <sourceFolder url="file://$MODULE_DIR$/include/geng/graphics/Renderables/PgonRenderable.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/include/geng/graphics/Renderables/RenderableBase.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/include/geng/graphics/Renderables/RectRenderable.inl" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/include/geng/graphics/Renderables/TextRenderable.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/include/geng/graphics/Renderables/CircleRenderable.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/include/geng/graphics/Renderables/TextRenderable.inl" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/include/geng/graphics/Texture2D.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/include/geng/graphics/Textures2DManager.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/include/geng/graphics/Textures2DManager.inl" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/include/geng/graphics/VertexData.inl" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/include/geng/graphics/Geom.inl" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/geng/graphics/Renderables/PgonTexturedRenderable.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/include/geng/graphics/Shader.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/include/geng/graphics/Events.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/include/geng/graphics/Renderer2D.inl" isTestSource="false" />
@@ -82,11 +82,11 @@
       <sourceFolder url="file://$MODULE_DIR$/include/geng/core/Systems/MovementSystem.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/include/geng/core/GengEntityRoles.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/include/geng/core/GengEntityFlags.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/geng/core/Speed.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/include/geng/core/GengSystem.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/include/geng/core/GengEntityTypes.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/include/geng/core/GengEntity.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/include/geng/GameBase.inl" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/include/geng/core/Speed.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/include/geng/physics/Systems/CollisionSystem.inl" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/include/geng/physics/Systems/CollisionSystem.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/include/geng/physics/Components/CBody.h" isTestSource="false" />

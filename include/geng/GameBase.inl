@@ -143,10 +143,8 @@ namespace grynca {
 #endif
             float now = timer_.getElapsed();
             float dt_update = now - update_timer_;
-            if (dt_update > target_ticklen_) {
-                // maximal 1 update during frame to avoid spiral of death (but game can slow down on slow machine)
+            while (dt_update > target_ticklen_) {
                 getAsDerived_().updateIter_();
-                float prev_n = now;
                 now = timer_.getElapsed();
                 dt_update = now - update_timer_;
             }
@@ -162,7 +160,7 @@ namespace grynca {
                 frames_ = updates_ = 0;
                 tick();
 #ifdef PROFILE_BUILD
-                std::cout << "lag: " << lag_ << std::endl;
+                std::cout << "lag: " << lag_ << ", ups: " << ups_ << ", fps: " << fps_ << std::endl;
 #endif
             }
 

@@ -108,7 +108,6 @@ set(GENG_SOURCES
         include/geng/network/Systems/ClientNetworkSystem.inl
 
         include/geng/physics/physics_includes.h
-        include/geng/physics/Speed.h
         include/geng/physics/Collidable.h
         include/geng/physics/Components/CBody.h
         include/geng/physics/Systems/CollisionSystem.h
@@ -117,6 +116,7 @@ set(GENG_SOURCES
         include/geng/core/core_includes.h
         include/geng/core/Components/CTransform.h
         include/geng/core/Components/CMovable.h
+        include/geng/core/Speed.h
         include/geng/core/GengEntityFlags.h
         include/geng/core/GengEntityRoles.h
         include/geng/core/GengEntityTypes.h
