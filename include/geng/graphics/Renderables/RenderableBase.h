@@ -2,8 +2,9 @@
 #define RENDERABLE_H
 
 #include "maths/Transform.h"
-#include "geng/graphics/DrawSortingKey.h"
-#include "geng/graphics/CoordFrame.h"
+#include "../DrawSortingKey.h"
+#include "../CoordFrame.h"
+#include "../Geom.h"
 
 namespace grynca {
 

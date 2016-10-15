@@ -5,7 +5,7 @@
 #include "Vertices.h"
 #include "VertexData.h"
 #include "Geom.h"
-#include "geom_factories.h"
+#include "geng/graphics/VertexData/Factories/geom_factories.h"
 #include "Shaders.h"
 #include "Shader.h"
 #include "Window.h"
@@ -17,10 +17,15 @@
 #include "Textures2DManager.h"
 #include "Events.h"
 #include "Shaders/CircleShader.h"
-#include "Shaders/RectShader.h"
+#include "geng/graphics/Shaders/SimpleColorShader.h"
 #include "Shaders/RectBorderShader.h"
-#include "Shaders/SpriteShader.h"
+#include "geng/graphics/Shaders/SimpleTexturedShader.h"
 #include "Shaders/TextShader.h"
 #include "VertexData/VertexDataPT.h"
 #include "VertexData/VertexDataP.h"
+
+#include "Components/CRenderables.h"
+#include "Systems/CollisionsDebugSystem.h"
+#include "Systems/RenderSystem.h"
+
 #endif //GRAPHICS_INCLUDES_H

@@ -22,7 +22,7 @@ namespace grynca {
         GameBase();
 
         template <typename EntityTypes>
-        void initEM(uint32_t initial_ents_reserve = 10000);
+        Derived& initEM(uint32_t initial_ents_reserve = 10000);
 
         Timer& getTimer();
         EntityManager& getEntitiesManager();

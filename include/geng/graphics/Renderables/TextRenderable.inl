@@ -2,7 +2,7 @@
 #include "assets.h"
 #include "../Shaders/TextShader.h"
 #include "../VertexData/VertexDataPT.h"
-#include "../geom_factories.h"
+#include "geng/graphics/VertexData/Factories/geom_factories.h"
 
 
 namespace grynca {

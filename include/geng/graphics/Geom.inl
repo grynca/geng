@@ -96,7 +96,7 @@ namespace grynca {
 
     template <typename T>
     inline T Geom::getFactory() {
-        return T(getManager(), getId());
+        return T(*this);
     }
 
     inline void Geom::removeVertexInner_(uint32_t id) {

@@ -81,8 +81,9 @@ namespace grynca {
 
     GB_TPL
     template <typename EntityTypes>
-    void GB_TYPE::initEM(uint32_t initial_ents_reserve) {
+    D& GB_TYPE::initEM(uint32_t initial_ents_reserve) {
         entity_manager_.init<EntityTypes>(initial_ents_reserve, spCount);
+        return getAsDerived_();
     }
 
     GB_TPL

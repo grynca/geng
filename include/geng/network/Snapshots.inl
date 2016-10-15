@@ -1,5 +1,5 @@
 #include "Snapshots.h"
-#include "geng/ES/CNetworked.h"
+#include "Components/CNetworked.h"
 
 namespace grynca {
 

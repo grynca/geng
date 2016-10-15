@@ -8,6 +8,8 @@
 #include "Renderables/RectBorderRenderable.h"
 #include "Renderables/SpriteRenderable.h"
 #include "Renderables/TextRenderable.h"
+#include "Renderables/PgonRenderable.h"
+#include "Renderables/PgonTexturedRenderable.h"
 
 namespace grynca {
 
@@ -16,7 +18,9 @@ namespace grynca {
             RectRenderable,
             RectBorderRenderable,
             SpriteRenderable,
-            TextRenderable
+            TextRenderable,
+            PgonRenderable,
+            PgonTexturedRenderable
     > RenderablesTP;
 
     typedef Variant<RenderablesTP> Renderable;

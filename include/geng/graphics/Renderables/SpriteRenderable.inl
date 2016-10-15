@@ -1,8 +1,8 @@
 #include "SpriteRenderable.h"
 #include "assets.h"
 #include "../VertexData/VertexDataPT.h"
-#include "../Shaders/SpriteShader.h"
-#include "../geom_factories.h"
+#include "geng/graphics/Shaders/SimpleTexturedShader.h"
+#include "geng/graphics/VertexData/Factories/geom_factories.h"
 
 namespace grynca {
 
@@ -18,14 +18,14 @@ namespace grynca {
         Window& window = game.template getModule<Window>();
         FactoryRectTF<VertexDataPT::Vertex> fact = window.getVertices().get<VertexDataPT>().addWithFactory<FactoryRectTF<VertexDataPT::Vertex> >();
         fact.add(Vec2(1, 1), Vec2(-0.5f, -0.5f));
-        RenderableBase::init<SpriteShader, VertexDataPT>(fact.getGeom());
+        RenderableBase::init<SimpleTexturedShader, VertexDataPT>(fact.getGeom());
         return *this;
     }
 
     template <typename GameType>
     inline SpriteRenderable& SpriteRenderable::init(GameType& game, Geom& geom) {
         assets_ = &game.template getModule<AssetsManager>();
-        RenderableBase::init<SpriteShader, VertexDataPT>(geom);
+        RenderableBase::init<SimpleTexturedShader, VertexDataPT>(geom);
     }
 
     inline SpriteRenderable& SpriteRenderable::setImageRegion(const TextureRegion& tr) {
@@ -256,7 +256,7 @@ namespace grynca {
     }
 
     inline void SpriteRenderable::setUniforms(const Mat3& mvp, Shader& s) {
-        SpriteShader& ss = (SpriteShader&)s;
+        SimpleTexturedShader& ss = (SimpleTexturedShader&)s;
 
         ss.setUniformMat3(ss.u_transform, mvp);
         ss.setUniform1f(ss.u_z_coord, layer_z_);

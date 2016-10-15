@@ -71,6 +71,19 @@ Entity MyEntity::create(MyGame& game) {
     tr.getTextSetter().setFont(game.assets.fonts_pack_id).setFontSize(45).setText("This is SPARTA!");
     tr.accLocalTransform().setPosition({100, 0});
 
+    PgonRenderable& pr = rs.addRenderable<PgonRenderable>().init(game);
+    Vec2 vertices[6] = {
+            {268, 162}, {309, 107}, {471, 130}, {517, 257}, {445, 324}, {263, 315}
+    };
+    ARect bound(vertices, 6);
+    for (uint32_t i=0; i<6; ++i) {
+        vertices[i] -= bound.getCenter();
+        pr.getGeom().addVertex(vertices[i]);
+    }
+    pr.setLayerId(3);
+    pr.accLocalTransform().setPosition({-200, 200});
+    pr.accLocalTransform().setScale({0.8f, 0.8f});
+
     return ent;
 }
 

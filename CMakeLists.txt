@@ -34,6 +34,7 @@ ENDIF()
 include_directories(include/)
 
 set(GENG_SOURCES
+        include/geng/graphics/graphics_includes.h
         include/geng/graphics/graphics_config.h
         include/geng/graphics/glinclude.h
         include/geng/graphics/Window.h
@@ -44,7 +45,13 @@ set(GENG_SOURCES
         include/geng/graphics/VertexData.inl
         include/geng/graphics/Geom.h
         include/geng/graphics/Geom.inl
-        include/geng/graphics/geom_factories.h
+        include/geng/graphics/VertexData/VertexDataPT.h
+        include/geng/graphics/VertexData/VertexDataP.h
+        include/geng/graphics/VertexData/Factories/geom_factories.h
+        include/geng/graphics/VertexData/Factories/FactoryRectTF.h
+        include/geng/graphics/VertexData/Factories/FactoryRectTF.inl
+        include/geng/graphics/VertexData/Factories/FactoryRectT.h
+        include/geng/graphics/VertexData/Factories/FactoryRectT.inl
         include/geng/graphics/Vertices.h
         include/geng/graphics/Vertices.inl
         include/geng/graphics/Renderer2D.h
@@ -56,12 +63,10 @@ set(GENG_SOURCES
         include/geng/graphics/Shaders.h
         include/geng/graphics/Shaders.inl
         include/geng/graphics/Shaders/CircleShader.h
-        include/geng/graphics/Shaders/RectShader.h
-        include/geng/graphics/Shaders/SpriteShader.h
+        include/geng/graphics/Shaders/SimpleColorShader.h
+        include/geng/graphics/Shaders/SimpleTexturedShader.h
         include/geng/graphics/Shaders/TextShader.h
         include/geng/graphics/Shaders/RectBorderShader.h
-        include/geng/graphics/VertexData/VertexDataPT.h
-        include/geng/graphics/VertexData/VertexDataP.h
         include/geng/graphics/Renderables/RenderableBase.h
         include/geng/graphics/Renderables/RenderableBase.inl
         include/geng/graphics/Renderables/CircleRenderable.h
@@ -75,10 +80,16 @@ set(GENG_SOURCES
         include/geng/graphics/Renderables/TextRenderable.h
         include/geng/graphics/Renderables/TextRenderable.inl
         include/geng/graphics/Renderables/RectBorderRenderable.h
+        include/geng/graphics/Renderables/PgonRenderable.h
+        include/geng/graphics/Renderables/PgonRenderable.inl
+        include/geng/graphics/Renderables/PgonTexturedRenderable.h
+        include/geng/graphics/Renderables/PgonTexturedRenderable.inl
+        include/geng/graphics/Components/CRenderables.h
+        include/geng/graphics/Systems/RenderSystem.h
+        include/geng/graphics/Systems/RenderSystem.inl
+        include/geng/graphics/Systems/CollisionsDebugSystem.h
+        include/geng/graphics/Systems/CollisionsDebugSystem.inl
         include/geng/graphics/DrawSortingKey.h
-        include/geng/ES/RenderSystem.h
-        include/geng/ES/RenderSystem.inl
-        include/geng/graphics/graphics_includes.h
         include/geng/graphics/CoordFrame.h
         include/geng/graphics/ViewPort.h
         include/geng/graphics/ViewPort.cpp
@@ -90,32 +101,29 @@ set(GENG_SOURCES
         include/geng/network/Snapshots.h
         include/geng/network/Snapshots.inl
         include/geng/network/ClientStateBase.h
+        include/geng/network/Components/CNetworked.h
+        include/geng/network/Systems/ServerNetworkSystem.h
+        include/geng/network/Systems/ServerNetworkSystem.inl
+        include/geng/network/Systems/ClientNetworkSystem.h
+        include/geng/network/Systems/ClientNetworkSystem.inl
 
-        include/geng/physics/Speed.h
         include/geng/physics/physics_includes.h
-        include/geng/physics/PhysicsDomain.h
-        include/geng/physics/PhysicsDomain.cpp
+        include/geng/physics/Speed.h
         include/geng/physics/Collidable.h
+        include/geng/physics/Components/CBody.h
+        include/geng/physics/Systems/CollisionSystem.h
+        include/geng/physics/Systems/CollisionSystem.inl
 
-        include/geng/ES/CTransform.h
-        include/geng/ES/CMovable.h
-        include/geng/ES/CRenderables.h
-        include/geng/ES/CBody.h
-        include/geng/ES/GengEntityFlags.h
-        include/geng/ES/GengEntityRoles.h
-        include/geng/ES/GengSystemTypes.h
-        include/geng/ES/GengEntityTypes.h
-        include/geng/ES/GengSystem.h
-        include/geng/ES/GengEntity.h
-        include/geng/ES/MovementSystem.h
-        include/geng/ES/CollisionSystem.h
-        include/geng/ES/CollisionSystem.inl
-        include/geng/ES/ServerNetworkSystem.h
-        include/geng/ES/ServerNetworkSystem.inl
-        include/geng/ES/ClientNetworkSystem.h
-        include/geng/ES/ClientNetworkSystem.inl
-        include/geng/ES/ES_includes.h
-        include/geng/ES/CNetworked.h
+        include/geng/core/core_includes.h
+        include/geng/core/Components/CTransform.h
+        include/geng/core/Components/CMovable.h
+        include/geng/core/GengEntityFlags.h
+        include/geng/core/GengEntityRoles.h
+        include/geng/core/GengEntityTypes.h
+        include/geng/core/GengSystem.h
+        include/geng/core/GengEntity.h
+        include/geng/core/Systems/MovementSystem.h
+        include/geng/core/Systems/TransformSystem.h
 
         include/geng/sdlinclude.h
         include/geng/GameBase.h
@@ -123,10 +131,6 @@ set(GENG_SOURCES
         include/geng/Game.h
         include/geng/Game.inl
         include/geng.h
-
-        include/geng/ES/TransformSystem.h
-        include/geng/ES/CollisionsDebugSystem.h
-        include/geng/ES/CollisionsDebugSystem.inl
         )
 
 set(TEST_SOURCES
