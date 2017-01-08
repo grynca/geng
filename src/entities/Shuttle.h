@@ -3,12 +3,19 @@
 
 class Shuttle : public GengEntityDef<CMovable, CTransform, CRenderables, CBody> {
 public:
-    static void initResources(MyGame& game);
-    static Entity create(MyGame& game);
+    class Resources : public Singleton<Resources> {
+    public:
+        Resources(GameBase& game);
 
-    static void update(Entity& e, MyGame& game);
+        TextureRegion sprite_region;
+        TextureRegion particle_region;
+    };
+
+    static void init(Entity& e, GameBase& game);
+    static void update(Entity& e, GameBase& game);
 private:
-    static TextureRegion sprite_region;
+
 };
 
+#include "Shuttle.inl"
 #endif //SHUTTLE_H

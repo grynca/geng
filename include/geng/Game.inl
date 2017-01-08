@@ -1,47 +1,41 @@
 #include "Game.h"
-#include "geng/graphics/Renderables.h"
 #include "graphics/Window.h"
 #include "graphics/Events.h"
 #include <cassert>
 #include <stdint.h>
 
-#define GAME_TPL template <typename D>
-#define GAME_TYPE Game<D>
-
 namespace grynca {
 
-    GAME_TPL
-    inline GAME_TYPE::Game(const std::string& name, uint32_t width, uint32_t height) {
-        Window& window = getWindow_();
-        window.init(name, width, height);
+    inline Game::Game(const std::string& name, u32 width, u32 height) {
+        Window& window = getWindow();
+        window.init(*this, name, width, height);
         window.getEvents().addHandler(SDL_QUIT, [this](SDL_Event& e) {
             this->quit();
             return false;
         });
-
-        printRenderableSize();
     }
 
-    GAME_TPL
-    inline void GAME_TYPE::updateIter_() {
-        Window& window = getWindow_();
+    inline void Game::updateInner_() {
+        Window& window = getWindow();
         window.getEvents().update();
-        GameBase<D>::updateIter_();
+        GameBase::updateInner_();
     }
-    GAME_TPL
-    inline void GAME_TYPE::renderIter_(float dt) {
-        Window& window = getWindow_();
+
+    inline void Game::tickInner_() {
+        GameBase::tickInner_();
+#ifdef PROFILE_BUILD
+        std::cout << getWindow().getVertices().getDebugString(1) << std::endl;
+#endif
+    }
+
+    inline void Game::renderInner_(f32 dt) {
+        Window& window = getWindow();
         window.clear();
         window.getViewPort().updateTransforms();
-        GameBase<D>::renderIter_(dt);
-        window.render();
+        GameBase::renderInner_(dt);
     }
 
-    GAME_TPL
-    inline Window& GAME_TYPE::getWindow_() {
+    inline Window& Game::getWindow() {
         return this->template getModule<Window>();
     };
 }
-
-#undef GAME_TPL
-#undef GAME_TYPE

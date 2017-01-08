@@ -1,60 +1,58 @@
 #include "CircleRenderable.h"
-#include "../Window.h"
-#include "../Vertices.h"
-#include "../VertexData/VertexDataP.h"
 #include "../Shaders/CircleShader.h"
-
+#include "../VertexData/VertexDataP.h"
 
 namespace grynca {
 
-    inline CircleRenderable::CircleRenderable()
-     : inner_radius_(0.0f), outer_radius_(0.0f)
-    {
+    inline VertexData::ItemRef CircleRenderable::createNewGeom(Window& w, GeomState::UsageHint usage_hint) {
+        // static
+        VertexDataP& verts = w.getVertices().get<VertexDataP>();
+        if (usage_hint == GeomState::uhStatic) {
+            return verts.getSharedQuadCenter().get();
+        }
+        // else
+        FactoryRectTF<VertexDataP::Vertex> fact = verts.addWithFactory<FactoryRectTF<VertexDataP::Vertex> >(GeomState::stNone, usage_hint);
+        fact.add(Vec2(1, 1), Vec2(-0.5f, -0.5f));
+        return fact.getGeom();
     }
 
-    template <typename GameType>
-    inline CircleRenderable& CircleRenderable::init(GameType& game, float radius, float inner_radius) {
-        inner_radius_ = inner_radius;
-        outer_radius_ = radius;
-        Window& window = game.template getModule<Window>();
-        Geom& geom = window.getVertices().get<VertexDataP>().getUnitQuadGeom();
-        RenderableBase::init<CircleShader, VertexDataP>(geom);
-        return *this;
+    inline CircleRenderable::CircleRenderable(const Renderer2D::ItemRef& rt)
+      : Renderable(rt)
+    {}
+
+    inline f32 CircleRenderable::getInnerRadius()const {
+        return getRenderTask()->getUniformsAs<CircleShader::Uniforms>().r_range.getX();
     }
 
-    inline float CircleRenderable::getInnerRadius()const {
-        return inner_radius_;
-    }
-
-    inline float CircleRenderable::getOuterRadius()const {
-        return outer_radius_;
+    inline f32 CircleRenderable::getOuterRadius()const {
+        return getRenderTask()->getUniformsAs<CircleShader::Uniforms>().r_range.getY();
     }
 
     inline Colorf CircleRenderable::getColor()const {
-        return color_;
+        return getRenderTask()->getUniformsAs<CircleShader::Uniforms>().color;
+    }
+
+    inline const Geom& CircleRenderable::getGeom()const {
+        return getWindow().getVertices().get<VertexDataP>().getSharedQuadCenter().get();
     }
 
     inline CircleRenderable& CircleRenderable::setColor(const Colorf& c) {
-        color_ = c;
+        accRenderTask()->getUniformsAs<CircleShader::Uniforms>().color = c;
         return *this;
     }
 
-    inline CircleRenderable& CircleRenderable::setInnerRadius(float inner_r) {
-        inner_radius_ = inner_r;
+    inline CircleRenderable& CircleRenderable::setInnerRadius(f32 inner_r) {
+        accRenderTask()->getUniformsAs<CircleShader::Uniforms>().r_range.setX(inner_r);
         return *this;
     }
 
-    inline CircleRenderable& CircleRenderable::setOuterRadius(float outer_r) {
-        outer_radius_ = outer_r;
+    inline CircleRenderable& CircleRenderable::setOuterRadius(f32 outer_r) {
+        accRenderTask()->getUniformsAs<CircleShader::Uniforms>().r_range.setY(outer_r);
         return *this;
     }
 
-    inline void CircleRenderable::setUniforms(const Mat3& mvp, Shader& s) {
-        CircleShader& cs = (CircleShader&)s;
-
-        cs.setUniformMat3(cs.u_transform, mvp);
-        cs.setUniform1f(cs.u_z_coord, layer_z_);
-        cs.setUniform2f(cs.u_r_range, {inner_radius_, outer_radius_} );
-        cs.setUniform4fv(cs.u_color, color_.c_, 1);
+    inline CircleRenderable& CircleRenderable::setPosition(const Vec2& pos) {
+        accRenderTask()->accLocalTransform().setPosition(pos);
+        return *this;
     }
 }

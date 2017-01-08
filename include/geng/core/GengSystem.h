@@ -1,21 +1,29 @@
 #ifndef GAMESYSTEM_H
 #define GAMESYSTEM_H
 
-#include "../GameBase.h"
+#include "../Game.h"
 
 namespace grynca {
 
-    template <typename GameType>
-    class GengSystem : public SystemBase {
-        using GameBaseType = GameBase<typename GameType::DerivedType>;
+    class GengSystem : public System {
     public:
-        GameType& getGame() { return GameType::get(); }
-
-        GameBaseType& getGameBase() {
-            return *(GameBaseType*)GameType::getptr();
+        GameBase& getGameBase() {
+            return GameBase::get();
+        };
+        Game& getGame() {
+            return Game::get();
         };
     };
 
+    class GengFlaggedSystem : public FlaggedSystem {
+    public:
+        GameBase& getGameBase() {
+            return GameBase::get();
+        };
+        Game& getGame() {
+            return Game::get();
+        };
+    };
 }
 
 #endif //GAMESYSTEM_H

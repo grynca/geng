@@ -1,62 +1,38 @@
 #ifndef TEXTRENDERABLE_H
 #define TEXTRENDERABLE_H
 
-#include "RenderableBase.h"
+#include "Renderable.h"
+#include "assets/Image.h"
 
 namespace grynca {
 
     // fw
-    class Window;
-    class AssetsManager;
+    class TextShader;
+    class VertexDataPT;
+    class TextState;
 
     // Text position sets its left-bottom corner
-    class TextRenderable : public RenderableBase {
+    class TextRenderable : public Renderable {
     public:
-        class Setter {
-        public:
-            ~Setter();
-            Setter& setFont(Index font_pack_id);
-            Setter& setFontSize(uint32_t font_size);
-            Setter& setText(const std::string& t);
+        typedef TextShader ShaderType;
+        typedef VertexDataPT VertexDataType;
 
-        private:
-            friend class TextRenderable;
-            Setter(TextRenderable& tr);
+        static VertexData::ItemRef createNewGeom(Window& w, GeomState::UsageHint usage_hint = GeomState::uhDynamic);
 
-            TextRenderable* tr_;
-        };
+        TextRenderable(const Renderer2D::ItemRef& rt) : Renderable(rt) {}
 
-    public:
-        TextRenderable();
+        const TextState& getTextState()const;
+        Colorf getColor()const;
+        u32 getTextureUnit()const;
 
-        template <typename GameType>
-        TextRenderable& init(GameType& game);
-        template <typename GameType>
-        TextRenderable& init(GameType& game, Geom& geom);       // reuses existing geom
+        Colorf& accColor();
+        TextState& accTextState();
 
-        AssetsManager& getAssets()const;
-        const std::string& getText()const;
-        uint32_t getFontSize()const;
-        Index getFontPackId()const;
-        void getColor(float* c)const;
-        uint32_t getTextureUnit()const;
+        TextRenderable& setColor(const Colorf& clr);
+        TextRenderable& setTextureUnit(u32 tid);
+        TextRenderable& setPosition(const Vec2& pos);
 
-        TextRenderable& setColor(float r, float g, float b, float a = 1.0f);
-        TextRenderable& setTextureUnit(uint32_t tid);
-        Setter getTextSetter();     // changes geom data
-        Vec2 getBoundSize();
-
-        virtual void setUniforms(const Mat3& mvp, Shader& s) override;
-    private:
-        friend class Setter;
-        TextRenderable& updateTextGeom_();
-
-        AssetsManager* assets_;
-        uint32_t texture_unit_;
-        Index font_pack_id_;
-        uint32_t font_size_;
-        std::string text_;
-        float color_[4];
+        Vec2 calcBoundSize();
     };
 
 }

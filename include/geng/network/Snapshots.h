@@ -24,7 +24,7 @@ namespace grynca {
 
         bool isAcked(const Connection& conn);
 
-        fast_vector<uint16_t> seq_ids;     // seq ids of packets containing snapshot
+        fast_vector<u16> seq_ids;     // seq ids of packets containing snapshot
         fast_vector<PackedEntityState> ent_states;
     };
 
@@ -33,7 +33,7 @@ namespace grynca {
 
         bool isAcked(const Connection& conn);
 
-        uint16_t seq_id;    // seq id of packet containing snapshot
+        u16 seq_id;    // seq id of packet containing snapshot
         SerializedBuffer state;
     };
 

@@ -2,7 +2,7 @@
 #define VERTEXDATAP_H
 
 #include "maths/Vec2.h"
-#include "../VertexData.h"
+#include "VertexData.h"
 
 namespace grynca {
 
@@ -14,23 +14,37 @@ namespace grynca {
         };
 
         VertexDataP() {
-            setVertexAttribs<Vertex>({{2, GL_FLOAT, false, 0}});
+            setVertexLayout<Vertex>({{Shader::getVertexAttribId("v_pos"), 2, GL_FLOAT, false, sizeof(Vertex), offsetof(Vertex, pos)}});
 
             // create shared unit quad geom
-            Geom& geom = addItem(GL_TRIANGLE_FAN);
-            geom.addVertex(VertexDataP::Vertex{{ -0.5, -0.5}});
-            geom.addVertex(VertexDataP::Vertex{{  0.5, -0.5}});
-            geom.addVertex(VertexDataP::Vertex{{  0.5,  0.5}});
-            geom.addVertex(VertexDataP::Vertex{{ -0.5,  0.5}});
-            unit_quad_geom_ref_ = geom;
+            VertexData::ItemRef geom = addItem(GL_TRIANGLE_FAN, GeomState::stNone, GeomState::uhStatic);
+            geom->addVertex(VertexDataP::Vertex{{ -0.5, -0.5}});
+            geom->addVertex(VertexDataP::Vertex{{  0.5, -0.5}});
+            geom->addVertex(VertexDataP::Vertex{{  0.5,  0.5}});
+            geom->addVertex(VertexDataP::Vertex{{ -0.5,  0.5}});
+            shared_geom_center_ = geom;
+
+            geom = addItem(GL_TRIANGLE_FAN, GeomState::stNone, GeomState::uhStatic);
+            geom->addVertex(VertexDataP::Vertex{{ 0, 0}});
+            geom->addVertex(VertexDataP::Vertex{{ 1, 0}});
+            geom->addVertex(VertexDataP::Vertex{{ 1, 1}});
+            geom->addVertex(VertexDataP::Vertex{{ 0, 1}});
+            shared_geom_lt_ = geom;
         }
 
-        Geom& getUnitQuadGeom() {
-            return unit_quad_geom_ref_.get();
+        VertexData::ItemRef& getSharedQuadCenter() {
+            return shared_geom_center_;
+        }
+
+        VertexData::ItemRef& getSharedQuadLT() {
+            return shared_geom_lt_;
         }
 
     private:
-        VertexData::ItemRef unit_quad_geom_ref_;
+        virtual std::string getDebugName_() override { return "VertexDataP"; }
+
+        VertexData::ItemRef shared_geom_center_;
+        VertexData::ItemRef shared_geom_lt_;
     };
 }
 

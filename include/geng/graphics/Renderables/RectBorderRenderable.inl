@@ -1,57 +1,46 @@
 #include "RectBorderRenderable.h"
 #include "../Shaders/RectBorderShader.h"
-#include "assets/Image.h"
 
 namespace grynca {
 
-    inline RectBorderRenderable::RectBorderRenderable()
-     : borders_(0.5f, 0.5f), offset_(-0.5f, -0.5f)
-    {
+    inline VertexData::ItemRef RectBorderRenderable::createNewGeom(Window& w, GeomState::UsageHint usage_hint) {
+        // static
+        return RectRenderable::createNewGeom(w, usage_hint);
     }
 
-    template <typename GameType>
-    inline RectBorderRenderable& RectBorderRenderable::init(GameType& game) {
-        RectRenderable::init(game);
-        setShader<RectBorderShader>();
-        offset_ = RectRenderable::getGeomNormOffset();
+    inline Vec2 RectBorderRenderable::getBorders()const {
+        Vec2 size = getSize();
+        Vec2 borders = getRenderTask()->getUniformsAs<RectBorderShader::Uniforms>().borders;
+        return borders*size;
+    }
+
+    inline Vec2 RectBorderRenderable::getGeomNormOffset() {
+        return getRenderTask()->getUniformsAs<RectBorderShader::Uniforms>().offset;
+    }
+
+    inline RectBorderRenderable& RectBorderRenderable::setColor(const Colorf& clr) {
+        accRenderTask()->getUniformsAs<RectBorderShader::Uniforms>().color = clr;
         return *this;
     }
 
     inline RectBorderRenderable& RectBorderRenderable::setSize(const Vec2& size) {
         Vec2 borders_px = getBorders();
         RectRenderable::setSize(size);
-        setBorders(borders_px);
+        RectBorderShader::Uniforms& unis = accRenderTask()->getUniformsAs<RectBorderShader::Uniforms>();
+        unis.borders = borders_px/size;
         return *this;
-    }
-
-    inline RectBorderRenderable& RectBorderRenderable::setColor(const Colorf& clr) {
-        return (RectBorderRenderable&)RectRenderable::setColor(clr);
     }
 
     inline RectBorderRenderable& RectBorderRenderable::setGeomNormOffset(const Vec2& offset) {
-        offset_ = offset;
-        return (RectBorderRenderable&)RectRenderable::setGeomNormOffset(offset);
-    }
-
-    inline RectBorderRenderable& RectBorderRenderable::setBorders(Vec2 bs) {
-        Vec2 size = getSize();
-        borders_ = bs/size;
+        RectRenderable::setGeomNormOffset(offset);
+        accRenderTask()->getUniformsAs<RectBorderShader::Uniforms>().offset = offset;
         return *this;
     }
 
-    inline Vec2 RectBorderRenderable::getBorders() {
+    inline RectBorderRenderable& RectBorderRenderable::setBorders(Vec2 borders_px) {
         Vec2 size = getSize();
-        return borders_*size;
+        RectBorderShader::Uniforms& unis = accRenderTask()->getUniformsAs<RectBorderShader::Uniforms>();
+        unis.borders = borders_px/size;
+        return *this;
     }
-
-    inline void RectBorderRenderable::setUniforms(const Mat3& mvp, Shader& s) {
-        RectBorderShader& rbs = (RectBorderShader&)s;
-
-        rbs.setUniformMat3(rbs.u_transform, mvp);
-        rbs.setUniform1f(rbs.u_z_coord, layer_z_);
-        rbs.setUniform4fv(rbs.u_color, color_.c_, 1);
-        rbs.setUniform2f(rbs.u_borders, borders_);
-        rbs.setUniform2f(rbs.u_offset, offset_);
-    }
-
 }

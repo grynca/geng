@@ -9,7 +9,7 @@ namespace grynca {
     class CMovable {
     public:
         static RolesMask componentRoles() {
-            return {GengEntityRoles::erMovable};
+            return GERoles::erMovableMask();
         }
 
         Speed& getSpeed() {

@@ -1,32 +1,39 @@
-#include <geng/graphics/VertexData/VertexDataPT.h>
 #include "Vertices.h"
-#include "VertexData.h"
-#include "Window.h"
+#include "VertexData/VertexData.h"
 #include "types/Type.h"
 #include "types/Index.h"
 
 namespace grynca {
 
     inline Vertices::Vertices(Window& w)
-     : window_(&w), bound_id_(InvalidId())
-    {}
-
-
-    inline void Vertices::syncWithGPU() {
-        for (uint32_t i=0; i<getSize(); ++i) {
-            VertexData* vd = getById(i);
-            if (vd)
-                vd->syncWithGPU();
-        }
+     : window_(&w)
+    {
     }
 
-    inline VertexData* Vertices::getBoundVertexData() {
-        if (bound_id_ == InvalidId())
-            return NULL;
-        return getById(bound_id_);
+
+    inline void Vertices::update(f32 dt) {
+        for (u32 i=0; i<getSize(); ++i) {
+            VertexData* vd = getById(i);
+            if (vd) {
+                vd->update(dt);
+            }
+        }
     }
 
     inline Window& Vertices::getWindow() {
         return *window_;
+    }
+
+    inline std::string Vertices::getDebugString(u32 indent_cnt) {
+        std::string indent = string_utils::spaces(indent_cnt);
+        std::stringstream ss;
+        for (u32 i=0; i<getSize(); ++i) {
+            VertexData* vd = getById(i);
+            if (vd) {
+                ss << indent << vd->getDebugName_() << ":" << std::endl;
+                ss << vd->getDebugString(indent_cnt+1);
+            }
+        }
+        return ss.str();
     }
 }

@@ -2,7 +2,7 @@
 #define CLIENTNETWORKSYSTEM_H
 
 #include "../../core/GengSystem.h"
-#include "../../core/GengEntityRoles.h"
+#include "geng/GERoles.h"
 #include "../ClientStateBase.h"
 #include "../Snapshots.h"
 #include "ggnet.h"
@@ -19,24 +19,20 @@ namespace grynca {
      * updatuju jen vzdycky nejnovejsi
     */
 
-    template <typename GameType>
-    class ClientNetworkSystem : public GengSystem<GameType> {
+    class ClientNetworkSystem : public GengSystem {
     public:
         template <typename ClientStateType>     // must be derived from ClientStateBase & have default constructor
         void init();
 
-        virtual FlagsMask getTrackedFlags() override{
-            return {};
-        }
-        virtual RolesMask getNeededRoles() override{
-            return {GengEntityRoles::erNetworkedCl};
+        virtual RolesMask NeededRoles() override{
+            return GERoles::erNetworkedClMask();
         }
 
-        virtual void preUpdate() override;
-        virtual void updateEntity(Entity& e, float dt) override;
-        virtual void postUpdate() override;
+        virtual void preUpdate(f32 dt) override;
+        virtual void updateEntity(Entity& e, f32 dt) override;
+        virtual void postUpdate(f32 dt) override;
 
-        ClientStateBase<GameType>& getClientState() { return *client_state_; }
+        ClientStateBase& getClientState() { return *client_state_; }
     private:
         typedef std::unordered_map<EntityIndex /*server ent_id*/, EntityIndex /*client ent_id*/, EntityIndex::Hasher> EntityIdsMap;
 
@@ -45,7 +41,7 @@ namespace grynca {
 
         Client* client_;
 
-        ClientStateBase<GameType>* client_state_;
+        ClientStateBase* client_state_;
         Fields client_state_fields_;
         ClientStateSnapshots client_state_snapshots_;
         DeltaSerializer delta_serializer_;

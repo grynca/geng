@@ -28,6 +28,7 @@ namespace grynca {
         void updateTransforms();
         const Mat3& getCameraTransform();
         const Mat3& getViewTransform();
+        const Mat3& getScreenTransform();
         const Mat3& getProjectionTransform();
 
         //Circle& getBoundingCircle();      //TODO:
@@ -44,8 +45,9 @@ namespace grynca {
 
         Mat3 camera_transform_;
         Mat3 view_transform_;
+        Mat3 screen_transform_;
     };
 
 }
-
+#include "ViewPort.inl"
 #endif //VIEWPORT_H

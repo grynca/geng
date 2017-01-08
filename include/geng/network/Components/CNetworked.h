@@ -1,7 +1,7 @@
 #ifndef CNETWORKED_H
 #define CNETWORKED_H
 
-#include "../../core/GengEntityRoles.h"
+#include "geng/GERoles.h"
 #include "../../core/GengEntity.h"
 #include "ggnet/Message.h"
 
@@ -17,7 +17,7 @@ namespace grynca {
     class CNetworked {
     public:
         static RolesMask componentRoles() {
-            return {GengEntityRoles::erNetworkedSv};
+            return GERoles::erNetworkedSvMask();
         }
 
         virtual void getFields(Fields& fields_out)const {
@@ -29,7 +29,7 @@ namespace grynca {
     class CNetworkedClient : public CNetworked {
     public:
         static RolesMask componentRoles() {
-            return {GengEntityRoles::erNetworkedCl};
+            return GERoles::erNetworkedClMask();
         }
 
         fast_vector<Message> update_messages;

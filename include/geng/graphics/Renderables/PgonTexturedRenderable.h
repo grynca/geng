@@ -1,29 +1,26 @@
 #ifndef PGONTEXTUREDRENDERABLE_H
 #define PGONTEXTUREDRENDERABLE_H
 
-#include "RenderableBase.h"
+#include "Renderable.h"
 
 namespace grynca {
 
-    // TODO: SpriteRenderable bude dedit z tohodle
-    //       otestovat tohle
-    //       zamyslet se nad nejakym toolem kterym budu delat UVcka z texture atlasu ( nebo si udelat vlastni )
-    class PgonTexturedRenderable : public RenderableBase {
+    // fw
+    class SimpleTexturedShader;
+    class VertexDataPT;
+
+    class PgonTexturedRenderable : public Renderable {
     public:
-        PgonTexturedRenderable();
+        typedef SimpleTexturedShader ShaderType;
+        typedef VertexDataPT VertexDataType;
 
-        template <typename GameType>
-        PgonTexturedRenderable& init(GameType& game);                // with new empty geom
+        static VertexData::ItemRef createNewGeom(Window& w, GeomState::UsageHint usage_hint = GeomState::uhStatic);
 
-        template <typename GameType>
-        PgonTexturedRenderable& init(GameType& game, Geom& geom);        // with shared geom
+        PgonTexturedRenderable(const Renderer2D::ItemRef& rt) : Renderable(rt) {}
 
-        PgonTexturedRenderable& setTextureUnit(uint32_t tid);
-        uint32_t getTextureUnit()const;
-
-        virtual void setUniforms(const Mat3& mvp, Shader& s);
-    protected:
-        uint32_t texture_unit_;
+        PgonTexturedRenderable& setTextureUnit(u32 tid);
+        PgonTexturedRenderable& setPosition(const Vec2& pos);       // changes local transform scale
+        u32 getTextureUnit()const;
     };
 
 };

@@ -2,7 +2,7 @@
 #define FACTORYRECTTF_H
 
 #include "maths/Vec2.h"
-#include "geng/graphics/Geom.h"
+#include "../Geom.h"
 
 namespace grynca {
 
@@ -10,20 +10,19 @@ namespace grynca {
     template <typename VertexType>
     class FactoryRectTF {
     public:
-
         // returns start vertex id of newly added rect
-        uint32_t add();
-        uint32_t add(const Vec2& size, const Vec2& offset);
-        uint32_t add(const Vec2& size);
+        u32 add();
+        u32 add(const Vec2& size, const Vec2& offset);
+        u32 add(const Vec2& size);
 
-        Vec2 getLeftTop(uint32_t start)const;
-        Vec2 getRightBot(uint32_t start)const;
-        Vec2 getSize(uint32_t start)const;
-        Vec2 getOffset(uint32_t start)const;
+        Vec2 getLeftTop(u32 start)const;
+        Vec2 getRightBot(u32 start)const;
+        Vec2 getSize(u32 start)const;
+        Vec2 getOffset(u32 start)const;
 
-        void setSize(uint32_t start, const Vec2& size);
-        void setOffset(uint32_t start, const Vec2& offset);
-        void setTC(uint32_t start, const Vec2& left_top, const Vec2& right_bot);
+        void setSize(u32 start, const Vec2& size);
+        void setOffset(u32 start, const Vec2& offset);
+        void setTC(u32 start, const Vec2& left_top, const Vec2& right_bot);
 
         Geom& getGeom()const;
     private:
@@ -31,7 +30,8 @@ namespace grynca {
         friend class VertexData;
 
         FactoryRectTF(Geom& g);
-        FactoryRectTF(VertexData& vertex_data);
+        FactoryRectTF(VertexData& vertex_data, GeomState::StateType state_type, GeomState::UsageHint buff_hint);
+
 
         VertexData::ItemRef geom_ref_;
     };

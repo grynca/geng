@@ -5,19 +5,22 @@
 
 namespace grynca {
 
-    // fw
-    struct Color;
-
     class RectRenderable : public PgonRenderable {
     public:
-        template <typename GameType>
-        RectRenderable& init(GameType& game);       // creates rect geom (size[1,1], offset[-0.5, -0.5])
-        template <typename GameType>
-        RectRenderable& init(GameType& game, Geom& geom);       // reuses existing geom
+        typedef typename PgonRenderable::ShaderType ShaderType;
+        typedef typename PgonRenderable::VertexDataType VertexDataType;
+
+        // creates rect geom (size[1,1], offset[-0.5, -0.5])
+        static VertexData::ItemRef createNewGeom(Window& w, GeomState::UsageHint usage_hint = GeomState::uhStatic);
+
+        RectRenderable(const Renderer2D::ItemRef& rt) : PgonRenderable(rt) {}
 
         Vec2 getSize()const;
         Vec2 getGeomNormOffset()const;
 
+        Vec2& accSize();
+
+        RectRenderable& setColor(const Colorf& clr);
         RectRenderable& setSize(const Vec2& size);      // changes local transform scale
         RectRenderable& setGeomNormOffset(const Vec2& offset);      // normalized to size
     };

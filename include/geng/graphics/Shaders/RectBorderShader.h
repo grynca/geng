@@ -7,12 +7,30 @@ namespace grynca {
 
     class RectBorderShader : public Shader {
     public:
-        RectBorderShader() : Shader("RectBorderShader", vsSrc(), fsSrc()) {
+        struct Uniforms : public UniformsBase {
+            Colorf color;
+            Vec2 borders;
+            Vec2 offset;
+        };
+    public:
+        RectBorderShader()
+         : Shader("RectBorderShader", vsSrc(), fsSrc(), sizeof(Uniforms))
+        {
             u_z_coord = glGetUniformLocation(gl_handle_, "z_coord");
             u_color = glGetUniformLocation(gl_handle_, "color");
             u_transform = glGetUniformLocation(gl_handle_, "transform");
             u_borders = glGetUniformLocation(gl_handle_, "borders");
             u_offset = glGetUniformLocation(gl_handle_, "offset");
+        }
+
+        virtual void setUniforms(u8* uniforms) override {
+            Uniforms* us = (Uniforms*)uniforms;
+
+            setUniformMat3(u_transform, us->transform);
+            setUniform1f(u_z_coord, us->z_coord);
+            setUniform4fv(u_color, us->color.c_, 1);
+            setUniform2f(u_borders, us->borders);
+            setUniform2f(u_offset, us->offset);
         }
 
         // uniform locations
@@ -34,7 +52,7 @@ namespace grynca {
             // outputs
             varying vec2 pos_norm;      // from 0..1
 
-            // uniforms
+            // uniforms_
             uniform mat3 transform;
             uniform float z_coord;
             uniform vec2 offset;

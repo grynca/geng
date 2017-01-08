@@ -2,9 +2,6 @@
 #include <chrono>
 #include <thread>
 
-#define GB_TPL template <typename D>
-#define GB_TYPE GameBase<D>
-
 #ifdef WEB
 #include <emscripten/emscripten.h>
     static void dispatch_main(void* fp) {
@@ -15,16 +12,14 @@
 
 namespace grynca {
 
-    GB_TPL
-    inline Timer& GB_TYPE::getTimer() {
+    inline Timer& GameBase::getTimer() {
         return timer_;
     }
-
-    GB_TPL
+    
     template <typename T>
-    inline T& GB_TYPE::getModule() {
+    inline T& GameBase::getModule() {
         // lazy get
-        uint32_t tid = Type<T, GameBase>::getInternalTypeId();
+        u32 tid = Type<T, GameBase>::getInternalTypeId();
         if (tid >= modules_.size())
             modules_.resize(tid+1, CommonPtr());
         if (!modules_[tid].template getAs<T>())
@@ -34,82 +29,69 @@ namespace grynca {
         return *(ptr.getAs<T>());
     }
 
-    GB_TPL
     template <typename T>
-    inline bool GB_TYPE::containsModule() {
-        uint32_t tid = Type<T, GameBase>::getInternalTypeId();
+    inline bool GameBase::containsModule() {
+        u32 tid = Type<T, GameBase>::getInternalTypeId();
         if (tid >= modules_.size())
             return false;
         CommonPtr& ptr = modules_[tid];
         return ptr.getAs<T>() != NULL;
     }
 
-    GB_TPL
-    inline uint32_t GB_TYPE::getFPS()const {
+    inline u32 GameBase::getFPS()const {
         return fps_;
     }
 
-    GB_TPL
-    inline uint32_t GB_TYPE::getUPS()const {
+    inline u32 GameBase::getUPS()const {
         return ups_;
     }
 
-    GB_TPL
-    inline float GB_TYPE::getTargetTicklen()const {
+    inline f32 GameBase::getTargetTicklen()const {
         return target_ticklen_;
     }
 
-    GB_TPL
-    inline void GB_TYPE::setUPS(float ups) {
+    inline void GameBase::setUPS(f32 ups) {
         target_ups_ = ups;
         target_ticklen_ = 1.0f/ups;
     };
 
-    GB_TPL
-    inline float GB_TYPE::getLag() {
+    inline f32 GameBase::getLag() {
         return lag_;
     }
-
-
-    GB_TPL
-    inline GB_TYPE::GameBase()
+    
+    inline GameBase::GameBase()
      :  quit_(false), fps_(0), ups_(0), target_ups_(60), target_ticklen_(1.0f/60),
         seconds_timer_(0.0f), update_timer_(0.0f), frame_timer_(0.0f),
         frames_(0), updates_(0)
     {
     }
 
-    GB_TPL
     template <typename EntityTypes>
-    D& GB_TYPE::initEM(uint32_t initial_ents_reserve) {
-        entity_manager_.init<EntityTypes>(initial_ents_reserve, spCount);
-        return getAsDerived_();
+    void GameBase::initEM(u32 initial_ents_reserve) {
+        entity_manager_.init<EntityTypes>(initial_ents_reserve);
+        EntityTypes::template callOnTypes<SetTypeIds>();
     }
 
-    GB_TPL
-    inline GB_TYPE::~GameBase() {
+    inline GameBase::~GameBase() {
         for (size_t i=0; i<modules_.size(); ++i) {
             if (!modules_[i].isNull())
                 modules_[i].destroy();
         }
     };
 
-    GB_TPL
     template <typename SystemType>
-    inline SystemType& GB_TYPE::addUpdateSystem() {
+    inline SystemType& GameBase::addUpdateSystem() {
         return entity_manager_.template addSystem<SystemType>(spUpdate);
     };
 
-    GB_TPL
     template <typename SystemType>
-    inline SystemType& GB_TYPE::addRenderSystem() {
+    inline SystemType& GameBase::addRenderSystem() {
         return entity_manager_.template addSystem<SystemType>(spRender);
     };
 
-    GB_TPL
     template <typename SystemType>
-    SystemType* GB_TYPE::findUpdateSystem() {
-        for (uint32_t i=0; i<entity_manager_.getSystemsPackSize(spUpdate); ++i) {
+    SystemType* GameBase::findUpdateSystem() {
+        for (u32 i=0; i<entity_manager_.getSystemsPipelineSize(spUpdate); ++i) {
             SystemType* s = dynamic_cast<SystemType*>(entity_manager_.getSystem(spUpdate, i));
             if (s)
                 return s;
@@ -117,10 +99,9 @@ namespace grynca {
         return NULL;
     }
 
-    GB_TPL
     template <typename SystemType>
-    SystemType* GB_TYPE::findRenderSystem() {
-        for (uint32_t i=0; i<entity_manager_.getSystemsPackSize(spRender); ++i) {
+    SystemType* GameBase::findRenderSystem() {
+        for (u32 i=0; i<entity_manager_.getSystemsPipelineSize(spRender); ++i) {
             SystemType* s = dynamic_cast<SystemType*>(entity_manager_.getSystem(spRender, i));
             if (s)
                 return s;
@@ -128,8 +109,7 @@ namespace grynca {
         return NULL;
     }
 
-    GB_TPL
-    inline void GB_TYPE::start() {
+    inline void GameBase::start() {
         init();
         seconds_timer_ = update_timer_ = frame_timer_ = lag_ = frames_ = updates_ = 0;
         timer_.reset();
@@ -141,27 +121,20 @@ namespace grynca {
                 return;
             }
 #endif
-            float now = timer_.getElapsed();
-            float dt_update = now - update_timer_;
+            f32 now = timer_.getElapsed();
+            f32 dt_update = now - update_timer_;
             while (dt_update > target_ticklen_) {
-                getAsDerived_().updateIter_();
+                updateInner_();
                 now = timer_.getElapsed();
                 dt_update = now - update_timer_;
             }
 
             lag_ = dt_update*target_ups_;
-            float dt_frame = now - frame_timer_;
+            f32 dt_frame = now - frame_timer_;
 
-            getAsDerived_().renderIter_(dt_frame);
+            renderInner_(dt_frame);
             if (now - seconds_timer_ > 1.0f) {
-                seconds_timer_ += 1.0f;
-                fps_ = frames_;
-                ups_ = updates_;
-                frames_ = updates_ = 0;
-                tick();
-#ifdef PROFILE_BUILD
-                std::cout << "lag: " << lag_ << ", ups: " << ups_ << ", fps: " << fps_ << std::endl;
-#endif
+                tickInner_();
             }
 
         };
@@ -177,48 +150,65 @@ namespace grynca {
 #endif
     };
 
-    GB_TPL
-    inline void GB_TYPE::quit() {
+    inline void GameBase::quit() {
         quit_ = true;
     };
 
-    GB_TPL
-    inline Entity GB_TYPE::createEntity(uint16_t ent_type_id) {
-        return getEntitiesManager().createEntity(ent_type_id);
+    template <typename EntType>
+    inline Entity GameBase::createEntity(const EntityFunc& init_f) {
+        Entity e = getEntitiesManager().newEntity(EntType::typeId());
+        init_f(e, *this);
+        e.create();
+        return e;
     }
 
-    GB_TPL
-    inline EntityManager& GB_TYPE::getEntitiesManager() {
+    inline void GameBase::udpateEntity(EntityIndex id, const EntityFunc& update_f) {
+        Entity e = getEntity(id);
+        update_f(e, *this);
+    }
+
+    inline void GameBase::udpateEntitySafe(EntityIndex id, const EntityFunc& update_f) {
+        Entity e = getEntitiesManager().tryGetEntity(id);
+        if (e.isValid())
+            update_f(e, *this);
+    }
+
+    inline EntityManager& GameBase::getEntitiesManager() {
         return entity_manager_;
     };
 
-    GB_TPL
-    inline Entity GB_TYPE::getEntity(EntityIndex ent_id) {
+    inline Entity GameBase::getEntity(EntityIndex ent_id) {
         return entity_manager_.getEntity(ent_id);
     };
 
-    GB_TPL
-    inline D& GB_TYPE::getAsDerived_() {
-        return *(D*)this;
-    }
-
-    GB_TPL
-    inline void GB_TYPE::updateIter_() {
+    inline void GameBase::updateInner_() {
         update();
-        entity_manager_.updateSystemsPack(spUpdate, target_ticklen_);
+        entity_manager_.updateSystemsPipeline(spUpdate, target_ticklen_);
 
         updates_++;
         update_timer_ += target_ticklen_;
     };
 
-    GB_TPL
-    inline void GB_TYPE::renderIter_(float dt) {
+    inline void GameBase::tickInner_() {
+        seconds_timer_ += 1.0f;
+        fps_ = frames_;
+        ups_ = updates_;
+        frames_ = updates_ = 0;
+        tick();
+#ifdef PROFILE_BUILD
+        std::cout << "lag: " << lag_ << ", ups: " << ups_ << ", fps: " << fps_ << std::endl;
+#endif
+    }
+    
+    inline void GameBase::renderInner_(f32 dt) {
         render();
-        entity_manager_.updateSystemsPack(spRender, dt);
+        entity_manager_.updateSystemsPipeline(spRender, dt);
         frames_++;
         frame_timer_ += dt;
     };
-}
 
-#undef GB_TPL
-#undef GB_TYPE
+    template <typename TP, typename T>
+    inline void GameBase::SetTypeIds::f() {
+        T::typeId() = u32(TP::template pos<T>());
+    }
+}

@@ -19,7 +19,7 @@ namespace grynca {
         friend class Shader;
 
         Window* window_;
-        uint32_t bound_id_;
+        u32 bound_id_;
     };
 }
 

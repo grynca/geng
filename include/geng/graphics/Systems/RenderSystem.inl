@@ -1,80 +1,51 @@
 #include "RenderSystem.h"
 #include "../Components/CRenderables.h"
 #include "../../core/Components/CTransform.h"
-#include "../Renderables.h"
 
 namespace grynca {
-
-    template <typename GameType>
-    inline void RenderSystem<GameType>::init() {
+    
+    inline void RenderSystem::init() {
         window_ = &this->getGame().template getModule<Window>();
     }
 
-    template <typename GameType>
-    inline void RenderSystem<GameType>::preUpdate() {
-        window_->getRenderer().clear();
-        //float lag = std::min(this->getGame().getLag(), 1.0f);
-        float lag = this->getGame().getLag();
+    inline void RenderSystem::preUpdate(f32 dt) {
+        f32 lag = this->getGame().getLag();
         pred_time_ = lag*this->getGame().getTargetTicklen();
     }
 
-    template <typename GameType>
-    inline void RenderSystem<GameType>::updateEntity(Entity& e, float dt) {
+    inline void RenderSystem::updateEntity(Entity& e, f32 dt) {
         CRenderables& cr = e.getComponent<CRenderables>();
         CTransform& ct = e.getComponent<CTransform>();
 
-        if (e.hasRoles({GengEntityRoles::erMovable})) {
+        if (e.getRoles()[GERoles::erMovableId]) {
             CMovable& cm = e.getComponent<CMovable>();
             Vec2 prev_pos = ct.get().getPosition();
             Angle prev_rot = ct.get().getRotation();
             // apply prediction
-            ct.get().move(cm.getSpeed().getLinearSpeed()*pred_time_);
-            ct.get().rotate(cm.getSpeed().getAngularSpeed()*pred_time_);
-            ct.accMatrix() = ct.get().calcMatrix();
+            ct.acc_().move(cm.getSpeed().getLinearSpeed()*pred_time_);
+            ct.acc_().rotate(cm.getSpeed().getAngularSpeed()*pred_time_);
 
-            renderEntity_(cr, ct, dt);
+            renderEntity_(cr, ct);
 
             // retract prediction
-            ct.get().setPosition(prev_pos);
-            ct.get().setRotation(prev_rot);
-            ct.accMatrix() = ct.get().calcMatrix();
+            ct.acc_().setPosition(prev_pos);
+            ct.acc_().setRotation(prev_rot);
         }
         else {
-            renderEntity_(cr, ct, dt);
+            renderEntity_(cr, ct);
         }
     }
 
-    template <typename GameType>
-    inline void RenderSystem<GameType>::renderEntity_(CRenderables& cr, CTransform& ct, float dt) {
-        Renderables& rs = cr.accRenderables();
-        ViewPort& vp = window_->getViewPort();
-        for (uint32_t i=0; i<rs.size(); ++i) {
-            RenderableBase& r = rs[i].getBase<RenderableBase>();
-            if (!r.getVisible()) {
-                continue;
-            }
+    inline void RenderSystem::postUpdate(f32 dt) {
+        window_->render(dt);
+    }
 
-            if (rs[i].is<SpriteRenderable>()) {
-                SpriteRenderable& sr = rs[i].get<SpriteRenderable>();
-                if (sr.isAnimation() && !sr.isPaused())
-                    sr.advanceAnimation(dt);
-            }
-
-            Renderer2D::RenderTask& rt = window_->getRenderer().addRenderTask(rs[i]);
-            rt.mvp = vp.getProjectionTransform();
-
-            switch (r.getCoordFrame()) {
-                case cfScreen:
-                    // translate 0,0 to left-top corner from center
-                    rt.mvp *= Mat3::createTranslationT(-0.5f*vp.getBaseSize());
-                    break;
-                case cfWorld:
-                    rt.mvp *= vp.getViewTransform();
-                    break;
-            }
-
-            rt.mvp *= ct.accMatrix()
-                      * r.accLocalTransform().calcMatrix();
+    inline void RenderSystem::renderEntity_(CRenderables& cr, CTransform& ct) {
+        Mat3 ent_m = ct.get().calcMatrix();
+        for (u32 i=0; i<cr.renderables_.size(); ++i) {
+            RenderTask& rt = cr.accRenderTask(i).get();
+            rt.calcTransform(*window_, ent_m);
+            window_->getRenderer().scheduleForNextFrame(rt.getId());
         }
     }
 }

@@ -11,8 +11,8 @@ namespace grynca {
     class Collidable : public Shape {
     public:
         ARect& boundSprite(SpriteRenderable& sprite) {
-            accLocalTransform() = sprite.accLocalTransform();
-            return Shape::set<ARect>(sprite.getNormOffset()*sprite.getSize(), sprite.getSize());
+            accLocalTransform() = sprite.accRenderTask()->accLocalTransform();
+            return Shape::set<ARect>(sprite.getGeomNormOffset()*sprite.getSize(), sprite.getSize());
         }
 
         Transform& accLocalTransform() { return local_transform_; }

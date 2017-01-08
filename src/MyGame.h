@@ -3,7 +3,7 @@
 
 #include "incl.h"
 
-class MyGame : public grynca::Game<MyGame> {
+class MyGame : public grynca::Game {
 public:
     enum TextureIds {
         tidSprites = 0,
@@ -21,6 +21,7 @@ private:
     EntityIndex shuttle_id;
     EntityIndex shuttle2_id;
     EntityIndex hud_id;
+    EntityIndex gui_root_id, gui_ch1_id, gui_ch2_id;
 
     virtual void init() override;
     virtual void update() override;
@@ -31,4 +32,5 @@ private:
 
 
 
+#include "MyGame.inl"
 #endif //MYGAME_H

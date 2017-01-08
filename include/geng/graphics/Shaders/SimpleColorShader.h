@@ -7,10 +7,24 @@ namespace grynca {
 
     class SimpleColorShader : public Shader {
     public:
-        SimpleColorShader() : Shader("SimpleColorShader", vsSrc(), fsSrc()) {
+        struct Uniforms : public UniformsBase {
+            Colorf color;
+        };
+    public:
+        SimpleColorShader()
+         : Shader("SimpleColorShader", vsSrc(), fsSrc(), sizeof(Uniforms))
+        {
             u_z_coord = glGetUniformLocation(gl_handle_, "z_coord");
             u_color = glGetUniformLocation(gl_handle_, "color");
             u_transform = glGetUniformLocation(gl_handle_, "transform");
+        }
+
+        virtual void setUniforms(u8* uniforms) override {
+            Uniforms* us = (Uniforms*)uniforms;
+
+            setUniformMat3(u_transform, us->transform);
+            setUniform1f(u_z_coord, us->z_coord);
+            setUniform4fv(u_color, us->color.c_, 1);
         }
 
         // uniform locations
@@ -27,7 +41,7 @@ namespace grynca {
             // inputs
             attribute vec2 v_pos;
 
-            // uniforms
+            // uniforms_
             uniform mat3 transform;
             uniform float z_coord;
 
@@ -43,7 +57,7 @@ namespace grynca {
             #version 100
             precision mediump float;
 
-            // uniforms
+            // uniforms_
             uniform vec4 color;
 
             void main() {

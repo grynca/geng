@@ -4,8 +4,12 @@
 namespace grynca {
 
     enum CoordFrame {
-        cfScreen,        // 0,0 is left-top of screen, coords are pixels
-        cfWorld
+        // 0,0 is left-top of screen, coords are pixels
+        cfScreenLocal,
+        cfScreenGlobal,
+
+        cfWorldLocal,
+        cfWorldGlobal
     };
 }
 

@@ -3,22 +3,33 @@
 
 namespace grynca {
 
-    template <typename GameType>
-    class MovementSystem : public GengSystem<GameType> {
+    class MovementSystem : public GengSystem {
     public:
-        virtual FlagsMask getTrackedFlags() override {
-            return {};
+        virtual RolesMask NeededRoles() override {
+            return GERoles::erTransformMask() | GERoles::erMovableMask();
         }
 
-        virtual RolesMask getNeededRoles() override {
-            return {GengEntityRoles::erMovable};
-        }
+        virtual void updateEntity(Entity& e, f32 dt) override {
+            CTransform& ct = e.getComponent<CTransform>();
+            Transform& t = ct.acc_();
+            Speed& s = e.getComponent<CMovable>().getSpeed();
+            bool rot_scaled = false;
+            if (s.hasLinearSpeed()) {
+                t.move(s.getLinearSpeed() * dt);
+                e.setFlag(GEFlags::fMovedId);
+            }
+            if (s.hasAngularSpeed()) {
+                t.rotate(s.getAngularSpeed()*dt);
+                rot_scaled = true;
+            }
+            if (s.hasScalarSpeed()) {
+                t.scale(s.getScalarSpeed()*dt);
+                rot_scaled = true;
+            }
 
-        virtual void updateEntity(Entity& e, float dt) override {
-            CMovable& m = e.getComponent<CMovable>();
-            CTransform& t = e.getComponent<CTransform>();
-            t.move(m.getSpeed().getLinearSpeed()*dt, e);
-            t.rotate(m.getSpeed().getAngularSpeed()*dt, e);
+            if (rot_scaled) {
+                e.setFlag(GEFlags::fRotScaledId);
+            }
         }
     };
 }

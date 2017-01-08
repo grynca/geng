@@ -13,15 +13,14 @@ namespace grynca {
     public:
         Vertices(Window& w);
 
-        void syncWithGPU();
+        void update(f32 dt);
 
-        VertexData* getBoundVertexData();
         Window& getWindow();
+        std::string getDebugString(u32 indent_cnt);
     private:
         friend class VertexData;
 
         Window* window_;
-        uint32_t bound_id_;
     };
 
 }

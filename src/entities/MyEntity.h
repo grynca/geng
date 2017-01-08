@@ -3,27 +3,31 @@
 
 //class CCustom {
 //public:
-//    uint32_t fieldA;
-//    uint16_t fieldB;
-//    float fieldC;
+//    u32 fieldA;
+//    u16 fieldB;
+//    f32 fieldC;
 //};
 
 class MyEntity : public GengEntityDef<CMovable, CTransform, CRenderables, CNetworked> {
 public:
-    static void initResources(MyGame& game);
-    static Entity create(MyGame& game);
+    class Resources : public Singleton<Resources> {
+    public:
+        Resources(GameBase& game);
 
-    static void update(Entity& e);
+        TextureRegion sprite_region;
+        Index animation_id;
+    };
+
+    static void init(Entity& ent, GameBase& game);
+    static void update(Entity& e, GameBase& game);
 
 //    virtual void getFields(Fields& f)const {
 //        ADD_FIELD(MyEntity, fieldA);
 //        ADD_FIELD(MyEntity, fieldB);
 //        ADD_FIELD(MyEntity, fieldC);
 //    }
-
-private:
-    static TextureRegion sprite_region;
-    static Index animation_id;
 };
 
+
+#include "MyEntity.inl"
 #endif //MYENTITY_H

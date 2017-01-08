@@ -6,23 +6,25 @@
 #include "types/Timer.h"
 #include "types/Singleton.h"
 #include "sysent/Entity.h"
+#include <functional>
 
 #define ENTITY_ROLES_ENUM(NAME, ...)  DEFINE_ENUM_E(NAME, GengEntityRoles, __VA_ARGS__)
 
 namespace grynca {
 
-    template <typename Derived>
-    class GameBase : public Singleton<Derived>
+    //fw
+    class GameBase;
+
+    typedef std::function<void(Entity&, GameBase&)> EntityFunc;
+
+    class GameBase : public Singleton<GameBase>
     {
     public:
-        using BaseType = GameBase<Derived>;
-        using DerivedType = Derived;
-
         virtual ~GameBase();
         GameBase();
 
         template <typename EntityTypes>
-        Derived& initEM(uint32_t initial_ents_reserve = 10000);
+        void initEM(u32 initial_ents_reserve = 10000);
 
         Timer& getTimer();
         EntityManager& getEntitiesManager();
@@ -32,12 +34,12 @@ namespace grynca {
         template <typename T>
         bool containsModule();
 
-        uint32_t getFPS()const;
-        uint32_t getUPS()const;
-        float getTargetTicklen()const;
+        u32 getFPS()const;
+        u32 getUPS()const;
+        f32 getTargetTicklen()const;
 
-        void setUPS(float ups);     // should be set before start()
-        float getLag();
+        void setUPS(f32 ups);     // should be set before start()
+        f32 getLag();
 
         template <typename SystemType>
         SystemType& addUpdateSystem();
@@ -53,7 +55,10 @@ namespace grynca {
         void start();
         void quit();
 
-        Entity createEntity(uint16_t ent_type_id);
+        template <typename EntType>
+        Entity createEntity(const EntityFunc& init_f);
+        void udpateEntity(EntityIndex id, const EntityFunc& update_f);
+        void udpateEntitySafe(EntityIndex id, const EntityFunc& update_f);  // checks for entity validity
         Entity getEntity(EntityIndex ent_id);
     protected:
         GameBase(const GameBase &) = delete;
@@ -65,7 +70,10 @@ namespace grynca {
         virtual void render() {}   // runs as fast as possible
                                    // and before render systems
 
-    protected:
+        virtual void updateInner_();
+        virtual void tickInner_();
+        virtual void renderInner_(f32 dt);
+
         enum {
             spUpdate,
             spRender,
@@ -73,24 +81,25 @@ namespace grynca {
             spCount
         };
 
-        Derived& getAsDerived_();
-        void updateIter_();
-        void renderIter_(float dt);
-
         bool quit_;
         Timer timer_;
 
-        uint32_t fps_;
-        uint32_t ups_;
-        float target_ups_;
-        float target_ticklen_;
+        u32 fps_;
+        u32 ups_;
+        f32 target_ups_;
+        f32 target_ticklen_;
 
-        float seconds_timer_, update_timer_, frame_timer_;
-        float lag_;     // how many updates game is behind
-        uint32_t frames_, updates_;
+        f32 seconds_timer_, update_timer_, frame_timer_;
+        f32 lag_;     // how many updates game is behind
+        u32 frames_, updates_;
 
         fast_vector<CommonPtr> modules_;
         EntityManager entity_manager_;
+    private:
+        struct SetTypeIds {
+            template <typename TP, typename T>
+            static void f();
+        };
     };
 
 }

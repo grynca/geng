@@ -6,25 +6,24 @@
 namespace grynca {
 
     //fw
-    struct Color;
+    class RectBorderShader;
 
     class RectBorderRenderable : public RectRenderable {
     public:
-        RectBorderRenderable();
+        typedef RectBorderShader ShaderType;
+        typedef typename RectRenderable::VertexDataType VertexDataType;
 
-        template <typename GameType>
-        RectBorderRenderable& init(GameType& game);
+        static VertexData::ItemRef createNewGeom(Window& w, GeomState::UsageHint usage_hint = GeomState::uhStatic);
+
+        RectBorderRenderable(const Renderer2D::ItemRef& rt) : RectRenderable(rt) {}
+
+        Vec2 getBorders()const;
+        Vec2 getGeomNormOffset();
 
         RectBorderRenderable& setColor(const Colorf& clr);
-        RectBorderRenderable& setGeomNormOffset(const Vec2& offset);
         RectBorderRenderable& setSize(const Vec2& size);        // changes transform scale
-        RectBorderRenderable& setBorders(Vec2 bs);
-        Vec2 getBorders();
-
-        virtual void setUniforms(const Mat3& mvp, Shader& s) override;
-    private:
-        Vec2 borders_;
-        Vec2 offset_;
+        RectBorderRenderable& setGeomNormOffset(const Vec2& offset);
+        RectBorderRenderable& setBorders(Vec2 borders_px);
     };
 }
 

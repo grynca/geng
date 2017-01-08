@@ -15,25 +15,21 @@ namespace grynca {
     //  pridat do Server classy registraci callbacku na pripojeni a odpojeni clientu
     //  ActionsStateType bude mit clear() kterej budu volat v hadleru po pripojeni clienta
 
-    template <typename GameType>
-    class ServerNetworkSystem : public GengSystem<GameType> {
+    class ServerNetworkSystem : public GengSystem {
     public:
         void init(const Fields& client_state_fields);
 
-        virtual FlagsMask getTrackedFlags() override {
-            return {};
-        }
-        virtual RolesMask getNeededRoles() override {
-            return {GengEntityRoles::erNetworkedSv};
+        virtual RolesMask NeededRoles() override {
+            return GERoles::erNetworkedSvMask();
         }
 
-        virtual void preUpdate() override;
-        virtual void updateEntity(Entity& e, float dt);
-        virtual void postUpdate() override;
+        virtual void preUpdate(f32 dt) override;
+        virtual void updateEntity(Entity& e, f32 dt) override;
+        virtual void postUpdate(f32 dt) override;
 
         // this calls deserialize - best for performance to store somewhere for reuse
         template <typename ClientStateType>
-        void getClientState(uint32_t client_id, ClientStateType& state_out);
+        void getClientState(u32 client_id, ClientStateType& state_out);
     private:
         struct ClientCtx_ {
             SharedBuffer state_buffer;
@@ -45,7 +41,7 @@ namespace grynca {
 
         Server* server_;
 
-        fast_vector<uint32_t> connected_clients_;
+        fast_vector<u32> connected_clients_;
         fast_vector<ClientCtx_> client_states_;
         DeltaSerializer delta_serializer_;
         Fields client_state_fields_;

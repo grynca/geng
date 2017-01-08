@@ -1,27 +1,30 @@
 #ifndef POLYGONRENDERABLE_H
 #define POLYGONRENDERABLE_H
 
-#include "RenderableBase.h"
+#include "Renderable.h"
+#include "assets/Image.h"
 
 namespace grynca {
 
+    // fw
+    class SimpleColorShader;
+    class VertexDataP;
+
     // Convex polygon
-    class PgonRenderable : public RenderableBase {
+    class PgonRenderable : public Renderable {
     public:
-        PgonRenderable();
+        typedef SimpleColorShader ShaderType;
+        typedef VertexDataP VertexDataType;
 
-        template <typename GameType>
-        PgonRenderable& init(GameType& game);                // with new empty geom
+        static VertexData::ItemRef createNewGeom(Window& w, GeomState::UsageHint usage_hint = GeomState::uhStatic);
 
-        template <typename GameType>
-        PgonRenderable& init(GameType& game, Geom& geom);        // with shared geom
+        PgonRenderable(const Renderer2D::ItemRef& rt) : Renderable(rt) {}
 
         Colorf getColor()const;
-        PgonRenderable& setColor(const Colorf& clr);
+        Colorf& accColor();
 
-        virtual void setUniforms(const Mat3& mvp, Shader& s);
-    protected:
-        Colorf color_;
+        PgonRenderable& setColor(const Colorf& clr);
+        PgonRenderable& setPosition(const Vec2& pos);
     };
 
 }

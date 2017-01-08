@@ -1,6 +1,5 @@
 #include "Shaders.h"
 #include "Shader.h"
-#include "Window.h"
 #include "glinclude.h"
 #include "types/Type.h"
 #include "types/Index.h"

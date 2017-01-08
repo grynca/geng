@@ -4,11 +4,10 @@
 #define FR_TYPE FactoryRectTF<VertexType>
 
 namespace grynca {
-
     FR_TPL
-    inline uint32_t FR_TYPE::add() {
+    inline u32 FR_TYPE::add() {
         Geom& g = getGeom();
-        uint32_t start = g.getVerticesCount();
+        u32 start = g.getVerticesCount();
         g.addVertex(VertexType{});      // left-top
         g.addVertex(VertexType{});      // right-top
         g.addVertex(VertexType{});      // right-bot
@@ -17,43 +16,43 @@ namespace grynca {
     }
 
     FR_TPL
-    inline uint32_t FR_TYPE::add(const Vec2& size, const Vec2& offset) {
-        uint32_t start = add();
+    inline u32 FR_TYPE::add(const Vec2& size, const Vec2& offset) {
+        u32 start = add();
         setSize(start, size);
         setOffset(start, offset);
         return start;
     }
 
     FR_TPL
-    inline uint32_t FR_TYPE::add(const Vec2& size) {
-        uint32_t start = add();
+    inline u32 FR_TYPE::add(const Vec2& size) {
+        u32 start = add();
         setSize(start, size);
         setOffset(start, size/2);
         return start;
     }
 
     FR_TPL
-    inline Vec2 FR_TYPE::getLeftTop(uint32_t start)const {
+    inline Vec2 FR_TYPE::getLeftTop(u32 start)const {
         return getGeom().template getVertex<VertexType>(start).pos;
     }
 
     FR_TPL
-    inline Vec2 FR_TYPE::getRightBot(uint32_t start)const {
+    inline Vec2 FR_TYPE::getRightBot(u32 start)const {
         return getGeom().template getVertex<VertexType>(start+2).pos;
     }
 
     FR_TPL
-    inline Vec2 FR_TYPE::getSize(uint32_t start)const {
+    inline Vec2 FR_TYPE::getSize(u32 start)const {
         return getGeom().template getVertex<VertexType>(start+2).pos - getGeom().template getVertex<VertexType>(start).pos;
     }
 
     FR_TPL
-    inline Vec2 FR_TYPE::getOffset(uint32_t start)const {
+    inline Vec2 FR_TYPE::getOffset(u32 start)const {
         return getGeom().template getVertex<VertexType>(start).pos;
     }
 
     FR_TPL
-    inline void FR_TYPE::setSize(uint32_t start, const Vec2& size) {
+    inline void FR_TYPE::setSize(u32 start, const Vec2& size) {
         Geom& g = getGeom();
         Vec2 size_diff = size - getSize(start);
         g.template accVertex<VertexType>(start+1).pos.accX() += size_diff.getX();
@@ -62,7 +61,7 @@ namespace grynca {
     }
 
     FR_TPL
-    inline void FR_TYPE::setOffset(uint32_t start, const Vec2& offset) {
+    inline void FR_TYPE::setOffset(u32 start, const Vec2& offset) {
         Geom& g = getGeom();
         Vec2 offset_diff = offset - getOffset(start);
 
@@ -77,7 +76,7 @@ namespace grynca {
     }
 
     FR_TPL
-    inline void FR_TYPE::setTC(uint32_t start, const Vec2& left_top, const Vec2& right_bot) {
+    inline void FR_TYPE::setTC(u32 start, const Vec2& left_top, const Vec2& right_bot) {
         Geom& g = getGeom();
         g.template accVertex<VertexType>(start).tc = left_top;
         g.template accVertex<VertexType>(start+1).tc = Vec2(right_bot.getX(), left_top.getY());
@@ -96,8 +95,8 @@ namespace grynca {
             {}
 
     FR_TPL
-    inline FR_TYPE::FactoryRectTF(VertexData& vertex_data)
-     : geom_ref_(vertex_data.addItem(GL_TRIANGLE_FAN))
+    inline FR_TYPE::FactoryRectTF(VertexData& vertex_data, GeomState::StateType state_type, GeomState::UsageHint buff_hint)
+     : geom_ref_(vertex_data.addItem(GL_TRIANGLE_FAN, state_type, buff_hint))
     {}
 
 }

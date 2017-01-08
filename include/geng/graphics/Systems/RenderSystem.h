@@ -7,26 +7,22 @@ namespace grynca {
     // fw
     class Window;
 
-    template <typename GameType>
-    class RenderSystem : public GengSystem<GameType> {
+    class RenderSystem : public GengSystem {
     public:
-        void init();
+        virtual void init() override;
 
-        virtual FlagsMask getTrackedFlags() override {
-            return {};
+        virtual RolesMask NeededRoles() override {
+            return GERoles::erRenderableMask();
         }
 
-        virtual RolesMask getNeededRoles()  override {
-            return {GengEntityRoles::erRenderable};
-        }
-
-        virtual void preUpdate() override;
-        virtual void updateEntity(Entity& e, float dt) override;
+        virtual void preUpdate(f32 dt) override;
+        virtual void updateEntity(Entity& e, f32 dt) override;
+        virtual void postUpdate(f32 dt) override;
     private:
-        void renderEntity_(CRenderables& cr, CTransform& ct, float dt);
+        void renderEntity_(CRenderables& cr, CTransform& ct);
 
         Window* window_;
-        float pred_time_;
+        f32 pred_time_;
     };
 }
 

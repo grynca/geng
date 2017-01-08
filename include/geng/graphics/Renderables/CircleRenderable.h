@@ -1,33 +1,33 @@
 #ifndef CIRCLERENDERABLE_H
 #define CIRCLERENDERABLE_H
 
-#include "RenderableBase.h"
+#include "Renderable.h"
+#include "assets/Image.h"
 
 namespace grynca {
 
-    class CircleRenderable : public RenderableBase {
+    // fw
+    class CircleShader;
+    class VertexDataP;
+
+    class CircleRenderable : public Renderable {
     public:
-        CircleRenderable();
-        template <typename GameType>
-        CircleRenderable& init(GameType& game, float radius, float inner_radius = 0.0f);
+        typedef CircleShader ShaderType;
+        typedef VertexDataP VertexDataType;
 
-        float getInnerRadius()const;
-        float getOuterRadius()const;
+        static VertexData::ItemRef createNewGeom(Window& w, GeomState::UsageHint usage_hint = GeomState::uhStatic);
+
+        CircleRenderable(const Renderer2D::ItemRef& rt);
+
+        f32 getInnerRadius()const;
+        f32 getOuterRadius()const;
         Colorf getColor()const;
-
+        const Geom& getGeom()const;     // uses shared geom which is read only
 
         CircleRenderable& setColor(const Colorf& c) ;
-        CircleRenderable& setInnerRadius(float inner_r);
-        CircleRenderable& setOuterRadius(float outer_r);
-
-        virtual void setUniforms(const Mat3& mvp, Shader& s) override;
-
-        // uses shared geom which is read only
-        const Geom& getGeom()const { return RenderableBase::getGeom(); }
-    private:
-        Colorf color_;
-        float inner_radius_;
-        float outer_radius_;
+        CircleRenderable& setInnerRadius(f32 inner_r);
+        CircleRenderable& setOuterRadius(f32 outer_r);
+        CircleRenderable& setPosition(const Vec2& pos);
     };
 }
 

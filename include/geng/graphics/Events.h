@@ -22,10 +22,10 @@ namespace grynca {
         EventFunction(const std::function<bool(SDL_Event&)>& f);
         bool operator()(SDL_Event& e);
 
-        uint32_t getId() { return id_; }
+        u32 getId() { return id_; }
     private:
         std::function<bool(SDL_Event&)> f_;
-        uint32_t id_;
+        u32 id_;
     };
 
     struct EventHandlers {
@@ -51,17 +51,17 @@ namespace grynca {
         const Vec2& getMousePos()const;
         const Vec2& getMouseDelta()const;
 
-        uint32_t addHandler(SDL_EventType type, const std::function<bool(SDL_Event&)>& f);
-        void removeHandler(SDL_EventType type, uint32_t id);
+        u32 addHandler(SDL_EventType type, const std::function<bool(SDL_Event&)>& f);
+        void removeHandler(SDL_EventType type, u32 id);
     private:
         Window* window_;
 
-        fast_vector<uint8_t> keys_[2];
-        const uint8_t* sdl_keys_;
-        uint32_t keys_current_;
+        fast_vector<u8> keys_[2];
+        const u8* sdl_keys_;
+        u32 keys_current_;
 
-        uint32_t mouse_prev_;
-        uint32_t mouse_;
+        u32 mouse_prev_;
+        u32 mouse_;
         Vec2 mouse_pos_;
         Vec2 mouse_delta_;
 
@@ -70,4 +70,5 @@ namespace grynca {
 
 }
 
+#include "Events.inl"
 #endif //EVENTS_H

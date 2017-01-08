@@ -19,7 +19,7 @@ namespace grynca {
     {}
 
     inline bool EntitiesSnapshot::isAcked(const Connection& conn) {
-        for (uint32_t i=0; i<seq_ids.size(); ++i) {
+        for (u32 i=0; i<seq_ids.size(); ++i) {
             if (conn.getPacketAckState(seq_ids[i]) != Network::sAcked)
                 return false;
         }
@@ -31,7 +31,7 @@ namespace grynca {
     }
 
     inline PackedEntityState* EntitiesSnapshot::findEntityState(EntityIndex ent_id) {
-        for (uint32_t i=0; i<ent_states.size(); ++i) {
+        for (u32 i=0; i<ent_states.size(); ++i) {
             if (ent_states[i].getEntityId() == ent_id)
                 return &ent_states[i];
         }

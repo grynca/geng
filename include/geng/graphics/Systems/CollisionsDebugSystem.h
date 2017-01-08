@@ -1,35 +1,28 @@
 #ifndef COLLISIONSDEBUGSYSTEM_H
 #define COLLISIONSDEBUGSYSTEM_H
 
-#include "../Renderables.h"
-
 namespace grynca {
 
     // fw
-    template <typename T> class CollisionSystem;
+    class CollisionSystem;
     class Window;
 
-    template <typename GameType>
-    class CollisionsDebugSystem: public GengSystem<GameType> {
+    class CollisionsDebugSystem: public GengSystem {
     public:
-        CollisionsDebugSystem() : cs_(NULL) {}
-
-        void init();
-
-        virtual FlagsMask getTrackedFlags() override {
-            return {};
-        };
-
-        virtual RolesMask getNeededRoles() override {
-            return {GengEntityRoles::erCollidable, GengEntityRoles::erTransform };
+        virtual RolesMask NeededRoles() override {
+            return GERoles::erCollidableMask() | GERoles::erTransformMask();
         }
 
-        virtual void updateEntity(Entity& e, float dt) override;
+        CollisionsDebugSystem() : cs_(NULL) {}
+
+        virtual void init() override;
+
+        virtual void updateEntity(Entity& e, f32 dt) override;
 
     private:
         Window* window_;
-        CollisionSystem<GameType>* cs_;
-        Renderable rend_;
+        CollisionSystem* cs_;
+        Renderer2D::ItemRef rt_;
     };
 
 }
