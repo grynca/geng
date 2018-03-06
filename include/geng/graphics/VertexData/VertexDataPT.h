@@ -6,10 +6,6 @@
 
 namespace grynca {
 
-    // fw
-    class SpriteAnimationStates;
-    class TextStates;
-
     class VertexDataPT : public VertexData {
     public:
         // used for sprites & texture fonts
@@ -18,21 +14,11 @@ namespace grynca {
             Vec2 tc;
         };
 
-        VertexDataPT();
-        void init();
+        VertexDataPT() : VertexData("VertexDataPT") {}
 
-        ~VertexDataPT();
-
-        TextStates& getTextStates();
-        SpriteAnimationStates& getSpriteAnimationsStates();
+        void initSingleton();
 
         virtual void update(f32 dt) override;
-    private:
-        virtual Index beforeGeomChangedState_(Geom& g, GeomState::StateType old_type, GeomState::StateType new_type) override;
-        virtual std::string getDebugName_() override { return "VertexDataPT"; }
-
-        TextStates* text_states_;
-        SpriteAnimationStates* anim_states_;
     };
 
 }

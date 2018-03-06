@@ -4,23 +4,21 @@
 
 namespace grynca {
 
-    inline VertexData::ItemRef PgonTexturedRenderable::createNewGeom(Window& w, GeomState::UsageHint usage_hint) {
-        // static
-        VertexDataPT& verts = w.getVertices().get<VertexDataPT>();
-        return verts.addItem(GL_TRIANGLE_FAN, GeomState::stNone, usage_hint);
+    inline void PgonTexturedRenderable::setNewGeom(GeomUsageHint usage_hint) {
+        VertexDataPT& verts = accWindow().getVertices().getFast<VertexDataPT>();
+        setGeom(verts.addItem(GL_TRIANGLE_FAN, usage_hint));
     }
 
-    inline PgonTexturedRenderable& PgonTexturedRenderable::setTextureUnit(u32 tid) {
-        accRenderTask()->getUniformsAs<SimpleTexturedShader::Uniforms>().texture = tid;
-        return *this;
-    }
-
-    inline PgonTexturedRenderable& PgonTexturedRenderable::setPosition(const Vec2& pos) {
-        accRenderTask()->accLocalTransform().setPosition(pos);
-        return *this;
+    inline void PgonTexturedRenderable::setTextureUnit(u32 tid) {
+        accRenderTaskPtr()->accDrawDataAs<DrawData>().texture = tid;
     }
 
     inline u32 PgonTexturedRenderable::getTextureUnit()const {
-        return getRenderTask()->getUniformsAs<SimpleTexturedShader::Uniforms>().texture;
+        return getRenderTaskPtr()->getDrawDataAs<DrawData>().texture;
+    }
+
+    inline void PgonTexturedRenderable::onBeforeDraw(Shader& s) {
+        SimpleTexturedShader& sts = (SimpleTexturedShader&)s;
+        sts.setUniforms(accRenderTaskPtr()->getDrawDataAs<DrawData>());
     }
 }

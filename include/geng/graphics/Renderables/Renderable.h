@@ -10,30 +10,46 @@ namespace grynca {
     class Geom;
     class RenderTask;
 
-    // common renderable setter
+    // common renderable
     class Renderable {
     public:
+        struct DrawData {
+            Mat3 transform;
+            f32 z_coord;
+        };
+    public:
+        Renderable();
 
-        // with new geom
+        // creates new render task in Renderer2D
         template <typename RenderableType>
-        static RenderableType create();
+        void init();
+        // reuses existing render task (e.g. changing renderable type)
         template <typename RenderableType>
-        static RenderableType create(GeomState::UsageHint usage_hint);
+        void init(Renderer2D::IPtr& render_task_ptr);
+        // creates new render task with same shared geom & cloned DrawData
+        void clone(const Renderer2D::IPtr& render_task);
 
-        // reuses geom
-        template <typename RenderableType>
-        static RenderableType create(const VertexData::ItemRef& geom);
+        void setLayer(u16 layer_id);
+        // reuses some other existing geom
+        void setGeom(const Geom& geom);
 
-        const Renderer2D::ItemRef& getRenderTask()const;
+        void setRenderTaskPtr(const Renderer2D::IPtr& render_task_ptr);
+
+        const Renderer2D::IPtr& getRenderTaskPtr()const;
+        Renderer2D::IPtr& accRenderTaskPtr();
         Index getRenderTaskId()const;
-        Window& getWindow()const;
-
-        Renderer2D::ItemRef& accRenderTask();
+        bool getRenderBatchIdDirty()const;
+        static Window& accWindow();
     protected:
-        Renderable(const Renderer2D::ItemRef& rt);
-
-        Renderer2D::ItemRef render_task_;
+        Renderer2D::IPtr render_task_ptr_;
+        mutable bool render_batch_id_dirty_;
     };
+
+
+    // convenience wrapper for less typing
+    // creates new render task in Renderer2D
+    template <typename RenderableType>
+    static RenderableType createRenderable();
 }
 
 #include "Renderable.inl"

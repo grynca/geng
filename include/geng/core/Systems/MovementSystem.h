@@ -3,33 +3,26 @@
 
 namespace grynca {
 
-    class MovementSystem : public GengSystem {
+    class MovementSystem : public GengSystemAll {
     public:
         virtual RolesMask NeededRoles() override {
-            return GERoles::erTransformMask() | GERoles::erMovableMask();
+            return GERoles::erTransformMask() | GERoles::erSpeedMask();
         }
 
-        virtual void updateEntity(Entity& e, f32 dt) override {
-            CTransform& ct = e.getComponent<CTransform>();
-            Transform& t = ct.acc_();
-            Speed& s = e.getComponent<CMovable>().getSpeed();
-            bool rot_scaled = false;
-            if (s.hasLinearSpeed()) {
-                t.move(s.getLinearSpeed() * dt);
-                e.setFlag(GEFlags::fMovedId);
-            }
-            if (s.hasAngularSpeed()) {
-                t.rotate(s.getAngularSpeed()*dt);
-                rot_scaled = true;
-            }
-            if (s.hasScalarSpeed()) {
-                t.scale(s.getScalarSpeed()*dt);
-                rot_scaled = true;
-            }
+        virtual void update(f32 dt, EntitiesList& entities) override {
+            entities.loopEntities([this, dt](Entity& e) {
+                CTransformData* tr = e.getData<CTransformData>();
+                CSpeedData* spd = e.getData<CSpeedData>();
 
-            if (rot_scaled) {
-                e.setFlag(GEFlags::fRotScaledId);
-            }
+                if (spd->isRotating()) {
+                    tr->rotate(spd->getAngularSpeed() * dt);
+                    e.setFlag(GEFlags::fEntityRotatedId);
+                }
+                if (spd->isMoving()) {
+                    tr->move(spd->getLinearSpeed() * dt);
+                    e.setFlag(GEFlags::fEntityMovedId);
+                }
+            });
         }
     };
 }

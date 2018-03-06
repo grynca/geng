@@ -1,38 +1,31 @@
 #ifndef PARTICLESHADER_H
 #define PARTICLESHADER_H
 
-#include "../Shader.h"
+#include "Shader.h"
 
 namespace grynca {
 
     class ParticleShader : public Shader {
     public:
-        // UniformsBase::transform is actually VP transform (without model)
-        struct Uniforms : public UniformsBase {
-            Vec2 size;      // min, max
-            Mat3 tr_transform;   // for transforming to correct texture region
-            u32 texture;
-        };
-
-    public:
         ParticleShader()
-         : Shader("ParticleShader", vsSrc(), fsSrc(), sizeof(Uniforms))
+         : Shader("ParticleShader", vsSrc(), fsSrc())
         {
             u_transform = glGetUniformLocation(gl_handle_, "transform");
             u_z_coord = glGetUniformLocation(gl_handle_, "z_coord");
             u_p_size = glGetUniformLocation(gl_handle_, "p_size");
             u_texture = glGetUniformLocation(gl_handle_, "texture");
             u_tr_transform = glGetUniformLocation(gl_handle_, "tr_transform");
+            u_vp_zoom = glGetUniformLocation(gl_handle_, "vp_zoom");
         }
 
-        virtual void setUniforms(u8* uniforms) override {
-            Uniforms* us = (Uniforms*)uniforms;
-
-            setUniformMat3(u_transform, us->transform);
-            setUniform1f(u_z_coord, us->z_coord);
-            setUniform2f(u_p_size, us->size);
-            setUniform1i(u_texture, us->texture);
-            setUniformMat3(u_tr_transform, us->tr_transform);
+        template <typename DD>
+        void setUniforms(const DD& draw_data) {
+            setUniformMat3(u_transform, draw_data.transform);
+            setUniform1f(u_z_coord, draw_data.z_coord);
+            setUniform2f(u_p_size, draw_data.size);
+            setUniform1i(u_texture, draw_data.texture);
+            setUniform1f(u_vp_zoom, draw_data.vp_zoom);
+            setUniformMat3(u_tr_transform, draw_data.tr_transform);
         }
 
         // uniform locations
@@ -41,6 +34,7 @@ namespace grynca {
         GLint u_p_size;
         GLint u_texture;
         GLint u_tr_transform;
+        GLint u_vp_zoom;
     private:
         static const std::string vsSrc() {
             return  R"(
@@ -55,6 +49,7 @@ namespace grynca {
             uniform mat3 transform;
             uniform mat3 tr_transform;
             uniform float z_coord;
+            uniform float vp_zoom;
             uniform vec2 p_size;      // min, max
 
             // outputs
@@ -63,7 +58,7 @@ namespace grynca {
 
             void main() {
                 float life = v_color_l.a;
-                float alpha = 1.0 - abs(life*2.0 - 1.0);    // fade out
+                float alpha = 1.0 - life*(2.0-life);   // ease out
                 f_color= vec4(v_color_l.rgb, alpha);
 
                 mat3 local_t;
@@ -78,8 +73,8 @@ namespace grynca {
                 //float t = life - 1.0;
                 //gl_PointSize = p_size.x + p_size.y*(1.0-(t*t*((-(1.0+p_size.z)*t)-p_size.z)));
 
-                gl_PointSize =  mix(p_size.x, p_size.y, life);
                 vec3 trans_pos = transform*vec3(v_pos_rot.xy, 1.0);
+                gl_PointSize =  vp_zoom*mix(p_size.x, p_size.y, life);
                 gl_Position =  vec4(trans_pos.xy, z_coord, trans_pos.z);
             }
             )";

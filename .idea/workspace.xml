@@ -1,165 +1,191 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="CMakeRunConfigurationManager" shouldGenerate="true" buildAllGenerated="true">
+  <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true" buildAllGenerated="true">
     <generated>
-      <config projectName="geng" targetName="basic" />
-      <config projectName="geng" targetName="genglib" />
       <config projectName="geng" targetName="GENG" />
+      <config projectName="geng" targetName="genglib" />
+      <config projectName="geng" targetName="basic" />
       <config projectName="geng" targetName="geng" />
     </generated>
   </component>
   <component name="CMakeSettings" AUTO_RELOAD="true">
     <configurations>
-      <configuration CONFIG_NAME="Release" GENERATION_DIR="build/Release" />
-      <configuration CONFIG_NAME="Debug" GENERATION_DIR="build/Debug" />
-      <configuration CONFIG_NAME="RelWithDebInfo" GENERATION_DIR="build/RelWithDebInfo" />
+      <configuration PROFILE_NAME="Release" CONFIG_NAME="Release" GENERATION_DIR="build/Release" BUILD_OPTIONS="-j 4" />
+      <configuration PROFILE_NAME="Debug" CONFIG_NAME="Debug" GENERATION_DIR="build/Debug" BUILD_OPTIONS="-j 4" />
+      <configuration PROFILE_NAME="RelWithDebInfo" CONFIG_NAME="RelWithDebInfo" GENERATION_DIR="build/RelWithDebInfo" BUILD_OPTIONS="-j 4" />
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ac104073-5944-4184-a930-f55a50ab31cf" name="Default" comment="removed TransformSystem&#10;C">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/dictionaries/grynca.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/include/geng/core/Components/CDeltaTransform.h" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/include/geng/core/Components/CDeltaTransform.inl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/include/geng/core/Components/CTransform.inl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/include/geng/core/Systems/DeltaTransformSystem.h" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/include/geng/geng_config.h" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/include/geng/graphics/Entities/GUIElement.h" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/include/geng/graphics/GUI.h" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/include/geng/graphics/GUI.inl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/include/geng/graphics/Renderables/ParticlesRenderable.h" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/include/geng/graphics/Renderables/ParticlesRenderable.inl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/include/geng/graphics/Renderables/RenderIndex.h" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/include/geng/graphics/Renderables/RenderIndex.inl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/include/geng/graphics/Renderables/Renderable.h" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/include/geng/graphics/Renderables/Renderable.inl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/include/geng/graphics/Shaders/ParticleShader.h" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/include/geng/graphics/VertexData/GeomState.h" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/include/geng/graphics/VertexData/ParticleBatchStates.h" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/include/geng/graphics/VertexData/ParticleBatchStates.inl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/include/geng/graphics/VertexData/SpriteAnimationStates.h" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/include/geng/graphics/VertexData/SpriteAnimationStates.inl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/include/geng/graphics/VertexData/TextStates.h" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/include/geng/graphics/VertexData/TextStates.inl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/include/geng/graphics/VertexData/VertexDataPT.inl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/include/geng/graphics/VertexData/VertexDataParticles.h" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/include/geng/graphics/VertexData/VertexDataParticles.inl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/include/geng_enums.h" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/MyGame.inl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/entities/HUD.inl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/entities/MyEntity.inl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/entities/Shuttle.inl" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/basic" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Emscripten/geng.bc" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/include/geng/core/GengEntityTypes.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/include/geng/core/Systems/TransformSystem.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/include/geng/graphics/DrawSortingKey.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/include/geng/graphics/Renderables.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/include/geng/graphics/Renderables/RenderableBase.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/include/geng/graphics/Renderables/RenderableBase.inl" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/MyGame.cpp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/entities/HUD.cpp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/entities/MyEntity.cpp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/entities/Shuttle.cpp" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/include/geng/core/GengEntityFlags.h" afterPath="$PROJECT_DIR$/include/geng/GEFlags.h" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/include/geng/core/GengEntityRoles.h" afterPath="$PROJECT_DIR$/include/geng/GERoles.h" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/include/geng/graphics/Events.cpp" afterPath="$PROJECT_DIR$/include/geng/graphics/Events.inl" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/include/geng/graphics/Geom.h" afterPath="$PROJECT_DIR$/include/geng/graphics/VertexData/Geom.h" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/include/geng/graphics/Geom.inl" afterPath="$PROJECT_DIR$/include/geng/graphics/VertexData/Geom.inl" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/include/geng/graphics/Shader.cpp" afterPath="$PROJECT_DIR$/include/geng/graphics/Shader.inl" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/include/geng/graphics/Texture2D.cpp" afterPath="$PROJECT_DIR$/include/geng/graphics/Texture2D.inl" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/include/geng/graphics/VertexData.h" afterPath="$PROJECT_DIR$/include/geng/graphics/VertexData/VertexData.h" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/include/geng/graphics/VertexData.inl" afterPath="$PROJECT_DIR$/include/geng/graphics/VertexData/VertexData.inl" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/include/geng/graphics/ViewPort.cpp" afterPath="$PROJECT_DIR$/include/geng/graphics/ViewPort.inl" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/include/geng/graphics/Window.cpp" afterPath="$PROJECT_DIR$/include/geng/graphics/Window.inl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/Emscripten/main.data" afterPath="$PROJECT_DIR$/build/Emscripten/main.data" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/Emscripten/main.html.mem" afterPath="$PROJECT_DIR$/build/Emscripten/main.html.mem" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/Emscripten/test.bc" afterPath="$PROJECT_DIR$/build/Emscripten/test.bc" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/sprites/shuttle.png" afterPath="$PROJECT_DIR$/data/sprites/shuttle.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/geng.iml" afterPath="$PROJECT_DIR$/.idea/geng.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CMakeLists.txt" afterPath="$PROJECT_DIR$/CMakeLists.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/Emscripten/main.html" afterPath="$PROJECT_DIR$/build/Emscripten/main.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/Emscripten/main.js" afterPath="$PROJECT_DIR$/build/Emscripten/main.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/emscripten_build.sh" afterPath="$PROJECT_DIR$/emscripten_build.sh" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/geng.h" afterPath="$PROJECT_DIR$/include/geng.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/geng/Game.h" afterPath="$PROJECT_DIR$/include/geng/Game.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/geng/Game.inl" afterPath="$PROJECT_DIR$/include/geng/Game.inl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/geng/GameBase.h" afterPath="$PROJECT_DIR$/include/geng/GameBase.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/geng/GameBase.inl" afterPath="$PROJECT_DIR$/include/geng/GameBase.inl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/geng/core/Components/CMovable.h" afterPath="$PROJECT_DIR$/include/geng/core/Components/CMovable.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/geng/core/Components/CTransform.h" afterPath="$PROJECT_DIR$/include/geng/core/Components/CTransform.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/geng/core/GengEntity.h" afterPath="$PROJECT_DIR$/include/geng/core/GengEntity.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/geng/core/GengSystem.h" afterPath="$PROJECT_DIR$/include/geng/core/GengSystem.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/geng/core/Speed.h" afterPath="$PROJECT_DIR$/include/geng/core/Speed.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/geng/core/Systems/MovementSystem.h" afterPath="$PROJECT_DIR$/include/geng/core/Systems/MovementSystem.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/geng/core/core_includes.h" afterPath="$PROJECT_DIR$/include/geng/core/core_includes.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/geng/graphics/Components/CRenderables.h" afterPath="$PROJECT_DIR$/include/geng/graphics/Components/CRenderables.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/geng/graphics/CoordFrame.h" afterPath="$PROJECT_DIR$/include/geng/graphics/CoordFrame.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/geng/graphics/Events.h" afterPath="$PROJECT_DIR$/include/geng/graphics/Events.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/geng/graphics/Renderables/CircleRenderable.h" afterPath="$PROJECT_DIR$/include/geng/graphics/Renderables/CircleRenderable.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/geng/graphics/Renderables/CircleRenderable.inl" afterPath="$PROJECT_DIR$/include/geng/graphics/Renderables/CircleRenderable.inl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/geng/graphics/Renderables/PgonRenderable.h" afterPath="$PROJECT_DIR$/include/geng/graphics/Renderables/PgonRenderable.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/geng/graphics/Renderables/PgonRenderable.inl" afterPath="$PROJECT_DIR$/include/geng/graphics/Renderables/PgonRenderable.inl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/geng/graphics/Renderables/PgonTexturedRenderable.h" afterPath="$PROJECT_DIR$/include/geng/graphics/Renderables/PgonTexturedRenderable.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/geng/graphics/Renderables/PgonTexturedRenderable.inl" afterPath="$PROJECT_DIR$/include/geng/graphics/Renderables/PgonTexturedRenderable.inl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/geng/graphics/Renderables/RectBorderRenderable.h" afterPath="$PROJECT_DIR$/include/geng/graphics/Renderables/RectBorderRenderable.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/geng/graphics/Renderables/RectBorderRenderable.inl" afterPath="$PROJECT_DIR$/include/geng/graphics/Renderables/RectBorderRenderable.inl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/geng/graphics/Renderables/RectRenderable.h" afterPath="$PROJECT_DIR$/include/geng/graphics/Renderables/RectRenderable.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/geng/graphics/Renderables/RectRenderable.inl" afterPath="$PROJECT_DIR$/include/geng/graphics/Renderables/RectRenderable.inl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/geng/graphics/Renderables/SpriteRenderable.h" afterPath="$PROJECT_DIR$/include/geng/graphics/Renderables/SpriteRenderable.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/geng/graphics/Renderables/SpriteRenderable.inl" afterPath="$PROJECT_DIR$/include/geng/graphics/Renderables/SpriteRenderable.inl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/geng/graphics/Renderables/TextRenderable.h" afterPath="$PROJECT_DIR$/include/geng/graphics/Renderables/TextRenderable.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/geng/graphics/Renderables/TextRenderable.inl" afterPath="$PROJECT_DIR$/include/geng/graphics/Renderables/TextRenderable.inl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/geng/graphics/Renderer2D.h" afterPath="$PROJECT_DIR$/include/geng/graphics/Renderer2D.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/geng/graphics/Renderer2D.inl" afterPath="$PROJECT_DIR$/include/geng/graphics/Renderer2D.inl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/geng/graphics/Shader.h" afterPath="$PROJECT_DIR$/include/geng/graphics/Shader.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/geng/graphics/Shaders.h" afterPath="$PROJECT_DIR$/include/geng/graphics/Shaders.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/geng/graphics/Shaders.inl" afterPath="$PROJECT_DIR$/include/geng/graphics/Shaders.inl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/geng/graphics/Shaders/CircleShader.h" afterPath="$PROJECT_DIR$/include/geng/graphics/Shaders/CircleShader.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/geng/graphics/Shaders/RectBorderShader.h" afterPath="$PROJECT_DIR$/include/geng/graphics/Shaders/RectBorderShader.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/geng/graphics/Shaders/SimpleColorShader.h" afterPath="$PROJECT_DIR$/include/geng/graphics/Shaders/SimpleColorShader.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/geng/graphics/Shaders/SimpleTexturedShader.h" afterPath="$PROJECT_DIR$/include/geng/graphics/Shaders/SimpleTexturedShader.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/geng/graphics/Shaders/TextShader.h" afterPath="$PROJECT_DIR$/include/geng/graphics/Shaders/TextShader.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/geng/graphics/Systems/CollisionsDebugSystem.h" afterPath="$PROJECT_DIR$/include/geng/graphics/Systems/CollisionsDebugSystem.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/geng/graphics/Systems/CollisionsDebugSystem.inl" afterPath="$PROJECT_DIR$/include/geng/graphics/Systems/CollisionsDebugSystem.inl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/geng/graphics/Systems/RenderSystem.h" afterPath="$PROJECT_DIR$/include/geng/graphics/Systems/RenderSystem.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/geng/graphics/Systems/RenderSystem.inl" afterPath="$PROJECT_DIR$/include/geng/graphics/Systems/RenderSystem.inl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/geng/graphics/Texture2D.h" afterPath="$PROJECT_DIR$/include/geng/graphics/Texture2D.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/geng/graphics/Textures2DManager.h" afterPath="$PROJECT_DIR$/include/geng/graphics/Textures2DManager.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/geng/graphics/Textures2DManager.inl" afterPath="$PROJECT_DIR$/include/geng/graphics/Textures2DManager.inl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/geng/graphics/VertexData/Factories/FactoryRectT.h" afterPath="$PROJECT_DIR$/include/geng/graphics/VertexData/Factories/FactoryRectT.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/geng/graphics/VertexData/Factories/FactoryRectT.inl" afterPath="$PROJECT_DIR$/include/geng/graphics/VertexData/Factories/FactoryRectT.inl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/geng/graphics/VertexData/Factories/FactoryRectTF.h" afterPath="$PROJECT_DIR$/include/geng/graphics/VertexData/Factories/FactoryRectTF.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/geng/graphics/VertexData/Factories/FactoryRectTF.inl" afterPath="$PROJECT_DIR$/include/geng/graphics/VertexData/Factories/FactoryRectTF.inl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/geng/graphics/VertexData/VertexDataP.h" afterPath="$PROJECT_DIR$/include/geng/graphics/VertexData/VertexDataP.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/geng/graphics/VertexData/VertexDataPT.h" afterPath="$PROJECT_DIR$/include/geng/graphics/VertexData/VertexDataPT.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/geng/graphics/Vertices.h" afterPath="$PROJECT_DIR$/include/geng/graphics/Vertices.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/geng/graphics/Vertices.inl" afterPath="$PROJECT_DIR$/include/geng/graphics/Vertices.inl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/geng/graphics/ViewPort.h" afterPath="$PROJECT_DIR$/include/geng/graphics/ViewPort.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/geng/graphics/Window.h" afterPath="$PROJECT_DIR$/include/geng/graphics/Window.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/geng/graphics/glinclude.h" afterPath="$PROJECT_DIR$/include/geng/graphics/glinclude.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/geng/graphics/graphics_config.h" afterPath="$PROJECT_DIR$/include/geng/graphics/graphics_config.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/geng/graphics/graphics_includes.h" afterPath="$PROJECT_DIR$/include/geng/graphics/graphics_includes.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/geng/network/ClientStateBase.h" afterPath="$PROJECT_DIR$/include/geng/network/ClientStateBase.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/geng/network/Components/CNetworked.h" afterPath="$PROJECT_DIR$/include/geng/network/Components/CNetworked.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/geng/network/Snapshots.h" afterPath="$PROJECT_DIR$/include/geng/network/Snapshots.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/geng/network/Snapshots.inl" afterPath="$PROJECT_DIR$/include/geng/network/Snapshots.inl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/geng/network/Systems/ClientNetworkSystem.h" afterPath="$PROJECT_DIR$/include/geng/network/Systems/ClientNetworkSystem.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/geng/network/Systems/ClientNetworkSystem.inl" afterPath="$PROJECT_DIR$/include/geng/network/Systems/ClientNetworkSystem.inl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/geng/network/Systems/ServerNetworkSystem.h" afterPath="$PROJECT_DIR$/include/geng/network/Systems/ServerNetworkSystem.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/geng/network/Systems/ServerNetworkSystem.inl" afterPath="$PROJECT_DIR$/include/geng/network/Systems/ServerNetworkSystem.inl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/geng/physics/Collidable.h" afterPath="$PROJECT_DIR$/include/geng/physics/Collidable.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/geng/physics/Components/CBody.h" afterPath="$PROJECT_DIR$/include/geng/physics/Components/CBody.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/geng/physics/Systems/CollisionSystem.h" afterPath="$PROJECT_DIR$/include/geng/physics/Systems/CollisionSystem.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/geng/physics/Systems/CollisionSystem.inl" afterPath="$PROJECT_DIR$/include/geng/physics/Systems/CollisionSystem.inl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/MyGame.h" afterPath="$PROJECT_DIR$/src/MyGame.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/entities/HUD.h" afterPath="$PROJECT_DIR$/src/entities/HUD.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/entities/MyEntity.h" afterPath="$PROJECT_DIR$/src/entities/MyEntity.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/entities/Shuttle.h" afterPath="$PROJECT_DIR$/src/entities/Shuttle.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/incl.h" afterPath="$PROJECT_DIR$/src/incl.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main.cpp" afterPath="$PROJECT_DIR$/src/main.cpp" />
+    <list default="true" id="ac104073-5944-4184-a930-f55a50ab31cf" name="Default" comment="added:&#10; PhysicsManager">
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/include/geng/core/Components/CTreeTransform.inl" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/include/geng/core/EntityResourcesManager.h" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/include/geng/core/Systems/TreeTransformSystem.h" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/include/geng/core/Systems/TreeTransformSystem.inl" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/include/geng/core/core_common.h" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/include/geng/graphics/AssetsManager.h" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/include/geng/graphics/AssetsManager.inl" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/include/geng/graphics/Components/CRenderable.inl" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/include/geng/graphics/ControlHelpers.h" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/include/geng/graphics/ControlHelpers.inl" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/include/geng/graphics/Entities/DebugOverlay.h" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/include/geng/graphics/Entities/DebugOverlay.inl" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/include/geng/graphics/Entities/EBody.h" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/include/geng/graphics/Entities/EBody.inl" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/include/geng/graphics/Entities/EVisual.h" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/include/geng/graphics/NormOffset.h" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/include/geng/graphics/Renderables/renderables_includes.h" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/include/geng/graphics/Shaders/shaders_include.h" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/include/geng/graphics/VertexData/GeomStates/GeomStateBase.h" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/include/geng/graphics/VertexData/GeomStates/GeomStateBase.inl" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/include/geng/graphics/VertexData/GeomStates/GeomStates.h" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/include/geng/graphics/VertexData/GeomStates/GeomStates.inl" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/include/geng/graphics/VertexData/vertexdata_includes.h" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/include/geng/graphics/graphics_entities.h" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/include/geng/network/Components/CNetworkedClient.h" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/include/geng/physics/Components/CBody.inl" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/include/geng/physics/Components/CCollider.h" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/include/geng/physics/Components/CCollider.inl" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/include/geng/physics/Components/CTreeJoint.h" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/include/geng/physics/Components/CTreeJoint.inl" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/include/geng/physics/Entities/EGhost.h" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/include/geng/physics/Entities/ETrigger.h" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/include/geng/physics/Systems/BoundsDebugRenderSystem.h" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/include/geng/physics/Systems/BoundsDebugRenderSystem.inl" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/include/geng/physics/Systems/BoundsSystem.h" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/include/geng/physics/Systems/BoundsSystem.inl" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/include/geng/physics/Systems/PhysicsSystem.h" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/include/geng/physics/motor_utils.h" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/include/geng/physics/physics_entities.h" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/include/geng/physics/physics_utils.h" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/entities/Dude.h" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/entities/Dude.inl" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" afterPath="$PROJECT_DIR$/CMakeLists.txt" />
+      <change beforePath="$PROJECT_DIR$/build/Emscripten/main.data" afterPath="$PROJECT_DIR$/build/Emscripten/main.data" />
+      <change beforePath="$PROJECT_DIR$/build/Emscripten/main.html" afterPath="$PROJECT_DIR$/build/Emscripten/main.html" />
+      <change beforePath="$PROJECT_DIR$/build/Emscripten/main.html.mem" afterPath="$PROJECT_DIR$/build/Emscripten/main.html.mem" />
+      <change beforePath="$PROJECT_DIR$/build/Emscripten/main.js" afterPath="$PROJECT_DIR$/build/Emscripten/main.js" />
+      <change beforePath="$PROJECT_DIR$/build/Emscripten/test.bc" afterPath="$PROJECT_DIR$/build/Emscripten/test.bc" />
+      <change beforePath="$PROJECT_DIR$/emscripten_build.sh" afterPath="$PROJECT_DIR$/emscripten_build.sh" />
+      <change beforePath="$PROJECT_DIR$/include/geng.h" afterPath="$PROJECT_DIR$/include/geng.h" />
+      <change beforePath="$PROJECT_DIR$/include/geng/GEFlags.h" afterPath="$PROJECT_DIR$/include/geng/GEFlags.h" />
+      <change beforePath="$PROJECT_DIR$/include/geng/GERoles.h" afterPath="$PROJECT_DIR$/include/geng/GERoles.h" />
+      <change beforePath="$PROJECT_DIR$/include/geng/Game.h" afterPath="$PROJECT_DIR$/include/geng/Game.h" />
+      <change beforePath="$PROJECT_DIR$/include/geng/Game.inl" afterPath="$PROJECT_DIR$/include/geng/Game.inl" />
+      <change beforePath="$PROJECT_DIR$/include/geng/GameBase.h" afterPath="$PROJECT_DIR$/include/geng/GameBase.h" />
+      <change beforePath="$PROJECT_DIR$/include/geng/GameBase.inl" afterPath="$PROJECT_DIR$/include/geng/GameBase.inl" />
+      <change beforePath="$PROJECT_DIR$/include/geng/core/Components/CDeltaTransform.inl" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/include/geng/core/Components/CDeltaTransformData.h" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/include/geng/core/Components/CMovableData.h" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/include/geng/core/Components/CTransform.h" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/include/geng/core/Components/CTransform.inl" afterPath="$PROJECT_DIR$/include/geng/core/Components/CTransform.inl" />
+      <change beforePath="$PROJECT_DIR$/include/geng/core/GengEntity.h" afterPath="$PROJECT_DIR$/include/geng/core/GengEntity.h" />
+      <change beforePath="$PROJECT_DIR$/include/geng/core/GengSystem.h" afterPath="$PROJECT_DIR$/include/geng/core/GengSystem.h" />
+      <change beforePath="$PROJECT_DIR$/include/geng/core/Speed.h" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/include/geng/core/Systems/DeltaTransformSystem.h" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/include/geng/core/Systems/MovementSystem.h" afterPath="$PROJECT_DIR$/include/geng/core/Systems/MovementSystem.h" />
+      <change beforePath="$PROJECT_DIR$/include/geng/core/core_includes.h" afterPath="$PROJECT_DIR$/include/geng/core/core_includes.h" />
+      <change beforePath="$PROJECT_DIR$/include/geng/geng_config.h" afterPath="$PROJECT_DIR$/include/geng/geng_config.h" />
+      <change beforePath="$PROJECT_DIR$/include/geng/graphics/Components/CRenderablesData.h" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/include/geng/graphics/CoordFrame.h" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/include/geng/graphics/Entities/GUIElement.h" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/include/geng/graphics/Events.h" afterPath="$PROJECT_DIR$/include/geng/graphics/Events.h" />
+      <change beforePath="$PROJECT_DIR$/include/geng/graphics/Events.inl" afterPath="$PROJECT_DIR$/include/geng/graphics/Events.inl" />
+      <change beforePath="$PROJECT_DIR$/include/geng/graphics/GUI.h" afterPath="$PROJECT_DIR$/include/geng/graphics/GUI.h" />
+      <change beforePath="$PROJECT_DIR$/include/geng/graphics/GUI.inl" afterPath="$PROJECT_DIR$/include/geng/graphics/GUI.inl" />
+      <change beforePath="$PROJECT_DIR$/include/geng/graphics/Renderables/CircleRenderable.h" afterPath="$PROJECT_DIR$/include/geng/graphics/Renderables/CircleRenderable.h" />
+      <change beforePath="$PROJECT_DIR$/include/geng/graphics/Renderables/CircleRenderable.inl" afterPath="$PROJECT_DIR$/include/geng/graphics/Renderables/CircleRenderable.inl" />
+      <change beforePath="$PROJECT_DIR$/include/geng/graphics/Renderables/ParticlesRenderable.h" afterPath="$PROJECT_DIR$/include/geng/graphics/Renderables/ParticlesRenderable.h" />
+      <change beforePath="$PROJECT_DIR$/include/geng/graphics/Renderables/ParticlesRenderable.inl" afterPath="$PROJECT_DIR$/include/geng/graphics/Renderables/ParticlesRenderable.inl" />
+      <change beforePath="$PROJECT_DIR$/include/geng/graphics/Renderables/PgonRenderable.h" afterPath="$PROJECT_DIR$/include/geng/graphics/Renderables/PgonRenderable.h" />
+      <change beforePath="$PROJECT_DIR$/include/geng/graphics/Renderables/PgonRenderable.inl" afterPath="$PROJECT_DIR$/include/geng/graphics/Renderables/PgonRenderable.inl" />
+      <change beforePath="$PROJECT_DIR$/include/geng/graphics/Renderables/PgonTexturedRenderable.h" afterPath="$PROJECT_DIR$/include/geng/graphics/Renderables/PgonTexturedRenderable.h" />
+      <change beforePath="$PROJECT_DIR$/include/geng/graphics/Renderables/PgonTexturedRenderable.inl" afterPath="$PROJECT_DIR$/include/geng/graphics/Renderables/PgonTexturedRenderable.inl" />
+      <change beforePath="$PROJECT_DIR$/include/geng/graphics/Renderables/RectBorderRenderable.h" afterPath="$PROJECT_DIR$/include/geng/graphics/Renderables/RectBorderRenderable.h" />
+      <change beforePath="$PROJECT_DIR$/include/geng/graphics/Renderables/RectBorderRenderable.inl" afterPath="$PROJECT_DIR$/include/geng/graphics/Renderables/RectBorderRenderable.inl" />
+      <change beforePath="$PROJECT_DIR$/include/geng/graphics/Renderables/RectRenderable.h" afterPath="$PROJECT_DIR$/include/geng/graphics/Renderables/RectRenderable.h" />
+      <change beforePath="$PROJECT_DIR$/include/geng/graphics/Renderables/RectRenderable.inl" afterPath="$PROJECT_DIR$/include/geng/graphics/Renderables/RectRenderable.inl" />
+      <change beforePath="$PROJECT_DIR$/include/geng/graphics/Renderables/RenderIndex.h" afterPath="$PROJECT_DIR$/include/geng/graphics/Renderables/RenderBatchId.h" />
+      <change beforePath="$PROJECT_DIR$/include/geng/graphics/Renderables/RenderIndex.inl" afterPath="$PROJECT_DIR$/include/geng/graphics/Renderables/RenderBatchId.inl" />
+      <change beforePath="$PROJECT_DIR$/include/geng/graphics/Renderables/Renderable.h" afterPath="$PROJECT_DIR$/include/geng/graphics/Renderables/Renderable.h" />
+      <change beforePath="$PROJECT_DIR$/include/geng/graphics/Renderables/Renderable.inl" afterPath="$PROJECT_DIR$/include/geng/graphics/Renderables/Renderable.inl" />
+      <change beforePath="$PROJECT_DIR$/include/geng/graphics/Renderables/SpriteRenderable.h" afterPath="$PROJECT_DIR$/include/geng/graphics/Renderables/SpriteRenderable.h" />
+      <change beforePath="$PROJECT_DIR$/include/geng/graphics/Renderables/SpriteRenderable.inl" afterPath="$PROJECT_DIR$/include/geng/graphics/Renderables/SpriteRenderable.inl" />
+      <change beforePath="$PROJECT_DIR$/include/geng/graphics/Renderables/TextRenderable.h" afterPath="$PROJECT_DIR$/include/geng/graphics/Renderables/TextRenderable.h" />
+      <change beforePath="$PROJECT_DIR$/include/geng/graphics/Renderables/TextRenderable.inl" afterPath="$PROJECT_DIR$/include/geng/graphics/Renderables/TextRenderable.inl" />
+      <change beforePath="$PROJECT_DIR$/include/geng/graphics/Renderer2D.h" afterPath="$PROJECT_DIR$/include/geng/graphics/Renderer2D.h" />
+      <change beforePath="$PROJECT_DIR$/include/geng/graphics/Renderer2D.inl" afterPath="$PROJECT_DIR$/include/geng/graphics/Renderer2D.inl" />
+      <change beforePath="$PROJECT_DIR$/include/geng/graphics/Shader.h" afterPath="$PROJECT_DIR$/include/geng/graphics/Shaders/Shader.h" />
+      <change beforePath="$PROJECT_DIR$/include/geng/graphics/Shader.inl" afterPath="$PROJECT_DIR$/include/geng/graphics/Shaders/Shader.inl" />
+      <change beforePath="$PROJECT_DIR$/include/geng/graphics/Shaders.h" afterPath="$PROJECT_DIR$/include/geng/graphics/Shaders.h" />
+      <change beforePath="$PROJECT_DIR$/include/geng/graphics/Shaders.inl" afterPath="$PROJECT_DIR$/include/geng/graphics/Shaders.inl" />
+      <change beforePath="$PROJECT_DIR$/include/geng/graphics/Shaders/CircleShader.h" afterPath="$PROJECT_DIR$/include/geng/graphics/Shaders/CircleShader.h" />
+      <change beforePath="$PROJECT_DIR$/include/geng/graphics/Shaders/ParticleShader.h" afterPath="$PROJECT_DIR$/include/geng/graphics/Shaders/ParticleShader.h" />
+      <change beforePath="$PROJECT_DIR$/include/geng/graphics/Shaders/RectBorderShader.h" afterPath="$PROJECT_DIR$/include/geng/graphics/Shaders/RectBorderShader.h" />
+      <change beforePath="$PROJECT_DIR$/include/geng/graphics/Shaders/SimpleColorShader.h" afterPath="$PROJECT_DIR$/include/geng/graphics/Shaders/SimpleColorShader.h" />
+      <change beforePath="$PROJECT_DIR$/include/geng/graphics/Shaders/SimpleTexturedShader.h" afterPath="$PROJECT_DIR$/include/geng/graphics/Shaders/SimpleTexturedShader.h" />
+      <change beforePath="$PROJECT_DIR$/include/geng/graphics/Shaders/TextShader.h" afterPath="$PROJECT_DIR$/include/geng/graphics/Shaders/TextShader.h" />
+      <change beforePath="$PROJECT_DIR$/include/geng/graphics/Systems/CollisionsDebugSystem.h" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/include/geng/graphics/Systems/CollisionsDebugSystem.inl" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/include/geng/graphics/Systems/RenderSystem.h" afterPath="$PROJECT_DIR$/include/geng/graphics/Systems/RenderSystem.h" />
+      <change beforePath="$PROJECT_DIR$/include/geng/graphics/Systems/RenderSystem.inl" afterPath="$PROJECT_DIR$/include/geng/graphics/Systems/RenderSystem.inl" />
+      <change beforePath="$PROJECT_DIR$/include/geng/graphics/Texture2D.h" afterPath="$PROJECT_DIR$/include/geng/graphics/Texture2D.h" />
+      <change beforePath="$PROJECT_DIR$/include/geng/graphics/Texture2D.inl" afterPath="$PROJECT_DIR$/include/geng/graphics/Texture2D.inl" />
+      <change beforePath="$PROJECT_DIR$/include/geng/graphics/Textures2DManager.h" afterPath="$PROJECT_DIR$/include/geng/graphics/Textures2DManager.h" />
+      <change beforePath="$PROJECT_DIR$/include/geng/graphics/Textures2DManager.inl" afterPath="$PROJECT_DIR$/include/geng/graphics/Textures2DManager.inl" />
+      <change beforePath="$PROJECT_DIR$/include/geng/graphics/VertexData/Factories/FactoryRectT.h" afterPath="$PROJECT_DIR$/include/geng/graphics/VertexData/Factories/FactoryRectT.h" />
+      <change beforePath="$PROJECT_DIR$/include/geng/graphics/VertexData/Factories/FactoryRectT.inl" afterPath="$PROJECT_DIR$/include/geng/graphics/VertexData/Factories/FactoryRectT.inl" />
+      <change beforePath="$PROJECT_DIR$/include/geng/graphics/VertexData/Factories/FactoryRectTF.h" afterPath="$PROJECT_DIR$/include/geng/graphics/VertexData/Factories/FactoryRectTF.h" />
+      <change beforePath="$PROJECT_DIR$/include/geng/graphics/VertexData/Factories/FactoryRectTF.inl" afterPath="$PROJECT_DIR$/include/geng/graphics/VertexData/Factories/FactoryRectTF.inl" />
+      <change beforePath="$PROJECT_DIR$/include/geng/graphics/VertexData/Geom.h" afterPath="$PROJECT_DIR$/include/geng/graphics/VertexData/Geom.h" />
+      <change beforePath="$PROJECT_DIR$/include/geng/graphics/VertexData/Geom.inl" afterPath="$PROJECT_DIR$/include/geng/graphics/VertexData/Geom.inl" />
+      <change beforePath="$PROJECT_DIR$/include/geng/graphics/VertexData/GeomState.h" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/include/geng/graphics/VertexData/ParticleBatchStates.h" afterPath="$PROJECT_DIR$/include/geng/graphics/VertexData/GeomStates/GeomStateParticles.h" />
+      <change beforePath="$PROJECT_DIR$/include/geng/graphics/VertexData/ParticleBatchStates.inl" afterPath="$PROJECT_DIR$/include/geng/graphics/VertexData/GeomStates/GeomStateParticles.inl" />
+      <change beforePath="$PROJECT_DIR$/include/geng/graphics/VertexData/SpriteAnimationStates.h" afterPath="$PROJECT_DIR$/include/geng/graphics/VertexData/GeomStates/GeomStateSpriteAnimation.h" />
+      <change beforePath="$PROJECT_DIR$/include/geng/graphics/VertexData/SpriteAnimationStates.inl" afterPath="$PROJECT_DIR$/include/geng/graphics/VertexData/GeomStates/GeomStateSpriteAnimation.inl" />
+      <change beforePath="$PROJECT_DIR$/include/geng/graphics/VertexData/TextStates.h" afterPath="$PROJECT_DIR$/include/geng/graphics/VertexData/GeomStates/GeomStateText.h" />
+      <change beforePath="$PROJECT_DIR$/include/geng/graphics/VertexData/TextStates.inl" afterPath="$PROJECT_DIR$/include/geng/graphics/VertexData/GeomStates/GeomStateText.inl" />
+      <change beforePath="$PROJECT_DIR$/include/geng/graphics/VertexData/VertexData.h" afterPath="$PROJECT_DIR$/include/geng/graphics/VertexData/VertexData.h" />
+      <change beforePath="$PROJECT_DIR$/include/geng/graphics/VertexData/VertexData.inl" afterPath="$PROJECT_DIR$/include/geng/graphics/VertexData/VertexData.inl" />
+      <change beforePath="$PROJECT_DIR$/include/geng/graphics/VertexData/VertexDataP.h" afterPath="$PROJECT_DIR$/include/geng/graphics/VertexData/VertexDataP.h" />
+      <change beforePath="$PROJECT_DIR$/include/geng/graphics/VertexData/VertexDataPT.h" afterPath="$PROJECT_DIR$/include/geng/graphics/VertexData/VertexDataPT.h" />
+      <change beforePath="$PROJECT_DIR$/include/geng/graphics/VertexData/VertexDataPT.inl" afterPath="$PROJECT_DIR$/include/geng/graphics/VertexData/VertexDataPT.inl" />
+      <change beforePath="$PROJECT_DIR$/include/geng/graphics/VertexData/VertexDataParticles.h" afterPath="$PROJECT_DIR$/include/geng/graphics/VertexData/VertexDataParticles.h" />
+      <change beforePath="$PROJECT_DIR$/include/geng/graphics/VertexData/VertexDataParticles.inl" afterPath="$PROJECT_DIR$/include/geng/graphics/VertexData/VertexDataParticles.inl" />
+      <change beforePath="$PROJECT_DIR$/include/geng/graphics/Vertices.h" afterPath="$PROJECT_DIR$/include/geng/graphics/Vertices.h" />
+      <change beforePath="$PROJECT_DIR$/include/geng/graphics/Vertices.inl" afterPath="$PROJECT_DIR$/include/geng/graphics/Vertices.inl" />
+      <change beforePath="$PROJECT_DIR$/include/geng/graphics/ViewPort.h" afterPath="$PROJECT_DIR$/include/geng/graphics/ViewPort.h" />
+      <change beforePath="$PROJECT_DIR$/include/geng/graphics/ViewPort.inl" afterPath="$PROJECT_DIR$/include/geng/graphics/ViewPort.inl" />
+      <change beforePath="$PROJECT_DIR$/include/geng/graphics/Window.h" afterPath="$PROJECT_DIR$/include/geng/graphics/Window.h" />
+      <change beforePath="$PROJECT_DIR$/include/geng/graphics/Window.inl" afterPath="$PROJECT_DIR$/include/geng/graphics/Window.inl" />
+      <change beforePath="$PROJECT_DIR$/include/geng/graphics/glinclude.h" afterPath="$PROJECT_DIR$/include/geng/graphics/glinclude.h" />
+      <change beforePath="$PROJECT_DIR$/include/geng/graphics/graphics_config.h" afterPath="$PROJECT_DIR$/include/geng/graphics/graphics_config.h" />
+      <change beforePath="$PROJECT_DIR$/include/geng/graphics/graphics_includes.h" afterPath="$PROJECT_DIR$/include/geng/graphics/graphics_includes.h" />
+      <change beforePath="$PROJECT_DIR$/include/geng/network/Components/CNetworked.h" afterPath="$PROJECT_DIR$/include/geng/network/Components/CNetworkedServer.h" />
+      <change beforePath="$PROJECT_DIR$/include/geng/network/Snapshots.inl" afterPath="$PROJECT_DIR$/include/geng/network/Snapshots.inl" />
+      <change beforePath="$PROJECT_DIR$/include/geng/network/Systems/ClientNetworkSystem.h" afterPath="$PROJECT_DIR$/include/geng/network/Systems/ClientNetworkSystem.h" />
+      <change beforePath="$PROJECT_DIR$/include/geng/network/Systems/ClientNetworkSystem.inl" afterPath="$PROJECT_DIR$/include/geng/network/Systems/ClientNetworkSystem.inl" />
+      <change beforePath="$PROJECT_DIR$/include/geng/network/Systems/ServerNetworkSystem.h" afterPath="$PROJECT_DIR$/include/geng/network/Systems/ServerNetworkSystem.h" />
+      <change beforePath="$PROJECT_DIR$/include/geng/network/Systems/ServerNetworkSystem.inl" afterPath="$PROJECT_DIR$/include/geng/network/Systems/ServerNetworkSystem.inl" />
+      <change beforePath="$PROJECT_DIR$/include/geng/network/network_includes.h" afterPath="$PROJECT_DIR$/include/geng/network/network_includes.h" />
+      <change beforePath="$PROJECT_DIR$/include/geng/physics/Collidable.h" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/include/geng/physics/Components/CBody.h" afterPath="$PROJECT_DIR$/include/geng/physics/Components/CBody.h" />
+      <change beforePath="$PROJECT_DIR$/include/geng/physics/Systems/CollisionSystem.h" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/include/geng/physics/Systems/CollisionSystem.inl" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/include/geng/physics/physics_includes.h" afterPath="$PROJECT_DIR$/include/geng/physics/physics_includes.h" />
+      <change beforePath="$PROJECT_DIR$/include/geng/sdlinclude.h" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/MyGame.h" afterPath="$PROJECT_DIR$/src/MyGame.h" />
+      <change beforePath="$PROJECT_DIR$/src/MyGame.inl" afterPath="$PROJECT_DIR$/src/MyGame.inl" />
+      <change beforePath="$PROJECT_DIR$/src/entities/HUD.h" afterPath="$PROJECT_DIR$/src/entities/HUD.h" />
+      <change beforePath="$PROJECT_DIR$/src/entities/HUD.inl" afterPath="$PROJECT_DIR$/src/entities/HUD.inl" />
+      <change beforePath="$PROJECT_DIR$/src/entities/MyEntity.h" afterPath="$PROJECT_DIR$/src/entities/MyEntity.h" />
+      <change beforePath="$PROJECT_DIR$/src/entities/MyEntity.inl" afterPath="$PROJECT_DIR$/src/entities/MyEntity.inl" />
+      <change beforePath="$PROJECT_DIR$/src/entities/Shuttle.h" afterPath="$PROJECT_DIR$/src/entities/Shuttle.h" />
+      <change beforePath="$PROJECT_DIR$/src/entities/Shuttle.inl" afterPath="$PROJECT_DIR$/src/entities/Shuttle.inl" />
+      <change beforePath="$PROJECT_DIR$/src/incl.h" afterPath="$PROJECT_DIR$/src/incl.h" />
+      <change beforePath="$PROJECT_DIR$/src/main.cpp" afterPath="$PROJECT_DIR$/src/main.cpp" />
     </list>
     <ignored path="geng.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -176,47 +202,44 @@
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Release" />
   <component name="FavoritesManager">
     <favorites_list name="geng" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="MyGame.inl" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/MyGame.inl">
+      <file leaf-file-name="ParticleShader.h" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/include/geng/graphics/Shaders/ParticleShader.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="390">
-              <caret line="26" column="30" lean-forward="false" selection-start-line="26" selection-start-column="30" selection-end-line="26" selection-end-column="30" />
+            <state relative-caret-position="645">
+              <caret line="55" column="33" lean-forward="true" selection-start-line="55" selection-start-column="33" selection-end-line="55" selection-end-column="33" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Window.inl" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/include/geng/graphics/Window.inl">
+      <file leaf-file-name="CSpeed.h" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/include/geng/core/Components/CSpeed.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2280">
-              <caret line="152" column="30" lean-forward="false" selection-start-line="152" selection-start-column="30" selection-end-line="152" selection-end-column="30" />
+            <state relative-caret-position="450">
+              <caret line="31" column="41" lean-forward="false" selection-start-line="31" selection-start-column="41" selection-end-line="31" selection-end-column="41" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="README.md" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/README.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor relative-caret-position="60">
-                <caret line="4" column="33" lean-forward="false" selection-start-line="4" selection-start-column="33" selection-end-line="4" selection-end-column="33" />
-                <folding />
-              </first_editor>
-              <second_editor />
+      <file leaf-file-name="MyEntity.h" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/entities/MyEntity.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="165">
+              <caret line="11" column="28" lean-forward="false" selection-start-line="11" selection-start-column="28" selection-end-line="11" selection-end-column="28" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/.gitignore">
+      <file leaf-file-name="CSpeed.inl" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/include/geng/core/Components/CSpeed.inl">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -225,61 +248,63 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Type.h" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../base/include/types/Type.h">
+      <file leaf-file-name="CTransform.h" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/include/geng/core/Components/CTransform.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1050">
-              <caret line="70" column="19" lean-forward="false" selection-start-line="70" selection-start-column="19" selection-end-line="70" selection-end-column="19" />
+            <state relative-caret-position="105">
+              <caret line="8" column="10" lean-forward="false" selection-start-line="8" selection-start-column="10" selection-end-line="8" selection-end-column="10" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="VertexDataPT.inl" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/include/geng/graphics/VertexData/VertexDataPT.inl">
+      <file leaf-file-name="CTreeTransform.h" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/include/geng/core/Components/CTreeTransform.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="945">
-              <caret line="63" column="32" lean-forward="false" selection-start-line="63" selection-start-column="32" selection-end-line="63" selection-end-column="32" />
+            <state relative-caret-position="105">
+              <caret line="8" column="10" lean-forward="false" selection-start-line="8" selection-start-column="10" selection-end-line="8" selection-end-column="10" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="VertexDataPT.h" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/include/geng/graphics/VertexData/VertexDataPT.h">
+      <file leaf-file-name="MovementSystem.h" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/include/geng/core/Systems/MovementSystem.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="34" column="20" lean-forward="false" selection-start-line="34" selection-start-column="20" selection-end-line="34" selection-end-column="20" />
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SpriteAnimationStates.h" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/include/geng/graphics/VertexData/SpriteAnimationStates.h">
+      <file leaf-file-name="TreeTransformSystem.h" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/include/geng/core/Systems/TreeTransformSystem.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="570">
-              <caret line="38" column="27" lean-forward="false" selection-start-line="38" selection-start-column="27" selection-end-line="38" selection-end-column="27" />
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SpriteAnimationStates.inl" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/include/geng/graphics/VertexData/SpriteAnimationStates.inl">
+      <file leaf-file-name="TreeTransformSystem.inl" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/include/geng/core/Systems/TreeTransformSystem.inl">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="495">
-              <caret line="33" column="5" lean-forward="false" selection-start-line="33" selection-start-column="5" selection-end-line="33" selection-end-column="5" />
-              <folding />
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#17#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Geom.inl" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/include/geng/graphics/VertexData/Geom.inl">
+      <file leaf-file-name="CRenderable.h" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/include/geng/graphics/Components/CRenderable.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2535">
-              <caret line="169" column="37" lean-forward="false" selection-start-line="169" selection-start-column="37" selection-end-line="169" selection-end-column="37" />
+            <state relative-caret-position="360">
+              <caret line="24" column="16" lean-forward="true" selection-start-line="24" selection-start-column="16" selection-end-line="24" selection-end-column="16" />
               <folding />
             </state>
           </provider>
@@ -287,54 +312,78 @@
       </file>
     </leaf>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="GengEntity Header" />
+        <option value="GengEntity Inline Source" />
+      </list>
+    </option>
+  </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>accge</find>
-      <find>bindbuff</find>
-      <find>reallow</find>
-      <find>glBindBuffer</find>
-      <find>bindbuffer</find>
-      <find>bindin</find>
-      <find>bindvertex</find>
-      <find>glcobuf</find>
-      <find>GL_COPY_READ_BUFFERGL_COPY_READ_BUFFER</find>
-      <find>compressBuffer_</find>
-      <find>prev_vboprev_vbo</find>
-      <find>prev_vbo</find>
-      <find>compress</find>
-      <find>g.left_</find>
-      <find>left_</find>
-      <find>left_ =</find>
-      <find>debugprin</find>
-      <find>debugPrintLinkage</find>
-      <find>std::cou</find>
-      <find>debug</find>
-      <find>debugPrintLinkage_</find>
-      <find>std::cout</find>
-      <find>reallocVertexBuffer_</find>
-      <find>pushBack_</find>
-      <find>updatebuf</find>
-      <find>update_</find>
-      <find>updateGeoms_</find>
-      <find>holes_ratio</find>
-      <find>realloc</find>
-      <find>#ifndef WEB     getModule&lt;Window&gt;().setVSync(false); #endif</find>
+      <find>initrectbod</find>
+      <find>sprite_prototype</find>
+      <find>shuttle_size</find>
+      <find>exhaust_cttr</find>
+      <find>particles_r</find>
+      <find>transformtransform</find>
+      <find>window</find>
+      <find>init</find>
+      <find>ParticleCPUData</find>
+      <find>rotate</find>
+      <find>rotation</find>
+      <find>grav</find>
+      <find>trans_pos</find>
+      <find>v_pos_rot</find>
+      <find>transform</find>
+      <find>tr_transform</find>
+      <find>f_tc_m</find>
+      <find>gl_PointCoord</find>
+      <find>gl_PointCoordgl_PointCoord</find>
+      <find>particle_img</find>
+      <find>verts_cnt</find>
+      <find>verts_cnt_vbo_</find>
+      <find>glbuffersub</find>
+      <find>glCopyBufferSubData</find>
+      <find>buffersubdata</find>
+      <find>GL_COPY_READ_BUFFER</find>
+      <find>vp_zoom</find>
+      <find>dt</find>
+      <find>rP</find>
+      <find>rp</find>
     </findStrings>
     <replaceStrings>
-      <replace>GameBase</replace>
-      <replace />
-      <replace>item_pos</replace>
-      <replace>verts_cnt_vbo_</replace>
-      <replace>last_geom</replace>
-      <replace>RenderableBase</replace>
-      <replace>RenderableType</replace>
-      <replace>rid_io</replace>
-      <replace>rid_io.</replace>
-      <replace>rid.</replace>
-      <replace>::</replace>
-      <replace>getRenderTask()-&gt;</replace>
-      <replace>RenderTask()-&gt;</replace>
-      <replace>#version 100</replace>
+      <replace>ct-&gt;</replace>
+      <replace>CCollidableData</replace>
+      <replace>ccDrawDataAs&lt;DrawData&gt;()</replace>
+      <replace>accDrawDataAs&lt;DrawData&gt;()</replace>
+      <replace>accRenderTask()</replace>
+      <replace>getRenderTask().</replace>
+      <replace>accRenderTask().</replace>
+      <replace>ot</replace>
+      <replace>::IRefPtr</replace>
+      <replace>GengSystem.h</replace>
+      <replace>PartsMask</replace>
+      <replace>CBoundData</replace>
+      <replace>cbd</replace>
+      <replace>csd</replace>
+      <replace>ELabel</replace>
+      <replace>GRAPHICS_ENTDEFS_H</replace>
+      <replace>PHYSICS_ENTDEFS_H</replace>
+      <replace>typedef</replace>
+      <replace>ProfilingCallbacks</replace>
+      <replace>GRAPHICS_ENTITIES_H</replace>
+      <replace>limb_params[ltRleg]</replace>
+      <replace>CBoundSetter</replace>
+      <replace>DEF_CONSTR_AND_MOVE_ONLY</replace>
+      <replace>PHYSICSMANAGER_H</replace>
+      <replace>cgDudeLimbId</replace>
+      <replace>tjd</replace>
+      <replace>accPhysicsManager</replace>
+      <replace>accPhysicsManager_</replace>
+      <replace>CCOLLIDER_H</replace>
+      <replace>CColliderSetter</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -343,57 +392,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/include/geng/graphics/Renderables/Renderable.inl" />
-        <option value="$PROJECT_DIR$/include/geng/graphics/Renderables/ParticlesRenderable.h" />
-        <option value="$PROJECT_DIR$/include/geng/graphics/Renderables/RectBorderRenderable.h" />
-        <option value="$PROJECT_DIR$/include/geng/graphics/Renderables/RectRenderable.h" />
-        <option value="$PROJECT_DIR$/include/geng/graphics/Renderables/TextRenderable.h" />
-        <option value="$PROJECT_DIR$/include/geng/graphics/Components/CRenderables.h" />
-        <option value="$PROJECT_DIR$/include/geng/graphics/VertexData/GeomState.h" />
-        <option value="$PROJECT_DIR$/../base/src/functions/string_utils.h" />
-        <option value="$PROJECT_DIR$/include/geng/graphics/VertexData/VertexDataP.h" />
-        <option value="$PROJECT_DIR$/include/geng/graphics/VertexData/VertexDataPT.h" />
-        <option value="$PROJECT_DIR$/include/geng/graphics/Vertices.h" />
-        <option value="$PROJECT_DIR$/include/geng/GameBase.h" />
-        <option value="$PROJECT_DIR$/include/geng/Game.h" />
-        <option value="$PROJECT_DIR$/../base/src/functions/string_utils.inl" />
-        <option value="$PROJECT_DIR$/include/geng/Game.inl" />
-        <option value="$PROJECT_DIR$/../base/src/types/Timer.inl" />
         <option value="$PROJECT_DIR$/include/geng/GameBase.inl" />
-        <option value="$PROJECT_DIR$/include/geng/graphics/glinclude.h" />
-        <option value="$PROJECT_DIR$/../base/src/functions/meta.h" />
-        <option value="$PROJECT_DIR$/include/geng/graphics/VertexData/VertexDataParticles.h" />
-        <option value="$PROJECT_DIR$/include/geng/graphics/VertexData/Geom.h" />
+        <option value="$PROJECT_DIR$/../gphyx/include/gphyx/Bound.h" />
+        <option value="$PROJECT_DIR$/../gphyx/include/gphyx/Bound.inl" />
+        <option value="$PROJECT_DIR$/include/geng/physics/Systems/PhysicsSystem.h" />
+        <option value="$PROJECT_DIR$/include/geng/GERoles.h" />
+        <option value="$PROJECT_DIR$/include/geng/physics/Components/CCollider.h" />
+        <option value="$PROJECT_DIR$/include/geng/physics/Entities/ETrigger.h" />
+        <option value="$PROJECT_DIR$/include/geng/physics/Systems/BoundsSystem.h" />
+        <option value="$PROJECT_DIR$/include/geng/physics/Components/CBody.h" />
+        <option value="$PROJECT_DIR$/include/geng/physics/Components/CBody.inl" />
+        <option value="$PROJECT_DIR$/include/geng/physics/Systems/BoundsDebugRenderSystem.h" />
+        <option value="$PROJECT_DIR$/include/geng/physics/Systems/BoundsDebugRenderSystem.inl" />
+        <option value="$PROJECT_DIR$/include/geng_enums.h" />
+        <option value="$PROJECT_DIR$/src/incl.h" />
+        <option value="$PROJECT_DIR$/include/geng/physics/Components/CCollider.inl" />
+        <option value="$PROJECT_DIR$/include/geng/physics/PhysicsManager.inl" />
+        <option value="$PROJECT_DIR$/include/geng/physics/physics_includes.h" />
+        <option value="$PROJECT_DIR$/include/geng/physics/Systems/BoundsSystem.inl" />
+        <option value="$PROJECT_DIR$/include/geng/physics/Entities/EGhost.h" />
+        <option value="$PROJECT_DIR$/../base/include/types/Mask.inl" />
+        <option value="$PROJECT_DIR$/src/entities/Dude.inl" />
+        <option value="$PROJECT_DIR$/include/geng/physics/PhysicsManager.h" />
+        <option value="$PROJECT_DIR$/../SAP/include/SAP/SAPManagerC.inl" />
+        <option value="$PROJECT_DIR$/../gphyx/include/gphyx/PhysicsManagerT.inl" />
+        <option value="$PROJECT_DIR$/include/geng/graphics/Entities/EBody.h" />
+        <option value="$PROJECT_DIR$/include/geng/graphics/Entities/EBody.inl" />
+        <option value="$PROJECT_DIR$/include/geng/graphics/ViewPort.h" />
+        <option value="$PROJECT_DIR$/include/geng/graphics/ViewPort.inl" />
         <option value="$PROJECT_DIR$/include/geng/graphics/graphics_config.h" />
-        <option value="$PROJECT_DIR$/include/geng/core/Components/CDeltaTransform.inl" />
-        <option value="$PROJECT_DIR$/src/entities/Shuttle.h" />
-        <option value="$PROJECT_DIR$/include/geng/graphics/Systems/RenderSystem.inl" />
-        <option value="$PROJECT_DIR$/include/geng/graphics/CoordFrame.h" />
+        <option value="$PROJECT_DIR$/include/geng/graphics/Renderables/PgonRenderable.h" />
+        <option value="$PROJECT_DIR$/include/geng/graphics/Renderables/PgonTexturedRenderable.h" />
+        <option value="$PROJECT_DIR$/include/geng/graphics/Shaders/SimpleTexturedShader.h" />
+        <option value="$PROJECT_DIR$/include/geng/graphics/VertexData/GeomStates/GeomStateParticles.inl" />
+        <option value="$PROJECT_DIR$/include/geng/graphics/VertexData/VertexDataParticles.h" />
         <option value="$PROJECT_DIR$/../maths/include/maths/Angle.h" />
         <option value="$PROJECT_DIR$/../maths/include/maths/Angle.inl" />
-        <option value="$PROJECT_DIR$/src/entities/Shuttle.inl" />
-        <option value="$PROJECT_DIR$/include/geng/graphics/VertexData/SpriteAnimationStates.h" />
-        <option value="$PROJECT_DIR$/include/geng/graphics/VertexData/SpriteAnimationStates.inl" />
-        <option value="$PROJECT_DIR$/include/geng/graphics/Renderables/PgonTexturedRenderable.inl" />
-        <option value="$PROJECT_DIR$/include/geng/graphics/Renderables/SpriteRenderable.h" />
-        <option value="$PROJECT_DIR$/include/geng/graphics/Renderables/PgonTexturedRenderable.h" />
-        <option value="$PROJECT_DIR$/include/geng/graphics/Renderables/SpriteRenderable.inl" />
-        <option value="$PROJECT_DIR$/include/geng/graphics/Renderables/PgonRenderable.h" />
-        <option value="$PROJECT_DIR$/include/geng/graphics/Renderables/PgonRenderable.inl" />
-        <option value="$PROJECT_DIR$/include/geng/graphics/Renderer2D.h" />
-        <option value="$PROJECT_DIR$/include/geng/graphics/Renderer2D.inl" />
-        <option value="$PROJECT_DIR$/include/geng/graphics/Renderables/CircleRenderable.h" />
-        <option value="$PROJECT_DIR$/include/geng/graphics/Renderables/CircleRenderable.inl" />
-        <option value="$PROJECT_DIR$/include/geng/graphics/Vertices.inl" />
-        <option value="$PROJECT_DIR$/include/geng/graphics/VertexData/VertexDataParticles.inl" />
-        <option value="$PROJECT_DIR$/include/geng/graphics/VertexData/VertexData.h" />
+        <option value="$PROJECT_DIR$/include/geng/graphics/VertexData/Geom.h" />
         <option value="$PROJECT_DIR$/include/geng/graphics/VertexData/Geom.inl" />
-        <option value="$PROJECT_DIR$/src/entities/HUD.inl" />
-        <option value="$PROJECT_DIR$/src/MyGame.inl" />
-        <option value="$PROJECT_DIR$/src/entities/MyEntity.inl" />
+        <option value="$PROJECT_DIR$/include/geng/graphics/Renderer2D.inl" />
         <option value="$PROJECT_DIR$/include/geng/graphics/VertexData/VertexData.inl" />
-        <option value="$PROJECT_DIR$/../base/src/types/Type.h" />
-        <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/include/geng/graphics/VertexData/GeomStates/GeomStateParticles.h" />
+        <option value="$PROJECT_DIR$/include/geng/graphics/VertexData/VertexDataParticles.inl" />
+        <option value="$PROJECT_DIR$/include/geng/graphics/Renderables/ParticlesRenderable.h" />
+        <option value="$PROJECT_DIR$/include/geng/graphics/Renderables/ParticlesRenderable.inl" />
+        <option value="$PROJECT_DIR$/../assets/include/assets/ImagesPack.inl" />
+        <option value="$PROJECT_DIR$/src/entities/Shuttle.inl" />
+        <option value="$PROJECT_DIR$/include/geng/graphics/Shaders/ParticleShader.h" />
+        <option value="$PROJECT_DIR$/src/entities/MyEntity.h" />
+        <option value="$PROJECT_DIR$/include/geng/core/Components/CTreeTransform.h" />
+        <option value="$PROJECT_DIR$/include/geng/core/Components/CTransform.h" />
+        <option value="$PROJECT_DIR$/include/geng/core/Components/CSpeed.h" />
       </list>
     </option>
   </component>
@@ -403,10 +452,10 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="OCFindUsagesOptions" text="true" ivars="false" properties="true" derivedClasses="false" />
-  <component name="ProjectFrameBounds">
-    <option name="x" value="1366" />
-    <option name="width" value="1890" />
+  <component name="OCFindUsagesOptions" text="false" ivars="false" properties="true" derivedClasses="false" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="1919" />
+    <option name="width" value="1922" />
     <option name="height" value="1055" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
@@ -445,484 +494,151 @@
     <panes>
       <pane id="ProjectPane">
         <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="geng" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="geng" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="geng" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="geng" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="geng" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="geng" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="entities" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="geng" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="geng" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="include" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="geng" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="geng" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="include" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="geng" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="geng" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="geng" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="include" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="geng" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="physics" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="geng" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="geng" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="include" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="geng" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="physics" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Systems" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="geng" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="geng" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="include" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="geng" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="physics" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Components" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="geng" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="geng" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="include" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="geng" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="network" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="geng" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="geng" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="include" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="geng" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="network" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Systems" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="geng" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="geng" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="include" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="geng" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="network" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Components" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="geng" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="geng" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="include" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="geng" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="graphics" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="geng" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="geng" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="include" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="geng" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="graphics" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="VertexData" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="geng" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="geng" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="include" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="geng" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="graphics" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="VertexData" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Factories" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="geng" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="geng" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="include" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="geng" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="graphics" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Shaders" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="geng" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="geng" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="include" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="geng" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="graphics" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Renderables" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="geng" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="geng" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="include" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="geng" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="graphics" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Entities" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="geng" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="geng" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="include" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="geng" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="graphics" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Components" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="geng" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="geng" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="include" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="geng" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="core" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="geng" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="geng" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="include" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="geng" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="core" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Systems" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="geng" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="geng" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="include" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="geng" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="core" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Components" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
+          <expand>
+            <path>
+              <item name="geng" type="dad4c3:CidrFilesViewHelper$MyProjectTreeStructure$1" />
+              <item name="geng" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="geng" type="dad4c3:CidrFilesViewHelper$MyProjectTreeStructure$1" />
+              <item name="geng" type="462c0819:PsiDirectoryNode" />
+              <item name="include" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="geng" type="dad4c3:CidrFilesViewHelper$MyProjectTreeStructure$1" />
+              <item name="geng" type="462c0819:PsiDirectoryNode" />
+              <item name="include" type="462c0819:PsiDirectoryNode" />
+              <item name="geng" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="geng" type="dad4c3:CidrFilesViewHelper$MyProjectTreeStructure$1" />
+              <item name="geng" type="462c0819:PsiDirectoryNode" />
+              <item name="include" type="462c0819:PsiDirectoryNode" />
+              <item name="geng" type="462c0819:PsiDirectoryNode" />
+              <item name="core" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="geng" type="dad4c3:CidrFilesViewHelper$MyProjectTreeStructure$1" />
+              <item name="geng" type="462c0819:PsiDirectoryNode" />
+              <item name="include" type="462c0819:PsiDirectoryNode" />
+              <item name="geng" type="462c0819:PsiDirectoryNode" />
+              <item name="core" type="462c0819:PsiDirectoryNode" />
+              <item name="Components" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="geng" type="dad4c3:CidrFilesViewHelper$MyProjectTreeStructure$1" />
+              <item name="geng" type="462c0819:PsiDirectoryNode" />
+              <item name="include" type="462c0819:PsiDirectoryNode" />
+              <item name="geng" type="462c0819:PsiDirectoryNode" />
+              <item name="core" type="462c0819:PsiDirectoryNode" />
+              <item name="Systems" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="geng" type="dad4c3:CidrFilesViewHelper$MyProjectTreeStructure$1" />
+              <item name="geng" type="462c0819:PsiDirectoryNode" />
+              <item name="include" type="462c0819:PsiDirectoryNode" />
+              <item name="geng" type="462c0819:PsiDirectoryNode" />
+              <item name="graphics" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="geng" type="dad4c3:CidrFilesViewHelper$MyProjectTreeStructure$1" />
+              <item name="geng" type="462c0819:PsiDirectoryNode" />
+              <item name="include" type="462c0819:PsiDirectoryNode" />
+              <item name="geng" type="462c0819:PsiDirectoryNode" />
+              <item name="graphics" type="462c0819:PsiDirectoryNode" />
+              <item name="Components" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="geng" type="dad4c3:CidrFilesViewHelper$MyProjectTreeStructure$1" />
+              <item name="geng" type="462c0819:PsiDirectoryNode" />
+              <item name="include" type="462c0819:PsiDirectoryNode" />
+              <item name="geng" type="462c0819:PsiDirectoryNode" />
+              <item name="graphics" type="462c0819:PsiDirectoryNode" />
+              <item name="Entities" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="geng" type="dad4c3:CidrFilesViewHelper$MyProjectTreeStructure$1" />
+              <item name="geng" type="462c0819:PsiDirectoryNode" />
+              <item name="include" type="462c0819:PsiDirectoryNode" />
+              <item name="geng" type="462c0819:PsiDirectoryNode" />
+              <item name="graphics" type="462c0819:PsiDirectoryNode" />
+              <item name="Renderables" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="geng" type="dad4c3:CidrFilesViewHelper$MyProjectTreeStructure$1" />
+              <item name="geng" type="462c0819:PsiDirectoryNode" />
+              <item name="include" type="462c0819:PsiDirectoryNode" />
+              <item name="geng" type="462c0819:PsiDirectoryNode" />
+              <item name="graphics" type="462c0819:PsiDirectoryNode" />
+              <item name="Shaders" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="geng" type="dad4c3:CidrFilesViewHelper$MyProjectTreeStructure$1" />
+              <item name="geng" type="462c0819:PsiDirectoryNode" />
+              <item name="include" type="462c0819:PsiDirectoryNode" />
+              <item name="geng" type="462c0819:PsiDirectoryNode" />
+              <item name="graphics" type="462c0819:PsiDirectoryNode" />
+              <item name="Systems" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="geng" type="dad4c3:CidrFilesViewHelper$MyProjectTreeStructure$1" />
+              <item name="geng" type="462c0819:PsiDirectoryNode" />
+              <item name="include" type="462c0819:PsiDirectoryNode" />
+              <item name="geng" type="462c0819:PsiDirectoryNode" />
+              <item name="graphics" type="462c0819:PsiDirectoryNode" />
+              <item name="VertexData" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="geng" type="dad4c3:CidrFilesViewHelper$MyProjectTreeStructure$1" />
+              <item name="geng" type="462c0819:PsiDirectoryNode" />
+              <item name="include" type="462c0819:PsiDirectoryNode" />
+              <item name="geng" type="462c0819:PsiDirectoryNode" />
+              <item name="network" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="geng" type="dad4c3:CidrFilesViewHelper$MyProjectTreeStructure$1" />
+              <item name="geng" type="462c0819:PsiDirectoryNode" />
+              <item name="include" type="462c0819:PsiDirectoryNode" />
+              <item name="geng" type="462c0819:PsiDirectoryNode" />
+              <item name="physics" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="geng" type="dad4c3:CidrFilesViewHelper$MyProjectTreeStructure$1" />
+              <item name="geng" type="462c0819:PsiDirectoryNode" />
+              <item name="include" type="462c0819:PsiDirectoryNode" />
+              <item name="geng" type="462c0819:PsiDirectoryNode" />
+              <item name="physics" type="462c0819:PsiDirectoryNode" />
+              <item name="Components" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="geng" type="dad4c3:CidrFilesViewHelper$MyProjectTreeStructure$1" />
+              <item name="geng" type="462c0819:PsiDirectoryNode" />
+              <item name="include" type="462c0819:PsiDirectoryNode" />
+              <item name="geng" type="462c0819:PsiDirectoryNode" />
+              <item name="physics" type="462c0819:PsiDirectoryNode" />
+              <item name="Entities" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="geng" type="dad4c3:CidrFilesViewHelper$MyProjectTreeStructure$1" />
+              <item name="geng" type="462c0819:PsiDirectoryNode" />
+              <item name="include" type="462c0819:PsiDirectoryNode" />
+              <item name="geng" type="462c0819:PsiDirectoryNode" />
+              <item name="physics" type="462c0819:PsiDirectoryNode" />
+              <item name="Systems" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="geng" type="dad4c3:CidrFilesViewHelper$MyProjectTreeStructure$1" />
+              <item name="geng" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="geng" type="dad4c3:CidrFilesViewHelper$MyProjectTreeStructure$1" />
+              <item name="geng" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="entities" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
         </subPane>
       </pane>
     </panes>
@@ -930,29 +646,70 @@
   <component name="PropertiesComponent">
     <property name="settings.editor.selected.configurable" value="CMakeSettings" />
     <property name="recentsLimit" value="5" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="SearchEverywhereHistoryKey" value="vertexdata&#9;FILE&#9;file:///home/grynca/DEV/gamedev/geng/include/geng/graphics/VertexData/VertexDataPT.inl&#10;vertex&#9;FILE&#9;file:///home/grynca/DEV/gamedev/geng/include/geng/graphics/VertexData/VertexData.inl&#10;geom.in&#9;FILE&#9;file:///home/grynca/DEV/gamedev/geng/include/geng/graphics/VertexData/Geom.inl&#10;sprite&#9;FILE&#9;file:///home/grynca/DEV/gamedev/geng/include/geng/graphics/Renderables/SpriteRenderable.h&#10;pgon&#9;FILE&#9;file:///home/grynca/DEV/gamedev/geng/include/geng/graphics/Renderables/PgonTexturedRenderable.h&#10;textrendera&#9;FILE&#9;file:///home/grynca/DEV/gamedev/geng/include/geng/graphics/Renderables/TextRenderable.inl&#10;re&#9;FILE&#9;file:///home/grynca/DEV/gamedev/geng/include/geng/graphics/Systems/RenderSystem.inl&#10;renderer&#9;FILE&#9;file:///home/grynca/DEV/gamedev/geng/include/geng/graphics/Renderer2D.inl&#10;rendersy&#9;FILE&#9;file:///home/grynca/DEV/gamedev/geng/include/geng/graphics/Systems/RenderSystem.inl&#10;config&#9;FILE&#9;file:///home/grynca/DEV/gamedev/geng/include/geng/graphics/graphics_config.h&#10;push&#9;null&#9;null&#10;updatege&#9;null&#9;null&#10;meta&#9;FILE&#9;file:///home/grynca/DEV/gamedev/base/src/functions/meta.h&#10;vertexdatapa&#9;FILE&#9;file:///home/grynca/DEV/gamedev/geng/include/geng/graphics/VertexData/VertexDataParticles.inl&#10;vertexda&#9;FILE&#9;file:///home/grynca/DEV/gamedev/geng/include/geng/graphics/VertexData/VertexDataParticles.h&#10;shuttle&#9;FILE&#9;file:///home/grynca/DEV/gamedev/geng/src/entities/Shuttle.h&#10;hud&#9;FILE&#9;file:///home/grynca/DEV/gamedev/geng/src/entities/HUD.inl&#10;gamebase&#9;FILE&#9;file:///home/grynca/DEV/gamedev/geng/include/geng/GameBase.inl&#10;renders&#9;FILE&#9;file:///home/grynca/DEV/gamedev/geng/include/geng/graphics/Systems/RenderSystem.inl&#10;shu&#9;FILE&#9;file:///home/grynca/DEV/gamedev/geng/src/entities/Shuttle.inl&#10;game&#9;FILE&#9;file:///home/grynca/DEV/gamedev/geng/include/geng/Game.inl&#10;ga&#9;FILE&#9;file:///home/grynca/DEV/gamedev/geng/include/geng/Game.h&#10;GameBase&#9;FILE&#9;file:///home/grynca/DEV/gamedev/geng/include/geng/GameBase.inl&#10;geomstate&#9;FILE&#9;file:///home/grynca/DEV/gamedev/geng/include/geng/graphics/VertexData/GeomState.h&#10;geom.inl&#9;FILE&#9;file:///home/grynca/DEV/gamedev/geng/include/geng/graphics/VertexData/Geom.inl&#10;Geom.inl&#9;FILE&#9;file:///home/grynca/DEV/gamedev/geng/include/geng/graphics/VertexData/Geom.inl&#10;geom&#9;FILE&#9;file:///home/grynca/DEV/gamedev/geng/include/geng/graphics/VertexData/Geom.inl&#10;factory&#9;FILE&#9;file:///home/grynca/DEV/gamedev/geng/include/geng/graphics/VertexData/Factories/FactoryRectTF.h&#10;Renderable&#9;null&#9;null&#10;rendera&#9;null&#9;null&#10;circle&#9;null&#9;null&#10;rtexdata&#9;FILE&#9;file:///home/grynca/DEV/gamedev/geng/include/geng/graphics/VertexData/VertexDataParticles.inl&#10;servernet&#9;FILE&#9;file:///home/grynca/DEV/gamedev/geng/include/geng/network/Systems/ServerNetworkSystem.h&#10;sharedbuff&#9;FILE&#9;file:///home/grynca/DEV/gamedev/base/src/types/containers/SharedBuffer.inl&#10;rendersyste&#9;FILE&#9;file:///home/grynca/DEV/gamedev/geng/include/geng/graphics/Systems/RenderSystem.h&#10;window.&#9;FILE&#9;file:///home/grynca/DEV/gamedev/geng/include/geng/graphics/Window.inl&#10;window.inl&#9;FILE&#9;file:///home/grynca/DEV/gamedev/geng/include/geng/graphics/Window.inl&#10;shader&#9;FILE&#9;file:///home/grynca/DEV/gamedev/geng/include/geng/graphics/Shader.cpp&#10;Events&#9;null&#9;null&#10;viewpor&#9;FILE&#9;file:///home/grynca/DEV/gamedev/geng/include/geng/graphics/ViewPort.cpp&#10;view&#9;null&#9;null&#10;imagespac&#9;FILE&#9;file:///home/grynca/DEV/gamedev/assets/include/assets/ImagesPack.inl&#10;articlesre&#9;FILE&#9;file:///home/grynca/DEV/gamedev/geng/include/geng/graphics/Renderables/ParticlesRenderable.inl&#10;particles&#9;FILE&#9;file:///home/grynca/DEV/gamedev/geng/include/geng/graphics/Shaders/ParticleShader.h&#10;ARect&#9;FILE&#9;file:///home/grynca/DEV/gamedev/maths/include/maths/shapes/ARect.h&#10;image&#9;FILE&#9;file:///home/grynca/DEV/gamedev/assets/include/assets/ImagesPack.h&#10;particleshader&#9;FILE&#9;file:///home/grynca/DEV/gamedev/geng/include/geng/graphics/Shaders/ParticleShader.h&#10;mat&#9;FILE&#9;file:///home/grynca/DEV/gamedev/maths/include/maths/Mat3.inl&#10;particl&#9;FILE&#9;file:///home/grynca/DEV/gamedev/geng/include/geng/graphics/Shaders/ParticleShader.h&#10;particle&#9;FILE&#9;file:///home/grynca/DEV/gamedev/geng/include/geng/graphics/Shaders/ParticleShader.h" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../LD40" />
+    <property name="SearchEverywhereHistoryKey" value="particleshader&#9;FILE&#9;file:///home/grynca/DEV/gamedev/geng/include/geng/graphics/Shaders/ParticleShader.h&#10;partic&#9;FILE&#9;file:///home/grynca/DEV/gamedev/geng/include/geng/graphics/VertexData/GeomStates/GeomStateParticles.inl&#10;particle&#9;FILE&#9;file:///home/grynca/DEV/gamedev/geng/include/geng/graphics/VertexData/VertexDataParticles.inl&#10;particlesha&#9;FILE&#9;file:///home/grynca/DEV/gamedev/geng/include/geng/graphics/Shaders/ParticleShader.h&#10;vertexdata&#9;FILE&#9;file:///home/grynca/DEV/gamedev/geng/include/geng/graphics/VertexData/VertexDataParticles.h&#10;shader&#9;FILE&#9;file:///home/grynca/DEV/gamedev/geng/include/geng/graphics/Shaders/ParticleShader.h&#10;particles&#9;FILE&#9;file:///home/grynca/DEV/gamedev/geng/include/geng/graphics/Renderables/ParticlesRenderable.inl&#10;without_&#9;null&#9;null&#10;part&#9;FILE&#9;file:///home/grynca/DEV/gamedev/geng/include/geng/graphics/VertexData/GeomStates/GeomStateParticles.inl&#10;combinerot&#9;null&#9;null&#10;transform&#9;FILE&#9;file:///home/grynca/DEV/gamedev/geng/include/geng/core/Components/CTransform.h&#10;evisual&#9;null&#9;null&#10;simplecol&#9;FILE&#9;file:///home/grynca/DEV/gamedev/geng/include/geng/graphics/Shaders/SimpleColorShader.h&#10;renderable&#9;null&#9;null&#10;spritere&#9;FILE&#9;file:///home/grynca/DEV/gamedev/geng/include/geng/graphics/Renderables/SpriteRenderable.h&#10;simplecolo&#9;FILE&#9;file:///home/grynca/DEV/gamedev/geng/include/geng/graphics/Shaders/SimpleColorShader.h&#10;simple&#9;null&#9;null&#10;rendertask&#9;null&#9;null&#10;viewport&#9;null&#9;null&#10;particl&#9;null&#9;null&#10;Ebody&#9;FILE&#9;file:///home/grynca/DEV/gamedev/geng/include/geng/graphics/Entities/EBody.h&#10;physics&#9;FILE&#9;file:///home/grynca/DEV/gamedev/geng/include/geng/physics/Systems/PhysicsSystem.h&#10;physicsma&#9;FILE&#9;file:///home/grynca/DEV/gamedev/gphyx/include/gphyx/PhysicsManagerT.inl&#10;movement&#9;FILE&#9;file:///home/grynca/DEV/gamedev/geng/include/geng/core/Systems/MovementSystem.h&#10;Mask&#9;FILE&#9;file:///home/grynca/DEV/gamedev/base/include/types/Mask.h&#10;physicsmana&#9;FILE&#9;file:///home/grynca/DEV/gamedev/gphyx/include/gphyx/PhysicsManagerT.inl&#10;physicsmanage&#9;FILE&#9;file:///home/grynca/DEV/gamedev/gphyx/include/gphyx/PhysicsManagerT.h&#10;TreeTra&#9;FILE&#9;file:///home/grynca/DEV/gamedev/geng/include/geng/core/Components/CTreeTransform.inl&#10;treej&#9;FILE&#9;file:///home/grynca/DEV/gamedev/geng/include/geng/physics/Components/CTreeJoint.inl&#10;gamebase&#9;FILE&#9;file:///home/grynca/DEV/gamedev/geng/include/geng/GameBase.inl&#10;treejoin&#9;FILE&#9;file:///home/grynca/DEV/gamedev/geng/include/geng/physics/Components/CTreeJoint.inl&#10;manager&#9;FILE&#9;file:///home/grynca/DEV/gamedev/base/include/types/Manager.inl&#10;gengenti&#9;null&#9;null&#10;vertexda&#9;FILE&#9;file:///home/grynca/DEV/gamedev/geng/include/geng/graphics/VertexData/VertexDataParticles.h&#10;Shade&#9;FILE&#9;file:///home/grynca/DEV/gamedev/geng/include/geng/graphics/Shaders/Shader.h&#10;geom&#9;FILE&#9;file:///home/grynca/DEV/gamedev/geng/include/geng/graphics/VertexData/Geom.h&#10;Geom&#9;null&#9;null&#10;physi&#9;FILE&#9;file:///home/grynca/DEV/gamedev/gphyx/include/gphyx/PhysicsManagerT.inl&#10;entityma&#9;FILE&#9;file:///home/grynca/DEV/gamedev/sysent/include/sysent/EntityManager.inl&#10;sapman&#9;FILE&#9;file:///home/grynca/DEV/gamedev/SAP/include/SAP/SAPManagerC.inl&#10;ctreetra&#9;FILE&#9;file:///home/grynca/DEV/gamedev/geng/include/geng/core/Components/CTreeTransform.h&#10;gengentity&#9;FILE&#9;file:///home/grynca/DEV/gamedev/geng/include/geng/core/GengEntity.h&#10;BoundDat&#9;null&#9;null&#10;bound&#9;FILE&#9;file:///home/grynca/DEV/gamedev/geng/include/geng/physics/Systems/BoundsSystem.h&#10;cbound&#9;FILE&#9;file:///home/grynca/DEV/gamedev/geng/include/geng/physics/Components/CBound.h&#10;cboun&#9;FILE&#9;file:///home/grynca/DEV/gamedev/geng/include/geng/physics/Components/CBound.h&#10;bounds&#9;null&#9;null&#10;materia&#9;null&#9;null&#10;friction&#9;null&#9;null&#10;CBody&#9;FILE&#9;file:///home/grynca/DEV/gamedev/geng/include/geng/physics/Components/CBody.inl" />
     <property name="js-jscs-nodeInterpreter" value="/usr/bin/node" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="nodejs_interpreter_path" value="C:/Program Files/nodejs/node" />
+    <property name="nodejs_interpreter_path" value="node" />
     <property name="js.eslint.eslintPackage" value="" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\DEV\gamedev\geng\include\geng\graphics\VertexData" />
-      <recent name="C:\DEV\gamedev\geng\include\geng\core\Components" />
-      <recent name="C:\DEV\gamedev\geng\include" />
-      <recent name="C:\DEV\gamedev\geng\include\geng" />
-      <recent name="C:\DEV\gamedev\geng\include\geng\core" />
+      <recent name="C:\DEV\gamedev\geng\include\geng\physics\Systems" />
+      <recent name="$PROJECT_DIR$/include/geng/core/Components" />
+      <recent name="$PROJECT_DIR$/include/geng/core/Systems" />
+      <recent name="$PROJECT_DIR$/include/geng/graphics/Shaders" />
+      <recent name="$PROJECT_DIR$/include/geng/physics/Components" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Debug">
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
     <configuration default="true" type="CMakeGoogleTestRunConfigurationType" factoryName="Google Test" PASS_PARENT_ENVS_2="true" PROJECT_NAME="geng" TARGET_NAME="basic" CONFIG_NAME="Debug" TEST_MODE="SUITE_TEST">
       <envs />
-      <method />
     </configuration>
     <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="geng" TARGET_NAME="geng" CONFIG_NAME="Debug">
       <envs />
+    </configuration>
+    <configuration name="geng_test" type="CMakeRunConfiguration" factoryName="Application" WORKING_DIR="file://$PROJECT_DIR$" PASS_PARENT_ENVS_2="true" PROJECT_NAME="geng" TARGET_NAME="basic" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="geng" RUN_TARGET_NAME="basic">
+      <envs />
+    </configuration>
+    <configuration default="true" type="ReactNative" factoryName="React Native">
+      <node-interpreter value="project" />
+      <platform value="ANDROID" />
+      <envs />
+    </configuration>
+    <configuration default="true" type="CLion_Remote" factoryName="GDB Remote Debug" remoteCommand="" symbolFile="" sysroot="">
+      <method />
+    </configuration>
+    <configuration default="true" type="CMakeCatchTestRunConfigurationType" factoryName="Catch Test" PASS_PARENT_ENVS_2="true" TEST_MODE="SUITE_TEST">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="ChromiumRemoteDebugType" factoryName="Chromium Remote">
+      <method />
+    </configuration>
+    <configuration default="true" type="CompoundRunConfigurationType" factoryName="Compound Run Configuration">
+      <method />
+    </configuration>
+    <configuration default="true" type="FirefoxRemoteDebugType" factoryName="Firefox Remote">
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerJest" factoryName="Jest">
+      <node-interpreter value="project" />
+      <working-dir value="" />
+      <envs />
+      <scope-kind value="ALL" />
       <method />
     </configuration>
     <configuration default="true" type="JavaScriptTestRunnerProtractor" factoryName="Protractor">
@@ -962,6 +719,9 @@
       <method />
     </configuration>
     <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="NodeWebKit" factoryName="NW.js">
       <method />
     </configuration>
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
@@ -979,6 +739,7 @@
       <option name="SCRIPT_NAME" value="" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
       <method />
     </configuration>
     <configuration default="true" type="Tox" factoryName="Tox">
@@ -993,14 +754,20 @@
       <module name="geng" />
       <method />
     </configuration>
-    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
-      <node-interpreter>project</node-interpreter>
-      <node-options />
-      <gulpfile />
-      <tasks />
-      <arguments />
-      <pass-parent-envs>true</pass-parent-envs>
-      <envs />
+    <configuration default="true" type="XSLT" factoryName="XSLT">
+      <option name="myOutputFile" />
+      <option name="myOpenOutputFile" value="false" />
+      <option name="myOpenInBrowser" value="false" />
+      <option name="mySmartErrorHandling" value="true" />
+      <option name="myRunnerPort" value="34873" />
+      <option name="myVmArguments" />
+      <option name="myWorkingDirectory" />
+      <option name="myModule" />
+      <option name="myJdk" />
+      <parameters />
+      <OutputType value="CONSOLE" save-to-file="false" />
+      <FileType name="XML" />
+      <JdkChoice value="FROM_MODULE" />
       <method />
     </configuration>
     <configuration default="true" type="js.build_tools.npm" factoryName="npm">
@@ -1048,6 +815,19 @@
       <option name="USE_PATTERN" value="false" />
       <method />
     </configuration>
+    <configuration default="true" type="js.build_tools.grunt" factoryName="Grunt.js">
+      <node-interpreter value="project" />
+      <envs />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <pass-parent-envs>true</pass-parent-envs>
+      <envs />
+    </configuration>
     <configuration default="true" type="tests" factoryName="Nosetests">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -1058,16 +838,10 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="geng" />
-      <option name="SCRIPT_NAME" value="" />
-      <option name="CLASS_NAME" value="" />
-      <option name="METHOD_NAME" value="" />
-      <option name="FOLDER_NAME" value="" />
-      <option name="TEST_TYPE" value="TEST_SCRIPT" />
-      <option name="PATTERN" value="" />
-      <option name="USE_PATTERN" value="false" />
-      <option name="PARAMS" value="" />
-      <option name="USE_PARAM" value="false" />
-      <method />
+      <option name="_new_regexPattern" value="&quot;&quot;" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;.&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
     </configuration>
     <configuration default="true" type="tests" factoryName="Unittests">
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -1079,17 +853,9 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="geng" />
-      <option name="SCRIPT_NAME" value="" />
-      <option name="CLASS_NAME" value="" />
-      <option name="METHOD_NAME" value="" />
-      <option name="FOLDER_NAME" value="" />
-      <option name="TEST_TYPE" value="TEST_SCRIPT" />
-      <option name="PATTERN" value="" />
-      <option name="USE_PATTERN" value="false" />
-      <option name="PUREUNITTEST" value="true" />
-      <option name="PARAMS" value="" />
-      <option name="USE_PARAM" value="false" />
-      <method />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;.&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
     </configuration>
     <configuration default="true" type="tests" factoryName="py.test">
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -1101,42 +867,11 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="geng" />
-      <option name="SCRIPT_NAME" value="" />
-      <option name="CLASS_NAME" value="" />
-      <option name="METHOD_NAME" value="" />
-      <option name="FOLDER_NAME" value="" />
-      <option name="TEST_TYPE" value="TEST_SCRIPT" />
-      <option name="PATTERN" value="" />
-      <option name="USE_PATTERN" value="false" />
-      <option name="testToRun" value="" />
-      <option name="keywords" value="" />
-      <option name="params" value="" />
-      <option name="USE_PARAM" value="false" />
-      <option name="USE_KEYWORD" value="false" />
-      <method />
+      <option name="_new_keywords" value="&quot;&quot;" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;.&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
     </configuration>
-    <configuration default="false" name="Build All" type="CMakeRunConfiguration" factoryName="Application" WORKING_DIR="" PASS_PARENT_ENVS_2="true" CONFIG_NAME="Debug" EXPLICIT_BUILD_TARGET_NAME="all">
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="false" name="Release" type="CMakeRunConfiguration" factoryName="Application" WORKING_DIR="file://$PROJECT_DIR$" PASS_PARENT_ENVS_2="true" PROJECT_NAME="geng" TARGET_NAME="basic" CONFIG_NAME="Release" RUN_TARGET_PROJECT_NAME="geng" RUN_TARGET_NAME="basic">
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="false" name="Profile" type="CMakeRunConfiguration" factoryName="Application" WORKING_DIR="file://$PROJECT_DIR$" PASS_PARENT_ENVS_2="true" PROJECT_NAME="geng" TARGET_NAME="basic" CONFIG_NAME="RelWithDebInfo" RUN_TARGET_PROJECT_NAME="geng" RUN_TARGET_NAME="basic">
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="false" name="Debug" type="CMakeRunConfiguration" factoryName="Application" WORKING_DIR="file://$PROJECT_DIR$" PASS_PARENT_ENVS_2="true" PROJECT_NAME="geng" TARGET_NAME="basic" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="geng" RUN_TARGET_NAME="basic">
-      <envs />
-      <method />
-    </configuration>
-    <list size="4">
-      <item index="0" class="java.lang.String" itemvalue="Application.Build All" />
-      <item index="1" class="java.lang.String" itemvalue="Application.Release" />
-      <item index="2" class="java.lang.String" itemvalue="Application.Profile" />
-      <item index="3" class="java.lang.String" itemvalue="Application.Debug" />
-    </list>
   </component>
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
@@ -1207,7 +942,125 @@
       <workItem from="1483867563582" duration="1525000" />
       <workItem from="1483885460326" duration="2087000" />
       <workItem from="1483894058109" duration="19000" />
-      <workItem from="1483894085705" duration="70000" />
+      <workItem from="1483894085705" duration="1295000" />
+      <workItem from="1483939015848" duration="509000" />
+      <workItem from="1484154031516" duration="9567000" />
+      <workItem from="1484375757272" duration="165000" />
+      <workItem from="1484375929442" duration="85000" />
+      <workItem from="1484376135970" duration="26238000" />
+      <workItem from="1484465672028" duration="16407000" />
+      <workItem from="1484630317923" duration="3876000" />
+      <workItem from="1484716854856" duration="19212000" />
+      <workItem from="1484984931049" duration="4402000" />
+      <workItem from="1485008637787" duration="778000" />
+      <workItem from="1485076394018" duration="13070000" />
+      <workItem from="1485237743299" duration="6054000" />
+      <workItem from="1485320680764" duration="13406000" />
+      <workItem from="1485522841833" duration="626000" />
+      <workItem from="1485596260693" duration="3372000" />
+      <workItem from="1485630639549" duration="607000" />
+      <workItem from="1485678285565" duration="2061000" />
+      <workItem from="1485680428069" duration="6156000" />
+      <workItem from="1485753252941" duration="1135000" />
+      <workItem from="1486203003136" duration="843000" />
+      <workItem from="1486279835122" duration="14419000" />
+      <workItem from="1486359440893" duration="3424000" />
+      <workItem from="1486446097390" duration="3154000" />
+      <workItem from="1486533350349" duration="869000" />
+      <workItem from="1486618989098" duration="14034000" />
+      <workItem from="1487235589254" duration="4342000" />
+      <workItem from="1488097054526" duration="1272000" />
+      <workItem from="1488173884770" duration="27000" />
+      <workItem from="1488567409173" duration="1423000" />
+      <workItem from="1488615025346" duration="5802000" />
+      <workItem from="1489086100894" duration="19000" />
+      <workItem from="1490162105875" duration="16000" />
+      <workItem from="1491211745232" duration="832000" />
+      <workItem from="1491729184782" duration="23000" />
+      <workItem from="1491747466707" duration="4510000" />
+      <workItem from="1492153661208" duration="25000" />
+      <workItem from="1492153724659" duration="3214000" />
+      <workItem from="1492178661625" duration="6624000" />
+      <workItem from="1492576587631" duration="17317000" />
+      <workItem from="1492840651133" duration="37277000" />
+      <workItem from="1492975985432" duration="607000" />
+      <workItem from="1493180945246" duration="23762000" />
+      <workItem from="1493267481415" duration="1961000" />
+      <workItem from="1493448556406" duration="6192000" />
+      <workItem from="1493784762364" duration="11632000" />
+      <workItem from="1493921460023" duration="596000" />
+      <workItem from="1494303199745" duration="4154000" />
+      <workItem from="1494352590062" duration="39088000" />
+      <workItem from="1494747357375" duration="2612000" />
+      <workItem from="1495037469316" duration="22593000" />
+      <workItem from="1495358707602" duration="48702000" />
+      <workItem from="1495902257358" duration="61125000" />
+      <workItem from="1497030455574" duration="13087000" />
+      <workItem from="1497374740665" duration="904000" />
+      <workItem from="1497464660242" duration="1537000" />
+      <workItem from="1497500641490" duration="142000" />
+      <workItem from="1497508389389" duration="593000" />
+      <workItem from="1497633655530" duration="1962000" />
+      <workItem from="1497688733328" duration="5185000" />
+      <workItem from="1499016083806" duration="12790000" />
+      <workItem from="1499324544630" duration="6376000" />
+      <workItem from="1501573103978" duration="646000" />
+      <workItem from="1501653355699" duration="29000" />
+      <workItem from="1501853665117" duration="7000" />
+      <workItem from="1502814287679" duration="7649000" />
+      <workItem from="1503296086737" duration="598000" />
+      <workItem from="1503577969435" duration="598000" />
+      <workItem from="1503849359602" duration="598000" />
+      <workItem from="1504526608154" duration="798000" />
+      <workItem from="1504530978690" duration="217000" />
+      <workItem from="1505821057247" duration="18000" />
+      <workItem from="1508052034169" duration="1641000" />
+      <workItem from="1508053975175" duration="6964000" />
+      <workItem from="1508233707989" duration="35876000" />
+      <workItem from="1508565902851" duration="5492000" />
+      <workItem from="1508752463915" duration="14000" />
+      <workItem from="1508754854555" duration="93836000" />
+      <workItem from="1509708908797" duration="74085000" />
+      <workItem from="1510308538492" duration="983000" />
+      <workItem from="1510321036144" duration="111000" />
+      <workItem from="1510325529754" duration="5272000" />
+      <workItem from="1510406264405" duration="3002000" />
+      <workItem from="1510565459001" duration="9091000" />
+      <workItem from="1510578530171" duration="2526000" />
+      <workItem from="1510659531540" duration="4000" />
+      <workItem from="1510664171280" duration="2336000" />
+      <workItem from="1510670004261" duration="1711000" />
+      <workItem from="1510818772031" duration="6243000" />
+      <workItem from="1510911373402" duration="17602000" />
+      <workItem from="1511020434185" duration="13209000" />
+      <workItem from="1511078779837" duration="17521000" />
+      <workItem from="1511181342178" duration="12277000" />
+      <workItem from="1511269180466" duration="9695000" />
+      <workItem from="1511338071659" duration="11200000" />
+      <workItem from="1511525421553" duration="19625000" />
+      <workItem from="1511607436060" duration="6277000" />
+      <workItem from="1512050815264" duration="1332000" />
+      <workItem from="1512105651161" duration="2021000" />
+      <workItem from="1512114240285" duration="17103000" />
+      <workItem from="1512163435704" duration="55586000" />
+      <workItem from="1512371637499" duration="2052000" />
+      <workItem from="1512405518139" duration="2711000" />
+      <workItem from="1512641846978" duration="12300000" />
+      <workItem from="1512740103420" duration="69000" />
+      <workItem from="1512740192681" duration="680000" />
+      <workItem from="1512741119505" duration="50843000" />
+      <workItem from="1513100225660" duration="13981000" />
+      <workItem from="1513586880402" duration="8813000" />
+      <workItem from="1514046743952" duration="19670000" />
+      <workItem from="1519816619916" duration="607000" />
+      <workItem from="1519817317206" duration="54000" />
+      <workItem from="1519817393861" duration="62000" />
+      <workItem from="1519986229312" duration="1208000" />
+      <workItem from="1520174056101" duration="19000" />
+      <workItem from="1520245529823" duration="899000" />
+      <workItem from="1520325556590" duration="574000" />
+      <workItem from="1520326308885" duration="9000" />
+      <workItem from="1520327344149" duration="800000" />
     </task>
     <task id="LOCAL-00001" summary="basic structure&#10;graphics : Window, ViewPort, renderables (Circle, Rectangle, Sprite), Renderable System &#10;physics: MovementSystem">
       <created>1439409452380</created>
@@ -1258,11 +1111,18 @@
       <option name="project" value="LOCAL" />
       <updated>1476562315399</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Added components&amp;systems for transformation hierarchy between entities (will be probably needed for gui)&#10;Modified systems pipeline for new flagged systems&#10;Total Renderer/Renderables overwrite:&#10;  vertices not indexed anymore&#10;  multiple vertex buffers for each vertex data type, also can &#10;  buffers handle fragmentation (when holes size get too large they compress themselves)&#10;  adding new vertices to geoms - when there free space next to it it is added inplace otherwise geometry is moved to the back and hole is created&#10;  renderables are just light wrapper with reference to render task&#10;  render tasks hold all relevant information for rendering (geom, uniforms ...) and are directly managed by renderer&#10;  geoms have GeomState (Animation, Text, ParticleBatch), can be shared between geoms&#10;  geoms can specify usage (static, dynamic, stream) which controls in which buffers they are placed&#10;  vertex attribs are directly mapped to binding points via their name across shaders &#10;&#10;Added particles&#10;Made header only lib&#10;">
+      <created>1483895165263</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1483895165263</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="590667000" />
+    <option name="totallyTimeSpent" value="1663828000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1274,28 +1134,29 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1366" y="0" width="1890" height="1055" extended-state="4" />
+    <frame x="1919" y="0" width="1922" height="1055" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19491525" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22291666" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33195022" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18562874" sideWeight="0.47629428" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33200794" sideWeight="0.8989583" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.14018692" sideWeight="0.47629428" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37125748" sideWeight="0.10104167" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3280318" sideWeight="0.38854167" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32931727" sideWeight="0.497191" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20625" sideWeight="0.46046853" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33854166" sideWeight="0.46046853" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1554664" sideWeight="0.8989583" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection Results" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32931727" sideWeight="0.4975473" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17992048" sideWeight="0.38854167" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33195022" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -1320,7 +1181,7 @@
     </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="processedProjectFiles" value="true" />
+    <option name="version" value="1" />
   </component>
   <component name="Vcs.Log.UiProperties">
     <option name="RECENTLY_FILTERED_USER_GROUPS">
@@ -1343,14 +1204,15 @@
     <MESSAGE value="collision system - WIP&#10;templating simplified,&#10;added flags to GengEntity, which is virtually derived for each Exxx entity block,&#10;flags used for checking if entity was moved/rotated in order to update bound,&#10;StartTickSystem clears flags,&#10;renderables now have ref for Geom, in order to remove it when they are destroyed,&#10;transform for renderables is used in some places instead of directly changing geom's data&#10;&#10;" />
     <MESSAGE value="removed old files&#10;dirs refactored&#10;added PgonRenderable &amp; PgonTexturedRenderable&#10;" />
     <MESSAGE value="conditional defines for disabling geng modules&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="conditional defines for disabling geng modules&#10;" />
+    <MESSAGE value="Added components&amp;systems for transformation hierarchy between entities (will be probably needed for gui)&#10;Modified systems pipeline for new flagged systems&#10;Total Renderer/Renderables overwrite:&#10;  vertices not indexed anymore&#10;  multiple vertex buffers for each vertex data type, also can &#10;  buffers handle fragmentation (when holes size get too large they compress themselves)&#10;  adding new vertices to geoms - when there free space next to it it is added inplace otherwise geometry is moved to the back and hole is created&#10;  renderables are just light wrapper with reference to render task&#10;  render tasks hold all relevant information for rendering (geom, uniforms ...) and are directly managed by renderer&#10;  geoms have GeomState (Animation, Text, ParticleBatch), can be shared between geoms&#10;  geoms can specify usage (static, dynamic, stream) which controls in which buffers they are placed&#10;  vertex attribs are directly mapped to binding points via their name across shaders &#10;&#10;Added particles&#10;Made header only lib&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added components&amp;systems for transformation hierarchy between entities (will be probably needed for gui)&#10;Modified systems pipeline for new flagged systems&#10;Total Renderer/Renderables overwrite:&#10;  vertices not indexed anymore&#10;  multiple vertex buffers for each vertex data type, also can &#10;  buffers handle fragmentation (when holes size get too large they compress themselves)&#10;  adding new vertices to geoms - when there free space next to it it is added inplace otherwise geometry is moved to the back and hole is created&#10;  renderables are just light wrapper with reference to render task&#10;  render tasks hold all relevant information for rendering (geom, uniforms ...) and are directly managed by renderer&#10;  geoms have GeomState (Animation, Text, ParticleBatch), can be shared between geoms&#10;  geoms can specify usage (static, dynamic, stream) which controls in which buffers they are placed&#10;  vertex attribs are directly mapped to binding points via their name across shaders &#10;&#10;Added particles&#10;Made header only lib&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="789" />
+      <option name="time" value="1519" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1366,377 +1228,459 @@
       </PATH_ELEMENT>
     </PATH>
   </component>
+  <component name="debuggerHistoryManager">
+    <expressions id="breakpointCondition">
+      <expression>
+        <expression-string>group1_id == 2 &amp;&amp; group2_id == 10</expression-string>
+        <language-id>ObjectiveC</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+    </expressions>
+    <expressions id="watch">
+      <expression>
+        <expression-string>(u32*)0x8aab44</expression-string>
+        <language-id>ObjectiveC</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>&amp;this-&gt;physics_manager_-&gt;joints_.types_count_</expression-string>
+        <language-id>ObjectiveC</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>GPHYX_MAX_CGROUPS</expression-string>
+        <language-id>ObjectiveC</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>(u32*)(0x8aab44)</expression-string>
+        <language-id>ObjectiveC</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+    </expressions>
+    <expressions id="evaluateExpression">
+      <expression>
+        <expression-string>sizeof(VertexData::IRefPtr)</expression-string>
+        <language-id>ObjectiveC</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>cb.flags_ ^ mgr_-&gt;tracked_flag_bits_[flag_id]</expression-string>
+        <language-id>ObjectiveC</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>Size-1</expression-string>
+        <language-id>ObjectiveC</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>-1 &gt;&gt; 10</expression-string>
+        <language-id>ObjectiveC</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>(-1 &gt;&gt; 10)</expression-string>
+        <language-id>ObjectiveC</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>(i64(-1) &gt;&gt; 10)</expression-string>
+        <language-id>ObjectiveC</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>(u64(-1) &gt;&gt; 10)</expression-string>
+        <language-id>ObjectiveC</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>(u64(-1) &gt;&gt; 1)</expression-string>
+        <language-id>ObjectiveC</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>u64(-1) &gt;&gt; 1</expression-string>
+        <language-id>ObjectiveC</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+    </expressions>
+  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/include/geng/graphics/Systems/RenderSystem.inl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="494">
-          <caret line="43" column="35" lean-forward="false" selection-start-line="43" selection-start-column="35" selection-end-line="43" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../maths/include/maths/Mat3.inl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="439">
-          <caret line="37" column="24" lean-forward="true" selection-start-line="37" selection-start-column="24" selection-end-line="37" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/geng/graphics/CoordFrame.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../maths/include/maths/Angle.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="254">
-          <caret line="41" column="0" lean-forward="true" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../maths/include/maths/Angle.inl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="229">
-          <caret line="49" column="23" lean-forward="false" selection-start-line="49" selection-start-column="23" selection-end-line="49" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/entities/MyEntity.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="1" lean-forward="true" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/geng/graphics/Renderables/Renderable.h">
+    <entry file="file://$PROJECT_DIR$/include/geng/graphics/Renderables/RectRenderable.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
-          <caret line="13" column="10" lean-forward="false" selection-start-line="13" selection-start-column="10" selection-end-line="13" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/geng/graphics/Renderables/TextRenderable.inl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="21" column="38" lean-forward="true" selection-start-line="21" selection-start-column="38" selection-end-line="21" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/geng/graphics/Renderables/TextRenderable.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="30" column="31" lean-forward="false" selection-start-line="30" selection-start-column="31" selection-end-line="30" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/geng/graphics/Renderables/PgonTexturedRenderable.inl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="17" column="15" lean-forward="false" selection-start-line="17" selection-start-column="15" selection-end-line="17" selection-end-column="15" />
+          <caret line="13" column="51" lean-forward="false" selection-start-line="13" selection-start-column="51" selection-end-line="13" selection-end-column="51" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/include/geng/graphics/Renderables/PgonTexturedRenderable.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="29" column="0" lean-forward="true" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+        <state relative-caret-position="390">
+          <caret line="26" column="21" lean-forward="false" selection-start-line="26" selection-start-column="21" selection-end-line="26" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/geng/graphics/Renderables/PgonTexturedRenderable.inl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="23" column="1" lean-forward="false" selection-start-line="23" selection-start-column="1" selection-end-line="23" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/geng/graphics/Entities/EBody.inl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="276">
+          <caret line="43" column="40" lean-forward="false" selection-start-line="43" selection-start-column="40" selection-end-line="43" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/geng/graphics/Components/CRenderable.inl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="456">
+          <caret line="38" column="5" lean-forward="false" selection-start-line="38" selection-start-column="5" selection-end-line="38" selection-end-column="5" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/include/geng/graphics/Renderables/SpriteRenderable.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="52" lean-forward="false" selection-start-line="10" selection-start-column="52" selection-end-line="10" selection-end-column="52" />
+        <state relative-caret-position="240">
+          <caret line="16" column="31" lean-forward="false" selection-start-line="16" selection-start-column="31" selection-end-line="16" selection-end-column="31" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/include/geng/graphics/Renderables/SpriteRenderable.inl">
+    <entry file="file://$PROJECT_DIR$/include/geng/graphics/Renderables/Renderable.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="62" column="27" lean-forward="false" selection-start-line="62" selection-start-column="27" selection-end-line="62" selection-end-column="27" />
+        <state relative-caret-position="465">
+          <caret line="31" column="36" lean-forward="false" selection-start-line="31" selection-start-column="36" selection-end-line="31" selection-end-column="36" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/entities/HUD.h">
+    <entry file="file://$PROJECT_DIR$/include/geng/graphics/Entities/EBody.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="19" lean-forward="true" selection-start-line="4" selection-start-column="19" selection-end-line="4" selection-end-column="19" />
+        <state relative-caret-position="246">
+          <caret line="32" column="8" lean-forward="false" selection-start-line="32" selection-start-column="8" selection-end-line="32" selection-end-column="24" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/entities/Shuttle.h">
+    <entry file="file://$PROJECT_DIR$/include/geng/graphics/Entities/EVisual.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="21" lean-forward="true" selection-start-line="14" selection-start-column="21" selection-end-line="14" selection-end-column="21" />
+        <state relative-caret-position="330">
+          <caret line="22" column="6" lean-forward="false" selection-start-line="22" selection-start-column="6" selection-end-line="22" selection-end-column="6" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/include/geng/graphics/Renderables/PgonRenderable.h">
+    <entry file="file://$PROJECT_DIR$/include/geng/graphics/Shaders/SimpleTexturedShader.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="25" column="24" lean-forward="false" selection-start-line="25" selection-start-column="24" selection-end-line="25" selection-end-column="24" />
+        <state relative-caret-position="375">
+          <caret line="25" column="0" lean-forward="true" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/include/geng/graphics/Renderables/PgonRenderable.inl">
+    <entry file="file://$PROJECT_DIR$/include/geng/graphics/Shaders/SimpleColorShader.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="26" column="62" lean-forward="false" selection-start-line="26" selection-start-column="62" selection-end-line="26" selection-end-column="62" />
+        <state relative-caret-position="140">
+          <caret line="17" column="30" lean-forward="true" selection-start-line="17" selection-start-column="30" selection-end-line="17" selection-end-column="30" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/include/geng/graphics/Renderer2D.h">
+    <entry file="file://$PROJECT_DIR$/../maths/include/maths/Transform.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="349">
-          <caret line="32" column="21" lean-forward="false" selection-start-line="32" selection-start-column="21" selection-end-line="32" selection-end-column="21" />
+        <state relative-caret-position="275">
+          <caret line="46" column="19" lean-forward="false" selection-start-line="46" selection-start-column="19" selection-end-line="46" selection-end-column="19" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../maths/include/maths/Transform.inl">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="229">
-          <caret line="24" column="27" lean-forward="false" selection-start-line="24" selection-start-column="27" selection-end-line="24" selection-end-column="27" />
+        <state relative-caret-position="605">
+          <caret line="104" column="35" lean-forward="false" selection-start-line="104" selection-start-column="35" selection-end-line="104" selection-end-column="35" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/include/geng/graphics/Renderables/CircleRenderable.inl">
+    <entry file="file://$PROJECT_DIR$/../base/include/functions/random.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="23" column="45" lean-forward="false" selection-start-line="23" selection-start-column="45" selection-end-line="23" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../maths/include/maths/Angle.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="261">
+          <caret line="35" column="49" lean-forward="false" selection-start-line="35" selection-start-column="49" selection-end-line="35" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/geng/core/GengSystem.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="29" column="19" lean-forward="false" selection-start-line="29" selection-start-column="19" selection-end-line="29" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/geng/Game.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="615">
-          <caret line="54" column="62" lean-forward="false" selection-start-line="54" selection-start-column="62" selection-end-line="54" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/geng/graphics/Renderables/CircleRenderable.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="28" column="26" lean-forward="false" selection-start-line="28" selection-start-column="26" selection-end-line="28" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/geng/graphics/Renderer2D.inl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="229">
-          <caret line="23" column="28" lean-forward="false" selection-start-line="23" selection-start-column="28" selection-end-line="23" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/MyGame.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" column="27" lean-forward="false" selection-start-line="20" selection-start-column="27" selection-end-line="20" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/geng/Game.inl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/geng/graphics/VertexData/VertexDataParticles.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="23" column="22" lean-forward="false" selection-start-line="23" selection-start-column="22" selection-end-line="23" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/geng/graphics/VertexData/VertexDataParticles.inl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="33" lean-forward="true" selection-start-line="12" selection-start-column="33" selection-end-line="12" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/entities/Shuttle.inl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="434">
-          <caret line="77" column="23" lean-forward="true" selection-start-line="77" selection-start-column="23" selection-end-line="77" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/geng/graphics/VertexData/Geom.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="464">
-          <caret line="69" column="14" lean-forward="false" selection-start-line="69" selection-start-column="14" selection-end-line="69" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../base/include/types/Manager.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="229">
-          <caret line="54" column="18" lean-forward="false" selection-start-line="54" selection-start-column="18" selection-end-line="54" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/geng/graphics/Vertices.inl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="9" column="5" lean-forward="false" selection-start-line="9" selection-start-column="5" selection-end-line="9" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/geng/graphics/VertexData/VertexData.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="95" column="38" lean-forward="false" selection-start-line="95" selection-start-column="38" selection-end-line="95" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../base/include/types/containers/fast_vector.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="334">
-          <caret line="196" column="0" lean-forward="false" selection-start-line="196" selection-start-column="0" selection-end-line="196" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../base/include/types/containers/TightPool.inl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="244">
-          <caret line="110" column="0" lean-forward="false" selection-start-line="110" selection-start-column="0" selection-end-line="110" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../base/include/types/containers/Array.inl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="244">
-          <caret line="65" column="0" lean-forward="false" selection-start-line="65" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
+          <caret line="41" column="0" lean-forward="false" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../base/include/types/Manager.inl">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="244">
-          <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+        <state relative-caret-position="261">
+          <caret line="130" column="0" lean-forward="false" selection-start-line="130" selection-start-column="0" selection-end-line="130" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/include/geng/GameBase.inl">
+    <entry file="file://$PROJECT_DIR$/include/geng/graphics/VertexData/Geom.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="274">
-          <caret line="95" column="18" lean-forward="false" selection-start-line="95" selection-start-column="18" selection-end-line="95" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../base/include/types/Index.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/entities/HUD.inl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="25" column="30" lean-forward="false" selection-start-line="25" selection-start-column="30" selection-end-line="25" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/entities/MyEntity.inl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="24" column="28" lean-forward="false" selection-start-line="24" selection-start-column="28" selection-end-line="24" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/geng/graphics/VertexData/VertexData.inl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4500">
-          <caret line="300" column="31" lean-forward="false" selection-start-line="300" selection-start-column="31" selection-end-line="300" selection-end-column="31" />
-          <folding>
-            <element signature="e#5963#5988#0" expanded="true" />
-            <element signature="e#6983#7107#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../base/include/types/Type.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1050">
-          <caret line="70" column="19" lean-forward="false" selection-start-line="70" selection-start-column="19" selection-end-line="70" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/geng/graphics/VertexData/VertexDataPT.inl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="945">
-          <caret line="63" column="32" lean-forward="false" selection-start-line="63" selection-start-column="32" selection-end-line="63" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/geng/graphics/VertexData/VertexDataPT.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="34" column="20" lean-forward="false" selection-start-line="34" selection-start-column="20" selection-end-line="34" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/geng/graphics/VertexData/SpriteAnimationStates.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="570">
-          <caret line="38" column="27" lean-forward="false" selection-start-line="38" selection-start-column="27" selection-end-line="38" selection-end-column="27" />
-          <folding />
+        <state relative-caret-position="395">
+          <caret line="77" column="12" lean-forward="false" selection-start-line="77" selection-start-column="12" selection-end-line="77" selection-end-column="12" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/include/geng/graphics/VertexData/Geom.inl">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2535">
-          <caret line="169" column="37" lean-forward="false" selection-start-line="169" selection-start-column="37" selection-end-line="169" selection-end-column="37" />
+        <state relative-caret-position="261">
+          <caret line="110" column="29" lean-forward="false" selection-start-line="110" selection-start-column="29" selection-end-line="110" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../sysent/include/sysent/EntityManager.inl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="246">
+          <caret line="196" column="0" lean-forward="false" selection-start-line="196" selection-start-column="0" selection-end-line="196" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/geng/graphics/Renderables/Renderable.inl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="456">
+          <caret line="70" column="31" lean-forward="false" selection-start-line="70" selection-start-column="31" selection-end-line="70" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/geng/graphics/Window.inl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="321">
+          <caret line="161" column="0" lean-forward="false" selection-start-line="161" selection-start-column="0" selection-end-line="161" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/geng/graphics/Renderer2D.inl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="591">
+          <caret line="206" column="0" lean-forward="false" selection-start-line="206" selection-start-column="0" selection-end-line="206" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/include/glm/detail/type_vec.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1014">
+          <caret line="40" column="46" lean-forward="false" selection-start-line="40" selection-start-column="46" selection-end-line="40" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../maths/include/maths/Vec2.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="675">
+          <caret line="94" column="17" lean-forward="false" selection-start-line="94" selection-start-column="17" selection-end-line="94" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/geng/graphics/VertexData/VertexDataParticles.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="17" column="16" lean-forward="false" selection-start-line="17" selection-start-column="16" selection-end-line="17" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/geng/graphics/VertexData/VertexData.inl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="309">
+          <caret line="354" column="0" lean-forward="false" selection-start-line="354" selection-start-column="0" selection-end-line="354" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/entities/Shuttle.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/geng/graphics/VertexData/GeomStates/GeomStateParticles.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="11" column="14" lean-forward="false" selection-start-line="11" selection-start-column="14" selection-end-line="11" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../maths/include/maths/Angle.inl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="246">
+          <caret line="58" column="23" lean-forward="false" selection-start-line="58" selection-start-column="23" selection-end-line="58" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/geng/graphics/VertexData/VertexDataParticles.inl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="365">
+          <caret line="105" column="75" lean-forward="false" selection-start-line="105" selection-start-column="75" selection-end-line="105" selection-end-column="75" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/geng/graphics/Renderables/ParticlesRenderable.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="720">
+          <caret line="48" column="61" lean-forward="false" selection-start-line="48" selection-start-column="61" selection-end-line="48" selection-end-column="97" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/include/geng/graphics/VertexData/SpriteAnimationStates.inl">
+    <entry file="file://$PROJECT_DIR$/include/geng/graphics/AssetsManager.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="33" column="5" lean-forward="false" selection-start-line="33" selection-start-column="5" selection-end-line="33" selection-end-column="5" />
+        <state relative-caret-position="255">
+          <caret line="17" column="31" lean-forward="false" selection-start-line="17" selection-start-column="31" selection-end-line="17" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/geng/graphics/AssetsManager.inl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" column="17" lean-forward="false" selection-start-line="18" selection-start-column="17" selection-end-line="18" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../base/include/3rdp/ustring.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="8280">
+          <caret line="552" column="7" lean-forward="false" selection-start-line="552" selection-start-column="7" selection-end-line="552" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../assets/include/assets/ImagesPack.inl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="735">
+          <caret line="49" column="35" lean-forward="false" selection-start-line="49" selection-start-column="35" selection-end-line="49" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/geng/graphics/Renderables/ParticlesRenderable.inl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1170">
+          <caret line="78" column="0" lean-forward="false" selection-start-line="78" selection-start-column="0" selection-end-line="78" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/geng/graphics/VertexData/GeomStates/GeomStateParticles.inl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="25" column="44" lean-forward="false" selection-start-line="25" selection-start-column="44" selection-end-line="25" selection-end-column="44" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/MyGame.inl">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="26" column="30" lean-forward="false" selection-start-line="26" selection-start-column="30" selection-end-line="26" selection-end-column="30" />
+        <state relative-caret-position="1455">
+          <caret line="97" column="60" lean-forward="false" selection-start-line="97" selection-start-column="60" selection-end-line="97" selection-end-column="60" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/include/geng/graphics/Window.inl">
+    <entry file="file://$PROJECT_DIR$/src/entities/Shuttle.inl">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2280">
-          <caret line="152" column="30" lean-forward="false" selection-start-line="152" selection-start-column="30" selection-end-line="152" selection-end-column="30" />
+        <state relative-caret-position="960">
+          <caret line="64" column="28" lean-forward="false" selection-start-line="64" selection-start-column="28" selection-end-line="64" selection-end-column="28" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="60">
-            <caret line="4" column="33" lean-forward="false" selection-start-line="4" selection-start-column="33" selection-end-line="4" selection-end-column="33" />
-            <folding />
-          </first_editor>
-          <second_editor />
+    <entry file="file://$PROJECT_DIR$/include/geng/graphics/Shaders/ParticleShader.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="645">
+          <caret line="55" column="33" lean-forward="true" selection-start-line="55" selection-start-column="33" selection-end-line="55" selection-end-column="33" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
+    <entry file="file://$PROJECT_DIR$/src/entities/MyEntity.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="28" lean-forward="false" selection-start-line="11" selection-start-column="28" selection-end-line="11" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/geng/core/Components/CSpeed.inl">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/geng/core/Systems/MovementSystem.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/geng/core/Systems/TreeTransformSystem.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/geng/core/Systems/TreeTransformSystem.inl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#17#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/geng/graphics/Components/CRenderable.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="24" column="16" lean-forward="true" selection-start-line="24" selection-start-column="16" selection-end-line="24" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/geng/core/Components/CTreeTransform.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="8" column="10" lean-forward="false" selection-start-line="8" selection-start-column="10" selection-end-line="8" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/geng/core/Components/CTransform.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="8" column="10" lean-forward="false" selection-start-line="8" selection-start-column="10" selection-end-line="8" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/geng/core/Components/CSpeed.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="31" column="41" lean-forward="false" selection-start-line="31" selection-start-column="41" selection-end-line="31" selection-end-column="41" />
           <folding />
         </state>
       </provider>

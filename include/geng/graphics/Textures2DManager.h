@@ -12,7 +12,8 @@ namespace grynca {
         Textures2DManager();
 
         u32 getTextureUnitsCount();
-        Texture2D* getBoundTexture(u32 texture_unit_id);
+        Texture2D* accBoundTexture(u32 texture_unit_id);
+        const Texture2D* accBoundTexture(u32 texture_unit_id)const;
     private:
         friend class Texture2D;
 

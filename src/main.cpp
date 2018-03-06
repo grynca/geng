@@ -2,12 +2,11 @@
 
 int main(int argc, char* argv[]) {
     MyGame& g = MyGame::createAs<MyGame>();
-    g.initEM<EntityTypes>(10000);
     g.start();
 
-#ifdef PROFILE_BUILD
-    std::cout << g.getEntitiesManager().getProfileString() << std::endl;
-#endif
+    // destroy instance to make sure it destroys before static objects it references (TypeInfos ...)
+    MyGame::destroy();
+
     WAIT_FOR_KEY_ON_WIN();
     return 0;
 }

@@ -4,7 +4,7 @@
 
 namespace grynca {
 
-    inline Texture2D::Texture2D(const std::string& name)
+    inline Texture2D::Texture2D(const ustring& name)
      : w_(0), h_(0), d_(0), gl_format_(0), name_(name),  bound_to_(InvalidId())
     {
         GLCall(glGenTextures(1, &gl_handle_));
@@ -71,11 +71,11 @@ namespace grynca {
         return gl_format_;
     }
 
-    inline const std::string& Texture2D::getName()const {
+    inline const ustring& Texture2D::getName()const {
         return name_;
     }
 
-    inline void Texture2D::setName(const std::string& name) {
+    inline void Texture2D::setName(const ustring& name) {
         name_=name;
     }
 
@@ -84,7 +84,7 @@ namespace grynca {
                "Invalid texture slot id.");
         Index curr_bound_id = getManager().texture_units_[slot_id];
         if ( curr_bound_id != Index::Invalid()) {
-            getManager().getItem(curr_bound_id).bound_to_ = InvalidId();
+            getManager().accItem(curr_bound_id).bound_to_ = InvalidId();
         }
         getManager().texture_units_[slot_id] = getId();
         bound_to_ = slot_id;

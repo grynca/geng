@@ -12,18 +12,28 @@ namespace grynca {
     public:
         typedef RectBorderShader ShaderType;
         typedef typename RectRenderable::VertexDataType VertexDataType;
+        static constexpr GeomUsageHint DefaultUsageHint = GeomUsageHint::uhStatic;
 
-        static VertexData::ItemRef createNewGeom(Window& w, GeomState::UsageHint usage_hint = GeomState::uhStatic);
+        struct DrawData : public RectRenderable::DrawData {
+            Vec2 borders;
+            Vec2 offset;
+        };
 
-        RectBorderRenderable(const Renderer2D::ItemRef& rt) : RectRenderable(rt) {}
+        void setNewGeom(const Vec2& norm_offset, GeomUsageHint usage_hint = DefaultUsageHint);
+        // reuses internal static geom for common offset
+        void setStaticSharedQuadGeom(NormOffset::Type offset_type);
 
-        Vec2 getBorders()const;
+        Vec2 getNormBorders()const;
+        Vec2 getBordersPx()const;
         Vec2 getGeomNormOffset();
 
-        RectBorderRenderable& setColor(const Colorf& clr);
-        RectBorderRenderable& setSize(const Vec2& size);        // changes transform scale
-        RectBorderRenderable& setGeomNormOffset(const Vec2& offset);
-        RectBorderRenderable& setBorders(Vec2 borders_px);
+        void setColor(const Colorf& clr);
+        void setGeomNormOffset(const Vec2& offset);
+        void setNormBorders(Vec2 borders);     // [0-1] normalized to size
+        void setSize(const Vec2& size, bool scale_borders = true);
+        void setBordersPx(Vec2 borders_px);
+
+        void onBeforeDraw(Shader& s);
     };
 }
 

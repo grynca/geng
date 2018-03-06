@@ -8,6 +8,7 @@ namespace grynca {
     // fw
     class ParticleShader;
     class VertexDataParticles;
+    class GeomStateParticles;
 
     // TODO: budu potrebovat aby geomy refcountovaly svuj GeomState
     //       to bude asi soucasti predelavky geomu na min obecnou classu
@@ -17,32 +18,40 @@ namespace grynca {
     public:
         typedef ParticleShader ShaderType;
         typedef VertexDataParticles VertexDataType;
+        static constexpr GeomUsageHint DefaultUsageHint = GeomUsageHint::uhStream;
 
-        static VertexData::ItemRef createNewGeom(Window& w, GeomState::UsageHint usage_hint = GeomState::uhStream);
+        struct DrawData : public Renderable::DrawData {
+            Vec2 size;    // min, max
+            f32 vp_zoom;    // viewport zoom
+            u32 texture;
+            Mat3 tr_transform;   // for transforming to correct texture region
+        };
 
-        ParticlesRenderable(const Renderer2D::ItemRef& rt);
+        ParticlesRenderable();
 
+        void setNewGeom();
+
+        const GeomStateParticles& getParticlesState()const;
 
         const Vec2& getParticlesSize()const;
-        f32 getMaxTime()const;
-        const Dir2& getGravityDir()const;
         u32 getTextureUnit()const;
         ARect getTextureRegion()const;
 
+        GeomStateParticles& accParticlesState();
         Vec2& accParticlesSize();
-        Dir2& accGravityDir();
 
         // [min, max]
-        ParticlesRenderable& setParticlesSize(const Vec2& s);
-        ParticlesRenderable& setMaxTime(f32 mt);
-        ParticlesRenderable& setGravityDir(const Dir2& gd);
-        ParticlesRenderable& setTextureUnit(u32 tid);
-        ParticlesRenderable& setTextureRegion(const ARect &texture_coords);
+        void setParticlesSize(const Vec2& s);
+        void setImage(const ImagePos& img_pos);
+        void setTextureUnit(u32 tid);
+        void setTextureRegion(const ARect &texture_coords);
 
-        void addParticle(const Vec2& pos, Angle rot, Angle rot_speed, const Colorf& color,
-                         const Vec2& speed, f32 weight, f32 time);
+        void addParticle(const Vec2& pos, const Dir2& rot_dir, const Vec2& lin_vel, Angle ang_vel, const Colorf& color, f32 weight, f32 time);
+
+        void onBeforeDraw(Shader& s);
     private:
-        Index batch_id_;
+        friend class Renderable;
+
         VertexDataParticles* verts_;
     };
 

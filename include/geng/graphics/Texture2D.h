@@ -14,7 +14,7 @@ namespace grynca {
 
     class Texture2D : public ManagedItem<Textures2DManager> {
     public:
-        Texture2D(const std::string& name = "");        // unbound uninitialized texture
+        Texture2D(const ustring& name = "");        // unbound uninitialized texture
         ~Texture2D();
 
         void set(Image::Ref image);
@@ -28,8 +28,8 @@ namespace grynca {
         GLuint getGlHandle()const;
         GLenum getGlFormat()const;
 
-        const std::string& getName()const;
-        void setName(const std::string& name);
+        const ustring& getName()const;
+        void setName(const ustring& name);
 
         void bind(u32 slot_id);
 
@@ -38,7 +38,7 @@ namespace grynca {
         u32 w_, h_, d_;
         GLenum gl_format_;
         GLuint gl_handle_;
-        std::string name_;
+        ustring name_;
         u32 bound_to_;
     };
 }

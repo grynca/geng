@@ -2,17 +2,19 @@
 #define HUD_H
 
 
-class HUD : public GengEntityDef<CTransform, CRenderables> {
+class HUD : public EVisual {
 public:
-    class Resources : public Singleton<Resources> {
-    public:
-        Resources(GameBase& game);
+    DEF_CONSTR_AND_MOVE_ONLY(HUD);
 
-        TextureRegion particle_region;
+    class Resources : public EntityResources<Resources> {
+    public:
+        void initSingleton(GameBase& game);
+
+        ImagePos particle_img;
     };
 
-    static void init(Entity& ent, GameBase& game);
-    static void update(Entity& e, GameBase& game);
+    void init();
+    void update();
 private:
 };
 

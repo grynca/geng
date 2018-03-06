@@ -2,16 +2,18 @@
 #define VERTEXDATA_H
 
 #include "../glinclude.h"
-#include "../Shader.h"
+#include "../Shaders/Shader.h"
+#include "../NormOffset.h"
 #include "types/Manager.h"
 #include "types/containers/Items.h"
-#include "GeomState.h"
+#include "geom_enums.h"
 #include <stdint.h>
 
 namespace grynca {
 
     // fw
     class Geom;
+    class GeomStates;
     class Vertices;
 
     struct VertexAttribInfo {
@@ -34,7 +36,7 @@ namespace grynca {
     struct VertexBuffer {
         static constexpr float compress_th = 0.4f;
 
-        VertexBuffer(u32 initial_alloc, GeomState::UsageHint uh);
+        VertexBuffer(u32 initial_alloc, GeomUsageHint uh);
 
         u32 getBackSpace()const;
         f32 calcBackFreeness()const;
@@ -45,7 +47,7 @@ namespace grynca {
         u32 holes_size;
         u32 alloc_size;
         Index last_geom;
-        GeomState::UsageHint usage_hint;
+        GeomUsageHint usage_hint;
 
         // geoms in need of syncing to gpu
         fast_vector<Index> dirty_geoms;
@@ -55,55 +57,59 @@ namespace grynca {
                        public TightManager<Geom> {
         friend class Geom;
     public:
-        VertexData();
-        void init() {}
+        VertexData(const std::string& name);
         virtual ~VertexData();
 
         void setVertexBufferInitialSize(u32 vbo_initial_size);
-        void bindVertexBuffer(u32 buffer_id);   // binds vbo
-        void bindBufferWithLayouts(u32 buffer_id);   // binds vbo
+        void bindVertexBuffer(u16 buffer_id);   // binds vbo
+        void bindBufferWithLayouts(u16 buffer_id);   // binds vbo
         u32 getBoundBufferId()const;
 
         template <typename Vertex>
         void setVertexLayout(const fast_vector<VertexAttribInfo>& attribs);
 
-        u32 getVertexSize();
+        u32 getVertexSize()const;
 
         virtual void update(f32 dt);
 
         template <typename T>
-        T addWithFactory(GeomState::StateType state_type, GeomState::UsageHint buff_hint);
+        T addWithFactory(GeomUsageHint buff_hint);
 
-        std::string getDebugString(u32 indent_cnt);
+        const GeomStates& getGeomStates()const;
+        GeomStates& accGeomStates();
+
+        // TODO: this is used only by VertexDataP, maybe move it there ?
+        template <typename VertexType>
+        void initSharedQuadGeomPositions();
+        Geom& accSharedUnitQuadGeom(NormOffset::Type offset_type);
+
+        const std::string& getName()const;
+        std::string getDebugString(u32 indent_cnt)const;
     protected:
         friend class Vertices;
 
-        struct AuxBuffer {
-            u32 size;
-            fast_vector<VertexAttribInfo> attribs;
-        };
-
         void invalidateGeom_(Geom& g);
-        void compressBuffer_(u32 buf_id);
-        void updateGeoms_(u32 buf_id);
-        void addBuffer_(GeomState::UsageHint usage_hint);
+        void compressBuffer_(u16 buf_id);
+        void updateGeoms_(u16 buf_id);
+        void addBuffer_(GeomUsageHint usage_hint);
         void reallocVertexBuffer_(VertexBuffer& vb, u32 needed_size_verts);
         void pushBack_(VertexBuffer& vb, Geom& g, u32 new_size);
         template <typename VertexType>
-        Items<VertexType> accVertexData_(Geom& g);       // internal, does not do dirtying
+        ItemsRef<VertexType> accVertexData_(Geom& g);       // internal, does not do dirtying
         void setGeomVBOPos_(Geom& g, u32 start_offset, u32 count);
-        u32 getBufferForNewGeom_(GeomState::UsageHint usage_hint);
-        std::string debugPrintLinkage_(u32 buf_id);
+        u16 getBufferForNewGeom_(GeomUsageHint usage_hint);
+        std::string debugPrintLinkage_(u16 buf_id);
 
-        virtual Index beforeGeomChangedState_(Geom& g, GeomState::StateType old_type, GeomState::StateType new_type) { return Index::Invalid(); }        // returns new state id
-        virtual std::string getDebugName_() = 0;
-
+        std::string name_;
         u32 vbo_initial_size_;
-        u32 bound_buffer_id_;
+        u16 bound_buffer_id_;
         u32 vertex_size_;
-        u32 buffers_for_adding_[GeomState::uhCount];
+        u16 buffers_for_adding_[uhCount];
         fast_vector<VertexBuffer> buffers_;
         fast_vector<VertexAttribInfo> vbo_attribs_;
+        GeomStates* geom_states_;
+
+        Index shared_quad_geoms_[NormOffset::otCount];
     };
 
 }

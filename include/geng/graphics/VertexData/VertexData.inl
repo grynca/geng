@@ -1,12 +1,14 @@
 #include "VertexData.h"
 #include "../Vertices.h"
-#include "Geom.h"
-#include <cassert>
 #include "../graphics_config.h"
+#include "GeomStates/GeomStates.h"
+#include "Geom.h"
+#include "Factories/FactoryRectTF.h"
+#include <cassert>
 
 namespace grynca {
 
-    inline VertexBuffer::VertexBuffer(u32 initial_alloc, GeomState::UsageHint uh)
+    inline VertexBuffer::VertexBuffer(u32 initial_alloc, GeomUsageHint uh)
      : size(0), holes_size(0), alloc_size(initial_alloc), last_geom(Index::Invalid()), usage_hint(uh)
     {
     }
@@ -22,28 +24,39 @@ namespace grynca {
     inline GLenum VertexBuffer::getGLUsageHint()const {
         switch (usage_hint) {
             default:
-            case GeomState::uhStatic:
+            case uhStatic:
                 return GL_STATIC_DRAW;
-            case GeomState::uhDynamic:
+            case uhDynamic:
                 return GL_DYNAMIC_DRAW;
-            case GeomState::uhStream:
+            case uhStream:
                 return GL_STREAM_DRAW;
         }
     }
 
-    inline VertexData::VertexData()
-     : vbo_initial_size_(config::INITIAL_VBO_SIZE), bound_buffer_id_(InvalidId()), vertex_size_(0)
+    inline VertexData::VertexData(const std::string& name)
+     : name_(name), vbo_initial_size_(config::INITIAL_VBO_SIZE), bound_buffer_id_(u16(InvalidId())), vertex_size_(0),
+       geom_states_(new GeomStates(*this))
     {
-        memset(buffers_for_adding_, u8(-1), sizeof(u32)*GeomState::uhCount);
+        memset(buffers_for_adding_, u8(-1), sizeof(u16)*uhCount);
     }
 
     inline VertexData::~VertexData() {
+        // remove internal references from shared geoms
+        for (u32 i=0; i<NormOffset::otCount; ++i) {
+            if (shared_quad_geoms_[i].isValid()) {
+                accItem(shared_quad_geoms_[i]).unref();
+            }
+        }
+        // clear geoms now to ensure correct destruction order
+        // (Geom in its destructor accesses buffers_)
+        clear();
         for (u32 i=0; i<buffers_.size(); ++i) {
             GLCall(glDeleteBuffers(1, &buffers_[i].vbo));
         }
+        delete geom_states_;
     }
 
-    inline void VertexData::bindVertexBuffer(u32 buffer_id) {
+    inline void VertexData::bindVertexBuffer(u16 buffer_id) {
         GLCall(glBindBuffer(GL_ARRAY_BUFFER, buffers_[buffer_id].vbo));
 
         bound_buffer_id_ = buffer_id;
@@ -53,7 +66,7 @@ namespace grynca {
         vbo_initial_size_ = vbo_initial_size;
     }
 
-    inline void VertexData::bindBufferWithLayouts(u32 buffer_id) {
+    inline void VertexData::bindBufferWithLayouts(u16 buffer_id) {
 
         // first buffer is vertex buffer
         GLCall(glBindBuffer(GL_ARRAY_BUFFER, buffers_[buffer_id].vbo));
@@ -74,16 +87,16 @@ namespace grynca {
         vbo_attribs_ = attribs;
     }
 
-    inline u32 VertexData::getVertexSize() {
+    inline u32 VertexData::getVertexSize()const {
         return vertex_size_;
     }
 
     inline void VertexData::update(f32 dt) {
 
-        f32 best_freeness[GeomState::uhCount] = {0.0f};
+        f32 best_freeness[uhCount] = {0.0f};
 
         // synces with gpu
-        for (u32 buf_id = 0; buf_id<buffers_.size(); ++buf_id) {
+        for (u16 buf_id = 0; buf_id<buffers_.size(); ++buf_id) {
             VertexBuffer& vb = buffers_[buf_id];
 
             float holes_ratio = f32(vb.holes_size)/vb.alloc_size;
@@ -101,34 +114,65 @@ namespace grynca {
             }
         }
 
-        for (u32 i=0; i<GeomState::uhCount; ++i) {
+        for (u32 i=0; i<uhCount; ++i) {
             if (best_freeness[i] < 0.5f) {
-                buffers_for_adding_[i] = InvalidId();
+                buffers_for_adding_[i] = u16(InvalidId());
             }
         }
     }
 
     template <typename T>
-    inline T VertexData::addWithFactory(GeomState::StateType state_type, GeomState::UsageHint buff_hint) {
-        return T(*this, state_type, buff_hint);
+    inline T VertexData::addWithFactory(GeomUsageHint buff_hint) {
+        return T(*this, buff_hint);
     }
 
-    inline std::string VertexData::getDebugString(u32 indent_cnt) {
-        std::stringstream ss;
-        std::string indent = string_utils::spaces(indent_cnt);
+    inline const GeomStates& VertexData::getGeomStates()const {
+        return *geom_states_;
+    }
 
-        ss << indent << "v_size=" << getVertexSize() << std::endl;
+    inline GeomStates& VertexData::accGeomStates() {
+        return *geom_states_;
+    }
+
+
+    template <typename VertexType>
+    inline void VertexData::initSharedQuadGeomPositions() {
+        // create shared unit quad geoms
+        for (u32 i=0; i<NormOffset::otCount; ++i) {
+            Geom& g = addItem(GL_TRIANGLE_FAN, uhStatic);
+            auto f = g.getFactory<FactoryRectTF<VertexType>>();
+            f.addUnitQuad((NormOffset::Type)i);
+            // add internal reference so it wont be destroyed
+            // when accessed via RefPtr
+            g.ref();
+            shared_quad_geoms_[i] = g.getId();
+        }
+    }
+
+    inline Geom& VertexData::accSharedUnitQuadGeom(NormOffset::Type offset_type) {
+        ASSERT_M(shared_quad_geoms_[offset_type].isValid(), "shared quad geoms not initialized.");
+        return accItem(shared_quad_geoms_[offset_type]);
+    }
+
+    inline const std::string& VertexData::getName()const {
+        return name_;
+    }
+
+    inline std::string VertexData::getDebugString(u32 indent_cnt)const {
+        std::stringstream ss;
+        std::string indent = ssu::spacesA(indent_cnt);
+
         for (u32 i=0; i<buffers_.size(); ++i) {
-            VertexBuffer& vb = buffers_[i];
+            const VertexBuffer& vb = buffers_[i];
             std::string usage_str;
             switch (vb.usage_hint) {
-                case GeomState::uhStatic:
+                case uhStatic:
                     usage_str = "static";
                     break;
-                case GeomState::uhDynamic:
+                case uhDynamic:
                     usage_str = "dynamic";
                     break;
-                case GeomState::uhStream:
+                case uhStream:
                     usage_str = "stream";
                     break;
                 default:
@@ -143,9 +187,9 @@ namespace grynca {
             ss << indent << "[" << i << "]: "
                << "GLid=" << vb.vbo << ", "
                << "cap=" << vb.alloc_size << "(" << vb.alloc_size*getVertexSize() << "b), "
-               << "used=" << used << "(" << string_utils::printPerc(used_ratio) << "%), "
-               << "holes=" << string_utils::printPerc(holes_ratio) << "%, "
-               << "back_free=" << string_utils::printPerc(back_freeness) << "%, "
+               << "used=" << used << "(" << ssu::printPercA(used_ratio) << "%), " << std::endl << indent << "      "
+               << "holes=" << ssu::printPercA(holes_ratio) << "%, "
+               << "back_free=" << ssu::printPercA(back_freeness) << "%, "
                << "usage=" << usage_str << std::endl;
         }
         return ss.str();
@@ -156,7 +200,7 @@ namespace grynca {
         vb.dirty_geoms.push_back(g.getId());
     }
 
-    inline void VertexData::compressBuffer_(u32 buf_id) {
+    inline void VertexData::compressBuffer_(u16 buf_id) {
         VertexBuffer& vb = buffers_[buf_id];
 
 #ifndef WEB     // webGL does not support gpu-side copy
@@ -176,7 +220,7 @@ namespace grynca {
         Index curr = vb.last_geom;
         while (curr.isValid()) {
             // this actually reverses geoms linked list order, but that probably does not matter
-            Geom& g = getItem(curr);
+            Geom& g = accItem(curr);
             if (g.isDirty()) {
                 // skip dirty geoms
                 curr = g.left_;
@@ -212,7 +256,9 @@ namespace grynca {
 
         // push-back dirty geoms
         for (u32 i=0; i<vb.dirty_geoms.size(); ++i) {
-            Geom &g = getItem(vb.dirty_geoms[i]);
+            if (!isValidIndex(vb.dirty_geoms[i]))
+                continue;
+            Geom &g = accItem(vb.dirty_geoms[i]);
             u32 new_size = g.getVerticesCount();
             pushBack_(vb, g, new_size);
             g.verts_cnt_vbo_ = new_size;
@@ -231,15 +277,17 @@ namespace grynca {
 #endif
     }
 
-    inline void VertexData::updateGeoms_(u32 buf_id) {
+    static u32 id = 0;
+    inline void VertexData::updateGeoms_(u16 buf_id) {
         VertexBuffer& vb = buffers_[buf_id];
 
         if (!vb.dirty_geoms.empty()) {
             bindVertexBuffer(buf_id);
 
             for (u32 i=0; i<vb.dirty_geoms.size(); ++i) {
-
-                Geom& g = getItem(vb.dirty_geoms[i]);
+                if (!isValidIndex(vb.dirty_geoms[i]))
+                    continue;
+                Geom& g = accItem(vb.dirty_geoms[i]);
                 u32 new_size = g.getVerticesCount();
                 if (g.start_offset_in_vbo_ == InvalidId()) {
                     // new geom
@@ -248,27 +296,33 @@ namespace grynca {
                 else {
                     u32 prev_size = g.verts_cnt_vbo_;
 
-                    if (new_size <= prev_size) {
-                        g.verts_cnt_vbo_ = new_size;
-                    }
-                    else {
+                    if (new_size > prev_size) {
                         // already contained geom
                         u32 enlargement = new_size - prev_size;
                         // geom grew larger -> check if there is enough neighboring free space
-                        if (g.right_.isValid() && g.getSpaceOnRight_() >= enlargement) {
+                        if (g.getSpaceOnRight_() >= enlargement) {
                             // on right
+                            ASSERT(vb.holes_size >= enlargement);
                             vb.holes_size -= enlargement;
                         }
-                        else if (g.left_.isValid() && g.getSpaceOnLeft_() >= enlargement) {
+                        else if (g.getSpaceOnLeft_() >= enlargement) {
                             // on left
+                            ASSERT(vb.holes_size >= enlargement);
                             g.start_offset_in_vbo_ -= enlargement;
                             vb.holes_size -= enlargement;
                         }
                         else {
-                            u32 prev_size = g.verts_cnt_vbo_;
-                            vb.holes_size += prev_size;
                             g.unlink_();
                             pushBack_(vb, g, new_size);
+                        }
+                    }
+                    else {
+                        u32 shrink = prev_size - new_size;
+                        if (g.right_.isValid()) {
+                            vb.holes_size += shrink;
+                        }
+                        else {
+                            vb.size -= shrink;
                         }
                     }
                 }
@@ -278,12 +332,13 @@ namespace grynca {
                     GLCall(glBufferSubData(GL_ARRAY_BUFFER, g.start_offset_in_vbo_*vertex_size_, new_size*vertex_size_, &g.vertices_data_[0]));
                 }
                 g.clearDirty_();
+                ++id;
             }
             vb.dirty_geoms.clear();
         }
     }
 
-    inline void VertexData::addBuffer_(GeomState::UsageHint usage_hint) {
+    inline void VertexData::addBuffer_(GeomUsageHint usage_hint) {
         u32 alloc_size_verts = std::ceil(f32(vbo_initial_size_)/vertex_size_);
         buffers_.emplace_back(alloc_size_verts, usage_hint);
 
@@ -332,8 +387,8 @@ namespace grynca {
     }
 
     template <typename VertexType>
-    inline Items<VertexType> VertexData::accVertexData_(Geom& g) {
-        return Items<VertexType>(g.vertices_data_);
+    inline ItemsRef<VertexType> VertexData::accVertexData_(Geom& g) {
+        return ItemsRef<VertexType>(g.vertices_data_);
     }
 
     inline void VertexData::setGeomVBOPos_(Geom& g, u32 start_offset, u32 count) {
@@ -341,21 +396,25 @@ namespace grynca {
         g.verts_cnt_vbo_ = count;
     }
 
-    inline u32 VertexData::getBufferForNewGeom_(GeomState::UsageHint usage_hint) {
-        u32 buf_id = buffers_for_adding_[usage_hint];
-        if (buf_id == InvalidId()) {
-            buf_id = u32(buffers_.size());
+    inline u16 VertexData::getBufferForNewGeom_(GeomUsageHint usage_hint) {
+        u16 buf_id = buffers_for_adding_[usage_hint];
+        if (buf_id == u16(InvalidId())) {
+            buf_id = u16(buffers_.size());
             addBuffer_(usage_hint);
             buffers_for_adding_[usage_hint] = buf_id;
         }
         return buf_id;
     }
 
-    inline std::string VertexData::debugPrintLinkage_(u32 buf_id) {
+    inline std::string VertexData::debugPrintLinkage_(u16 buf_id) {
         std::stringstream ss;
 
         fast_vector<Index> linkage;
+        fast_vector<u32> left_holes;
         Index id = buffers_[buf_id].last_geom;
+        if (!id.isValid()) {
+            ss << "Empty" << std::endl;
+        }
         while (id.isValid()) {
             if (std::find(linkage.begin(), linkage.end(), id) != linkage.end()) {
                 ss << "!RECURSION! ";
@@ -363,12 +422,22 @@ namespace grynca {
                 break;
             }
             linkage.push_back(id);
-            id = getItem(id).left_;
+            Geom& g = accItem(id);
+            left_holes.push_back(g.getSpaceOnLeft_());
+            id = g.left_;
+        }
+        if (!linkage.empty()) {
+            u32 holes = 0;
+            for (i32 i=i32(linkage.size())-1; i>=0; --i) {
+                holes += left_holes[i];
+                ss << "<- (" << left_holes[i] << ") " << linkage[i];
+            }
+            ss << "<-";
+            if (holes != buffers_[buf_id].holes_size) {
+                ss << " !holes mismatch! (" << holes << "!=" << buffers_[buf_id].holes_size << ")";
+            }
         }
 
-        for (i32 i=linkage.size()-1; i>=0; --i) {
-            ss << linkage[i] << " <-";
-        }
         return ss.str();
     }
 }

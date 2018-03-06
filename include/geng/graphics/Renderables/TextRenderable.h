@@ -9,30 +9,36 @@ namespace grynca {
     // fw
     class TextShader;
     class VertexDataPT;
-    class TextState;
+    class GeomStateText;
 
     // Text position sets its left-bottom corner
     class TextRenderable : public Renderable {
     public:
         typedef TextShader ShaderType;
         typedef VertexDataPT VertexDataType;
+        static constexpr GeomUsageHint DefaultUsageHint = GeomUsageHint::uhDynamic;
 
-        static VertexData::ItemRef createNewGeom(Window& w, GeomState::UsageHint usage_hint = GeomState::uhDynamic);
+        struct DrawData : public Renderable::DrawData {
+            Colorf color;
+            u32 texture_id;
+        };
 
-        TextRenderable(const Renderer2D::ItemRef& rt) : Renderable(rt) {}
+        TextRenderable();
+        ~TextRenderable();
 
-        const TextState& getTextState()const;
+        void setNewGeom(GeomUsageHint usage_hint = DefaultUsageHint);
+
+        const GeomStateText& getTextState()const;
         Colorf getColor()const;
-        u32 getTextureUnit()const;
 
         Colorf& accColor();
-        TextState& accTextState();
+        GeomStateText& accTextState();
 
-        TextRenderable& setColor(const Colorf& clr);
-        TextRenderable& setTextureUnit(u32 tid);
-        TextRenderable& setPosition(const Vec2& pos);
+        void setColor(const Colorf& clr);
 
-        Vec2 calcBoundSize();
+        void onBeforeDraw(Shader& s);
+    private:
+        bool dirty_text_state_;
     };
 
 }

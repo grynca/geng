@@ -14,7 +14,14 @@ namespace grynca {
         return u32(texture_units_.size());
     }
 
-    inline Texture2D* Textures2DManager::getBoundTexture(u32 texture_unit_id) {
+    inline Texture2D* Textures2DManager::accBoundTexture(u32 texture_unit_id) {
+        ASSERT_M(texture_unit_id < texture_units_.size(), "Texture slot not available.");
+        if (texture_units_[texture_unit_id] == Index::Invalid())
+            return NULL;
+        return &accItem(texture_units_[texture_unit_id]);
+    }
+
+    inline const Texture2D* Textures2DManager::accBoundTexture(u32 texture_unit_id)const {
         ASSERT_M(texture_unit_id < texture_units_.size(), "Texture slot not available.");
         if (texture_units_[texture_unit_id] == Index::Invalid())
             return NULL;

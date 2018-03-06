@@ -21,10 +21,22 @@ namespace grynca {
         void update();
 
         Window& getWindow();
+
+        bool isDebugOverlayShown()const;
+        void showDebugOverlay();
+        void hideDebugOverlay();
+        void toggleDebugOverlay();
+
+        bool isCollisionDebugShown()const;
+        void showCollisionDebug();
+        void hideCollisionDebug();
+        void toggleCollisionDebug();
+        EntityIndex getDebugOverlayEntityId()const;
     private:
         Window* window_;
 
         InteractionCtx ictx_;
+        EntityIndex debug_overlay_id_;
     };
 
 }

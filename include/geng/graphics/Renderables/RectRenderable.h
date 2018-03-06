@@ -9,20 +9,28 @@ namespace grynca {
     public:
         typedef typename PgonRenderable::ShaderType ShaderType;
         typedef typename PgonRenderable::VertexDataType VertexDataType;
+        static constexpr GeomUsageHint DefaultUsageHint = GeomUsageHint::uhStatic;
 
-        // creates rect geom (size[1,1], offset[-0.5, -0.5])
-        static VertexData::ItemRef createNewGeom(Window& w, GeomState::UsageHint usage_hint = GeomState::uhStatic);
+        struct DrawData : public PgonRenderable::DrawData {
+            DrawData() : size(1, 1) {}
 
-        RectRenderable(const Renderer2D::ItemRef& rt) : PgonRenderable(rt) {}
+            Vec2 size;
+        };
 
-        Vec2 getSize()const;
+        static Geom& createNewGeom(const Vec2& norm_offset, GeomUsageHint usage_hint = DefaultUsageHint);
+
+        void setNewGeom(const Vec2& norm_offset, GeomUsageHint usage_hint = DefaultUsageHint);
+
         Vec2 getGeomNormOffset()const;
+        Vec2 getSize()const;
+        Vec2 getOffset()const;
+
+        void setGeomNormOffset(const Vec2& offset);
+        void setSize(const Vec2& size);
 
         Vec2& accSize();
 
-        RectRenderable& setColor(const Colorf& clr);
-        RectRenderable& setSize(const Vec2& size);      // changes local transform scale
-        RectRenderable& setGeomNormOffset(const Vec2& offset);      // normalized to size
+        void onBeforeDraw(Shader& s);
     };
 }
 

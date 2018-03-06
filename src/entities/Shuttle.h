@@ -1,18 +1,21 @@
 #ifndef SHUTTLE_H
 #define SHUTTLE_H
 
-class Shuttle : public GengEntityDef<CMovable, CTransform, CRenderables, CBody> {
+class Shuttle : public EBodyTree {
 public:
-    class Resources : public Singleton<Resources> {
-    public:
-        Resources(GameBase& game);
+    DEF_CONSTR_AND_MOVE_ONLY(Shuttle);
 
-        TextureRegion sprite_region;
-        TextureRegion particle_region;
+    class Resources : public EntityResources<Resources> {
+    public:
+        void initSingleton(GameBase& game);
+
+        ImagePos shuttle_img;
+        ImagePos particle_img;
+        SpriteBodyPars shuttle_params;
     };
 
-    static void init(Entity& e, GameBase& game);
-    static void update(Entity& e, GameBase& game);
+    void init();
+    void update();
 private:
 
 };

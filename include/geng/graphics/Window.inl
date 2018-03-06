@@ -1,10 +1,11 @@
 #include "Window.h"
 #include "glinclude.h"
-#include "../sdlinclude.h"
+#include "functions/sdlinclude.h"
 #include "graphics_config.h"
 #include "Textures2DManager.h"
 #include "Vertices.h"
 #include "Shaders.h"
+#include "AssetsManager.h"
 #include "Renderer2D.h"
 #include "Events.h"
 #include "GUI.h"
@@ -14,7 +15,7 @@ namespace grynca {
     inline Window::Window()
      : sdl_window_(NULL), gl_context_(NULL), game_(NULL),
        events_(NULL), textures_(NULL), shaders_(NULL),
-       vertices_(NULL), renderer_(NULL), gui_(NULL)
+       vertices_(NULL), assets_(NULL), renderer_(NULL), gui_(NULL)
     {}
 
     inline void Window::init(Game& game, const std::string& name, u32 width, u32 height) {
@@ -67,6 +68,7 @@ namespace grynca {
         textures_ = new Textures2DManager();
         shaders_ = new Shaders(*this);
         vertices_ = new Vertices(*this);
+        assets_ = new AssetsManager(*this);
         renderer_ = new Renderer2D(*this);
         gui_ = new GUI(*this);
     }
@@ -82,10 +84,12 @@ namespace grynca {
             delete textures_;
         if (shaders_)
             delete shaders_;
-        if (vertices_)
-            delete vertices_;
         if (renderer_)
             delete renderer_;
+        if (vertices_)
+            delete vertices_;
+        if (assets_)
+            delete assets_;
         if (gui_)
             delete gui_;
     }
@@ -120,6 +124,10 @@ namespace grynca {
 
     inline Vertices& Window::getVertices()const {
         return *vertices_;
+    }
+
+    inline AssetsManager& Window::getAssets()const {
+        return *assets_;
     }
 
     inline Renderer2D& Window::getRenderer()const {
@@ -163,7 +171,11 @@ namespace grynca {
         return SDL_GL_GetSwapInterval()==1;
     }
 
-    inline ViewPort& Window::getViewPort() {
+    inline const ViewPort& Window::getViewPort()const {
+        return viewport_;
+    }
+
+    inline ViewPort& Window::accViewPort() {
         return viewport_;
     }
 

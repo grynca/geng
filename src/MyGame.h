@@ -7,11 +7,13 @@ class MyGame : public grynca::Game {
 public:
     enum TextureIds {
         tidSprites = 0,
-        tidFonts = 1
+        tidArial = 1,
+        tidCourier = 2      // monospace font
     };
 
     struct Assets {
-        Index fonts_pack_id;
+        Index arial_pack_id;
+        Index courier_pack_id;
         Index images_pack_id;
     } assets;
 
@@ -21,6 +23,7 @@ private:
     EntityIndex shuttle_id;
     EntityIndex shuttle2_id;
     EntityIndex hud_id;
+    EntityIndex dude_id;
     EntityIndex gui_root_id, gui_ch1_id, gui_ch2_id;
 
     virtual void init() override;

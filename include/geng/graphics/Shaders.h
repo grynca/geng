@@ -9,12 +9,14 @@ namespace grynca {
     class Shader;
     class Window;
 
-    class Shaders : public ManagerSingletons<Shaders, Shader> {
+    class Shaders : public ManagerSingletons<Shader> {
     public:
         Shaders(Window& w);
 
         Shader* getBoundShader();
         Window& getWindow();
+
+        std::string getTypesDebugString()const;
     private:
         friend class Shader;
 

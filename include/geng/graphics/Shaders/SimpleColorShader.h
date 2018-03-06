@@ -1,30 +1,25 @@
 #ifndef RECTSHADER_H
 #define RECTSHADER_H
 
-#include "../Shader.h"
+#include "Shader.h"
 
 namespace grynca {
 
     class SimpleColorShader : public Shader {
     public:
-        struct Uniforms : public UniformsBase {
-            Colorf color;
-        };
-    public:
         SimpleColorShader()
-         : Shader("SimpleColorShader", vsSrc(), fsSrc(), sizeof(Uniforms))
+         : Shader("SimpleColorShader", vsSrc(), fsSrc())
         {
             u_z_coord = glGetUniformLocation(gl_handle_, "z_coord");
             u_color = glGetUniformLocation(gl_handle_, "color");
             u_transform = glGetUniformLocation(gl_handle_, "transform");
         }
 
-        virtual void setUniforms(u8* uniforms) override {
-            Uniforms* us = (Uniforms*)uniforms;
-
-            setUniformMat3(u_transform, us->transform);
-            setUniform1f(u_z_coord, us->z_coord);
-            setUniform4fv(u_color, us->color.c_, 1);
+        template <typename DD>
+        void setUniforms(const DD& draw_data) {
+            setUniformMat3(u_transform, draw_data.transform);
+            setUniform1f(u_z_coord, draw_data.z_coord);
+            setUniform4fv(u_color, draw_data.color.c_, 1);
         }
 
         // uniform locations

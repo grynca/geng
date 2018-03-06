@@ -1,26 +1,22 @@
 #ifndef RENDERSYSTEM_H
 #define RENDERSYSTEM_H
-#include "../../core/GengSystem.h"
+#include "geng/core/GengSystem.h"
 
 namespace grynca {
 
     // fw
     class Window;
+    class CRenderableData;
 
-    class RenderSystem : public GengSystem {
+    class RenderSystem : public GengSystemAll {
     public:
-        virtual void init() override;
-
         virtual RolesMask NeededRoles() override {
-            return GERoles::erRenderableMask();
+            return GERoles::erRenderableMask() | GERoles::erTransformMask();
         }
 
-        virtual void preUpdate(f32 dt) override;
-        virtual void updateEntity(Entity& e, f32 dt) override;
-        virtual void postUpdate(f32 dt) override;
+        virtual void init() override;
+        virtual void update(f32 dt, EntitiesList& entities) override;
     private:
-        void renderEntity_(CRenderables& cr, CTransform& ct);
-
         Window* window_;
         f32 pred_time_;
     };

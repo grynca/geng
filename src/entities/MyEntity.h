@@ -8,25 +8,35 @@
 //    f32 fieldC;
 //};
 
-class MyEntity : public GengEntityDef<CMovable, CTransform, CRenderables, CNetworked> {
-public:
-    class Resources : public Singleton<Resources> {
-    public:
-        Resources(GameBase& game);
-
-        TextureRegion sprite_region;
-        Index animation_id;
-    };
-
-    static void init(Entity& ent, GameBase& game);
-    static void update(Entity& e, GameBase& game);
-
-//    virtual void getFields(Fields& f)const {
-//        ADD_FIELD(MyEntity, fieldA);
-//        ADD_FIELD(MyEntity, fieldB);
-//        ADD_FIELD(MyEntity, fieldC);
-//    }
-};
+//class MyEntity : public GengEntityDef<CSpeedData, CTransformData, CRenderableData, CNetworkedServerData> {
+//    typedef GengEntityDef<CSpeedData, CTransformData, CRenderableData, CNetworkedServerData> Base;
+//public:
+//    enum {
+//        pAnimSprite,
+//        pPolygon,
+//        pCircle,
+//
+//        partsCount
+//    };
+//
+//    class Resources : public EntityResources<Resources> {
+//    public:
+//        void init(GameBase& game);
+//
+//        TextureRegion sprite_region;
+//        SpriteAnimations::IPtr animation;
+//    };
+//
+//    MyEntity(Entity& e) : Base(e) {}
+//    void init();
+//    void update();
+//
+////    virtual void getFields(Fields& f)const {
+////        ADD_FIELD(MyEntity, fieldA);
+////        ADD_FIELD(MyEntity, fieldB);
+////        ADD_FIELD(MyEntity, fieldC);
+////    }
+//};
 
 
 #include "MyEntity.inl"

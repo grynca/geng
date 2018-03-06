@@ -15,48 +15,66 @@ IF (CMAKE_BUILD_TYPE STREQUAL "RelWithDebInfo")
     ENDIF()
 ENDIF()
 
+option(USE_SDL2 "Use SDL2" ON)
+IF (USE_SDL2)
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DUSE_SDL2=1" )
+    IF (WIN32)
+        set(LIBS "-lglew32 -lglu32 -lopengl32 -lmingw32 -lSDL2main -lSDL2 -lSDL2_image")
+    ELSE()
+        set(LIBS "-lGLEW -lGL -lGLU -lSDL2 -lSDL2_image")
+    ENDIF()
+ENDIF()
+
 IF (WIN32)
-    include_directories(c:/DEV/gamedev/base/src/)
+    include_directories(c:/DEV/gamedev/base/include/)
     include_directories(c:/DEV/gamedev/maths/include/)
     include_directories(c:/DEV/gamedev/sysent/include/)
     include_directories(c:/DEV/gamedev/SAP/include/)
     include_directories(c:/DEV/gamedev/assets/include/)
+    include_directories(c:/DEV/gamedev/gphyx/include/)
     include_directories(c:/DEV/gamedev/ggnet/include/)
-    include_directories(c:/DEV/libs/mingw/glm/)
-    include_directories(c:/DEV/libs/mingw/glew-1.13.0/include/)
-    link_directories(c:/DEV/libs/mingw/glew-1.13.0/lib/)
-    include_directories(c:/DEV/libs/mingw/freetype-2.6/include/)
-    link_directories(c:/DEV/libs/mingw/freetype-2.6/lib/)
-    include_directories(c:/DEV/libs/mingw/SDL2-2.0.4/x86/include/)
-    link_directories(c:/DEV/libs/mingw/SDL2-2.0.4/x86/lib)
-
-    set(LIBS "-lfreetype -lglew32 -lglu32 -lopengl32 -lmingw32 -lSDL2main -lSDL2 -lSDL2_image -lws2_32")
+    include_directories(c:/DEV/ENV/msys64/mingw64/include/freetype2/)
+    set(LIBS "${LIBS} -lfreetype -lws2_32")
 ELSE()
-    include_directories(/home/grynca/DEV/gamedev/base/src)
+    include_directories(/home/grynca/DEV/gamedev/base/include)
     include_directories(/home/grynca/DEV/gamedev/sysent/include/)
     include_directories(/home/grynca/DEV/gamedev/maths/include/)
     include_directories(/home/grynca/DEV/gamedev/SAP/include/)
     include_directories(/home/grynca/DEV/gamedev/assets/include/)
+    include_directories(/home/grynca/DEV/gamedev/gphyx/include/)
     include_directories(/home/grynca/DEV/gamedev/ggnet/include/)
     include_directories(/usr/include/freetype2)
 
-    set(LIBS "-lGLEW -lGL -lGLU -lfreetype -lSDL2 -lSDL2_image")
+    set(LIBS "${LIBS} -lfreetype")
 ENDIF()
 include_directories(include/)
 
 set(GENG_SOURCES
         include/geng/graphics/graphics_includes.h
         include/geng/graphics/graphics_config.h
+        include/geng/graphics/graphics_entities.h
         include/geng/graphics/glinclude.h
         include/geng/graphics/Window.h
         include/geng/graphics/Window.inl
-        include/geng/graphics/Shader.h
-        include/geng/graphics/Shader.inl
+        include/geng/graphics/NormOffset.h
+        include/geng/graphics/Shaders/Shader.h
+        include/geng/graphics/Shaders/Shader.inl
+        include/geng/graphics/VertexData/vertexdata_includes.h
         include/geng/graphics/VertexData/VertexData.h
         include/geng/graphics/VertexData/VertexData.inl
-        include/geng/graphics/VertexData/GeomState.h
+        include/geng/graphics/VertexData/GeomStates/GeomStates.h
+        include/geng/graphics/VertexData/GeomStates/GeomStates.inl
+        include/geng/graphics/VertexData/GeomStates/GeomStateBase.h
+        include/geng/graphics/VertexData/GeomStates/GeomStateBase.inl
+        include/geng/graphics/VertexData/GeomStates/GeomStateText.h
+        include/geng/graphics/VertexData/GeomStates/GeomStateText.inl
+        include/geng/graphics/VertexData/GeomStates/GeomStateSpriteAnimation.h
+        include/geng/graphics/VertexData/GeomStates/GeomStateSpriteAnimation.inl
+        include/geng/graphics/VertexData/GeomStates/GeomStateParticles.h
+        include/geng/graphics/VertexData/GeomStates/GeomStateParticles.inl
         include/geng/graphics/VertexData/Geom.h
         include/geng/graphics/VertexData/Geom.inl
+        include/geng/graphics/VertexData/geom_enums.h
         include/geng/graphics/VertexData/VertexDataPT.h
         include/geng/graphics/VertexData/VertexDataPT.inl
         include/geng/graphics/VertexData/VertexDataP.h
@@ -67,14 +85,10 @@ set(GENG_SOURCES
         include/geng/graphics/VertexData/Factories/FactoryRectTF.inl
         include/geng/graphics/VertexData/Factories/FactoryRectT.h
         include/geng/graphics/VertexData/Factories/FactoryRectT.inl
-        include/geng/graphics/VertexData/SpriteAnimationStates.h
-        include/geng/graphics/VertexData/SpriteAnimationStates.inl
-        include/geng/graphics/VertexData/TextStates.h
-        include/geng/graphics/VertexData/TextStates.inl
-        include/geng/graphics/VertexData/ParticleBatchStates.h
-        include/geng/graphics/VertexData/ParticleBatchStates.inl
         include/geng/graphics/Vertices.h
         include/geng/graphics/Vertices.inl
+        include/geng/graphics/AssetsManager.h
+        include/geng/graphics/AssetsManager.inl
         include/geng/graphics/Renderer2D.h
         include/geng/graphics/Renderer2D.inl
         include/geng/graphics/Texture2D.h
@@ -83,14 +97,16 @@ set(GENG_SOURCES
         include/geng/graphics/Textures2DManager.inl
         include/geng/graphics/Shaders.h
         include/geng/graphics/Shaders.inl
+        include/geng/graphics/Shaders/shaders_include.h
         include/geng/graphics/Shaders/CircleShader.h
         include/geng/graphics/Shaders/SimpleColorShader.h
         include/geng/graphics/Shaders/SimpleTexturedShader.h
         include/geng/graphics/Shaders/TextShader.h
         include/geng/graphics/Shaders/RectBorderShader.h
         include/geng/graphics/Shaders/ParticleShader.h
-        include/geng/graphics/Renderables/RenderIndex.h
-        include/geng/graphics/Renderables/RenderIndex.inl
+        include/geng/graphics/Renderables/renderables_includes.h
+        include/geng/graphics/Renderables/RenderBatchId.h
+        include/geng/graphics/Renderables/RenderBatchId.inl
         include/geng/graphics/Renderables/Renderable.h
         include/geng/graphics/Renderables/Renderable.inl
         include/geng/graphics/Renderables/CircleRenderable.h
@@ -110,49 +126,70 @@ set(GENG_SOURCES
         include/geng/graphics/Renderables/PgonTexturedRenderable.inl
         include/geng/graphics/Renderables/ParticlesRenderable.h
         include/geng/graphics/Renderables/ParticlesRenderable.inl
-        include/geng/graphics/Entities/GUIElement.h
-        include/geng/graphics/Components/CRenderables.h
+        include/geng/graphics/Entities/EVisual.h
+        include/geng/graphics/Entities/EBody.h
+        include/geng/graphics/Entities/EBody.inl
+        include/geng/graphics/Entities/DebugOverlay.h
+        include/geng/graphics/Entities/DebugOverlay.inl
+        include/geng/graphics/Components/CRenderable.h
+        include/geng/graphics/Components/CRenderable.inl
         include/geng/graphics/Systems/RenderSystem.h
         include/geng/graphics/Systems/RenderSystem.inl
-        include/geng/graphics/Systems/CollisionsDebugSystem.h
-        include/geng/graphics/Systems/CollisionsDebugSystem.inl
-        include/geng/graphics/CoordFrame.h
         include/geng/graphics/ViewPort.h
         include/geng/graphics/ViewPort.inl
         include/geng/graphics/Events.h
         include/geng/graphics/Events.inl
         include/geng/graphics/GUI.h
         include/geng/graphics/GUI.inl
+        include/geng/graphics/ControlHelpers.h
+        include/geng/graphics/ControlHelpers.inl
 
         include/geng/network/network_includes.h
         include/geng/network/Snapshots.h
         include/geng/network/Snapshots.inl
         include/geng/network/ClientStateBase.h
-        include/geng/network/Components/CNetworked.h
+        include/geng/network/Components/CNetworkedServer.h
+        include/geng/network/Components/CNetworkedClient.h
         include/geng/network/Systems/ServerNetworkSystem.h
         include/geng/network/Systems/ServerNetworkSystem.inl
         include/geng/network/Systems/ClientNetworkSystem.h
         include/geng/network/Systems/ClientNetworkSystem.inl
 
         include/geng/physics/physics_includes.h
-        include/geng/physics/Collidable.h
+        include/geng/physics/PhysicsManager.h
+        include/geng/physics/PhysicsManager.inl
+        include/geng/physics/physics_utils.h
+        include/geng/physics/physics_entities.h
+        include/geng/physics/motor_utils.h
+        include/geng/physics/Components/CCollider.h
+        include/geng/physics/Components/CCollider.inl
         include/geng/physics/Components/CBody.h
-        include/geng/physics/Systems/CollisionSystem.h
-        include/geng/physics/Systems/CollisionSystem.inl
+        include/geng/physics/Components/CBody.inl
+        include/geng/physics/Components/CTreeJoint.h
+        include/geng/physics/Components/CTreeJoint.inl
+        include/geng/physics/Systems/BoundsSystem.h
+        include/geng/physics/Systems/BoundsSystem.inl
+        include/geng/physics/Systems/PhysicsSystem.h
+        include/geng/physics/Systems/BoundsDebugRenderSystem.h
+        include/geng/physics/Systems/BoundsDebugRenderSystem.inl
+        include/geng/physics/Entities/ETrigger.h
+        include/geng/physics/Entities/EGhost.h
 
+        include/geng/core/core_common.h
         include/geng/core/core_includes.h
-        include/geng/core/Components/CTransform.h
-        include/geng/core/Components/CTransform.inl
-        include/geng/core/Components/CMovable.h
-        include/geng/core/Components/CDeltaTransform.h
-        include/geng/core/Components/CDeltaTransform.inl
-        include/geng/core/Speed.h
         include/geng/core/GengSystem.h
         include/geng/core/GengEntity.h
+        include/geng/core/EntityResourcesManager.h
+        include/geng/core/Components/CTransform.h
+        include/geng/core/Components/CTransform.inl
+        include/geng/core/Components/CTreeTransform.h
+        include/geng/core/Components/CTreeTransform.inl
+        include/geng/core/Components/CSpeed.h
+        include/geng/core/Components/CSpeed.inl
         include/geng/core/Systems/MovementSystem.h
-        include/geng/core/Systems/DeltaTransformSystem.h
+        include/geng/core/Systems/TreeTransformSystem.h
+        include/geng/core/Systems/TreeTransformSystem.inl
 
-        include/geng/sdlinclude.h
         include/geng/GameBase.h
         include/geng/GameBase.inl
         include/geng/Game.h
@@ -173,6 +210,8 @@ set(TEST_SOURCES
         src/entities/Shuttle.inl
         src/entities/HUD.h
         src/entities/HUD.inl
+        src/entities/Dude.h
+        src/entities/Dude.inl
         src/MyGame.h
         src/MyGame.inl
         )

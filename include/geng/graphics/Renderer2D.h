@@ -1,9 +1,8 @@
 #ifndef RENDERER_H
 #define RENDERER_H
 
-#include "CoordFrame.h"
 #include "graphics_config.h"
-#include "Renderables/RenderIndex.h"
+#include "Renderables/RenderBatchId.h"
 #include "types/containers/Array.h"
 #include "maths/Transform.h"
 #include <map>
@@ -14,57 +13,82 @@ namespace grynca {
     class Window;
     class Geom;
     class Renderer2D;
+    class GeomStateBase;
+    class Shader;
 
     struct RenderTask : public ManagedItem<Renderer2D> {
-        RenderTask();
+        void setRenderableTypeId(u8 rtid);
+        void setZFromLayerId(u16 layer_id);
+        void setGeom(const VertexData::IRefPtr& g);
+        void setTransformMat(const Mat3& tm);       // the final tr. matrix for rendering
 
-        void setTransform(const Mat3& tm);
-        void setLayer(u16 layer_id);
-        void setCoordFrame(CoordFrame cf);
-        void setGeom(const VertexData::ItemRef& g);
-
-        const VertexData::ItemRef& getGeom()const;
+        const VertexData::IRefPtr& getGeom()const;
         Index getGeomId()const;
-        CoordFrame getCoordFrame()const;
-        const RenderIndex& getRenderIndex()const;
-        const Transform& getLocalTransform()const;
-
-        Transform& accLocalTransform();
-        RenderIndex& accRenderIndex();
-        VertexData::ItemRef& accGeom();
-
+        const GeomStateBase& getGeomState()const;
+        const Mat3& getTransformMat()const;
+        u8* getDrawData();
+        u8 getRenderableTypeId()const;
         template <typename T>
-        T& getUniformsAs();
+        T& accDrawDataAs();
         template <typename T>
-        const T& getUniformsAs()const;
-        u8* getUniformsData() { return uniforms_; }
+        const T& getDrawDataAs()const;
+        u16 getLayerIdFromZ()const;
 
-        void calcTransform(Window& window, const Mat3& obj_tr_m);
-        void setTransformMatrix(const Mat3& mat);
+        GeomStateBase& accGeomState();
+        VertexData::IRefPtr& accGeom();
+        Mat3& accTransformMat();
+
+        RenderBatchId calcRenderBatchId()const;
+
+        void cloneTo(RenderTask& rt_out)const;
     private:
-        static f32 calcLayerZ_(u32 layer_id);
+        static f32 layerIdToZ_(u16 layer_id);
+        static u16 ZToLayerId_(f32 z_coord);
 
-        RenderIndex rid_;
-        Transform local_transform_;
-        VertexData::ItemRef geom_ref_;
-        CoordFrame coord_frame_;
-        u8 uniforms_[config::SHADER_UNIFORMS_SIZE];
+        u8 draw_data_[config::DRAW_DATA_SIZE];
+        u8 renderable_type_id_;
+        // ref counted, geoms can be shared for multiple render tasks
+        VertexData::IRefPtr geom_ref_;
     };
 
-    class Renderer2D : public TightManager<RenderTask> {
+    class Renderer2D : public Manager<RenderTask> {
     public:
         Renderer2D(Window& w);
 
-        void scheduleForNextFrame(Index rt_id);
+        template <typename Types>
+        void initRenderableTypes();
+
+        void scheduleForNextFrame(Index rt_id, const Mat3& transform_mat, RenderBatchId batch_id);  // faster with cached RenderBatchId
+        void scheduleForNextFrame(Index rt_id, const Mat3& transform_mat);
 
         void render();
         Window& getWindow();
+
+        template <typename RT>
+        static u8 getRenderableTypeIdOf();
     private:
         friend class RenderTask;
+        typedef void (*BeforeDrawCallFunc)(RenderTask&, Shader&);
+
+        struct RenderableTypesInitializer_ {
+            template <typename TP, typename T>
+            static void f(Renderer2D& renderer);
+        };
+
+        struct RenderableTypeCtx_ {
+            u16 shader_id;
+            u16 vertex_layout_id;
+            BeforeDrawCallFunc before_draw_f;
+        };
+
+        template <typename RT>
+        static void callBeforeDraw_(RenderTask& rt, Shader& s);
 
         Window* window_;
 
-        std::map< u32 /*rend_id*/, fast_vector<u32> /* task positions */ > to_render_;
+        RenderableTypeCtx_ rt_ctxs_[config::MAX_RENDERABLE_TYPES];
+
+        std::map< u32 /*render_sorting_id*/, fast_vector<u32> /* task positions */ > to_render_;
     };
 
 }

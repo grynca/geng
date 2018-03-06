@@ -32,6 +32,31 @@ namespace grynca {
     }
 
     FR_TPL
+    inline u32 FR_TYPE::addUnitQuad(NormOffset::Type offset) {
+        static Vec2 verts[NormOffset::otCount][4] {
+                // left-top, right-top, right-bot, left-bot
+                {{0, 0}, {1, 0}, {1, 1}, {0, 1}},
+                {{-1, 0}, {0, 0}, {0, 1}, {-1, 1}},
+                {{-1, -1}, {0, -1}, {0, 0}, {-1, 0}},
+                {{0, -1}, {1, -1}, {1, 0}, {0, 0}},
+                {{-0.5, -0.5}, {0.5, -0.5}, {0.5, 0.5}, {-0.5, 0.5}},
+                {{0, -0.5}, {1, -0.5}, {1, 0.5}, {0, 0.5}},
+                {{-0.5f, 0}, {0.5f, 0}, {0.5f, 1}, {-0.5f, 1}},
+                {{-1, -0.5f}, {0, -0.5f}, {0, 0.5f}, {-1, 0.5f}},
+                {{-0.5f, -1}, {0.5f, -1}, {0.5f, 0}, {-0.5f, 0}}
+        };
+
+        Geom& g = getGeom();
+        u32 start = g.getVerticesCount();
+        for (u32 i=0; i<4; ++i) {
+            VertexType v;
+            v.pos = verts[offset][i];
+            g.addVertex(v);
+        }
+        return start;
+    }
+
+    FR_TPL
     inline Vec2 FR_TYPE::getLeftTop(u32 start)const {
         return getGeom().template getVertex<VertexType>(start).pos;
     }
@@ -86,17 +111,17 @@ namespace grynca {
 
     FR_TPL
     inline Geom& FR_TYPE::getGeom()const {
-        return geom_ref_.get();
+        return geom_;
     }
 
     FR_TPL
     inline FR_TYPE::FactoryRectTF(Geom& g)
-     : geom_ref_(g)
-            {}
+     : geom_(g)
+    {}
 
     FR_TPL
-    inline FR_TYPE::FactoryRectTF(VertexData& vertex_data, GeomState::StateType state_type, GeomState::UsageHint buff_hint)
-     : geom_ref_(vertex_data.addItem(GL_TRIANGLE_FAN, state_type, buff_hint))
+    inline FR_TYPE::FactoryRectTF(VertexData& vertex_data, GeomUsageHint buff_hint)
+     : geom_(vertex_data.addItem(GL_TRIANGLE_FAN, buff_hint))
     {}
 
 }

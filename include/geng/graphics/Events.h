@@ -1,6 +1,7 @@
 #ifndef EVENTS_H
 #define EVENTS_H
 
+#include "types/EventsHandler.h"
 #include "maths/Vec2.h"
 #include <SDL2/SDL.h>
 #include <stdint.h>
@@ -17,23 +18,7 @@ namespace grynca {
         mbRight = SDL_BUTTON_RIGHT
     };
 
-    class EventFunction {
-    public:
-        EventFunction(const std::function<bool(SDL_Event&)>& f);
-        bool operator()(SDL_Event& e);
-
-        u32 getId() { return id_; }
-    private:
-        std::function<bool(SDL_Event&)> f_;
-        u32 id_;
-    };
-
-    struct EventHandlers {
-    // when callback returns true it prevents further handling
-        fast_vector<EventFunction> callbacks_;
-    };
-
-    class Events {
+    class Events : public EventsHandler<SDL_Event&> {
     public:
         Events(Window& window);
 
@@ -50,9 +35,6 @@ namespace grynca {
 
         const Vec2& getMousePos()const;
         const Vec2& getMouseDelta()const;
-
-        u32 addHandler(SDL_EventType type, const std::function<bool(SDL_Event&)>& f);
-        void removeHandler(SDL_EventType type, u32 id);
     private:
         Window* window_;
 
@@ -64,8 +46,6 @@ namespace grynca {
         u32 mouse_;
         Vec2 mouse_pos_;
         Vec2 mouse_delta_;
-
-        EventHandlers handlers_[SDL_LASTEVENT];
     };
 
 }

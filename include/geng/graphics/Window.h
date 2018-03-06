@@ -11,6 +11,7 @@ namespace grynca {
     class Textures2DManager;
     class Shaders;
     class Vertices;
+    class AssetsManager;
     class Renderer2D;
     class Events;
     class GUI;
@@ -31,6 +32,7 @@ namespace grynca {
         Textures2DManager& getTextures()const;
         Shaders& getShaders()const;
         Vertices& getVertices()const;
+        AssetsManager& getAssets()const;
         Renderer2D& getRenderer()const;
         GUI& getGUI()const;
 
@@ -45,7 +47,8 @@ namespace grynca {
         void setVSync(bool value);
         bool getVSync()const;
 
-        ViewPort& getViewPort();
+        const ViewPort& getViewPort()const;
+        ViewPort& accViewPort();
     private:
         void* sdl_window_;
         void* gl_context_;
@@ -55,8 +58,10 @@ namespace grynca {
         Textures2DManager* textures_;
         Shaders* shaders_;
         Vertices* vertices_;
+        AssetsManager* assets_;
         Renderer2D* renderer_;
         GUI* gui_;
+
         ViewPort viewport_;
     };
 

@@ -88,17 +88,17 @@ namespace grynca {
 
     FR_TPL
     inline Geom& FR_TYPE::getGeom()const {
-        return geom_ref_.get();
+        return geom_;
     }
 
     FR_TPL
     inline FR_TYPE::FactoryRectT(Geom& g)
-     : geom_ref_(g)
+     : geom_(g)
     {}
 
     FR_TPL
-    inline FR_TYPE::FactoryRectT(VertexData& vertex_data, GeomState::StateType state_type, GeomState::UsageHint buff_hint)
-     : geom_ref_(vertex_data.addItem(GL_TRIANGLES, state_type, buff_hint))
+    inline FR_TYPE::FactoryRectT(VertexData& vertex_data, GeomUsageHint buff_hint)
+     : geom_(vertex_data.addItem(GL_TRIANGLES, buff_hint))
     {}
 }
 

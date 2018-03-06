@@ -14,6 +14,7 @@ namespace grynca {
         u32 add();
         u32 add(const Vec2& size, const Vec2& offset);
         u32 add(const Vec2& size);
+        u32 addUnitQuad(NormOffset::Type offset);
 
         Vec2 getLeftTop(u32 start)const;
         Vec2 getRightBot(u32 start)const;
@@ -30,10 +31,10 @@ namespace grynca {
         friend class VertexData;
 
         FactoryRectTF(Geom& g);
-        FactoryRectTF(VertexData& vertex_data, GeomState::StateType state_type, GeomState::UsageHint buff_hint);
+        FactoryRectTF(VertexData& vertex_data, GeomUsageHint buff_hint);
 
 
-        VertexData::ItemRef geom_ref_;
+        Geom& geom_;
     };
 }
 

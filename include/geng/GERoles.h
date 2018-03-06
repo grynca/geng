@@ -1,16 +1,20 @@
 #ifndef GENGENTITYROLES_H
 #define GENGENTITYROLES_H
 
-#include "functions/meta.h"
+#include "types/Mask.h"
+#include "functions/enum.h"
 
 namespace grynca {
     DEFINE_ENUM(GERoles,
             erGui,
-            erRenderable,
-            erCollidable,
             erTransform,
+            erSpeed,
+            erCollider,
+            erBody,
+
+            erRenderable,
             erTreeTransform,
-            erMovable,
+            erTreeJoint,
             erNetworkedSv,
             erNetworkedCl
     );

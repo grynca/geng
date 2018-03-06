@@ -3,17 +3,6 @@
 
 namespace grynca {
 
-    inline EventFunction::EventFunction(const std::function<bool(SDL_Event&)>& f)
-     : f_(f)
-    {
-        static u32 id_giver = 0;
-        id_ = id_giver++;
-    }
-
-    inline bool EventFunction::operator()(SDL_Event& e) {
-        return f_(e);
-    }
-
     inline Events::Events(Window& window)
      : keys_current_(0), mouse_prev_(0), mouse_(0)
     {
@@ -34,11 +23,7 @@ namespace grynca {
 
         SDL_Event event;
         while (SDL_PollEvent(&event)) {
-            EventHandlers& h = handlers_[event.type];
-            for (u32 i=0; i<h.callbacks_.size(); ++i) {
-                if (h.callbacks_[i](event))
-                    break;
-            }
+            emit(event.type, event);
         }
 
         memcpy(&keys_[keys_current_][0], sdl_keys_, keys_[keys_current_].size());
@@ -81,21 +66,6 @@ namespace grynca {
 
     inline const Vec2& Events::getMouseDelta()const {
         return mouse_delta_ ;
-    }
-
-    inline u32 Events::addHandler(SDL_EventType type, const std::function<bool(SDL_Event&)>& f) {
-        handlers_[type].callbacks_.push_back(f);
-        return handlers_[type].callbacks_.back().getId();
-    }
-
-    inline void Events::removeHandler(SDL_EventType type, u32 id) {
-        fast_vector<EventFunction>& cbs = handlers_[type].callbacks_;
-        for (u32 i=0; i<cbs.size(); ++i) {
-            if (cbs[i].getId()==id) {
-                handlers_[type].callbacks_.erase(cbs.begin()+i);
-                break;
-            }
-        }
     }
 
 }

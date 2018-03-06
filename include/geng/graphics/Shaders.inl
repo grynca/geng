@@ -1,5 +1,5 @@
 #include "Shaders.h"
-#include "Shader.h"
+#include "Shaders/Shader.h"
 #include "glinclude.h"
 #include "types/Type.h"
 #include "types/Index.h"
@@ -18,5 +18,17 @@ namespace grynca {
 
     inline Window& Shaders::getWindow() {
         return *window_;
+    }
+
+    inline std::string Shaders::getTypesDebugString()const {
+        std::stringstream ss;
+        ss << "Shader types:" << std::endl;
+        for (u32 i=0; i<getSize(); ++i) {
+            const Shader* s = tryGetById(i);
+            if (s) {
+                ss << " " << i << ": " << s->getName() << std::endl;
+            }
+        }
+        return ss.str();
     }
 }

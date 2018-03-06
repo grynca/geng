@@ -15,16 +15,25 @@ namespace grynca {
     public:
         typedef SimpleColorShader ShaderType;
         typedef VertexDataP VertexDataType;
+        static constexpr GeomUsageHint DefaultUsageHint = GeomUsageHint::uhStatic;
 
-        static VertexData::ItemRef createNewGeom(Window& w, GeomState::UsageHint usage_hint = GeomState::uhStatic);
+        struct DrawData : public Renderable::DrawData {
+            DrawData() : color(1, 1, 1, 1) {}
 
-        PgonRenderable(const Renderer2D::ItemRef& rt) : Renderable(rt) {}
+            Colorf color;
+        };
+
+        void setNewGeom(GeomUsageHint usage_hint = DefaultUsageHint);
+
+        // reuses internal static shared geom
+        void setStaticSharedQuadGeom(NormOffset::Type offset_type = NormOffset::otCenter);
 
         Colorf getColor()const;
         Colorf& accColor();
 
-        PgonRenderable& setColor(const Colorf& clr);
-        PgonRenderable& setPosition(const Vec2& pos);
+        void setColor(const Colorf& clr);
+
+        void onBeforeDraw(Shader& s);
     };
 
 }

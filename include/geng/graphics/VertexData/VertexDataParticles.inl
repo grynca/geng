@@ -1,28 +1,31 @@
 #include "VertexDataParticles.h"
+#include "GeomStates/GeomStateParticles.h"
 
 namespace grynca {
 
     inline VertexDataParticles::VertexDataParticles()
-     : next_take_from_(0)
+     : VertexData("VertexDataParticles"),
+       next_take_from_(0)
     {
+    }
+
+    inline void VertexDataParticles::initSingleton() {
 #ifndef WEB
         GLCall(glEnable(GL_PROGRAM_POINT_SIZE));
 #endif
         // there will be one geom for each batch of particles
 
         setVertexLayout<Vertex>({
-            { Shader::getVertexAttribId("v_pos_rot"), 4, GL_FLOAT, false, sizeof(Vertex), offsetof(Vertex, pos) },
-            { Shader::getVertexAttribId("v_color_l"), 4, GL_FLOAT, true, sizeof(Vertex), offsetof(Vertex, colorl) }
-        });
+                                        { Shader::getVertexAttribId("v_pos_rot"), 4, GL_FLOAT, false, sizeof(Vertex), offsetof(Vertex, pos) },
+                                        { Shader::getVertexAttribId("v_color_l"), 4, GL_FLOAT, true, sizeof(Vertex), offsetof(Vertex, colorl) }
+                                });
+
+        accGeomStates().initStateType<GeomStateParticles>(gstParticles);
 
         //only one vertex buf
         setVertexBufferInitialSize(sizeof(Vertex)*config::PARTICLES_MAX);
-        buffers_for_adding_[GeomState::uhStream] = 0;
-        addBuffer_(GeomState::uhStream);
-    }
-
-    inline ParticleBatchStates& VertexDataParticles::getParticleBatchStates() {
-        return batches_;
+        buffers_for_adding_[GeomUsageHint::uhStream] = 0;
+        addBuffer_(GeomUsageHint::uhStream);
     }
 
     inline void VertexDataParticles::addParticle(Index geom_id, ParticleGPUData*& gpu_data_out, ParticleCPUData*& cpu_data_out) {
@@ -32,11 +35,11 @@ namespace grynca {
             // remove particle from some other batch via round-robin fashion
             u32 geoms_cnt = getItemsCount();
             for (u32 i=0; i<geoms_cnt; ++i) {
-                Geom& g = getItemAtPos2(next_take_from_);
-                Items<Vertex> gpu_data = accVertexData_<Vertex>(g);
-                u32 batch_size = gpu_data.size();
+                Geom& g = accItemAtPos2(next_take_from_);
+                ItemsRef<Vertex> gpu_data = accVertexData_<Vertex>(g);
+                u32 batch_size = u32(gpu_data.size());
                 if (batch_size) {
-                    ParticleBatchState &batch = batches_.getItem(g.getGeomStateId());
+                    GeomStateParticles& batch = getBatchState_(g);
                     fast_vector<ParticleCPUData> &cpu_data = batch.accParticlesCpuData();
 
                     // remove first particle
@@ -52,9 +55,9 @@ namespace grynca {
         }
 
         // add new particle
-        Geom& g = getItem(geom_id);
-        ParticleBatchState& batch = batches_.getItem(g.getGeomStateId());
-        Items<Vertex> gpu_data = accVertexData_<Vertex>(g);
+        Geom& g = accItem(geom_id);
+        GeomStateParticles& batch = getBatchState_(g);
+        ItemsRef<Vertex> gpu_data = accVertexData_<Vertex>(g);
 
         u32 new_pid = u32(batch.accParticlesCpuData().size());
         batch.accParticlesCpuData().emplace_back();
@@ -76,10 +79,10 @@ namespace grynca {
         u32& particles_cnt = buffers_[0].size;
         u32 buf_offset = 0;
         for (u32 i=0; i<getItemsCount(); ++i) {
-            Geom& g = getItemAtPos2(i);
-            ParticleBatchState& batch = batches_.getItem(g.getGeomStateId());
+            Geom& g = accItemAtPos2(i);
+            GeomStateParticles& batch = getBatchState_(g);
             fast_vector<ParticleCPUData>& cpu_data = batch.accParticlesCpuData();
-            Items<Vertex> gpu_data = accVertexData_<Vertex>(g);
+            ItemsRef<Vertex> gpu_data = accVertexData_<Vertex>(g);
             u32 batch_size = gpu_data.size();
 
             for (u32 j = 0; j<batch_size; ) {
@@ -97,12 +100,10 @@ namespace grynca {
                     --particles_cnt;
                 }
                 else {
-                    gpud.colorl.a = cpud.time/batch.getMaxTime();
-
+                    gpud.colorl.a = cpud.time*batch.getInvMaxTime();
                     // simulate particle
+                    gpud.rot_dir = Angle::combineRotations(gpud.rot_dir, (cpud.ang_speed*dt).getDir());
                     cpud.lin_speed += batch.getGravityDir()*cpud.weight*dt;
-                    cpud.rotation += cpud.rot_speed*dt;
-                    cpud.rotation.getSinCos(gpud.sin_r, gpud.cos_r);
                     gpud.pos += cpud.lin_speed*dt;
                     ++j;
                 }
@@ -117,27 +118,8 @@ namespace grynca {
         }
     }
 
-    inline Index VertexDataParticles::beforeGeomChangedState_(Geom& g, GeomState::StateType old_type, GeomState::StateType new_type) {
-        Index new_state_id = Index::Invalid();
-        switch (old_type) {
-            case GeomState::stParticles:
-                batches_.removeItem(g.getGeomStateId());
-                break;
-            case GeomState::stNone:
-            default:
-                break;
-        }
-
-        switch (new_type) {
-            case GeomState::stParticles: {
-                ParticleBatchState& s = batches_.addItem();
-                new_state_id = s.getId();
-            }break;
-            case GeomState::stNone:
-            default:
-                break;
-        }
-        return new_state_id;
+    inline GeomStateParticles& VertexDataParticles::getBatchState_(Geom& g) {
+        return *(GeomStateParticles*)accGeomStates().accState(g.getStateType(), g.getStateId());
     }
 
 }

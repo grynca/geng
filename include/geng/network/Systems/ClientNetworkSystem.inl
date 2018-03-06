@@ -22,7 +22,7 @@ namespace grynca {
 //            typename EntityIdsMap::iterator it = entity_updates_.find(ent_id);
 //            if (it == entity_updates_.end()) {
 //                // mapping unknown -> create new entity
-//                entity = this->getGameBase().createEntity(ent_type);
+//                entity = this->getGameBase().createAndInitEntity(ent_type);
 //                it = entity_updates_.emplace().first;
 //                it->second = entity.getIndex();
 //            }
@@ -52,6 +52,11 @@ namespace grynca {
 //        });
 //    }
 //
+
+    inline void ClientNetworkSystem::update(f32 dt, EntitiesList& entities) {
+
+    }
+
 //    CNS_TPL
 //    inline void CNS_TYPE::preUpdate(f32 dt) {
 //        /** sending of client state to server **/
@@ -87,45 +92,41 @@ namespace grynca {
 //
 //    CNS_TPL
 //    inline void CNS_TYPE::updateEntity(Entity& e, f32 dt) {
-////        CNetworkedClient& nc = e.getComponent<CNetworkedClient>();
-////
-////        if (nc.update_messages.empty()) {
-////            return;
-////        }
-////
-////        Fields fields;
-////        nc.getFields(fields);
-////
-////        // TODO: nejakou interpolaci mezi server -> client stavem
-////        //       popripade kdyz je rozdil moc velkej tak natvrdo setnout server stav
-////
-////        if (nc.update_messages.size() == 1 && nc.update_messages[0].getMessageType()==GengNwMsgType::mtEntityFull) {
-////            // deserialize from full update
-////            fields.deserializeFull(entity.getData(), nc.update_messages[0].getPayload());
-////        }
-////        else {
-////            // deserialize from delta_update(s)
-////            u32 mask_size = fields.getMaskSize();
-////            std::vector<bool>field_loaded(fields.getFieldsCount());
-////            for (i32 i=nc.update_messages.size()-1; i>=0; --i) {
-////                u8* src = const_cast<u8*>(nc.update_messages[i].getPayload());
-////                DeltaMask mask(src, mask_size);
-////                src += mask_size;
-////                for (u32 fid=0; fid<mask_size; ++fid) {
-////                    u32 field_size = fields.getFieldSize(fid);
-////                    if (!field_loaded[fid] && mask.get(fid)) {
-////                        fields.deserializeField(entity.getData(), src, fid);
-////                        field_loaded[fid] = true;
-////                    }
-////                    src += field_size;
-////                }
-////            }
-////        }
-////        nc.update_messages.clear();
-//    }
+//        CNetworkedClient& nc = e.getComponent<CNetworkedClient>();
 //
-//    CNS_TPL
-//    inline void CNS_TYPE::postUpdate(f32 dt) {
+//        if (nc.update_messages.empty()) {
+//            return;
+//        }
+//
+//        Fields fields;
+//        nc.getFields(fields);
+//
+//        // TODO: nejakou interpolaci mezi server -> client stavem
+//        //       popripade kdyz je rozdil moc velkej tak natvrdo setnout server stav
+//
+//        if (nc.update_messages.size() == 1 && nc.update_messages[0].getMessageType()==GengNwMsgType::mtEntityFull) {
+//            // deserialize from full update
+//            fields.deserializeFull(entity.getData(), nc.update_messages[0].getPayload());
+//        }
+//        else {
+//            // deserialize from delta_update(s)
+//            u32 mask_size = fields.getMaskSize();
+//            std::vector<bool>field_loaded(fields.getFieldsCount());
+//            for (i32 i=nc.update_messages.size()-1; i>=0; --i) {
+//                u8* src = const_cast<u8*>(nc.update_messages[i].getPayload());
+//                DeltaMask mask(src, mask_size);
+//                src += mask_size;
+//                for (u32 fid=0; fid<mask_size; ++fid) {
+//                    u32 field_size = fields.getFieldSize(fid);
+//                    if (!field_loaded[fid] && mask.getTransform(fid)) {
+//                        fields.deserializeField(entity.getData(), src, fid);
+//                        field_loaded[fid] = true;
+//                    }
+//                    src += field_size;
+//                }
+//            }
+//        }
+//        nc.update_messages.clear();
 //    }
 //
 //    CNS_TPL

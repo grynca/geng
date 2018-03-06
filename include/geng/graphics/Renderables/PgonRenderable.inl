@@ -4,27 +4,30 @@
 
 namespace grynca {
 
-    inline VertexData::ItemRef PgonRenderable::createNewGeom(Window& w, GeomState::UsageHint usage_hint) {
-        // static
-        VertexDataP& verts = w.getVertices().get<VertexDataP>();
-        return verts.addItem(GL_TRIANGLE_FAN, GeomState::stNone, usage_hint);
+    inline void PgonRenderable::setNewGeom(GeomUsageHint usage_hint) {
+        VertexDataP& verts = accWindow().getVertices().getFast<VertexDataP>();
+        setGeom(verts.addItem(GL_TRIANGLE_FAN, usage_hint));
+    }
+
+    inline void PgonRenderable::setStaticSharedQuadGeom(NormOffset::Type offset_type) {
+        VertexDataP& verts = accWindow().getVertices().getFast<VertexDataP>();
+        render_task_ptr_->setGeom(verts.accSharedUnitQuadGeom(offset_type));
     }
 
     inline Colorf PgonRenderable::getColor()const {
-        return getRenderTask()->getUniformsAs<SimpleColorShader::Uniforms>().color;
+        return getRenderTaskPtr()->getDrawDataAs<DrawData>().color;
     }
 
     inline Colorf& PgonRenderable::accColor() {
-        return accRenderTask()->getUniformsAs<SimpleColorShader::Uniforms>().color;
+        return accRenderTaskPtr()->accDrawDataAs<DrawData>().color;
     }
 
-    inline PgonRenderable& PgonRenderable::setColor(const Colorf& clr) {
-        accRenderTask()->getUniformsAs<SimpleColorShader::Uniforms>().color = clr;
-        return *this;
+    inline void PgonRenderable::setColor(const Colorf& clr) {
+        accRenderTaskPtr()->accDrawDataAs<DrawData>().color = clr;
     }
 
-    inline PgonRenderable& PgonRenderable::setPosition(const Vec2& pos) {
-        accRenderTask()->accLocalTransform().setPosition(pos);
-        return *this;
+    inline void PgonRenderable::onBeforeDraw(Shader& s) {
+        SimpleColorShader& scs = (SimpleColorShader&)s;
+        scs.setUniforms(accRenderTaskPtr()->getDrawDataAs<DrawData>());
     }
 }

@@ -18,7 +18,7 @@ namespace grynca {
 //
 //        server_->addMessageHandler(GengNwMsgType::mtClientStateDeltaId, [this](Server::RecvCtx& ctx) {
 //            u8* src = const_cast<u8*>(ctx.message.getPayload());
-//            // get mask from message
+//            // getTransform mask from message
 //            u32 mask_size = client_state_fields_.getMaskSize();
 //            DeltaMask mask(src, mask_size);
 //            src += mask_size;
@@ -28,7 +28,7 @@ namespace grynca {
 //            // store updated fields to stored serialized client state
 //            for (u32 i=0; i<client_state_fields_.getFieldsCount(); ++i) {
 //                u32 field_size = client_state_fields_.getFieldSize(i);
-//                if (mask.get(i)) {
+//                if (mask.getTransform(i)) {
 //                    memcpy(dst, src, field_size);
 //                    src += field_size;
 //                }
@@ -85,6 +85,11 @@ namespace grynca {
 //        }
 //    }
 //
+
+    inline void ServerNetworkSystem::update(f32 dt, EntitiesList& entities) {
+
+    }
+
 //    SNS_TPL
 //    inline void SNS_TYPE::postUpdate(f32 dt) {
 //        for (u32 i=0; i<connected_clients_.size(); ++i) {

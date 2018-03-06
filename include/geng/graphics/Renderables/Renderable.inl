@@ -1,53 +1,83 @@
 #include "Renderable.h"
-#include "../../Game.h"
+#include "../../GameBase.h"
 #include "../Window.h"
 
 namespace grynca {
 
-    template <typename RT>
-    inline RT Renderable::create() {
-        // static
-        return create<RT>(RT::createNewGeom(Game::get().getWindow()));
-    }
-
-    template <typename RT>
-    inline RT Renderable::create(GeomState::UsageHint usage_hint) {
-        // static
-        return create<RT>(RT::createNewGeom(Game::get().getWindow(), usage_hint));
-    }
-
-    template <typename RT>
-    inline RT Renderable::create(const VertexData::ItemRef& geom) {
-        // static
-        Window& w = Game::get().getWindow();
-        Renderer2D& renderer = w.getRenderer();
-        RenderTask& rt =  renderer.addItem();
-        RenderIndex& rid = rt.accRenderIndex();
-        rid.setShaderId(u16(w.getShaders().get<typename RT::ShaderType>().getId()));
-        rid.setVertexLayoutId(u16(w.getVertices().get<typename RT::VertexDataType>().getId()));
-        rid.setVertexBufferId(u16(geom->getVertexBufferId()));
-        rt.setGeom(geom);
-        return RT(rt);
-    }
-
-    inline Renderable::Renderable(const Renderer2D::ItemRef& rt)
-     : render_task_(rt)
+    inline Renderable::Renderable()
+     : render_batch_id_dirty_(false)
     {
     }
 
-    inline const Renderer2D::ItemRef& Renderable::getRenderTask()const {
-        return render_task_;
+    template <typename RT>
+    inline void Renderable::init() {
+        render_batch_id_dirty_ = true;
+        render_task_ptr_ = accWindow().getRenderer().addItem();
+        render_task_ptr_->setRenderableTypeId(Renderer2D::getRenderableTypeIdOf<RT>());
+
+        // default-construct draw data
+        typename RT::DrawData& dd = render_task_ptr_->accDrawDataAs<typename RT::DrawData>();
+        new (&dd) typename RT::DrawData();
+    }
+
+    template <typename RT>
+    inline void Renderable::init(Renderer2D::IPtr& render_task_ptr) {
+        render_batch_id_dirty_ = true;
+        render_task_ptr_ = render_task_ptr;
+        render_task_ptr_->setRenderableTypeId(Renderer2D::getRenderableTypeIdOf<RT>());
+
+        // default-construct draw data
+        typename RT::DrawData& dd = render_task_ptr_->accDrawDataAs<typename RT::DrawData>();
+        new (&dd) typename RT::DrawData();
+    }
+
+    inline void Renderable::clone(const Renderer2D::IPtr& render_task) {
+        render_batch_id_dirty_ = true;
+        RenderTask& new_render_task = render_task.getContainer().addItem();
+        render_task->cloneTo(new_render_task);
+        render_task_ptr_ = new_render_task;
+    }
+
+    inline void Renderable::setLayer(u16 layer_id) {
+        render_task_ptr_->setZFromLayerId(layer_id);
+        render_batch_id_dirty_ = true;
+    }
+
+    inline void Renderable::setGeom(const Geom& geom) {
+        render_task_ptr_->setGeom(geom);
+        render_batch_id_dirty_ = true;
+    }
+
+    inline void Renderable::setRenderTaskPtr(const Renderer2D::IPtr& render_task_ptr) {
+        render_task_ptr_ = render_task_ptr;
+    }
+
+    inline const Renderer2D::IPtr& Renderable::getRenderTaskPtr()const {
+        return render_task_ptr_;
+    }
+
+    inline Renderer2D::IPtr& Renderable::accRenderTaskPtr() {
+        return render_task_ptr_;
     }
 
     inline Index Renderable::getRenderTaskId()const {
-        return render_task_.getItemId();
+        return render_task_ptr_.getItemId();
     }
 
-    inline Window& Renderable::getWindow()const {
-        return render_task_.getManager().getWindow();
+    inline bool Renderable::getRenderBatchIdDirty()const {
+        return render_batch_id_dirty_;
     }
 
-    inline Renderer2D::ItemRef& Renderable::accRenderTask() {
-        return render_task_;
+    inline Window& Renderable::accWindow() {
+        // static
+        return GameBase::get().accModule<Window>();
+    }
+
+    template <typename RenderableType>
+    inline RenderableType createRenderable() {
+        // static
+        RenderableType rslt;
+        rslt.template init<RenderableType>();
+        return rslt;
     }
 }

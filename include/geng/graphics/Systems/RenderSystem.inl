@@ -1,51 +1,40 @@
 #include "RenderSystem.h"
-#include "../Components/CRenderables.h"
-#include "../../core/Components/CTransform.h"
+#include "geng/graphics/Components/CRenderable.h"
+#include "geng/core/Components/CTransform.h"
+#include "geng/core/Components/CSpeed.h"
 
 namespace grynca {
     
     inline void RenderSystem::init() {
-        window_ = &this->getGame().template getModule<Window>();
+        window_ = &getGame().accWindow();
     }
 
-    inline void RenderSystem::preUpdate(f32 dt) {
+    inline void RenderSystem::update(f32 dt, EntitiesList& entities) {
         f32 lag = this->getGame().getLag();
         pred_time_ = lag*this->getGame().getTargetTicklen();
-    }
+        entities.loopEntities([this](Entity& e) {
+            CRenderableData* crd = e.getData<CRenderableData>();
+            Transform tr = *e.getData<CTransformData>();
 
-    inline void RenderSystem::updateEntity(Entity& e, f32 dt) {
-        CRenderables& cr = e.getComponent<CRenderables>();
-        CTransform& ct = e.getComponent<CTransform>();
+            if (e.getRoles()[GERoles::erSpeedId]) {
+                // TODO: motion prediction for TreeTransform children ?
+                // apply motion prediction
+                CSpeedData* csp = e.getData<CSpeedData>();
+                if (!csp->isZero()) {
+                    tr.move(csp->getLinearSpeed()*pred_time_);
+                    tr.rotate(csp->getAngularSpeed()*pred_time_);
+                }
+            }
 
-        if (e.getRoles()[GERoles::erMovableId]) {
-            CMovable& cm = e.getComponent<CMovable>();
-            Vec2 prev_pos = ct.get().getPosition();
-            Angle prev_rot = ct.get().getRotation();
-            // apply prediction
-            ct.acc_().move(cm.getSpeed().getLinearSpeed()*pred_time_);
-            ct.acc_().rotate(cm.getSpeed().getAngularSpeed()*pred_time_);
+            Mat3 trm = (crd->getScreenFrame())
+                            ?window_->getViewPort().calcScreenLocalTr(tr.calcMatrix(), crd->local_transform.calcMatrix())
+                            :window_->getViewPort().calcWorldLocalTr(tr.calcMatrix(), crd->local_transform.calcMatrix());
 
-            renderEntity_(cr, ct);
+            // schedule render task to renderer
+            RenderTask& rt = window_->getRenderer().accItem(crd->render_task_id);
+            window_->getRenderer().scheduleForNextFrame(rt.getId(), trm, crd->render_batch_id);
+        });
 
-            // retract prediction
-            ct.acc_().setPosition(prev_pos);
-            ct.acc_().setRotation(prev_rot);
-        }
-        else {
-            renderEntity_(cr, ct);
-        }
-    }
-
-    inline void RenderSystem::postUpdate(f32 dt) {
         window_->render(dt);
-    }
-
-    inline void RenderSystem::renderEntity_(CRenderables& cr, CTransform& ct) {
-        Mat3 ent_m = ct.get().calcMatrix();
-        for (u32 i=0; i<cr.renderables_.size(); ++i) {
-            RenderTask& rt = cr.accRenderTask(i).get();
-            rt.calcTransform(*window_, ent_m);
-            window_->getRenderer().scheduleForNextFrame(rt.getId());
-        }
     }
 }

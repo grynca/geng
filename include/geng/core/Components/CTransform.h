@@ -1,28 +1,50 @@
 #ifndef CTRANSFORM_H
 #define CTRANSFORM_H
 
+#include "../GengEntity.h"
 #include "maths/Transform.h"
 
 namespace grynca {
 
-    class CTransform {
+    class CTransformData : public Transform {
     public:
         static RolesMask componentRoles() {
             return GERoles::erTransformMask();
         }
+    };
 
-        const Transform& get();
-        Transform& acc_();      // Warning: bypasses flags setting
-        void set(const Transform& t, Entity& e);
-        void setPosition(const Vec2& p, Entity& e);
-        void setRotation(const Angle& r, Entity& e);
-        void setScale(const Vec2& s, Entity& e);
-        void move(const Vec2& m, Entity& e);
-        void moveRelative(const Vec2& m, Entity& e);
-        void rotate(const Angle& r, Entity& e);
-        void scale(const Vec2& s, Entity& e);
+    class CTransformSetter : public EntityAccessor<CTransformData> {
+        typedef EntityAccessor<CTransformData> Base;
+    public:
+        MOVE_ONLY(CTransformSetter);
+
+        CTransformSetter();
+        ~CTransformSetter();
+
+        void setTransform(const Transform &t);
+        void setPosition(const Vec2& p);
+        void setRotation(const Angle& r);
+        void setScale(const Vec2& s);
+        void move(const Vec2& m);
+        void moveRelative(const Vec2& m);
+        void rotate(const Angle& r);
+        void scale(const Vec2& s);
+
+        Transform& accTransform();
+
+        // is done automatically in destructor
+        void forceUpdateFlags();
     private:
-        Transform transform_;
+        enum {
+            fMovedMask = BIT_MASK(0),
+            fRotatedMask = BIT_MASK(1),
+            fScaledMask = BIT_MASK(2),
+            fTransformedMask = fMovedMask | fRotatedMask | fScaledMask
+        };
+
+        void updateFlags_();
+
+        u8 dirty_flags_;
     };
 
 }

@@ -1,75 +1,61 @@
 #include "VertexDataPT.h"
 #include "../Window.h"
 #include "Factories/geom_factories.h"
-#include "SpriteAnimationStates.h"
-#include "TextStates.h"
+#include "geng/graphics/VertexData/GeomStates/GeomStateSpriteAnimation.h"
+#include "geng/graphics/VertexData/GeomStates/GeomStateText.h"
 #include "../../Game.h"
 
 namespace grynca {
 
-    inline VertexDataPT::VertexDataPT()
-     : text_states_(NULL), anim_states_(NULL)
-    {
+    inline void VertexDataPT::initSingleton() {
         setVertexLayout<Vertex>({{ Shader::getVertexAttribId("v_pos_uv"), 4, GL_FLOAT, false, sizeof(Vertex), offsetof(Vertex, pos)}});
-    }
-
-    inline void VertexDataPT::init() {
-        AssetsManager& assets = getManager().getWindow().getGame().getModule<AssetsManager>();
-        anim_states_ = new SpriteAnimationStates(assets.getSpriteAnimations());
-        text_states_ = new TextStates(assets.getFontsPacks());
-    }
-
-    inline VertexDataPT::~VertexDataPT() {
-        if (anim_states_)
-            delete anim_states_;
-        if (text_states_)
-            delete text_states_;
-    }
-
-    inline TextStates& VertexDataPT::getTextStates() {
-        return *text_states_;
-    }
-
-    inline SpriteAnimationStates& VertexDataPT::getSpriteAnimationsStates() {
-        return *anim_states_;
+        accGeomStates().initStateType<GeomStateText>(gstText);
+        accGeomStates().initStateType<GeomStateSpriteAnimation>(gstAnimationSprite);
+        initSharedQuadGeomPositions<Vertex>();
     }
 
     inline void VertexDataPT::update(f32 dt) {
         // update texts
-        for (u32 i=0; i<text_states_->getDirtyIds().size(); ++i) {
-            Index dirty_id = text_states_->getDirtyIds()[i];
-            TextState& ts = text_states_->getItem(dirty_id);
-            Geom& g = this->getItem(ts.getGeomId());
+        for (u32 i=0; i<getGeomStates().getDirtyStatesCount(gstText); ++i) {
+            GeomStateText& ts = *(GeomStateText*)(accGeomStates().getDirtyState(gstText, i));
+            Geom& geom = ts.accGeom();
 
-            g.removeAllVertices();
-            FontPack& fp = ts.getFontPack();
+            geom.removeAllVertices();
+            const FontPack& fp = ts.getFontPack().get();
             const SizedFont& font = fp.getFont().getSizedFont(ts.getFontSize());
-            f32 xpos = 0;
-            FactoryRectT<VertexDataPT::Vertex> fact = g.getFactory<FactoryRectT<VertexDataPT::Vertex> >();
-            for (u32 i=0; i<ts.getTextSize(); ++i) {
-                const Glyph& g = font.getGlyph(ts.getText()[i]);
-                const TextureRegion& tex_r = g.getRegion();
+            FactoryRectT<VertexDataPT::Vertex> fact = geom.getFactory<FactoryRectT<VertexDataPT::Vertex> >();
+            const fast_vector<u32>& line_ends = ts.getLineEnds();
+            f32 ypos = 0;
+            u32 char_id = 0;
+            for (u32 j=0; j<line_ends.size(); ++j) {
+                f32 xpos = 0;
+                for (; char_id<line_ends[j]; ++char_id) {
+                    const Glyph& g = font.getGlyph(ts.getText()[char_id]);
+                    const TextureRegion& tex_r = g.getRegion();
 
-                Vec2 offset(xpos+g.getOffsetX(), -g.getOffsetY());
-                u32 start_vert = fact.add(tex_r.getRect().getSize(), offset);
-                fact.setTC(start_vert, tex_r.getTextureRect().getLeftTop(), tex_r.getTextureRect().getRightBot());
-                xpos += g.getAdvanceX();
+                    Vec2 offset(xpos+g.getOffsetX(), ypos + ts.getLineHeight() - g.getOffsetY());
+                    u32 start_vert = fact.add(tex_r.getRect().getSize(), offset);
+                    fact.setTC(start_vert, tex_r.getTextureRect().getLeftTop(), tex_r.getTextureRect().getRightBot());
+                    xpos += g.getAdvanceX();
+                }
+                ypos += ts.getLineHeight();
+                ++char_id;
             }
-            ts.setDirty(false);
+            ts.clearDirty();
         }
-        text_states_->getDirtyIds().clear();
+        accGeomStates().clearDirtyStates(gstText);
 
 
         // update animation states
-        for (u32 i=0; i<anim_states_->getItemsCount(); ++i) {
-            SpriteAnimationState& s = anim_states_->getItemAtPos2(i);
-            if (s.advanceAnimation(dt)) {
+        for (u32 i=0; i<getGeomStates().getStatesCount(gstAnimationSprite); ++i) {
+            GeomStateSpriteAnimation& sas = *(GeomStateSpriteAnimation*)(accGeomStates().accState(gstAnimationSprite, i));
+            if (sas.advanceAnimation(dt)) {
                 // update geoms with new animation frames
-                Geom& g = this->getItem(s.getGeomId());
-                SpriteAnimationFrame& f = s.getCurrFrame();
+                Geom& geom = sas.accGeom();
+                const SpriteAnimationFrame& f = sas.getCurrFrame();
 
                 const ARect& tr = f.getRegion().getTextureRect();
-                FactoryRectTF<VertexDataPT::Vertex> fact = g.getFactory<FactoryRectTF<Vertex> >();
+                FactoryRectTF<VertexDataPT::Vertex> fact = geom.getFactory<FactoryRectTF<Vertex> >();
                 Vec2 prev_base_size = fact.getSize(0);
                 Vec2 offset = fact.getOffset(0)/prev_base_size;
                 Vec2 new_base_size = f.getRegion().getRect().getSize();
@@ -81,38 +67,6 @@ namespace grynca {
 
         // update vertices
         VertexData::update(dt);
-    }
-
-    inline Index VertexDataPT::beforeGeomChangedState_(Geom& g, GeomState::StateType old_type, GeomState::StateType new_type) {
-        Index new_state_id = Index::Invalid();
-        switch (old_type) {
-            case GeomState::stAnimation:
-                anim_states_->removeItem(g.getGeomStateId());
-                break;
-            case GeomState::stText:
-                text_states_->removeItem(g.getGeomStateId());
-                break;
-            case GeomState::stNone:
-            default:
-                break;
-        }
-
-        switch (new_type) {
-            case GeomState::stAnimation: {
-                SpriteAnimationState& s = anim_states_->addItem();
-                s.setGeomId(g.getId());
-                new_state_id = s.getId();
-            }break;
-            case GeomState::stText: {
-                TextState& s = text_states_->addItem();
-                s.setGeomId(g.getId());
-                new_state_id = s.getId();
-            }break;
-            case GeomState::stNone:
-            default:
-                break;
-        }
-        return new_state_id;
     }
 
 }

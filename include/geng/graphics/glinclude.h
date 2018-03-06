@@ -1,7 +1,7 @@
 #ifndef GLINCLUDE_H
 #define GLINCLUDE_H
 
-#include "functions/string_utils.h"
+#include "functions/ssu.h"
 #include "types/Exception.h"
 #include <GL/glew.h>
 #include <iostream>
@@ -10,7 +10,7 @@
 namespace grynca {
 
     static std::string GLErrorString(GLenum err_code) {
-        std::string err_s = "[" +string_utils::toString(err_code)+ "]";
+        std::string err_s = "[" +ssu::toStringA(err_code)+ "]";
 #ifndef WEB
         // emscripten does not have gluErrorString()
         err_s += std::string(": ")+(const char*)gluErrorString(err_code);
@@ -19,7 +19,7 @@ namespace grynca {
     }
 
     static std::string GlewErrorString(GLenum err_code) {
-        std::string err_s = "[" +string_utils::toString(err_code)+ "]";
+        std::string err_s = "[" +ssu::toStringA(err_code)+ "]";
 #ifndef WEB
         err_s += std::string(": ")+(const char*)glewGetErrorString(err_code);
 #endif

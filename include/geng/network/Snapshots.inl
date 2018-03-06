@@ -1,5 +1,5 @@
 #include "Snapshots.h"
-#include "Components/CNetworked.h"
+#include "geng/network/Components/CNetworkedServer.h"
 
 namespace grynca {
 
@@ -7,7 +7,7 @@ namespace grynca {
     inline void PackedEntityState::serialize(const EntityType& entity)
     {
         Fields fields;
-        entity.template getComponent<CNetworked>().getFields(fields);
+        entity.template getData<CNetworkedServerData>().getFields(fields);
         SerializedBuffer::serialize(entity.getData(), fields);
     }
 

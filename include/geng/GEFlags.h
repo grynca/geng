@@ -1,14 +1,20 @@
 #ifndef GENG_ENTITY_FLAGS_H
 #define GENG_ENTITY_FLAGS_H
 
-#include "functions/meta.h"
+#include "types/Mask.h"
+#include "functions/enum.h"
 
 namespace grynca {
 
     DEFINE_ENUM(GEFlags,
-                  fMoved,
-                  fRotScaled,
-                  fRenderablesChanged
+                  fEntityMoved,
+                  fEntityRotated,
+                  fEntityScaled,
+                  fEntityTransformed,
+                  fCompositeTransformed,
+                  fCompositeColliderChanged,
+                  fCompositeChanged,     // enabled/disabled parts
+                  fBoundChanged
     );
 }
 

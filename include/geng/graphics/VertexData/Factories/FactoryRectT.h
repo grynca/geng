@@ -31,9 +31,9 @@ namespace grynca {
         friend class VertexData;
 
         FactoryRectT(Geom& g);
-        FactoryRectT(VertexData& vertex_data, GeomState::StateType state_type, GeomState::UsageHint buff_hint);
+        FactoryRectT(VertexData& vertex_data, GeomUsageHint buff_hint);
 
-        VertexData::ItemRef geom_ref_;
+        Geom& geom_;
     };
 }
 

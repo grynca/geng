@@ -1,85 +1,103 @@
 #include "SpriteRenderable.h"
 #include "../VertexData/Factories/geom_factories.h"
-#include "../VertexData/SpriteAnimationStates.h"
+#include "../VertexData/GeomStates/GeomStateSpriteAnimation.h"
 
 namespace grynca {
 
-    inline VertexData::ItemRef SpriteRenderable::createNewGeom(Window &w, GeomState::UsageHint usage_hint) {
+    inline Renderer2D::IPtr SpriteRenderable::createSpritePrototype(const ImagePos& ipos, NormOffset::Type offset_type) {
         // static
-        VertexDataPT &verts = w.getVertices().get<VertexDataPT>();
-        FactoryRectTF<VertexDataPT::Vertex> fact = verts.addWithFactory<FactoryRectTF<VertexDataPT::Vertex> >(
-                GeomState::stNone, usage_hint);
-        fact.add(Vec2(1, 1), Vec2(-0.5f, -0.5f));
-        return fact.getGeom();
+        SpriteRenderable sr = createRenderable<SpriteRenderable>();
+        sr.setNewGeom(offset_type);
+        sr.setImage(ipos);
+        return sr.getRenderTaskPtr();
+    }
+
+    inline Geom& SpriteRenderable::createNewGeom(const Vec2& norm_offset, GeomUsageHint usage_hint){
+        // static
+        VertexDataPT& verts = accWindow().getVertices().getFast<VertexDataPT>();
+        Geom& geom = verts.addItem(GL_TRIANGLE_FAN, usage_hint);
+        FactoryRectTF<VertexDataPT::Vertex> fact = geom.getFactory<FactoryRectTF<VertexDataPT::Vertex> >();
+        fact.add(Vec2{1,1}, norm_offset);
+        return geom;
+    }
+
+    inline void SpriteRenderable::setNewGeom(const Vec2& norm_offset, GeomUsageHint usage_hint) {
+        setGeom(createNewGeom(norm_offset, usage_hint));
+    }
+
+    inline void SpriteRenderable::setNewGeom(NormOffset::Type offset_type, GeomUsageHint usage_hint) {
+        setNewGeom(NormOffset::get(offset_type), usage_hint);
     }
 
     inline bool SpriteRenderable::getAnimated() const {
-        Geom &geom = getRenderTask()->getGeom().get();
-        return geom.getGeomStateType() == GeomState::stAnimation;
+        const Geom &geom = getRenderTaskPtr()->getGeom().get();
+        return geom.getStateType() == gstAnimationSprite;
     }
 
     inline Vec2 SpriteRenderable::getSize() const {
-        return getRenderTask()->getLocalTransform().getScale();
+        return getRenderTaskPtr()->getDrawDataAs<DrawData>().size;
     }
 
     inline Vec2 SpriteRenderable::getGeomNormOffset() const {
-        Geom &geom = const_cast<SpriteRenderable *>(this)->getRenderTask()->getGeom().get();
+        Geom &geom = const_cast<SpriteRenderable *>(this)->accRenderTaskPtr()->accGeom().acc();
         const FactoryRectTF<VertexDataPT::Vertex> fact = geom.getFactory<FactoryRectTF<VertexDataPT::Vertex> >();
         return fact.getOffset(0);
     }
 
-    inline const SpriteAnimationState& SpriteRenderable::getAnimationState() const {
-        VertexDataPT &verts = getWindow().getVertices().get<VertexDataPT>();
-        Geom &geom = getRenderTask()->getGeom().get();
-
-        return verts.getSpriteAnimationsStates().getItem(geom.getGeomStateId());
+    inline Vec2 SpriteRenderable::getOffset()const {
+        return getGeomNormOffset()*getSize();
     }
 
-    inline Vec2 &SpriteRenderable::accSize() {
-        return accRenderTask()->accLocalTransform().accScale();
+    inline const GeomStateSpriteAnimation& SpriteRenderable::getAnimationState() const {
+        const Geom& geom = getRenderTaskPtr()->getGeom().get();
+        ASSERT(geom.getStateType() == GeomStateType::gstAnimationSprite);
+        return (const GeomStateSpriteAnimation&)(geom.getState());
     }
 
-    inline SpriteAnimationState& SpriteRenderable::accAnimationState() {
-        VertexDataPT &verts = getWindow().getVertices().get<VertexDataPT>();
-        Geom &geom = getRenderTask()->getGeom().get();
-        return verts.getSpriteAnimationsStates().getItem(geom.getGeomStateId());
+    inline GeomStateSpriteAnimation& SpriteRenderable::accAnimationState() {
+        Geom& geom = accRenderTaskPtr()->accGeom().acc();
+        ASSERT(geom.getStateType() == GeomStateType::gstAnimationSprite);
+        return (GeomStateSpriteAnimation&)(geom.accState());
     }
 
-    inline SpriteRenderable& SpriteRenderable::setAnimated(bool value) {
-        Geom &geom = accRenderTask()->getGeom().get();
+    inline void SpriteRenderable::setAnimated(bool value) {
+        Geom &geom = accRenderTaskPtr()->accGeom().acc();
         if (value)
-            geom.setGeomStateType(GeomState::stAnimation);
+            geom.setState(gstAnimationSprite);
         else
-            geom.setGeomStateType(GeomState::stNone);
-        return *this;
+            geom.setState(gstNone);
     }
 
-    inline SpriteRenderable& SpriteRenderable::setSize(const Vec2 &size) {
-        accRenderTask()->accLocalTransform().setScale(size);
-        return *this;
-    }
-
-    inline SpriteRenderable& SpriteRenderable::setGeomNormOffset(const Vec2 &offset) {
-        Geom &geom = getRenderTask()->getGeom().get();
+    inline void SpriteRenderable::setGeomNormOffset(const Vec2 &offset) {
+        Geom &geom = accRenderTaskPtr()->accGeom().acc();
         FactoryRectTF<VertexDataPT::Vertex> fact = geom.getFactory<FactoryRectTF<VertexDataPT::Vertex> >();
         fact.setOffset(0, offset);
-        return *this;
     }
 
-    inline SpriteRenderable& SpriteRenderable::setTextureUnit(u32 tid) {
-        PgonTexturedRenderable::setTextureUnit(tid);
-        return *this;
+    inline void SpriteRenderable::setImage(const ImagePos& img_pos) {
+        PgonTexturedRenderable::setTextureUnit(img_pos.getTextureId());
+        setImageRegion(img_pos.getTextureRegion()->getTextureRect());
     }
 
-    inline SpriteRenderable& SpriteRenderable::setPosition(const Vec2& pos) {
-        PgonTexturedRenderable::setPosition(pos);
-        return *this;
-    }
-
-    inline SpriteRenderable& SpriteRenderable::setImageRegion(const ARect& texture_coords) {
-        Geom& geom = getRenderTask()->getGeom().get();
+    inline void SpriteRenderable::setImageRegion(const ARect& texture_coords) {
+        Geom& geom = accRenderTaskPtr()->accGeom().acc();
         FactoryRectTF<VertexDataPT::Vertex> fact = geom.getFactory<FactoryRectTF<VertexDataPT::Vertex> >();
         fact.setTC(0, texture_coords.getLeftTop(), texture_coords.getRightBot());
-        return *this;
+    }
+
+    inline void SpriteRenderable::setSize(const Vec2& size) {
+        accRenderTaskPtr()->accDrawDataAs<DrawData>().size = size;
+    }
+
+    inline Vec2& SpriteRenderable::accSize() {
+        return accRenderTaskPtr()->accDrawDataAs<DrawData>().size;
+    }
+
+    inline void SpriteRenderable::onBeforeDraw(Shader& s) {
+        DrawData& dd = accRenderTaskPtr()->accDrawDataAs<DrawData>();
+        dd.transform *= Mat3::createScaleT(dd.size);
+
+        SimpleTexturedShader& sts = (SimpleTexturedShader&)s;
+        sts.setUniforms(dd);
     }
 }

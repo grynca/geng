@@ -3,42 +3,52 @@
 
 namespace grynca {
 
-    inline VertexData::ItemRef RectRenderable::createNewGeom(Window& w, GeomState::UsageHint usage_hint) {
+    inline Geom& RectRenderable::createNewGeom(const Vec2& norm_offset, GeomUsageHint usage_hint) {
         // static
-        VertexDataP& verts = w.getVertices().get<VertexDataP>();
-        FactoryRectTF<VertexDataP::Vertex> fact = verts.addWithFactory<FactoryRectTF<VertexDataP::Vertex> >(GeomState::stNone, usage_hint);
-        fact.add(Vec2(1, 1), Vec2(-0.5f, -0.5f));
-        return fact.getGeom();
+        VertexDataP& verts = accWindow().getVertices().getFast<VertexDataP>();
+        Geom& geom = verts.addItem(GL_TRIANGLE_FAN, usage_hint);
+        FactoryRectTF<VertexDataP::Vertex> fact = geom.getFactory<FactoryRectTF<VertexDataP::Vertex> >();
+        fact.add(Vec2{1,1}, norm_offset);
+        return geom;
     }
 
-    inline Vec2 RectRenderable::getSize()const {
-        return getRenderTask()->getLocalTransform().getScale();
+    inline void RectRenderable::setNewGeom(const Vec2& norm_offset, GeomUsageHint usage_hint) {
+        setGeom(createNewGeom(norm_offset, usage_hint));
     }
 
     inline Vec2 RectRenderable::getGeomNormOffset()const {
-        Geom& geom = const_cast<RectRenderable *>(this)->getRenderTask()->getGeom().get();
+        Geom& geom = const_cast<RectRenderable *>(this)->accRenderTaskPtr()->accGeom().acc();
         const FactoryRectTF<VertexDataP::Vertex> fact = geom.getFactory<FactoryRectTF<VertexDataP::Vertex> >();
         return fact.getOffset(0);
     }
 
-    inline Vec2& RectRenderable::accSize() {
-        return accRenderTask()->accLocalTransform().accScale();
+    inline Vec2 RectRenderable::getSize()const {
+        return getRenderTaskPtr()->getDrawDataAs<DrawData>().size;
     }
 
-    inline RectRenderable& RectRenderable::setColor(const Colorf& clr) {
-        PgonRenderable::setColor(clr);
-        return *this;
+    inline Vec2 RectRenderable::getOffset()const {
+        return getGeomNormOffset() * getSize();
     }
 
-    inline RectRenderable& RectRenderable::setSize(const Vec2& size) {
-        accRenderTask()->accLocalTransform().setScale(size);
-        return *this;
-    }
-
-    inline RectRenderable& RectRenderable::setGeomNormOffset(const Vec2& offset) {
-        Geom& geom = getRenderTask()->getGeom().get();
+    inline void RectRenderable::setGeomNormOffset(const Vec2& offset) {
+        Geom& geom = accRenderTaskPtr()->accGeom().acc();
         FactoryRectTF<VertexDataP::Vertex> fact = geom.getFactory<FactoryRectTF<VertexDataP::Vertex> >();
         fact.setOffset(0, offset);
-        return *this;
+    }
+
+    inline void RectRenderable::setSize(const Vec2& size) {
+        accRenderTaskPtr()->accDrawDataAs<DrawData>().size = size;
+    }
+
+    Vec2& RectRenderable::accSize() {
+        return accRenderTaskPtr()->accDrawDataAs<DrawData>().size;
+    }
+
+    inline void RectRenderable::onBeforeDraw(Shader& s) {
+        DrawData& dd = accRenderTaskPtr()->accDrawDataAs<DrawData>();
+        dd.transform *= Mat3::createScaleT(dd.size);
+
+        SimpleColorShader& scs = (SimpleColorShader&)s;
+        scs.setUniforms(dd);
     }
 }

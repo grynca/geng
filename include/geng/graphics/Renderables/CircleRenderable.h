@@ -14,20 +14,26 @@ namespace grynca {
     public:
         typedef CircleShader ShaderType;
         typedef VertexDataP VertexDataType;
+        static constexpr GeomUsageHint DefaultUsageHint = GeomUsageHint::uhStatic;
 
-        static VertexData::ItemRef createNewGeom(Window& w, GeomState::UsageHint usage_hint = GeomState::uhStatic);
+        struct DrawData : public Renderable::DrawData {
+            Colorf color;
+            Vec2 r_range;
+        };
 
-        CircleRenderable(const Renderer2D::ItemRef& rt);
+        void setNewGeom(GeomUsageHint usage_hint = DefaultUsageHint);
+        // reuses internal static geom
+        void setStaticSharedGeom();
 
         f32 getInnerRadius()const;
         f32 getOuterRadius()const;
         Colorf getColor()const;
-        const Geom& getGeom()const;     // uses shared geom which is read only
 
-        CircleRenderable& setColor(const Colorf& c) ;
-        CircleRenderable& setInnerRadius(f32 inner_r);
-        CircleRenderable& setOuterRadius(f32 outer_r);
-        CircleRenderable& setPosition(const Vec2& pos);
+        void setColor(const Colorf& c) ;
+        void setInnerRadius(f32 inner_r);
+        void setOuterRadius(f32 outer_r);
+
+        void onBeforeDraw(Shader& s);
     };
 }
 

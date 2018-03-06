@@ -1,8 +1,8 @@
 #ifndef SERVERNETWORKSYSTEM_H
 #define SERVERNETWORKSYSTEM_H
 
-#include "../../core/GengSystem.h"
-#include "../Components/CNetworked.h"
+#include "geng/core/GengSystem.h"
+#include "geng/network/Components/CNetworkedServer.h"
 #include "types/containers/SharedBuffer.h"
 #include "../Snapshots.h"
 
@@ -12,10 +12,11 @@ namespace grynca {
     class Server;
 
     // TODO:
+    //  prepsat z post/pre update do novyho update stylu
     //  pridat do Server classy registraci callbacku na pripojeni a odpojeni clientu
     //  ActionsStateType bude mit clear() kterej budu volat v hadleru po pripojeni clienta
 
-    class ServerNetworkSystem : public GengSystem {
+    class ServerNetworkSystem : public GengSystemAll {
     public:
         void init(const Fields& client_state_fields);
 
@@ -23,9 +24,7 @@ namespace grynca {
             return GERoles::erNetworkedSvMask();
         }
 
-        virtual void preUpdate(f32 dt) override;
-        virtual void updateEntity(Entity& e, f32 dt) override;
-        virtual void postUpdate(f32 dt) override;
+        virtual void update(f32 dt, EntitiesList& entities) override;
 
         // this calls deserialize - best for performance to store somewhere for reuse
         template <typename ClientStateType>

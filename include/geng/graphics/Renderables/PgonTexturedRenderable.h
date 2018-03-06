@@ -1,7 +1,7 @@
 #ifndef PGONTEXTUREDRENDERABLE_H
 #define PGONTEXTUREDRENDERABLE_H
 
-#include "Renderable.h"
+#include "PgonRenderable.h"
 
 namespace grynca {
 
@@ -9,18 +9,22 @@ namespace grynca {
     class SimpleTexturedShader;
     class VertexDataPT;
 
-    class PgonTexturedRenderable : public Renderable {
+    class PgonTexturedRenderable : public PgonRenderable {
     public:
         typedef SimpleTexturedShader ShaderType;
         typedef VertexDataPT VertexDataType;
+        static constexpr GeomUsageHint DefaultUsageHint = GeomUsageHint::uhStatic;
 
-        static VertexData::ItemRef createNewGeom(Window& w, GeomState::UsageHint usage_hint = GeomState::uhStatic);
+        struct DrawData : public PgonRenderable::DrawData {
+            u32 texture;
+        };
 
-        PgonTexturedRenderable(const Renderer2D::ItemRef& rt) : Renderable(rt) {}
+        void setNewGeom(GeomUsageHint usage_hint = DefaultUsageHint);
 
-        PgonTexturedRenderable& setTextureUnit(u32 tid);
-        PgonTexturedRenderable& setPosition(const Vec2& pos);       // changes local transform scale
+        void setTextureUnit(u32 tid);
         u32 getTextureUnit()const;
+
+        void onBeforeDraw(Shader& s);
     };
 
 };

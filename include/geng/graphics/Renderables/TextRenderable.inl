@@ -1,66 +1,55 @@
 #include "TextRenderable.h"
 #include "../Shaders/TextShader.h"
 #include "../VertexData/VertexDataPT.h"
-#include "../VertexData/TextStates.h"
+#include "geng/graphics/VertexData/GeomStates/GeomStateText.h"
 
 namespace grynca {
 
-    inline VertexData::ItemRef TextRenderable::createNewGeom(Window& w, GeomState::UsageHint usage_hint) {
-        // static
-        VertexDataPT& verts = w.getVertices().get<VertexDataPT>();
-        Geom& geom = verts.addItem(GL_TRIANGLES, GeomState::stText, usage_hint);
-        return geom;
+    inline TextRenderable::TextRenderable()
+     : dirty_text_state_(false)
+    {}
+
+    inline TextRenderable::~TextRenderable() {
+        if (dirty_text_state_) {
+            // cache texture id to draw data for faster drawing
+            accRenderTaskPtr()->accDrawDataAs<DrawData>().texture_id = getTextState().getFontPack()->getTextureId();
+        }
     }
 
-    inline const TextState& TextRenderable::getTextState()const {
-        VertexDataPT& verts = getWindow().getVertices().get<VertexDataPT>();
-        Geom& geom = const_cast<TextRenderable *>(this)->getRenderTask()->getGeom().get();
+    inline void TextRenderable::setNewGeom(GeomUsageHint usage_hint) {
+        VertexDataPT& verts = accWindow().getVertices().getFast<VertexDataPT>();
+        Geom& geom = verts.addItem(GL_TRIANGLES, usage_hint);
+        geom.setState(GeomStateType::gstText);
+        setGeom(geom);
+    }
 
-        return verts.getTextStates().getItem(geom.getGeomStateId());
+    inline const GeomStateText& TextRenderable::getTextState()const {
+        const Geom& geom = getRenderTaskPtr()->getGeom().get();
+        ASSERT(geom.getStateType() == GeomStateType::gstText);
+        return (GeomStateText&)(geom.getState());
     }
 
     inline Colorf TextRenderable::getColor()const {
-        return getRenderTask()->getUniformsAs<TextShader::Uniforms>().color;
-    }
-
-    inline u32 TextRenderable::getTextureUnit()const {
-        return getRenderTask()->getUniformsAs<TextShader::Uniforms>().texture;
+        return getRenderTaskPtr()->getDrawDataAs<DrawData>().color;
     }
 
     inline Colorf& TextRenderable::accColor() {
-        return accRenderTask()->getUniformsAs<TextShader::Uniforms>().color;
+        return accRenderTaskPtr()->accDrawDataAs<DrawData>().color;
     }
 
-    inline TextState& TextRenderable::accTextState() {
-        VertexDataPT& verts = getWindow().getVertices().get<VertexDataPT>();
-        Geom& geom = getRenderTask()->getGeom().get();
-        return verts.getTextStates().getItem(geom.getGeomStateId());
+    inline GeomStateText& TextRenderable::accTextState() {
+        dirty_text_state_ = true;
+        Geom& geom = accRenderTaskPtr()->accGeom().acc();
+        ASSERT(geom.getStateType() == GeomStateType::gstText);
+        return (GeomStateText&)(geom.accState());
     }
 
-    inline TextRenderable& TextRenderable::setColor(const Colorf& clr) {
-        accRenderTask()->getUniformsAs<TextShader::Uniforms>().color = clr;
-        return *this;
+    inline void TextRenderable::setColor(const Colorf& clr) {
+        accRenderTaskPtr()->accDrawDataAs<DrawData>().color = clr;
     }
 
-    inline TextRenderable& TextRenderable::setTextureUnit(u32 tid) {
-        accRenderTask()->getUniformsAs<TextShader::Uniforms>().texture = tid;
-        return *this;
-    }
-
-    inline TextRenderable& TextRenderable::setPosition(const Vec2& pos) {
-        accRenderTask()->accLocalTransform().setPosition(pos);
-        return *this;
-    }
-
-    inline Vec2 TextRenderable::calcBoundSize() {
-        Geom& geom = getRenderTask()->getGeom().get();
-        VertexDataPT& verts = getWindow().getVertices().get<VertexDataPT>();
-        TextState& ts = verts.getTextStates().getItem(geom.getGeomStateId());
-
-        u32 vertices_cnt = ts.getTextSize()*6;   // 6 verts per character
-
-        Vec2 left_top = geom.getVertex<VertexDataPT::Vertex>(1).pos;
-        Vec2 right_bot = geom.getVertex<VertexDataPT::Vertex>(vertices_cnt-3).pos;
-        return (right_bot - left_top)*accRenderTask()->accLocalTransform().getScale();
+    inline void TextRenderable::onBeforeDraw(Shader& s) {
+        TextShader& ts = (TextShader&)s;
+        ts.setUniforms(accRenderTaskPtr()->accDrawDataAs<DrawData>());
     }
 }

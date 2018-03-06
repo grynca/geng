@@ -9,14 +9,15 @@ namespace grynca {
     class Window;
     class VertexData;
 
-    class Vertices : public ManagerSingletons<Vertices, VertexData> {
+    class Vertices : public ManagerSingletons<VertexData> {
     public:
         Vertices(Window& w);
 
         void update(f32 dt);
 
         Window& getWindow();
-        std::string getDebugString(u32 indent_cnt);
+        std::string getTypesDebugString()const;
+        std::string getDebugString(u32 indent_cnt)const;
     private:
         friend class VertexData;
 

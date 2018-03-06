@@ -3,45 +3,43 @@
 
 namespace grynca {
 
-    inline Geom::Geom(GLenum primitive_type, GeomState::StateType state_type, GeomState::UsageHint buff_hint)
-     : pack_(0), primitive_type_(primitive_type), buffer_id_(InvalidId()), start_offset_in_vbo_(InvalidId()), verts_cnt_vbo_(0),
-       left_(Index::Invalid()), right_(Index::Invalid()), state_(state_type, buff_hint)
+    inline Geom::Geom(GLenum primitive_type, GeomUsageHint buff_hint)
+     : buffer_id_(u16(InvalidId())), bits_pack_(0), primitive_type_(primitive_type), start_offset_in_vbo_(InvalidId()), verts_cnt_vbo_(0),
+       state_id_(InvalidId()), left_(Index::Invalid()), right_(Index::Invalid())
     {
+    setUsageHint_(buff_hint);
     }
 
-    inline void Geom::init() {
-        buffer_id_ = getManager().getBufferForNewGeom_(state_.getUsageHint());
-
-        // initial set state
-        Index new_state_id = getManager().beforeGeomChangedState_(*this, GeomState::stNone, state_.getType());
-        state_.setIndex(new_state_id);
-
+    inline void Geom::afterAdded() {
+        buffer_id_ = getManager().getBufferForNewGeom_(getUsageHint());
         // initial set dirty
-        pack_ = SET_BIT(pack_, 0);
-        getManager().invalidateGeom_(*this);
+        makeDirty_();
+        //std::cout << "added geom " << getId() << std::endl;
     }
 
     inline Geom::~Geom() {
-        if (buffer_id_ != InvalidId()) {
+        if (buffer_id_ != u16(InvalidId())) {
             unlink_();
         }
-
-        getManager().beforeGeomChangedState_(*this, state_.getType(), GeomState::stNone);
     }
 
     inline u32 Geom::getVerticesCount()const {
-        return vertices_data_.size()/getManager().getVertexSize();
+        return u32(vertices_data_.size()/getManager().getVertexSize());
     }
 
     inline u32 Geom::getVerticesBytesSize()const {
-        return vertices_data_.size();
+        return u32(vertices_data_.size());
+    }
+
+    inline GeomUsageHint Geom::getUsageHint()const {
+        return GeomUsageHint(GET_BITS(bits_pack_, BIT_USAGE_HINT_START, BIT_USAGE_HINT_CNT));
     }
 
     inline bool Geom::isDirty()const {
-        return GET_BIT(pack_, 0);
+        return bool(GET_BIT(bits_pack_, BIT_DIRTY));
     }
 
-    inline u32 Geom::getVertexBufferId()const {
+    inline u16 Geom::getVertexBufferId()const {
         return buffer_id_;
     }
 
@@ -60,7 +58,7 @@ namespace grynca {
             makeDirty_();
         }
 
-        u32 pos = vertices_data_.size();
+        u32 pos = u32(vertices_data_.size());
         vertices_data_.resize(vertices_data_.size() + sizeof(Vertex));
         memcpy(&vertices_data_[pos], &v, sizeof(Vertex));
     }
@@ -109,11 +107,13 @@ namespace grynca {
         }
     }
 
+    inline u32 Geom::getVertsCountVbo()const {
+        return verts_cnt_vbo_;
+    }
+
     inline void Geom::render() {
         ASSERT_M(start_offset_in_vbo_ != InvalidId(), "trying to render geom not placed in vbo.");
-        if (verts_cnt_vbo_ > 0) {
-            GLCall(glDrawArrays(getPrimitiveType(), GLint(start_offset_in_vbo_), GLsizei(verts_cnt_vbo_)));
-        }
+        GLCall(glDrawArrays(getPrimitiveType(), GLint(start_offset_in_vbo_), GLsizei(verts_cnt_vbo_)));
     }
 
     inline GLenum Geom::getPrimitiveType() {
@@ -125,76 +125,122 @@ namespace grynca {
         return T(*this);
     }
 
-    inline GeomState::StateType Geom::getGeomStateType()const {
-        return state_.getType();
+    inline GeomStateType Geom::getStateType()const {
+        return GeomStateType(GET_BITS(bits_pack_, BIT_STATE_TYPE_START, BIT_STATE_TYPE_CNT));
     }
 
-    inline void Geom::setGeomStateType(GeomState::StateType st) {
-        if (st != state_.getType()) {
-            Index new_state_id = getManager().beforeGeomChangedState_(*this, state_.getType(), st);
-            state_.setIndex(new_state_id);
+    inline u32 Geom::getStateId()const {
+        return state_id_;
+    }
+
+    inline const GeomStateBase& Geom::getState()const {
+        ASSERT(getStateType() != gstNone);
+        return *getManager().getGeomStates().getState(getStateType(), getStateId());
+    }
+
+    inline GeomStateBase& Geom::accState() {
+        ASSERT(getStateType() != gstNone);
+        return *getManager().accGeomStates().accState(getStateType(), getStateId());
+    }
+
+    inline GeomStateBase* Geom::setState(GeomStateType st) {
+        GeomStateType curr_state = getStateType();
+        GeomStates& gss = getManager().accGeomStates();
+        if (curr_state != gstNone) {
+            gss.removeState(curr_state, getStateId());
         }
+        bits_pack_ = SET_BITS(bits_pack_, BIT_STATE_TYPE_START, BIT_STATE_TYPE_CNT, u32(st));
+        GeomStateBase* new_state = NULL;
+        if (st != gstNone) {
+            state_id_ = gss.getStatesCount(st);
+            new_state = gss.addState(st, getId());
+        }
+        return new_state;
     }
 
-    inline Index Geom::getGeomStateId()const {
-        return state_.getIndex();
-    }
-
-    inline fast_vector<float> Geom::loadDataFromGPU() {
+    inline fast_vector<f32> Geom::loadDataFromGPU() {
         size_t size = verts_cnt_vbo_ * getManager().getVertexSize();
-        fast_vector<float> buf(size/sizeof(float));
+        fast_vector<f32> buf(size/sizeof(f32));
         glGetBufferSubData(GL_ARRAY_BUFFER, start_offset_in_vbo_, size, &buf[0]);
         return buf;
+    }
+
+    inline void Geom::setUsageHint_(GeomUsageHint buff_hint) {
+        bits_pack_ = SET_BITS(bits_pack_, BIT_USAGE_HINT_START, BIT_USAGE_HINT_CNT, u32(buff_hint));
+    }
+
+    inline void Geom::setStateId_(u32 state_id) {
+        state_id_ = state_id;
     }
 
     inline void Geom::link_(Index left, Index right) {
         left_ = left;
         if (left_.isValid()) {
-            getManager().getItem(left_).right_ = getId();
+            getManager().accItem(left_).right_ = getId();
         }
 
         right_ = right;
         if (right_.isValid()) {
-            getManager().getItem(right_).left_= getId();
+            getManager().accItem(right_).left_= getId();
         }
     }
 
     inline void Geom::unlink_() {
         ASSERT(buffer_id_ != InvalidId());
 
-        if (getManager().buffers_[buffer_id_].last_geom == getId()) {
-            getManager().buffers_[buffer_id_].last_geom = left_;
+        //std::cout << " removing geom " << getId() << std::endl;
+
+        VertexBuffer& buf = getManager().buffers_[buffer_id_];
+
+        if (buf.last_geom == getId()) {
+            buf.last_geom = left_;
+            buf.size -= verts_cnt_vbo_;
+            u32 left_space = getSpaceOnLeft_();
+            buf.size -= left_space;
+            buf.holes_size -= left_space;
         }
+        else {
+            buf.holes_size += verts_cnt_vbo_;
+        }
+
         if (left_.isValid()) {
-            getManager().getItem(left_).right_ = right_;
-            left_ = Index::Invalid();
+            Geom& lg = getManager().accItem(left_);
+            lg.right_ = right_;
         }
         if (right_.isValid()) {
-            getManager().getItem(right_).left_ = left_;
-            right_ = Index::Invalid();
+            Geom& rg = getManager().accItem(right_);
+            rg.left_ = left_;
         }
+        left_ = Index::Invalid();
+        right_ = Index::Invalid();
     }
 
     inline u32 Geom::getSpaceOnRight_() {
-        ASSERT(right_.isValid());
         u32 my_end = start_offset_in_vbo_ + verts_cnt_vbo_;
-        return getManager().getItem(right_).start_offset_in_vbo_ - my_end;
+        if (!right_.isValid()) {
+            return getManager().buffers_[buffer_id_].size - my_end;
+        }
+        // else
+        Geom& rg = getManager().accItem(right_);
+        return rg.start_offset_in_vbo_ - my_end;
     }
 
     inline u32 Geom::getSpaceOnLeft_() {
-        ASSERT(left_.isValid());
-        Geom& lg = getManager().getItem(left_);
+        if (!left_.isValid())
+            return start_offset_in_vbo_;
+        // else
+        Geom& lg = getManager().accItem(left_);
         u32 left_end = lg.start_offset_in_vbo_ + lg.verts_cnt_vbo_;
         return start_offset_in_vbo_ - left_end;
     }
 
     inline void Geom::makeDirty_() {
-        pack_ = SET_BIT(pack_, 0);
+        bits_pack_ = SET_BIT(bits_pack_, BIT_DIRTY);
         getManager().invalidateGeom_(*this);
     }
 
     inline void Geom::clearDirty_() {
-        pack_ = CLEAR_BIT(pack_,0);
+        bits_pack_ = CLEAR_BIT(bits_pack_, BIT_DIRTY);
     }
 
 }
