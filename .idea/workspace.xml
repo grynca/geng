@@ -16,176 +16,11 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ac104073-5944-4184-a930-f55a50ab31cf" name="Default" comment="added:&#10; PhysicsManager">
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/include/geng/core/Components/CTreeTransform.inl" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/include/geng/core/EntityResourcesManager.h" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/include/geng/core/Systems/TreeTransformSystem.h" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/include/geng/core/Systems/TreeTransformSystem.inl" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/include/geng/core/core_common.h" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/include/geng/graphics/AssetsManager.h" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/include/geng/graphics/AssetsManager.inl" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/include/geng/graphics/Components/CRenderable.inl" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/include/geng/graphics/ControlHelpers.h" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/include/geng/graphics/ControlHelpers.inl" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/include/geng/graphics/Entities/DebugOverlay.h" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/include/geng/graphics/Entities/DebugOverlay.inl" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/include/geng/graphics/Entities/EBody.h" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/include/geng/graphics/Entities/EBody.inl" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/include/geng/graphics/Entities/EVisual.h" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/include/geng/graphics/NormOffset.h" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/include/geng/graphics/Renderables/renderables_includes.h" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/include/geng/graphics/Shaders/shaders_include.h" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/include/geng/graphics/VertexData/GeomStates/GeomStateBase.h" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/include/geng/graphics/VertexData/GeomStates/GeomStateBase.inl" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/include/geng/graphics/VertexData/GeomStates/GeomStates.h" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/include/geng/graphics/VertexData/GeomStates/GeomStates.inl" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/include/geng/graphics/VertexData/vertexdata_includes.h" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/include/geng/graphics/graphics_entities.h" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/include/geng/network/Components/CNetworkedClient.h" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/include/geng/physics/Components/CBody.inl" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/include/geng/physics/Components/CCollider.h" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/include/geng/physics/Components/CCollider.inl" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/include/geng/physics/Components/CTreeJoint.h" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/include/geng/physics/Components/CTreeJoint.inl" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/include/geng/physics/Entities/EGhost.h" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/include/geng/physics/Entities/ETrigger.h" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/include/geng/physics/Systems/BoundsDebugRenderSystem.h" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/include/geng/physics/Systems/BoundsDebugRenderSystem.inl" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/include/geng/physics/Systems/BoundsSystem.h" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/include/geng/physics/Systems/BoundsSystem.inl" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/include/geng/physics/Systems/PhysicsSystem.h" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/include/geng/physics/motor_utils.h" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/include/geng/physics/physics_entities.h" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/include/geng/physics/physics_utils.h" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/entities/Dude.h" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/entities/Dude.inl" />
+    <list default="true" id="ac104073-5944-4184-a930-f55a50ab31cf" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" afterPath="$PROJECT_DIR$/CMakeLists.txt" />
-      <change beforePath="$PROJECT_DIR$/build/Emscripten/main.data" afterPath="$PROJECT_DIR$/build/Emscripten/main.data" />
-      <change beforePath="$PROJECT_DIR$/build/Emscripten/main.html" afterPath="$PROJECT_DIR$/build/Emscripten/main.html" />
-      <change beforePath="$PROJECT_DIR$/build/Emscripten/main.html.mem" afterPath="$PROJECT_DIR$/build/Emscripten/main.html.mem" />
-      <change beforePath="$PROJECT_DIR$/build/Emscripten/main.js" afterPath="$PROJECT_DIR$/build/Emscripten/main.js" />
-      <change beforePath="$PROJECT_DIR$/build/Emscripten/test.bc" afterPath="$PROJECT_DIR$/build/Emscripten/test.bc" />
-      <change beforePath="$PROJECT_DIR$/emscripten_build.sh" afterPath="$PROJECT_DIR$/emscripten_build.sh" />
-      <change beforePath="$PROJECT_DIR$/include/geng.h" afterPath="$PROJECT_DIR$/include/geng.h" />
-      <change beforePath="$PROJECT_DIR$/include/geng/GEFlags.h" afterPath="$PROJECT_DIR$/include/geng/GEFlags.h" />
-      <change beforePath="$PROJECT_DIR$/include/geng/GERoles.h" afterPath="$PROJECT_DIR$/include/geng/GERoles.h" />
-      <change beforePath="$PROJECT_DIR$/include/geng/Game.h" afterPath="$PROJECT_DIR$/include/geng/Game.h" />
-      <change beforePath="$PROJECT_DIR$/include/geng/Game.inl" afterPath="$PROJECT_DIR$/include/geng/Game.inl" />
-      <change beforePath="$PROJECT_DIR$/include/geng/GameBase.h" afterPath="$PROJECT_DIR$/include/geng/GameBase.h" />
-      <change beforePath="$PROJECT_DIR$/include/geng/GameBase.inl" afterPath="$PROJECT_DIR$/include/geng/GameBase.inl" />
-      <change beforePath="$PROJECT_DIR$/include/geng/core/Components/CDeltaTransform.inl" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/include/geng/core/Components/CDeltaTransformData.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/include/geng/core/Components/CMovableData.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/include/geng/core/Components/CTransform.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/include/geng/core/Components/CTransform.inl" afterPath="$PROJECT_DIR$/include/geng/core/Components/CTransform.inl" />
-      <change beforePath="$PROJECT_DIR$/include/geng/core/GengEntity.h" afterPath="$PROJECT_DIR$/include/geng/core/GengEntity.h" />
-      <change beforePath="$PROJECT_DIR$/include/geng/core/GengSystem.h" afterPath="$PROJECT_DIR$/include/geng/core/GengSystem.h" />
-      <change beforePath="$PROJECT_DIR$/include/geng/core/Speed.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/include/geng/core/Systems/DeltaTransformSystem.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/include/geng/core/Systems/MovementSystem.h" afterPath="$PROJECT_DIR$/include/geng/core/Systems/MovementSystem.h" />
-      <change beforePath="$PROJECT_DIR$/include/geng/core/core_includes.h" afterPath="$PROJECT_DIR$/include/geng/core/core_includes.h" />
-      <change beforePath="$PROJECT_DIR$/include/geng/geng_config.h" afterPath="$PROJECT_DIR$/include/geng/geng_config.h" />
-      <change beforePath="$PROJECT_DIR$/include/geng/graphics/Components/CRenderablesData.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/include/geng/graphics/CoordFrame.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/include/geng/graphics/Entities/GUIElement.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/include/geng/graphics/Events.h" afterPath="$PROJECT_DIR$/include/geng/graphics/Events.h" />
-      <change beforePath="$PROJECT_DIR$/include/geng/graphics/Events.inl" afterPath="$PROJECT_DIR$/include/geng/graphics/Events.inl" />
-      <change beforePath="$PROJECT_DIR$/include/geng/graphics/GUI.h" afterPath="$PROJECT_DIR$/include/geng/graphics/GUI.h" />
-      <change beforePath="$PROJECT_DIR$/include/geng/graphics/GUI.inl" afterPath="$PROJECT_DIR$/include/geng/graphics/GUI.inl" />
-      <change beforePath="$PROJECT_DIR$/include/geng/graphics/Renderables/CircleRenderable.h" afterPath="$PROJECT_DIR$/include/geng/graphics/Renderables/CircleRenderable.h" />
-      <change beforePath="$PROJECT_DIR$/include/geng/graphics/Renderables/CircleRenderable.inl" afterPath="$PROJECT_DIR$/include/geng/graphics/Renderables/CircleRenderable.inl" />
-      <change beforePath="$PROJECT_DIR$/include/geng/graphics/Renderables/ParticlesRenderable.h" afterPath="$PROJECT_DIR$/include/geng/graphics/Renderables/ParticlesRenderable.h" />
-      <change beforePath="$PROJECT_DIR$/include/geng/graphics/Renderables/ParticlesRenderable.inl" afterPath="$PROJECT_DIR$/include/geng/graphics/Renderables/ParticlesRenderable.inl" />
-      <change beforePath="$PROJECT_DIR$/include/geng/graphics/Renderables/PgonRenderable.h" afterPath="$PROJECT_DIR$/include/geng/graphics/Renderables/PgonRenderable.h" />
-      <change beforePath="$PROJECT_DIR$/include/geng/graphics/Renderables/PgonRenderable.inl" afterPath="$PROJECT_DIR$/include/geng/graphics/Renderables/PgonRenderable.inl" />
-      <change beforePath="$PROJECT_DIR$/include/geng/graphics/Renderables/PgonTexturedRenderable.h" afterPath="$PROJECT_DIR$/include/geng/graphics/Renderables/PgonTexturedRenderable.h" />
-      <change beforePath="$PROJECT_DIR$/include/geng/graphics/Renderables/PgonTexturedRenderable.inl" afterPath="$PROJECT_DIR$/include/geng/graphics/Renderables/PgonTexturedRenderable.inl" />
-      <change beforePath="$PROJECT_DIR$/include/geng/graphics/Renderables/RectBorderRenderable.h" afterPath="$PROJECT_DIR$/include/geng/graphics/Renderables/RectBorderRenderable.h" />
-      <change beforePath="$PROJECT_DIR$/include/geng/graphics/Renderables/RectBorderRenderable.inl" afterPath="$PROJECT_DIR$/include/geng/graphics/Renderables/RectBorderRenderable.inl" />
-      <change beforePath="$PROJECT_DIR$/include/geng/graphics/Renderables/RectRenderable.h" afterPath="$PROJECT_DIR$/include/geng/graphics/Renderables/RectRenderable.h" />
-      <change beforePath="$PROJECT_DIR$/include/geng/graphics/Renderables/RectRenderable.inl" afterPath="$PROJECT_DIR$/include/geng/graphics/Renderables/RectRenderable.inl" />
-      <change beforePath="$PROJECT_DIR$/include/geng/graphics/Renderables/RenderIndex.h" afterPath="$PROJECT_DIR$/include/geng/graphics/Renderables/RenderBatchId.h" />
-      <change beforePath="$PROJECT_DIR$/include/geng/graphics/Renderables/RenderIndex.inl" afterPath="$PROJECT_DIR$/include/geng/graphics/Renderables/RenderBatchId.inl" />
-      <change beforePath="$PROJECT_DIR$/include/geng/graphics/Renderables/Renderable.h" afterPath="$PROJECT_DIR$/include/geng/graphics/Renderables/Renderable.h" />
-      <change beforePath="$PROJECT_DIR$/include/geng/graphics/Renderables/Renderable.inl" afterPath="$PROJECT_DIR$/include/geng/graphics/Renderables/Renderable.inl" />
-      <change beforePath="$PROJECT_DIR$/include/geng/graphics/Renderables/SpriteRenderable.h" afterPath="$PROJECT_DIR$/include/geng/graphics/Renderables/SpriteRenderable.h" />
-      <change beforePath="$PROJECT_DIR$/include/geng/graphics/Renderables/SpriteRenderable.inl" afterPath="$PROJECT_DIR$/include/geng/graphics/Renderables/SpriteRenderable.inl" />
-      <change beforePath="$PROJECT_DIR$/include/geng/graphics/Renderables/TextRenderable.h" afterPath="$PROJECT_DIR$/include/geng/graphics/Renderables/TextRenderable.h" />
-      <change beforePath="$PROJECT_DIR$/include/geng/graphics/Renderables/TextRenderable.inl" afterPath="$PROJECT_DIR$/include/geng/graphics/Renderables/TextRenderable.inl" />
-      <change beforePath="$PROJECT_DIR$/include/geng/graphics/Renderer2D.h" afterPath="$PROJECT_DIR$/include/geng/graphics/Renderer2D.h" />
-      <change beforePath="$PROJECT_DIR$/include/geng/graphics/Renderer2D.inl" afterPath="$PROJECT_DIR$/include/geng/graphics/Renderer2D.inl" />
-      <change beforePath="$PROJECT_DIR$/include/geng/graphics/Shader.h" afterPath="$PROJECT_DIR$/include/geng/graphics/Shaders/Shader.h" />
-      <change beforePath="$PROJECT_DIR$/include/geng/graphics/Shader.inl" afterPath="$PROJECT_DIR$/include/geng/graphics/Shaders/Shader.inl" />
-      <change beforePath="$PROJECT_DIR$/include/geng/graphics/Shaders.h" afterPath="$PROJECT_DIR$/include/geng/graphics/Shaders.h" />
-      <change beforePath="$PROJECT_DIR$/include/geng/graphics/Shaders.inl" afterPath="$PROJECT_DIR$/include/geng/graphics/Shaders.inl" />
-      <change beforePath="$PROJECT_DIR$/include/geng/graphics/Shaders/CircleShader.h" afterPath="$PROJECT_DIR$/include/geng/graphics/Shaders/CircleShader.h" />
-      <change beforePath="$PROJECT_DIR$/include/geng/graphics/Shaders/ParticleShader.h" afterPath="$PROJECT_DIR$/include/geng/graphics/Shaders/ParticleShader.h" />
-      <change beforePath="$PROJECT_DIR$/include/geng/graphics/Shaders/RectBorderShader.h" afterPath="$PROJECT_DIR$/include/geng/graphics/Shaders/RectBorderShader.h" />
-      <change beforePath="$PROJECT_DIR$/include/geng/graphics/Shaders/SimpleColorShader.h" afterPath="$PROJECT_DIR$/include/geng/graphics/Shaders/SimpleColorShader.h" />
-      <change beforePath="$PROJECT_DIR$/include/geng/graphics/Shaders/SimpleTexturedShader.h" afterPath="$PROJECT_DIR$/include/geng/graphics/Shaders/SimpleTexturedShader.h" />
-      <change beforePath="$PROJECT_DIR$/include/geng/graphics/Shaders/TextShader.h" afterPath="$PROJECT_DIR$/include/geng/graphics/Shaders/TextShader.h" />
-      <change beforePath="$PROJECT_DIR$/include/geng/graphics/Systems/CollisionsDebugSystem.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/include/geng/graphics/Systems/CollisionsDebugSystem.inl" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/include/geng/graphics/Systems/RenderSystem.h" afterPath="$PROJECT_DIR$/include/geng/graphics/Systems/RenderSystem.h" />
-      <change beforePath="$PROJECT_DIR$/include/geng/graphics/Systems/RenderSystem.inl" afterPath="$PROJECT_DIR$/include/geng/graphics/Systems/RenderSystem.inl" />
-      <change beforePath="$PROJECT_DIR$/include/geng/graphics/Texture2D.h" afterPath="$PROJECT_DIR$/include/geng/graphics/Texture2D.h" />
-      <change beforePath="$PROJECT_DIR$/include/geng/graphics/Texture2D.inl" afterPath="$PROJECT_DIR$/include/geng/graphics/Texture2D.inl" />
-      <change beforePath="$PROJECT_DIR$/include/geng/graphics/Textures2DManager.h" afterPath="$PROJECT_DIR$/include/geng/graphics/Textures2DManager.h" />
-      <change beforePath="$PROJECT_DIR$/include/geng/graphics/Textures2DManager.inl" afterPath="$PROJECT_DIR$/include/geng/graphics/Textures2DManager.inl" />
-      <change beforePath="$PROJECT_DIR$/include/geng/graphics/VertexData/Factories/FactoryRectT.h" afterPath="$PROJECT_DIR$/include/geng/graphics/VertexData/Factories/FactoryRectT.h" />
-      <change beforePath="$PROJECT_DIR$/include/geng/graphics/VertexData/Factories/FactoryRectT.inl" afterPath="$PROJECT_DIR$/include/geng/graphics/VertexData/Factories/FactoryRectT.inl" />
-      <change beforePath="$PROJECT_DIR$/include/geng/graphics/VertexData/Factories/FactoryRectTF.h" afterPath="$PROJECT_DIR$/include/geng/graphics/VertexData/Factories/FactoryRectTF.h" />
-      <change beforePath="$PROJECT_DIR$/include/geng/graphics/VertexData/Factories/FactoryRectTF.inl" afterPath="$PROJECT_DIR$/include/geng/graphics/VertexData/Factories/FactoryRectTF.inl" />
-      <change beforePath="$PROJECT_DIR$/include/geng/graphics/VertexData/Geom.h" afterPath="$PROJECT_DIR$/include/geng/graphics/VertexData/Geom.h" />
-      <change beforePath="$PROJECT_DIR$/include/geng/graphics/VertexData/Geom.inl" afterPath="$PROJECT_DIR$/include/geng/graphics/VertexData/Geom.inl" />
-      <change beforePath="$PROJECT_DIR$/include/geng/graphics/VertexData/GeomState.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/include/geng/graphics/VertexData/ParticleBatchStates.h" afterPath="$PROJECT_DIR$/include/geng/graphics/VertexData/GeomStates/GeomStateParticles.h" />
-      <change beforePath="$PROJECT_DIR$/include/geng/graphics/VertexData/ParticleBatchStates.inl" afterPath="$PROJECT_DIR$/include/geng/graphics/VertexData/GeomStates/GeomStateParticles.inl" />
-      <change beforePath="$PROJECT_DIR$/include/geng/graphics/VertexData/SpriteAnimationStates.h" afterPath="$PROJECT_DIR$/include/geng/graphics/VertexData/GeomStates/GeomStateSpriteAnimation.h" />
-      <change beforePath="$PROJECT_DIR$/include/geng/graphics/VertexData/SpriteAnimationStates.inl" afterPath="$PROJECT_DIR$/include/geng/graphics/VertexData/GeomStates/GeomStateSpriteAnimation.inl" />
-      <change beforePath="$PROJECT_DIR$/include/geng/graphics/VertexData/TextStates.h" afterPath="$PROJECT_DIR$/include/geng/graphics/VertexData/GeomStates/GeomStateText.h" />
-      <change beforePath="$PROJECT_DIR$/include/geng/graphics/VertexData/TextStates.inl" afterPath="$PROJECT_DIR$/include/geng/graphics/VertexData/GeomStates/GeomStateText.inl" />
-      <change beforePath="$PROJECT_DIR$/include/geng/graphics/VertexData/VertexData.h" afterPath="$PROJECT_DIR$/include/geng/graphics/VertexData/VertexData.h" />
-      <change beforePath="$PROJECT_DIR$/include/geng/graphics/VertexData/VertexData.inl" afterPath="$PROJECT_DIR$/include/geng/graphics/VertexData/VertexData.inl" />
-      <change beforePath="$PROJECT_DIR$/include/geng/graphics/VertexData/VertexDataP.h" afterPath="$PROJECT_DIR$/include/geng/graphics/VertexData/VertexDataP.h" />
-      <change beforePath="$PROJECT_DIR$/include/geng/graphics/VertexData/VertexDataPT.h" afterPath="$PROJECT_DIR$/include/geng/graphics/VertexData/VertexDataPT.h" />
-      <change beforePath="$PROJECT_DIR$/include/geng/graphics/VertexData/VertexDataPT.inl" afterPath="$PROJECT_DIR$/include/geng/graphics/VertexData/VertexDataPT.inl" />
-      <change beforePath="$PROJECT_DIR$/include/geng/graphics/VertexData/VertexDataParticles.h" afterPath="$PROJECT_DIR$/include/geng/graphics/VertexData/VertexDataParticles.h" />
-      <change beforePath="$PROJECT_DIR$/include/geng/graphics/VertexData/VertexDataParticles.inl" afterPath="$PROJECT_DIR$/include/geng/graphics/VertexData/VertexDataParticles.inl" />
-      <change beforePath="$PROJECT_DIR$/include/geng/graphics/Vertices.h" afterPath="$PROJECT_DIR$/include/geng/graphics/Vertices.h" />
-      <change beforePath="$PROJECT_DIR$/include/geng/graphics/Vertices.inl" afterPath="$PROJECT_DIR$/include/geng/graphics/Vertices.inl" />
-      <change beforePath="$PROJECT_DIR$/include/geng/graphics/ViewPort.h" afterPath="$PROJECT_DIR$/include/geng/graphics/ViewPort.h" />
-      <change beforePath="$PROJECT_DIR$/include/geng/graphics/ViewPort.inl" afterPath="$PROJECT_DIR$/include/geng/graphics/ViewPort.inl" />
-      <change beforePath="$PROJECT_DIR$/include/geng/graphics/Window.h" afterPath="$PROJECT_DIR$/include/geng/graphics/Window.h" />
-      <change beforePath="$PROJECT_DIR$/include/geng/graphics/Window.inl" afterPath="$PROJECT_DIR$/include/geng/graphics/Window.inl" />
-      <change beforePath="$PROJECT_DIR$/include/geng/graphics/glinclude.h" afterPath="$PROJECT_DIR$/include/geng/graphics/glinclude.h" />
-      <change beforePath="$PROJECT_DIR$/include/geng/graphics/graphics_config.h" afterPath="$PROJECT_DIR$/include/geng/graphics/graphics_config.h" />
-      <change beforePath="$PROJECT_DIR$/include/geng/graphics/graphics_includes.h" afterPath="$PROJECT_DIR$/include/geng/graphics/graphics_includes.h" />
-      <change beforePath="$PROJECT_DIR$/include/geng/network/Components/CNetworked.h" afterPath="$PROJECT_DIR$/include/geng/network/Components/CNetworkedServer.h" />
-      <change beforePath="$PROJECT_DIR$/include/geng/network/Snapshots.inl" afterPath="$PROJECT_DIR$/include/geng/network/Snapshots.inl" />
-      <change beforePath="$PROJECT_DIR$/include/geng/network/Systems/ClientNetworkSystem.h" afterPath="$PROJECT_DIR$/include/geng/network/Systems/ClientNetworkSystem.h" />
-      <change beforePath="$PROJECT_DIR$/include/geng/network/Systems/ClientNetworkSystem.inl" afterPath="$PROJECT_DIR$/include/geng/network/Systems/ClientNetworkSystem.inl" />
-      <change beforePath="$PROJECT_DIR$/include/geng/network/Systems/ServerNetworkSystem.h" afterPath="$PROJECT_DIR$/include/geng/network/Systems/ServerNetworkSystem.h" />
-      <change beforePath="$PROJECT_DIR$/include/geng/network/Systems/ServerNetworkSystem.inl" afterPath="$PROJECT_DIR$/include/geng/network/Systems/ServerNetworkSystem.inl" />
-      <change beforePath="$PROJECT_DIR$/include/geng/network/network_includes.h" afterPath="$PROJECT_DIR$/include/geng/network/network_includes.h" />
-      <change beforePath="$PROJECT_DIR$/include/geng/physics/Collidable.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/include/geng/physics/Components/CBody.h" afterPath="$PROJECT_DIR$/include/geng/physics/Components/CBody.h" />
-      <change beforePath="$PROJECT_DIR$/include/geng/physics/Systems/CollisionSystem.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/include/geng/physics/Systems/CollisionSystem.inl" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/include/geng/physics/physics_includes.h" afterPath="$PROJECT_DIR$/include/geng/physics/physics_includes.h" />
-      <change beforePath="$PROJECT_DIR$/include/geng/sdlinclude.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/MyGame.h" afterPath="$PROJECT_DIR$/src/MyGame.h" />
-      <change beforePath="$PROJECT_DIR$/src/MyGame.inl" afterPath="$PROJECT_DIR$/src/MyGame.inl" />
-      <change beforePath="$PROJECT_DIR$/src/entities/HUD.h" afterPath="$PROJECT_DIR$/src/entities/HUD.h" />
-      <change beforePath="$PROJECT_DIR$/src/entities/HUD.inl" afterPath="$PROJECT_DIR$/src/entities/HUD.inl" />
-      <change beforePath="$PROJECT_DIR$/src/entities/MyEntity.h" afterPath="$PROJECT_DIR$/src/entities/MyEntity.h" />
-      <change beforePath="$PROJECT_DIR$/src/entities/MyEntity.inl" afterPath="$PROJECT_DIR$/src/entities/MyEntity.inl" />
-      <change beforePath="$PROJECT_DIR$/src/entities/Shuttle.h" afterPath="$PROJECT_DIR$/src/entities/Shuttle.h" />
-      <change beforePath="$PROJECT_DIR$/src/entities/Shuttle.inl" afterPath="$PROJECT_DIR$/src/entities/Shuttle.inl" />
-      <change beforePath="$PROJECT_DIR$/src/incl.h" afterPath="$PROJECT_DIR$/src/incl.h" />
-      <change beforePath="$PROJECT_DIR$/src/main.cpp" afterPath="$PROJECT_DIR$/src/main.cpp" />
+      <change beforePath="$PROJECT_DIR$/include/geng/core/Components/CDeltaTransform.h" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/include/geng/core/Components/CMovable.h" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/include/geng/graphics/Components/CRenderables.h" afterPath="" />
     </list>
     <ignored path="geng.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -208,38 +43,50 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="ParticleShader.h" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/include/geng/graphics/Shaders/ParticleShader.h">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="645">
-              <caret line="55" column="33" lean-forward="true" selection-start-line="55" selection-start-column="33" selection-end-line="55" selection-end-column="33" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CSpeed.h" pinned="false" current-in-tab="true">
+      <file leaf-file-name="CSpeed.h" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/include/geng/core/Components/CSpeed.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
-              <caret line="31" column="41" lean-forward="false" selection-start-line="31" selection-start-column="41" selection-end-line="31" selection-end-column="41" />
+            <state relative-caret-position="240">
+              <caret line="17" column="10" lean-forward="false" selection-start-line="17" selection-start-column="10" selection-end-line="17" selection-end-column="10" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MyEntity.h" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/entities/MyEntity.h">
+      <file leaf-file-name="PhysicsSystem.h" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/include/geng/physics/Systems/PhysicsSystem.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="11" column="28" lean-forward="false" selection-start-line="11" selection-start-column="28" selection-end-line="11" selection-end-column="28" />
+            <state relative-caret-position="90">
+              <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CSpeed.inl" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/include/geng/core/Components/CSpeed.inl">
+      <file leaf-file-name="PhysicsManager.h" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/include/geng/physics/PhysicsManager.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="19" column="25" lean-forward="true" selection-start-line="19" selection-start-column="25" selection-end-line="19" selection-end-column="25" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PhysicsManager.inl" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/include/geng/physics/PhysicsManager.inl">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#27#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="geom_enums.h" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/include/geng/graphics/VertexData/geom_enums.h">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -268,43 +115,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MovementSystem.h" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/include/geng/core/Systems/MovementSystem.h">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TreeTransformSystem.h" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/include/geng/core/Systems/TreeTransformSystem.h">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TreeTransformSystem.inl" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/include/geng/core/Systems/TreeTransformSystem.inl">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#17#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="CRenderable.h" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/include/geng/graphics/Components/CRenderable.h">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="360">
-              <caret line="24" column="16" lean-forward="true" selection-start-line="24" selection-start-column="16" selection-end-line="24" selection-end-column="16" />
+              <caret line="24" column="16" lean-forward="false" selection-start-line="24" selection-start-column="16" selection-end-line="24" selection-end-column="16" />
               <folding />
             </state>
           </provider>
@@ -322,8 +137,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>initrectbod</find>
-      <find>sprite_prototype</find>
       <find>shuttle_size</find>
       <find>exhaust_cttr</find>
       <find>particles_r</find>
@@ -352,6 +165,8 @@
       <find>dt</find>
       <find>rP</find>
       <find>rp</find>
+      <find>BodiesPairHandler</find>
+      <find>BodiesPairHandlerBase</find>
     </findStrings>
     <replaceStrings>
       <replace>ct-&gt;</replace>
@@ -1060,7 +875,7 @@
       <workItem from="1520245529823" duration="899000" />
       <workItem from="1520325556590" duration="574000" />
       <workItem from="1520326308885" duration="9000" />
-      <workItem from="1520327344149" duration="800000" />
+      <workItem from="1520327344149" duration="2996000" />
     </task>
     <task id="LOCAL-00001" summary="basic structure&#10;graphics : Window, ViewPort, renderables (Circle, Rectangle, Sprite), Renderable System &#10;physics: MovementSystem">
       <created>1439409452380</created>
@@ -1118,11 +933,18 @@
       <option name="project" value="LOCAL" />
       <updated>1483895165263</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="systems updated for updated sysent api&#10;.onKilled() method for GengEntityDef&#10;GUIElement removed&#10;RenderIndex renamed to RenderBatchId&#10;RenderSystem - motion interpolation for movable entities&#10;GeomStates refactored&#10;Events now derived from EventsHandler&#10;GUI now handles collision debug &amp; debug overlay&#10;RenderTask holds memory for DrawData (every Renderable class has its own, handling it in .onBeforeDraw() - setting uniforms to shader...)&#10;networking commented out for now&#10;CollisionsDebugSystem renamed to BoundsDebugRenderSystem&#10;added:&#10; PhysicsManager&#10; CTreeTransform - replaces CDeltaTransform, for non-physical (mostly visual) transform hierarchy between Entities&#10; TreeTransformSystem&#10; EntityResourcesManager - singletons manager for entity resources&#10; DebugOverlay - entity for debug info GUI&#10; EbodyT&lt;&gt;, EBody - global dynamic physical entities&#10; EBodyTreeT&lt;&gt;, EBodyTree - local dynamic entities&#10; EVisualT&lt;&gt;, EVisual - static global visual entities&#10; EvisualDynamic&lt;T&gt;, EVisualDynamic - dynamic global visual entities&#10; EVisualTree&lt;T&gt;, EVisualTree - local visual entities&#10; CSpeedData - stores lin., ang. speed&#10; CSpeedSetter - works with CSpeedData,&#10; &#10; AssetsManager&#10; NormOffset - standard offsets for local position&#10; CBodyData - component holding Body properties (mass data, material, force acc., torque acc.)&#10; CBodyCalcFromShape - calculates mass data properties from shape and material&#10; CColliderData - shape, bound, collision mask&#10; CColliderSetter - for changing collider data&#10; CTreeJointData - joints hierarchy node data&#10; CTreeJoint - manages joints hierarchy (atach, detach, traverse ...)&#10; EGhostT&lt;&gt;, EGhost - physical dynamic body without visual representation&#10; ETriggerT&lt;&gt;, ETrigger - static invisible collider&#10; BoundsSystem - adds/removes/updates collider bounds&#10; PhysicsSystem - updates velocities, solves contacts&#10; &#10;+ some more minor stuff">
+      <created>1520334384153</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1520334384153</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1663828000" />
+    <option name="totallyTimeSpent" value="1666024000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1205,7 +1027,8 @@
     <MESSAGE value="removed old files&#10;dirs refactored&#10;added PgonRenderable &amp; PgonTexturedRenderable&#10;" />
     <MESSAGE value="conditional defines for disabling geng modules&#10;" />
     <MESSAGE value="Added components&amp;systems for transformation hierarchy between entities (will be probably needed for gui)&#10;Modified systems pipeline for new flagged systems&#10;Total Renderer/Renderables overwrite:&#10;  vertices not indexed anymore&#10;  multiple vertex buffers for each vertex data type, also can &#10;  buffers handle fragmentation (when holes size get too large they compress themselves)&#10;  adding new vertices to geoms - when there free space next to it it is added inplace otherwise geometry is moved to the back and hole is created&#10;  renderables are just light wrapper with reference to render task&#10;  render tasks hold all relevant information for rendering (geom, uniforms ...) and are directly managed by renderer&#10;  geoms have GeomState (Animation, Text, ParticleBatch), can be shared between geoms&#10;  geoms can specify usage (static, dynamic, stream) which controls in which buffers they are placed&#10;  vertex attribs are directly mapped to binding points via their name across shaders &#10;&#10;Added particles&#10;Made header only lib&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added components&amp;systems for transformation hierarchy between entities (will be probably needed for gui)&#10;Modified systems pipeline for new flagged systems&#10;Total Renderer/Renderables overwrite:&#10;  vertices not indexed anymore&#10;  multiple vertex buffers for each vertex data type, also can &#10;  buffers handle fragmentation (when holes size get too large they compress themselves)&#10;  adding new vertices to geoms - when there free space next to it it is added inplace otherwise geometry is moved to the back and hole is created&#10;  renderables are just light wrapper with reference to render task&#10;  render tasks hold all relevant information for rendering (geom, uniforms ...) and are directly managed by renderer&#10;  geoms have GeomState (Animation, Text, ParticleBatch), can be shared between geoms&#10;  geoms can specify usage (static, dynamic, stream) which controls in which buffers they are placed&#10;  vertex attribs are directly mapped to binding points via their name across shaders &#10;&#10;Added particles&#10;Made header only lib&#10;" />
+    <MESSAGE value="systems updated for updated sysent api&#10;.onKilled() method for GengEntityDef&#10;GUIElement removed&#10;RenderIndex renamed to RenderBatchId&#10;RenderSystem - motion interpolation for movable entities&#10;GeomStates refactored&#10;Events now derived from EventsHandler&#10;GUI now handles collision debug &amp; debug overlay&#10;RenderTask holds memory for DrawData (every Renderable class has its own, handling it in .onBeforeDraw() - setting uniforms to shader...)&#10;networking commented out for now&#10;CollisionsDebugSystem renamed to BoundsDebugRenderSystem&#10;added:&#10; PhysicsManager&#10; CTreeTransform - replaces CDeltaTransform, for non-physical (mostly visual) transform hierarchy between Entities&#10; TreeTransformSystem&#10; EntityResourcesManager - singletons manager for entity resources&#10; DebugOverlay - entity for debug info GUI&#10; EbodyT&lt;&gt;, EBody - global dynamic physical entities&#10; EBodyTreeT&lt;&gt;, EBodyTree - local dynamic entities&#10; EVisualT&lt;&gt;, EVisual - static global visual entities&#10; EvisualDynamic&lt;T&gt;, EVisualDynamic - dynamic global visual entities&#10; EVisualTree&lt;T&gt;, EVisualTree - local visual entities&#10; CSpeedData - stores lin., ang. speed&#10; CSpeedSetter - works with CSpeedData,&#10; &#10; AssetsManager&#10; NormOffset - standard offsets for local position&#10; CBodyData - component holding Body properties (mass data, material, force acc., torque acc.)&#10; CBodyCalcFromShape - calculates mass data properties from shape and material&#10; CColliderData - shape, bound, collision mask&#10; CColliderSetter - for changing collider data&#10; CTreeJointData - joints hierarchy node data&#10; CTreeJoint - manages joints hierarchy (atach, detach, traverse ...)&#10; EGhostT&lt;&gt;, EGhost - physical dynamic body without visual representation&#10; ETriggerT&lt;&gt;, ETrigger - static invisible collider&#10; BoundsSystem - adds/removes/updates collider bounds&#10; PhysicsSystem - updates velocities, solves contacts&#10; &#10;+ some more minor stuff" />
+    <option name="LAST_COMMIT_MESSAGE" value="systems updated for updated sysent api&#10;.onKilled() method for GengEntityDef&#10;GUIElement removed&#10;RenderIndex renamed to RenderBatchId&#10;RenderSystem - motion interpolation for movable entities&#10;GeomStates refactored&#10;Events now derived from EventsHandler&#10;GUI now handles collision debug &amp; debug overlay&#10;RenderTask holds memory for DrawData (every Renderable class has its own, handling it in .onBeforeDraw() - setting uniforms to shader...)&#10;networking commented out for now&#10;CollisionsDebugSystem renamed to BoundsDebugRenderSystem&#10;added:&#10; PhysicsManager&#10; CTreeTransform - replaces CDeltaTransform, for non-physical (mostly visual) transform hierarchy between Entities&#10; TreeTransformSystem&#10; EntityResourcesManager - singletons manager for entity resources&#10; DebugOverlay - entity for debug info GUI&#10; EbodyT&lt;&gt;, EBody - global dynamic physical entities&#10; EBodyTreeT&lt;&gt;, EBodyTree - local dynamic entities&#10; EVisualT&lt;&gt;, EVisual - static global visual entities&#10; EvisualDynamic&lt;T&gt;, EVisualDynamic - dynamic global visual entities&#10; EVisualTree&lt;T&gt;, EVisualTree - local visual entities&#10; CSpeedData - stores lin., ang. speed&#10; CSpeedSetter - works with CSpeedData,&#10; &#10; AssetsManager&#10; NormOffset - standard offsets for local position&#10; CBodyData - component holding Body properties (mass data, material, force acc., torque acc.)&#10; CBodyCalcFromShape - calculates mass data properties from shape and material&#10; CColliderData - shape, bound, collision mask&#10; CColliderSetter - for changing collider data&#10; CTreeJointData - joints hierarchy node data&#10; CTreeJoint - manages joints hierarchy (atach, detach, traverse ...)&#10; EGhostT&lt;&gt;, EGhost - physical dynamic body without visual representation&#10; ETriggerT&lt;&gt;, ETrigger - static invisible collider&#10; BoundsSystem - adds/removes/updates collider bounds&#10; PhysicsSystem - updates velocities, solves contacts&#10; &#10;+ some more minor stuff" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1307,62 +1130,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/include/geng/graphics/Renderables/RectRenderable.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="51" lean-forward="false" selection-start-line="13" selection-start-column="51" selection-end-line="13" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/geng/graphics/Renderables/PgonTexturedRenderable.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="26" column="21" lean-forward="false" selection-start-line="26" selection-start-column="21" selection-end-line="26" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/geng/graphics/Renderables/PgonTexturedRenderable.inl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="23" column="1" lean-forward="false" selection-start-line="23" selection-start-column="1" selection-end-line="23" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/geng/graphics/Entities/EBody.inl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="43" column="40" lean-forward="false" selection-start-line="43" selection-start-column="40" selection-end-line="43" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/geng/graphics/Components/CRenderable.inl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="456">
-          <caret line="38" column="5" lean-forward="false" selection-start-line="38" selection-start-column="5" selection-end-line="38" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/geng/graphics/Renderables/SpriteRenderable.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="31" lean-forward="false" selection-start-line="16" selection-start-column="31" selection-end-line="16" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/geng/graphics/Renderables/Renderable.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="31" column="36" lean-forward="false" selection-start-line="31" selection-start-column="36" selection-end-line="31" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/geng/graphics/Entities/EBody.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="246">
-          <caret line="32" column="8" lean-forward="false" selection-start-line="32" selection-start-column="8" selection-end-line="32" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/include/geng/graphics/Entities/EVisual.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
@@ -1648,7 +1415,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#0#17#0" expanded="true" />
+            <element signature="e#0#17#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1656,7 +1423,7 @@
     <entry file="file://$PROJECT_DIR$/include/geng/graphics/Components/CRenderable.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
-          <caret line="24" column="16" lean-forward="true" selection-start-line="24" selection-start-column="16" selection-end-line="24" selection-end-column="16" />
+          <caret line="24" column="16" lean-forward="false" selection-start-line="24" selection-start-column="16" selection-end-line="24" selection-end-column="16" />
           <folding />
         </state>
       </provider>
@@ -1677,10 +1444,76 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/include/geng/core/Components/CTransformData.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="14" lean-forward="true" selection-start-line="13" selection-start-column="14" selection-end-line="13" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/geng/graphics/VertexData/geom_enums.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/geng/graphics/VertexData/GeomUsageHint.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="12" lean-forward="false" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/include/geng/core/Components/CSpeed.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="31" column="41" lean-forward="false" selection-start-line="31" selection-start-column="41" selection-end-line="31" selection-end-column="41" />
+        <state relative-caret-position="240">
+          <caret line="17" column="10" lean-forward="false" selection-start-line="17" selection-start-column="10" selection-end-line="17" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/geng/physics/BodiesPairHandler.inl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/geng/physics/BodiesPairHandler.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="15" column="58" lean-forward="false" selection-start-line="15" selection-start-column="37" selection-end-line="15" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/geng/physics/Systems/PhysicsSystem.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/geng/physics/PhysicsManager.inl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#27#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/geng/physics/PhysicsManager.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="19" column="25" lean-forward="true" selection-start-line="19" selection-start-column="25" selection-end-line="19" selection-end-column="25" />
           <folding />
         </state>
       </provider>
